@@ -2,20 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AllTilesList", menuName = "Tiles/TileList")]
-public class TileList_SO : ScriptableObject
+[CreateAssetMenu(fileName = "AllTilesList", menuName = "RuntimeLists/TileList")]
+public class TileList_SO : RuntimeLists_SO<GameObject>
 {
-    public List<BasicTile_SO> ListOfAllTiles;
-    //public List<GameObject> ListOfAllTiles;
-    //public List<TileMozo> ListOfAllTiles;
-
-    public void AddToAllTilesList(BasicTile_SO tile)//(GameObject tile)
-    {
-        ListOfAllTiles.Add(tile);
-    }
-
-    private void OnDisable()
-    {
-        ListOfAllTiles.Clear();
-    }
+    
 }

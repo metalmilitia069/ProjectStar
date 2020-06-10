@@ -12,4 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b579647bfeb346346b16ca8489b94c3e, type: 3}
   m_Name: AllTilesList
   m_EditorClassIdentifier: 
-  ListOfAllTiles: []
