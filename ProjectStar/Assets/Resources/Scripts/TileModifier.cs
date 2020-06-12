@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class TileModifier : MonoBehaviour
 {
-    [Header("MODIFICATION TYPE:")]
+    [Header("MODIFICATION SETUP :")]
+    [TextArea(1, 10)]
+    public string description = "This Script Changes The Tile Behavior";
+    [Header("TILE TYPE :")]
     [SerializeField]
     private bool isLatter;
     [SerializeField]
     public bool isCover;
-
-    [Header("COVER SETUP:")]
-    [Header("COVER TYPE:")]
+    [Header("COVER TILE SETUP :")]
     [SerializeField]
     public bool isHalfCover = true;
     [SerializeField]
     public bool isFullCover = false;
-
-    [Header("COVER PENALTY:")]
     [SerializeField]
     public float halfCoverPenalty = 0.20f;
     [SerializeField]
     public float fullCoverPenalty = 0.90f;
-
-    [Header("LATTER SETUP:")]
+    [Header("LATTER TILE SETUP :")]
     [SerializeField]
     private float _latterHeight = 5;
+    //[SerializeField]
+    //private Vector3 _latterHeightVector;
     [SerializeField]
     private bool _isForwardDirection = false;
     [SerializeField]
@@ -36,46 +36,18 @@ public class TileModifier : MonoBehaviour
     private bool _isLeftDirection = false;
     [SerializeField]
     private Vector3 _position;
+    [Header("OTHER CONFIGURATION :")]
     [SerializeField]
-
-    [Header("RAY CAST DIRECTION:")]
     private bool _isRayUp = false;
-
-
-
-
+    
+    
     private Vector3 _rayDirection;
     private bool isTypeChanged = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (_isForwardDirection)
-        {
-            _position = Vector3.forward;
-        }
-        else if (_isBackwardDirection)
-        {
-            _position = Vector3.back;
-        }
-        else if (_isRightDirection)
-        {
-            _position = Vector3.right;
-        }
-        else if (_isLeftDirection)
-        {
-            _position = Vector3.left;
-        }
-
-        _position = _position + new Vector3(0, _latterHeight, 0);
-
-        if (_isRayUp)
-        {
-            _rayDirection = Vector3.up;
-        }
-        else
-        {
-            _rayDirection = Vector3.down;
-        }
+        ApplyModifier();
     }
 
     // Update is called once per frame
@@ -93,6 +65,40 @@ public class TileModifier : MonoBehaviour
         else
         {
             isFullCover = true;
+        }
+    }
+
+    public void ApplyModifier()
+    {
+        if (isLatter)
+        {
+            if (_isForwardDirection)
+            {
+                _position = Vector3.forward;
+            }
+            else if (_isBackwardDirection)
+            {
+                _position = Vector3.back;
+            }
+            else if (_isRightDirection)
+            {
+                _position = Vector3.right;
+            }
+            else if (_isLeftDirection)
+            {
+                _position = Vector3.left;
+            }
+
+            _position = _position + new Vector3(0, _latterHeight, 0);
+        }        
+
+        if (_isRayUp)
+        {
+            _rayDirection = Vector3.up;
+        }
+        else
+        {
+            _rayDirection = Vector3.down;
         }
     }
 
