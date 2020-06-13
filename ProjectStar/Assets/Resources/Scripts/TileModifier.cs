@@ -116,6 +116,7 @@ public class TileModifier : MonoBehaviour
                 {
                     tile.basicTileVariables.isLatter = true;
                     tile.basicTileVariables.latterSpotPosition = _position;
+                    tile.GetComponent<BasicTile>().ScanTiles();
                 }
                 if (isCover)
                 {
