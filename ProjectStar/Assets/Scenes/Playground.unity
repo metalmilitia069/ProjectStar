@@ -167,7 +167,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30301480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 1, z: -4.499999}
+  m_LocalPosition: {x: -1.5, y: 1.075, z: -4.499999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1728407416}
@@ -186,6 +186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d082970abf662e643862de4f74628647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
+  characterMoveVariables: {fileID: 0}
+  characterStatsVariables: {fileID: 0}
 --- !u!114 &30301484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c8ee3c1c819694fb68a14e95c3c33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStatsVariables: {fileID: 0}
 --- !u!114 &30301485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bb059672f34c24589b565606874502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
+  characterMoveVariables: {fileID: 0}
 --- !u!114 &30301487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f96a857d20928e408ea6122d8241795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Description: 'TODO: Review the need for a Base Class Later.'
 --- !u!114 &30301488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352e821489e640f459616499ec42fdcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listOfAllCharacters_SO: {fileID: 11400000, guid: 55ab07acff9365440bef8d4362bbca70,
+    type: 2}
 --- !u!1 &228955395
 GameObject:
   m_ObjectHideFlags: 0

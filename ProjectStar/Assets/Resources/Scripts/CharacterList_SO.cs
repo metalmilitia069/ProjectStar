@@ -8,14 +8,14 @@ public class CharacterList_SO : ScriptableObject
 {
     private List<CharacterInput> listOfAllCharacters;
 
-    public void AddTile(CharacterInput adTile)
+    public void AddCharacter(CharacterInput adChar)
     {
-        listOfAllCharacters.Add(adTile);
+        listOfAllCharacters.Add(adChar);
     }
 
-    public void RemoveTile(CharacterInput adTile)
+    public void RemoveCharacter(CharacterInput adChar)
     {
-        listOfAllCharacters.Remove(adTile);
+        listOfAllCharacters.Remove(adChar);
     }
 
     public List<CharacterInput> GetList()
