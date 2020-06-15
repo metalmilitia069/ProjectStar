@@ -10,6 +10,8 @@ public class CharacterInput : MonoBehaviour
 
     [Header("CHARACTER MOVE VARIABLES - INSTANCE :")]
     public CharacterMove_SO characterMoveVariables;
+    [Header("CHARACTER COMBAT VARIABLES - INSTANCE :")]
+    public CharacterCombat_SO characterCombatVariables;
     [Header("CHARACTER STATS VARIABLES - INSTANCE :")]
     public CharacterStats_SO characterStatsVariables;
 

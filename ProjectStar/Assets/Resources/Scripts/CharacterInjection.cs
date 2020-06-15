@@ -13,12 +13,17 @@ public class CharacterInjection : MonoBehaviour
         GetComponent<CharacterMove>().characterMoveVariables = ScriptableObject.CreateInstance<CharacterMove_SO>();
         GetComponent<CharacterMove>().characterMoveVariables.name = "InstanceCharacterMove";
 
+        GetComponent<CharacterCombat>().characterCombatVariables = ScriptableObject.CreateInstance<CharacterCombat_SO>();
+        GetComponent<CharacterCombat>().characterCombatVariables.name = "InstanceCharacterCombat";
+
         GetComponent<CharacterStats>().characterStatsVariables = ScriptableObject.CreateInstance<CharacterStats_SO>();
         GetComponent<CharacterStats>().characterStatsVariables.name = "InstanceCharacterStats";
 
 
         GetComponent<CharacterInput>().characterMoveVariables = GetComponent<CharacterMove>().characterMoveVariables;
+        GetComponent<CharacterInput>().characterCombatVariables = GetComponent<CharacterCombat>().characterCombatVariables;
         GetComponent<CharacterInput>().characterStatsVariables = GetComponent<CharacterStats>().characterStatsVariables;
+
 
 
         listOfAllCharacters_SO.AddCharacter(this.GetComponent<CharacterInput>());
