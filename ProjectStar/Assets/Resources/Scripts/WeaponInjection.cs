@@ -9,6 +9,9 @@ public class WeaponInjection : MonoBehaviour
     {
         GetComponent<WeaponBasic>().weaponBasicVariables = ScriptableObject.CreateInstance<WeaponBasic_SO>();
         GetComponent<WeaponBasic>().weaponBasicVariables.name = "BasicWeaponInstance";
+
+
+        GetComponent<WeaponInput>().weaponBasicVariables = GetComponent<WeaponBasic>().weaponBasicVariables;
     }
 
 

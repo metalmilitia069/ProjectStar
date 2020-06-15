@@ -5,6 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WeaponBasic", menuName = "ScriptableVariables/Type: BasicWeapon")]
 public class WeaponBasic_SO : ScriptableObject
 {
+    [Header("WEAPON PREFAB :")]
+    public GameObject weaponPrefab;
+
+    [Header("WEAPON SOCKETS :")]
+    public GameObject weaponGripSocket;
+    public GameObject weaponHolsterSocket;
+    public GameObject firePoint;
+
+    [Header("WEAPON CLASS :")]
     public WeaponClass weaponClass;
 
     public bool isCurrent = false;
@@ -24,9 +33,10 @@ public class WeaponBasic_SO : ScriptableObject
     public float damagePenalty = 1.0f;//ok    
     public float weaponCriticalDamage;//->
 
+
     //[Header("COVER DAMAGE REDUCTION")]
-    private bool isFullCover = false;
-    private bool isHalfCover = false;
+    public bool isFullCover = false;
+    public bool isHalfCover = false;
 
     //Weapon Stats Bullet Behavior
     [Header("WEAPON BEHAVIOR")]
