@@ -90,14 +90,14 @@ public class BasicTile : MonoBehaviour
                     basicTileVariables.listOfNearbyValidTiles.Add(basicTileVariables.referenceTile);
                 }
                 else
-                {                    
-                    ////if (!this.basicTileVariables.isMoveMode)
-                    ////{
-                    ////    if (hit.transform.GetComponent<EnemyBaseClass>())
-                    ////    {
-                    ////        listOfNearbyValidTiles.Add(referenceTile);
-                    ////    }
-                    ////}
+                {
+                    if (!this.basicTileVariables.isMoveMode)
+                    {
+                        if (hit.transform.GetComponent<EnemyInput>())
+                        {
+                            basicTileVariables.listOfNearbyValidTiles.Add(basicTileVariables.referenceTile);
+                        }
+                    }
                 }
 
             }

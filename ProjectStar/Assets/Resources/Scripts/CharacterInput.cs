@@ -6,6 +6,8 @@ public class CharacterInput : MonoBehaviour
 {
     [Header("INSERT A GRIDMANAGER SO :")]
     public GridManager_SO GridManager;
+    [Header("INSERT A COMBAT CALCULATOR MANAGER SO :")]
+    public CombatCalculatorManager_SO CombatCalculatorManager;
 
 
     [Header("CHARACTER MOVE VARIABLES - INSTANCE :")]
@@ -59,15 +61,15 @@ public class CharacterInput : MonoBehaviour
 
             if (characterMoveVariables._isMoveMode)
             {
-                //if (_listOfScannedEnemies.Count > 0)
-                //{
-                //    foreach (var enemy in _listOfScannedEnemies)
-                //    {
-                //        enemy.canBeAttacked = false;
-                //    }
-                //}
+                if (characterCombatVariables._listOfScannedEnemies.Count > 0)
+                {
+                    foreach (var enemy in characterCombatVariables._listOfScannedEnemies)
+                    {
+                        enemy.EnemyStatsVariables.canBeAttacked = false;
+                    }
+                }
 
-                //_listOfScannedEnemies.Clear();
+                characterCombatVariables._listOfScannedEnemies.Clear();
 
                 if (!characterMoveVariables.isMoving)
                 {
@@ -92,20 +94,21 @@ public class CharacterInput : MonoBehaviour
             if (characterMoveVariables._isCombatMode)
             {
 
-                //if (!characterMoveVariables.isAttackRangeFound)
-                //{
-                //    _weaponRange = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
-                //    GridManager.instance.CalculateAttackPath(this.gameObject);
-                //    ScanForEnemies();
-                //}
+                if (!characterMoveVariables.isAttackRangeFound)
+                {
+                    //>>>>>>>REDO THIS WITH WEAPON BELT!!!!!!!!!!!
+                    characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
+                    GridManager.CalculateAttackPath(this.gameObject);
+                    GetComponent<CharacterCombat>().ScanForEnemies();
+                }
 
-                //ActivateMouseToAttack();
+                ActivateMouseToAttack();
 
             }
 
             if (Input.GetKeyDown(KeyCode.H))
             {
-                //ChangeMode();
+                ChangeMode();
             }
 
             if (Input.GetKeyDown(KeyCode.F))
@@ -145,5 +148,63 @@ public class CharacterInput : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ActivateMouseToAttack()
+    {
+        //if(Input.GetMouseButtonDown(0))
+        //{
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            EnemyInput enemyPlaceHolder = hit.collider.GetComponent<EnemyInput>();
+            if (enemyPlaceHolder)
+            {
+                foreach (var enemy in characterCombatVariables._listOfScannedEnemies)
+                {
+                    if (enemy == enemyPlaceHolder)
+                    {
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            GetComponent<CharacterCombat>().Attack(enemy);
+                        }
+                        else
+                        {
+                            GetComponent<CharacterCombat>().ShowProbability(enemy);
+                        }
+                    }
+                }
+            }
+        }
+        //}
+    }
+
+    public void ChangeMode()
+    {
+        if (characterMoveVariables._isMoveMode)
+        {
+            characterMoveVariables._isCombatMode = true;
+            characterMoveVariables._isMoveMode = false;
+            characterMoveVariables.isAttackRangeFound = false;
+            foreach (var item in GridManager.tileList_SO.GetList())
+            {
+                item.basicTileVariables.isMoveMode = false;
+            }
+
+        }
+        else if (characterMoveVariables._isCombatMode)
+        {
+            characterMoveVariables._isCombatMode = false;
+            characterMoveVariables._isMoveMode = true;
+            characterMoveVariables.isTilesFound = false;
+            foreach (var item in GridManager.tileList_SO.GetList())
+            {
+                item.basicTileVariables.isMoveMode = true;
+            }
+        }
+
+        GridManager.ClearSelectableTiles();
     }
 }

@@ -29,7 +29,7 @@ public class WeaponBasic_SO : ScriptableObject
 
 
     public float weaponCriticalChance;//->
-    public float successShotProbability = 1;//->
+    public float successShotProbability = 1.0f;//->
     public float damagePenalty = 1.0f;//ok    
     public float weaponCriticalDamage;//->
 
@@ -55,6 +55,8 @@ public class WeaponBasic_SO : ScriptableObject
                 maxDamage = 7;
                 weaponCriticalChance = .1f;
                 weaponCriticalDamage = 1.5f;
+
+                successShotProbability = 1.0f;
                 break;
             case WeaponClass.Gun:
                 weaponRange = 5;
@@ -63,6 +65,8 @@ public class WeaponBasic_SO : ScriptableObject
                 maxDamage = 5;
                 weaponCriticalChance = .1f;
                 weaponCriticalDamage = 1.5f;
+
+                successShotProbability = 1.0f;
                 break;
             case WeaponClass.Rifle:
                 weaponRange = 7;
@@ -71,6 +75,8 @@ public class WeaponBasic_SO : ScriptableObject
                 maxDamage = 6;
                 weaponCriticalChance = .1f;
                 weaponCriticalDamage = 1.5f;
+
+                successShotProbability = 1.0f;
                 break;
             case WeaponClass.MiniGun:
                 weaponRange = 4;
@@ -79,6 +85,8 @@ public class WeaponBasic_SO : ScriptableObject
                 maxDamage = 7;
                 weaponCriticalChance = .1f;
                 weaponCriticalDamage = 1.5f;
+
+                successShotProbability = 1.0f;
                 break;
             default:
                 Debug.Log("No Weapon Selected");

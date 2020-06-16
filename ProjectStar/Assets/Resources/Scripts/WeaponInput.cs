@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WeaponInput : MonoBehaviour
 {
+    [Header("INSERT A COMBAT CALCULATOR MANAGER SO :")]
+    public CombatCalculatorManager_SO CombatCalculatorManager;
+
     [Header("BASIC WEAPON VARIABLES - INSTANCE :")]
     public WeaponBasic_SO weaponBasicVariables;
 

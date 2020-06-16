@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
+  CombatCalculatorManager: {fileID: 11400000, guid: cac68283b3dec084088905f12814f4eb,
+    type: 2}
   characterMoveVariables: {fileID: 0}
   characterCombatVariables: {fileID: 0}
   characterStatsVariables: {fileID: 0}
@@ -953,6 +955,10 @@ GameObject:
   m_Component:
   - component: {fileID: 839363722}
   - component: {fileID: 839363721}
+  - component: {fileID: 839363726}
+  - component: {fileID: 839363725}
+  - component: {fileID: 839363724}
+  - component: {fileID: 839363723}
   - component: {fileID: 839363720}
   m_Layer: 0
   m_Name: EnemyCharacter01
@@ -973,6 +979,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255a4f8dc9eb3a74e9d77005a3c5bc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
+    type: 2}
+  EnemyCombatVariables: {fileID: 0}
+  EnemyStatsVariables: {fileID: 0}
 --- !u!136 &839363721
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1004,6 +1014,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &839363723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839363719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7c451e9fa07c846b953c2f601b6c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyStatsVariables: {fileID: 0}
+--- !u!114 &839363724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839363719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af68f272a4dab345a8a901964f888f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyCombatVariables: {fileID: 0}
+--- !u!114 &839363725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839363719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108a0bcb74ad4be4291196c247116b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &839363726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839363719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5430f4f7d1b78e949bc0c471ccb326a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfAllEnemies_SO: {fileID: 11400000, guid: a10c61caabd1d0044b11ca5e474f1671,
+    type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,6 +1258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845a85946df872c42a2310bf27f5607f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
+    type: 2}
   weaponBasicVariables: {fileID: 0}
   weaponClass: 1
   weaponPrefab: {fileID: 1049560430}
@@ -1226,6 +1290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe6ce31d0027e242b8dce0a0c153a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
+    type: 2}
   weaponBasicVariables: {fileID: 0}
 --- !u!1 &1224806221
 GameObject:

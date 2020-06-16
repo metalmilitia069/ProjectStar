@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class WeaponBasic : MonoBehaviour
 {
+    [Header("INSERT A COMBAT CALCULATOR MANAGER SO :")]
+    public CombatCalculatorManager_SO CombatCalculatorManager;
+
+
     [Header("BASIC WEAPON VARIABLES - INSTANCE :")]
     public WeaponBasic_SO weaponBasicVariables;
 
@@ -51,16 +55,16 @@ public class WeaponBasic : MonoBehaviour
             TileModifier cover = hit.collider.GetComponent<TileModifier>();
 
             if (cover && cover.isCover)
-            {
+            {                
                 if (cover.isHalfCover)
                 {
-                    //Debug.Log("Hit HALF Cover");
+                    Debug.Log("Hit HALF Cover");
                     weaponBasicVariables.successShotProbability -= cover.halfCoverPenalty;
                     weaponBasicVariables.isHalfCover = true;
                 }
                 else if (cover.isFullCover)//&& !isCoverComputed)
                 {
-                    //Debug.Log("Hit FULL Cover");
+                    Debug.Log("Hit FULL Cover");
                     weaponBasicVariables.successShotProbability -= cover.fullCoverPenalty;
                     weaponBasicVariables.isFullCover = true;
                 }
@@ -75,20 +79,20 @@ public class WeaponBasic : MonoBehaviour
                 //Debug.Log("Distance From The Target: " + distanceFromTarget);
                 if (weaponBasicVariables.optimalRange + 1 >= weaponBasicVariables.distanceFromTarget && weaponBasicVariables.optimalRange - 1 <= weaponBasicVariables.distanceFromTarget)//
                 {
-                    weaponBasicVariables.damagePenalty -= 0f;
-                    weaponBasicVariables.successShotProbability -= 0f;
+                    //weaponBasicVariables.damagePenalty -= 0f;
+                    //weaponBasicVariables.successShotProbability -= 0f;
                 }
                 else
                 {
                     weaponBasicVariables.damagePenalty -= 0.2f;
                     weaponBasicVariables.successShotProbability -= .1f;
                 }
-                CalculateBaseDamage();
+                CalculateBaseDamage(character, enemy);
             }
         }
     }
 
-    public void CalculateBaseDamage()
+    public void CalculateBaseDamage(CharacterInput character, EnemyInput enemy)
     {
         //Debug.Log("damage penalty = " + damagePenalty);
         weaponBasicVariables.calculatedBaseDamage = Random.Range(weaponBasicVariables.minDamage, weaponBasicVariables.maxDamage + 1);
@@ -112,8 +116,8 @@ public class WeaponBasic : MonoBehaviour
         }
         //Debug.Log("calculated Base Damage * Penalty * CoverAbsortion = " + calculatedBaseDamage);
 
-
-        //CombatCalculatorManager.instance.GatherWeaponAttackStats(this);  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< UNCOMMENT!!!!
+        
+        CombatCalculatorManager.GatherWeaponAttackStats(GetComponent<WeaponInput>(), character, enemy);  
 
 
 
