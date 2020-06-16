@@ -150,8 +150,10 @@ public class CharacterInput : MonoBehaviour
         }
     }
 
+
+
     public void ActivateMouseToAttack()
-    {
+    {        
         //if(Input.GetMouseButtonDown(0))
         //{
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -167,7 +169,7 @@ public class CharacterInput : MonoBehaviour
                     if (enemy == enemyPlaceHolder)
                     {
                         if (Input.GetMouseButtonDown(0))
-                        {
+                        {                            
                             GetComponent<CharacterCombat>().Attack(enemy);
                         }
                         else

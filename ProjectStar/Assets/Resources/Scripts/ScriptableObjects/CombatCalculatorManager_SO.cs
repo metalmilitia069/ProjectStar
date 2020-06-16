@@ -105,38 +105,51 @@ public class CombatCalculatorManager_SO : ScriptableObject
         float diceRoll = Random.Range(0.0f, 1.0f);
         bool success = (diceRoll <= finalAttackProbability);
         
-        if (success)
-        {
-            int finalDamage = _weaponCalculatedBaseDamage + _playerDamageModifier - _enemyArmorNormal - _enemyArmorBlindage;
-            _finalDamage = finalDamage;
-            float finalCriticalProbability = _weaponCriticalChance + _playerCriticalChanceModifier;
-            _finalCriticalProbability = finalCriticalProbability;
-            float diceRoll02 = Random.Range(0.0f, 1.0f);
-            bool success02 = (diceRoll02 <= finalCriticalProbability);
-
-            if (success02)
-            {
-                finalDamage = (finalDamage * ((int)(_weaponCriticalDamage + _playerCriticalDamageModifier)));
-                _finalDamage = finalDamage;
-                Debug.Log("Critical Shot Success!!!");
-            }
-        }
-        else
-        {
-            Debug.Log("Shot MISSED!!!");
-            _finalDamage = 0;
-        }
 
         if (!isShowProbabilities)
         {
+            if (success)
+            {
+                int finalDamage = _weaponCalculatedBaseDamage + _playerDamageModifier - _enemyArmorNormal - _enemyArmorBlindage;
+                _finalDamage = finalDamage;
+                float finalCriticalProbability = _weaponCriticalChance + _playerCriticalChanceModifier;
+                _finalCriticalProbability = finalCriticalProbability;
+                float diceRoll02 = Random.Range(0.0f, 1.0f);
+                bool success02 = (diceRoll02 <= finalCriticalProbability);
+
+                if (success02)
+                {
+                    finalDamage = (finalDamage * ((int)(_weaponCriticalDamage + _playerCriticalDamageModifier)));
+                    _finalDamage = finalDamage;
+                    Debug.Log("Critical Shot Success!!!");
+                }
+            }
+            else
+            {
+                Debug.Log("Shot MISSED!!!");
+                _finalDamage = 0;
+            }
+
+
             Debug.Log("Calculated Critical Chance = " + _finalCriticalProbability);
             Debug.Log("FINAL DAMAGE ON ENEMY = " + _finalDamage);
 
+            isShowProbabilities = true;
+
             enemy.GetComponent<EnemyCombat>().ApplyDamage(_finalDamage);
+            
+
         }
+        
 
         ResetCalculaterVariables();
     }
+
+    //public void ChangeShowProbs()
+    //{
+    //    isShowProbabilities = false;
+    //    Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    //}
 
     public string DisplayShotChance()
     {

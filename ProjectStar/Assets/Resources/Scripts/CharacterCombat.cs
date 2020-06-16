@@ -130,6 +130,7 @@ public class CharacterCombat : MonoBehaviour
         CharacterInput charInput = GetComponent<CharacterInput>();
 
         charInput.CombatCalculatorManager.isShowProbabilities = false;
+        
         weapon.GetComponent<WeaponBasic>().GatherWeaponAttackStats(charInput, enemy); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
         
         //charInput.CombatCalculatorManager.GatherEnemyDefenseStats(charInput, enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
@@ -153,7 +154,7 @@ public class CharacterCombat : MonoBehaviour
         transform.LookAt(enemy.transform);
 
         CharacterInput charInput = GetComponent<CharacterInput>();
-        charInput.CombatCalculatorManager.isShowProbabilities = true;
+        //charInput.CombatCalculatorManager.isShowProbabilities = true;
         weapon.GetComponent<WeaponBasic>().GatherWeaponAttackStats(charInput, enemy); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
 
         //charInput.CombatCalculatorManager.GatherEnemyDefenseStats(enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);

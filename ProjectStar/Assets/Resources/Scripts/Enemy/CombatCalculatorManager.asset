@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 206e61ff947778645a8b3ce0c2480790, type: 3}
   m_Name: CombatCalculatorManager
   m_EditorClassIdentifier: 
-  _weaponCalculatedBaseDamage: 5
+  _weaponCalculatedBaseDamage: 3
   _weaponSuccessShotProbability: 1
   _weaponCriticalChance: 0.1
   _weaponCriticalDamage: 1.5
