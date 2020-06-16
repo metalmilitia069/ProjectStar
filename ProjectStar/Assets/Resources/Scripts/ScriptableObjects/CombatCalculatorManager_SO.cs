@@ -69,34 +69,28 @@ public class CombatCalculatorManager_SO : ScriptableObject
     [SerializeField]
     public bool isShowProbabilities = false;
 
-    public void GatherWeaponAttackStats(WeaponInput weaponRef, CharacterInput character, EnemyInput enemy)
+    public void GatherWeaponAttackStats(WeaponInput weaponRef)//, CharacterInput character, EnemyInput enemy)
     {
         _cachedWeapon = weaponRef;
 
         _weaponCalculatedBaseDamage = weaponRef.weaponBasicVariables.calculatedBaseDamage;//
         _weaponSuccessShotProbability = weaponRef.weaponBasicVariables.successShotProbability;//
         _weaponCriticalChance = weaponRef.weaponBasicVariables.weaponCriticalChance;//
-        _weaponCriticalDamage = weaponRef.weaponBasicVariables.weaponCriticalDamage;//
-
-        GatherEnemyDefenseStats(character, enemy);
+        _weaponCriticalDamage = weaponRef.weaponBasicVariables.weaponCriticalDamage;//        
     }
 
-    public void GatherEnemyDefenseStats(CharacterInput character, EnemyInput enemyRef)
+    public void GatherEnemyDefenseStats(EnemyInput enemyRef)//(CharacterInput character, EnemyInput enemyRef)
     {
         _enemyArmorNormal = enemyRef.EnemyStatsVariables.armorNormal;//
         _enemyArmorBlindage = enemyRef.EnemyStatsVariables.armorBlindage;//
-        _enemyDodgeChance = enemyRef.EnemyStatsVariables.dodgeChance;//
-
-        GatherPlayerAttackStats(character, enemyRef);
+        _enemyDodgeChance = enemyRef.EnemyStatsVariables.dodgeChance;//        
     }
 
-    public void GatherPlayerAttackStats(CharacterInput characterRef, EnemyInput enemyRef)
+    public void GatherPlayerAttackStats(CharacterInput characterRef)
     {
         _playerDamageModifier = characterRef.characterStatsVariables.damageModifier;//   
         _playerCriticalChanceModifier = characterRef.characterStatsVariables.criticalChanceModifier;//        
         _playerCriticalDamageModifier = characterRef.characterStatsVariables.criticalDamageModifier;//
-
-        PlayerFinalAttackCalculation(enemyRef);
     }
 
     public void PlayerFinalAttackCalculation(EnemyInput enemy)
@@ -137,19 +131,10 @@ public class CombatCalculatorManager_SO : ScriptableObject
             isShowProbabilities = true;
 
             enemy.GetComponent<EnemyCombat>().ApplyDamage(_finalDamage);
-            
-
-        }
-        
+        }        
 
         ResetCalculaterVariables();
-    }
-
-    //public void ChangeShowProbs()
-    //{
-    //    isShowProbabilities = false;
-    //    Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    //}
+    }   
 
     public string DisplayShotChance()
     {

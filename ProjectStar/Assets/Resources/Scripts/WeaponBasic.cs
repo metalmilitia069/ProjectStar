@@ -79,22 +79,22 @@ public class WeaponBasic : MonoBehaviour
                 //Debug.Log("Distance From The Target: " + distanceFromTarget);
                 if (weaponBasicVariables.optimalRange + 1 >= weaponBasicVariables.distanceFromTarget && weaponBasicVariables.optimalRange - 1 <= weaponBasicVariables.distanceFromTarget)//
                 {
-                    //weaponBasicVariables.damagePenalty -= 0f;
-                    //weaponBasicVariables.successShotProbability -= 0f;
+                    weaponBasicVariables.damagePenalty -= 0f;
+                    weaponBasicVariables.successShotProbability -= 0f;
                 }
                 else
                 {
                     weaponBasicVariables.damagePenalty -= 0.2f;
                     weaponBasicVariables.successShotProbability -= .1f;
                 }
-                CalculateBaseDamage(character, enemy);
+                CalculateBaseDamage();
             }
         }
     }
 
-    public void CalculateBaseDamage(CharacterInput character, EnemyInput enemy)
+    public void CalculateBaseDamage()
     {
-        //Debug.Log("damage penalty = " + damagePenalty);
+        
         weaponBasicVariables.calculatedBaseDamage = Random.Range(weaponBasicVariables.minDamage, weaponBasicVariables.maxDamage + 1);
         //Debug.Log("calculated Base Damage = " + calculatedBaseDamage);
 
@@ -116,8 +116,8 @@ public class WeaponBasic : MonoBehaviour
         }
         //Debug.Log("calculated Base Damage * Penalty * CoverAbsortion = " + calculatedBaseDamage);
 
-        
-        CombatCalculatorManager.GatherWeaponAttackStats(GetComponent<WeaponInput>(), character, enemy);  
+        CombatCalculatorManager.GatherWeaponAttackStats(GetComponent<WeaponInput>());
+        //CombatCalculatorManager.GatherWeaponAttackStats(GetComponent<WeaponInput>(), character, enemy);  
 
 
 

@@ -133,12 +133,9 @@ public class CharacterCombat : MonoBehaviour
         
         weapon.GetComponent<WeaponBasic>().GatherWeaponAttackStats(charInput, enemy); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
         
-        //charInput.CombatCalculatorManager.GatherEnemyDefenseStats(charInput, enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
-        //charInput.CombatCalculatorManager.GatherPlayerAttackStats(charInput, enemy); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
-        //charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
-        
-        
-        
+        charInput.CombatCalculatorManager.GatherEnemyDefenseStats(enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
+        charInput.CombatCalculatorManager.GatherPlayerAttackStats(charInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
+        charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
 
         this.GetComponent<CharacterStats>().characterStatsVariables.actionPoints--;
 
@@ -154,12 +151,12 @@ public class CharacterCombat : MonoBehaviour
         transform.LookAt(enemy.transform);
 
         CharacterInput charInput = GetComponent<CharacterInput>();
-        //charInput.CombatCalculatorManager.isShowProbabilities = true;
+        
         weapon.GetComponent<WeaponBasic>().GatherWeaponAttackStats(charInput, enemy); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
 
-        //charInput.CombatCalculatorManager.GatherEnemyDefenseStats(enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
-        //charInput.CombatCalculatorManager.GatherPlayerAttackStats(charInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
-        //charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy); //CombatCalculatorManager.instance.DisplayShotChance();//(weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>());
+        charInput.CombatCalculatorManager.GatherEnemyDefenseStats(enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
+        charInput.CombatCalculatorManager.GatherPlayerAttackStats(charInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
+        charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy); //CombatCalculatorManager.instance.DisplayShotChance();//(weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>());
 
         enemy.ShowProbability();
     }
