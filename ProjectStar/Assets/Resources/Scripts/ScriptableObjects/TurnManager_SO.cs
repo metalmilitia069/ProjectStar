@@ -77,6 +77,8 @@ public class TurnManager_SO : ScriptableObject
 
 
 
+
+
     //public bool isListStarted = false;
 
     //// Start is called before the first frame update
