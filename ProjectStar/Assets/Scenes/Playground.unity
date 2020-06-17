@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 30301486}
   - component: {fileID: 30301485}
   - component: {fileID: 30301484}
+  - component: {fileID: 30301489}
   - component: {fileID: 30301483}
   m_Layer: 0
   m_Name: PlayerCharacter01
@@ -191,9 +192,11 @@ MonoBehaviour:
   GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
+  TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
   characterMoveVariables: {fileID: 0}
   characterCombatVariables: {fileID: 0}
   characterStatsVariables: {fileID: 0}
+  characterTurnVariables: {fileID: 0}
 --- !u!114 &30301484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +269,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfAllCharacters_SO: {fileID: 11400000, guid: 55ab07acff9365440bef8d4362bbca70,
     type: 2}
+--- !u!114 &30301489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30301480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21b08fc1ba4a9d4683a9af21fead3b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterTurnVariables: {fileID: 0}
+  teamId: 1
 --- !u!1 &37326591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1055,7 @@ GameObject:
   - component: {fileID: 839363725}
   - component: {fileID: 839363724}
   - component: {fileID: 839363723}
+  - component: {fileID: 839363727}
   - component: {fileID: 839363720}
   m_Layer: 0
   m_Name: EnemyCharacter01
@@ -1062,6 +1080,7 @@ MonoBehaviour:
     type: 2}
   EnemyCombatVariables: {fileID: 0}
   EnemyStatsVariables: {fileID: 0}
+  EnemyTurnVariables: {fileID: 0}
 --- !u!136 &839363721
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1145,6 +1164,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfAllEnemies_SO: {fileID: 11400000, guid: a10c61caabd1d0044b11ca5e474f1671,
     type: 2}
+--- !u!114 &839363727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839363719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d7e347dec4ac34d9aafa7d87428650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyTurnVariables: {fileID: 0}
 --- !u!1 &843660674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,6 +2074,7 @@ GameObject:
   - component: {fileID: 1648025665}
   - component: {fileID: 1648025664}
   - component: {fileID: 1648025663}
+  - component: {fileID: 1648025669}
   - component: {fileID: 1648025662}
   m_Layer: 0
   m_Name: EnemyCharacter02
@@ -2066,6 +2099,7 @@ MonoBehaviour:
     type: 2}
   EnemyCombatVariables: {fileID: 0}
   EnemyStatsVariables: {fileID: 0}
+  EnemyTurnVariables: {fileID: 0}
 --- !u!114 &1648025663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2149,6 +2183,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1648025669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648025661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d7e347dec4ac34d9aafa7d87428650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyTurnVariables: {fileID: 0}
 --- !u!1 &1669668374
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,6 +2478,7 @@ GameObject:
   - component: {fileID: 2138281297}
   - component: {fileID: 2138281296}
   - component: {fileID: 2138281295}
+  - component: {fileID: 2138281301}
   - component: {fileID: 2138281294}
   m_Layer: 0
   m_Name: EnemyCharacter03
@@ -2455,6 +2503,7 @@ MonoBehaviour:
     type: 2}
   EnemyCombatVariables: {fileID: 0}
   EnemyStatsVariables: {fileID: 0}
+  EnemyTurnVariables: {fileID: 0}
 --- !u!114 &2138281295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2538,6 +2587,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2138281301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138281293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d7e347dec4ac34d9aafa7d87428650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyTurnVariables: {fileID: 0}
 --- !u!1 &2139656516
 GameObject:
   m_ObjectHideFlags: 0

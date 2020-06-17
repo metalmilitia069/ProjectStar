@@ -16,10 +16,12 @@ public class EnemyInjection : MonoBehaviour
         GetComponent<EnemyStats>().EnemyStatsVariables = ScriptableObject.CreateInstance<EnemyStats_SO>();
         GetComponent<EnemyStats>().EnemyStatsVariables.name = "InstanceEnemyStats";
 
-
+        GetComponent<EnemyTurn>().EnemyTurnVariables = ScriptableObject.CreateInstance<EnemyTurn_SO>();
+        GetComponent<EnemyTurn>().EnemyTurnVariables.name = "InstanceEnemyTurn";
 
         GetComponent<EnemyInput>().EnemyCombatVariables = GetComponent<EnemyCombat>().EnemyCombatVariables;
         GetComponent<EnemyInput>().EnemyStatsVariables = GetComponent<EnemyStats>().EnemyStatsVariables;
+        GetComponent<EnemyInput>().EnemyTurnVariables = GetComponent<EnemyTurn>().EnemyTurnVariables;
 
 
         listOfAllEnemies_SO.AddCharacter(this.GetComponent<EnemyInput>());

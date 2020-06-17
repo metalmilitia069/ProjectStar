@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 206e61ff947778645a8b3ce0c2480790, type: 3}
+  m_Name: CombatCalculatorManager
+  m_EditorClassIdentifier: 
+  _weaponCalculatedBaseDamage: 4
+  _weaponSuccessShotProbability: 1
+  _weaponCriticalChance: 0.1
+  _weaponCriticalDamage: 1.5
+  _playerDamageModifier: 0
+  _playerCriticalChanceModifier: 0
+  _playerCriticalDamageModifier: 0
+  _playerElementalDmgFire: 0
+  _playerElementalDmgElectricity: 0
+  _playerElementalDmgCold: 0
+  _playerElementalDmgPoison: 0
+  _enemyArmorNormal: 0
+  _enemyArmorBlindage: 0
+  _enemyDodgeChance: 0
+  _enemyElementalDefFire: 0
+  _enemyElementalDefElectricity: 0
+  _enemyElementalDefCold: 0
+  _enemyElementalDefPoison: 0
+  _finalDamage: 0
+  _finalCriticalProbability: 0
+  _cachedWeapon: {fileID: 0}
+  isShowProbabilities: 1

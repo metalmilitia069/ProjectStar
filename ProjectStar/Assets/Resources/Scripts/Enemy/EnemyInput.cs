@@ -11,6 +11,8 @@ public class EnemyInput : MonoBehaviour
     public EnemyCombat_SO EnemyCombatVariables;
     [Header("CHARACTER STATS VARIABLES - INSTANCE :")]
     public EnemyStats_SO EnemyStatsVariables;
+    [Header("ENEMY TURN VARIABLES - INSTANCE :")]
+    public EnemyTurn_SO EnemyTurnVariables;
 
     // Start is called before the first frame update
     void Start()

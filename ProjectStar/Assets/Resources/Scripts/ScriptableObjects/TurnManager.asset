@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf21adea858c3d489ff1d4744fc5076, type: 3}
+  m_Name: TurnManager
+  m_EditorClassIdentifier: 
+  listOfAllCharacters: {fileID: 11400000, guid: 55ab07acff9365440bef8d4362bbca70,
+    type: 2}
+  listOfAllEnemies: {fileID: 11400000, guid: a10c61caabd1d0044b11ca5e474f1671, type: 2}
+  playerTeamList: []
+  playerTurnList: []
+  enemyTeamList: []
+  isTurnStarted: 1
+  isPlayerTurn: 1
+  isEnemyTurn: 0
