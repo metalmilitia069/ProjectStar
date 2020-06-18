@@ -86,11 +86,11 @@ public class CharacterInput : MonoBehaviour
 
                 if (!characterMoveVariables.isTilesFound)
                 {
-                    //if (characterStatsVariables.actionPoints <= 0)
-                    //{
-                    //    //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);
-                    //    return;
-                    //}
+                    if (characterTurnVariables.actionPoints <= 0)
+                    {
+                        TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+                        return;
+                    }
                     GridManager.CalculateAvailablePath(this.gameObject);
                 }
             }
@@ -102,6 +102,11 @@ public class CharacterInput : MonoBehaviour
                 {
                     //>>>>>>>REDO THIS WITH WEAPON BELT!!!!!!!!!!!
                     characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
+                    //if (characterTurnVariables.actionPoints <= 0)
+                    //{
+                    //    TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+                    //    return;
+                    //}
                     GridManager.CalculateAttackPath(this.gameObject);
                     GetComponent<CharacterCombat>().ScanForEnemies();
                 }
@@ -121,6 +126,12 @@ public class CharacterInput : MonoBehaviour
                 //{
                 //    ChangeWeapon();
                 //}
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                TurnManager.SwitchCharacter(this.GetComponent<CharacterTurn>(), null);
+                characterMoveVariables.isTilesFound = false;
             }
         }
     }    

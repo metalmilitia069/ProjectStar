@@ -141,6 +141,8 @@ public class CharacterCombat : MonoBehaviour
 
         if (this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0)
         {
+            GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+            return;
             //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);  //TODO: implement TURN MANAGER
         }
 
