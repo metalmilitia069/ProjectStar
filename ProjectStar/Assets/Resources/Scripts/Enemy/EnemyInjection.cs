@@ -24,12 +24,12 @@ public class EnemyInjection : MonoBehaviour
         GetComponent<EnemyInput>().EnemyTurnVariables = GetComponent<EnemyTurn>().EnemyTurnVariables;
 
 
-        listOfAllEnemies_SO.AddCharacter(this.GetComponent<EnemyInput>());
+        listOfAllEnemies_SO.AddCharacter(this.GetComponent<EnemyTurn>());
     }
 
     private void OnDisable()
     {
-        listOfAllEnemies_SO.RemoveCharacter(this.GetComponent<EnemyInput>());
+        listOfAllEnemies_SO.RemoveCharacter(this.GetComponent<EnemyTurn>());
     }
 
     // Start is called before the first frame update

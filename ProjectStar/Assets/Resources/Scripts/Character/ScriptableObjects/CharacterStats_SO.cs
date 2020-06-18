@@ -55,5 +55,5 @@ public class CharacterStats_SO : ScriptableObject
     //[Header("TURN VARIABLES")]
     //public bool isTurnActive = false;
 
-    //public int actionPoints = 2;
+    public int maxActionPoints = 2;
 }

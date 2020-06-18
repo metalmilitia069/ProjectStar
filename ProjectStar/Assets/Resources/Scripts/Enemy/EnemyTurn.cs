@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTurn : MonoBehaviour
+public class EnemyTurn : GroupableEntities
 {
     [Header("ENEMY TURN VARIABLES - INSTANCE :")]
     public EnemyTurn_SO EnemyTurnVariables;
+
+    public override void ResetActionPoints()
+    {
+        EnemyTurnVariables.actionPoints = GetComponent<EnemyInput>().EnemyStatsVariables.maxActionPoints;
+    }
 
     // Start is called before the first frame update
     void Start()

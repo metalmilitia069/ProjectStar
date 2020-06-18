@@ -53,8 +53,8 @@ public class CharacterInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (characterStatsVariables.isTurnActive)
-        //{
+        if (characterTurnVariables.isTurnActive)
+        {
             //if (CameraTargetManager.instance.isLocked)//
             //{
             //    //CameraTargetManager.instance.transform.parent = this.transform;//
@@ -122,7 +122,7 @@ public class CharacterInput : MonoBehaviour
                 //    ChangeWeapon();
                 //}
             }
-        //}
+        }
     }    
 
     //private void OnMouseDown()
@@ -213,4 +213,6 @@ public class CharacterInput : MonoBehaviour
 
         GridManager.ClearSelectableTiles();
     }
+
+    
 }

@@ -30,7 +30,7 @@ public class CharacterInjection : MonoBehaviour
 
 
 
-        listOfAllCharacters_SO.AddCharacter(this.GetComponent<CharacterInput>());
+        listOfAllCharacters_SO.AddCharacter(this.GetComponent<CharacterTurn>());
 
 
     }
@@ -38,7 +38,7 @@ public class CharacterInjection : MonoBehaviour
     private void OnDisable()
     {
         //listOfAllCharacters_SO.RemoveTile(this.GetComponent<AdvancedTile>());
-        listOfAllCharacters_SO.RemoveCharacter(this.GetComponent<CharacterInput>());
+        listOfAllCharacters_SO.RemoveCharacter(this.GetComponent<CharacterTurn>());
     }
 
 

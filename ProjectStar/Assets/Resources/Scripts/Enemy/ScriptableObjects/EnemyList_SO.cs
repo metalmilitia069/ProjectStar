@@ -5,19 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AllEnemiesList", menuName = "ScriptableLists/Type: Enemy")]
 public class EnemyList_SO : ScriptableObject
 {
-    private List<EnemyInput> listOfAllEnemies;
+    private List<GroupableEntities> listOfAllEnemies;
 
-    public void AddCharacter(EnemyInput adChar)
+    public void AddCharacter(GroupableEntities adChar)
     {
         listOfAllEnemies.Add(adChar);
     }
 
-    public void RemoveCharacter(EnemyInput adChar)
+    public void RemoveCharacter(GroupableEntities adChar)
     {
         listOfAllEnemies.Remove(adChar);
     }
 
-    public List<EnemyInput> GetList()
+    public List<GroupableEntities> GetList()
     {
         return listOfAllEnemies;
     }

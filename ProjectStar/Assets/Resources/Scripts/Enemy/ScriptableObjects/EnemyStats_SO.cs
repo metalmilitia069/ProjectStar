@@ -52,5 +52,5 @@ public class EnemyStats_SO : ScriptableObject
     [SerializeField]
     public int elementalDefPoison = 0;
 
-
+    public int maxActionPoints = 2;
 }

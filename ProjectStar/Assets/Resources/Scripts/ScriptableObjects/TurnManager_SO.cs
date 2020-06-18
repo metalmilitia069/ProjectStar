@@ -12,17 +12,25 @@ public class TurnManager_SO : ScriptableObject
 
         
     //public List<IPlayerTeam> playerTeam;// = new List<IPlayerTeam>();
-    public List<CharacterInput> playerTeamList;
-    public List<CharacterInput> playerTurnList;
+    public List<GroupableEntities> playerTeamList;
+    public List<GroupableEntities> inactivePlayerTeamList;
 
-    public List<EnemyInput> enemyTeamList;
+    //public List<GroupableEntities> playerTurnList;
 
-    
+    public List<GroupableEntities> enemyTeamList;
+    public List<GroupableEntities> inactiveEnemyTeamList;
 
 
-    public bool isTurnStarted = true;
-    public bool isPlayerTurn = true; //TODO: change to false after testing
-    public bool isEnemyTurn = false;
+    public Queue<List<GroupableEntities>> roundQueueGameObject;
+
+    //AddEntityToTeam()
+
+    //public bool isTurnStarted = true;
+    //public bool isPlayerTurn = true; //TODO: change to false after testing
+    //public bool isEnemyTurn = false;
+    public int roundCounter = 0;
+    public bool isGameOver = false;
+    public bool isGameWon = false;
 
     private void OnEnable()
     {
@@ -30,20 +38,83 @@ public class TurnManager_SO : ScriptableObject
         
     }
 
-    public void SortActionOrder()
+    public void ResetLocalLists()
     {
-        listOfAllCharacters.GetList().Sort((ch1, ch2) => ch1.characterTurnVariables.teamId.CompareTo(ch2.characterTurnVariables.teamId));
-        playerTeamList = listOfAllCharacters.GetList();
-        playerTeamList[0].characterTurnVariables.isTurnActive = true;
+        playerTeamList = default;
+        inactiveEnemyTeamList = default;
+        enemyTeamList = default;
+        inactiveEnemyTeamList = default;
+        roundQueueGameObject = new Queue<List<GroupableEntities>>();
+
+        roundCounter = 0;
     }
 
-    public void SwitchCharacter(CharacterInput character, EnemyInput enemy)
+    public void SortActionOrder()
+    {
+        ResetLocalLists();
+
+        listOfAllCharacters.GetList().Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
+        playerTeamList = listOfAllCharacters.GetList();
+        //playerTeamList[0].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
+
+        enemyTeamList = listOfAllEnemies.GetList();
+
+
+        RoundSetup();
+    }
+
+    public void RoundSetup()
+    {
+        if (inactivePlayerTeamList.Count > 0 && inactiveEnemyTeamList.Count > 0)
+        {
+            playerTeamList = inactivePlayerTeamList;
+            foreach (var chara in playerTeamList)
+            {
+                chara.GetComponent<CharacterTurn>().ResetActionPoints();
+            }
+            playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
+
+            enemyTeamList = inactiveEnemyTeamList;
+            foreach (var enem in enemyTeamList)
+            {
+                enem.GetComponent<EnemyTurn>().ResetActionPoints();
+            }
+        }
+
+
+
+        roundQueueGameObject.Enqueue(playerTeamList);
+        roundQueueGameObject.Enqueue(enemyTeamList);
+
+        StartRound();
+    }
+
+    public void StartRound()
+    {
+        roundQueueGameObject.Dequeue()[0].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
+        
+        roundCounter++;
+    }
+
+    public void ContinueRound()
+    {
+        EnemyTurn enemyTurn = roundQueueGameObject.Dequeue()[0].GetComponent<EnemyTurn>();
+        if (enemyTurn)
+        {
+            enemyTurn.EnemyTurnVariables.isTurnActive = true;
+        }
+        //ATTENTION!!! >>> IF MORE CLASSES, ADD MORE IFS-ELSES
+    }
+
+
+
+    public void SwitchCharacter(CharacterTurn character, EnemyTurn enemy)
     {
         if (character != null)
         {
             int index = playerTeamList.IndexOf(character);
             
-            playerTeamList[index].characterTurnVariables.isTurnActive = false;
+            playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = false;
 
             if (index >= playerTeamList.Count - 1)
             {
@@ -54,13 +125,13 @@ public class TurnManager_SO : ScriptableObject
                 index++;
             }
 
-            playerTeamList[index].characterTurnVariables.isTurnActive = true;
+            playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
         }
-        else
+        else if (enemy != null)
         {
             int index = enemyTeamList.IndexOf(enemy);
 
-            enemyTeamList[index].EnemyTurnVariables.isTurnActive = false;
+            enemyTeamList[index].GetComponent<EnemyTurn>().EnemyTurnVariables.isTurnActive = false;
 
             if (index >= enemyTeamList.Count - 1)
             {
@@ -71,10 +142,87 @@ public class TurnManager_SO : ScriptableObject
                 index++;
             }
 
-            enemyTeamList[index].EnemyTurnVariables.isTurnActive = true;
+            enemyTeamList[index].GetComponent<EnemyTurn>().EnemyTurnVariables.isTurnActive = true;
         }
     }
 
+    public void RemoveFromTurn(CharacterTurn character, EnemyTurn enemy)
+    {
+        if (character != null)
+        {
+            int index = playerTeamList.IndexOf(character);
+
+            inactivePlayerTeamList.Add(playerTeamList[index]);
+
+            if (playerTeamList.Count > 1)
+            {
+                SwitchCharacter(character, null);
+                playerTeamList.Remove(character);
+            }
+            else
+            {
+                //endplayer turn
+                character.characterTurnVariables.isTurnActive = false;
+                playerTeamList.Remove(character);
+
+                ContinueRound();
+            }
+
+
+
+        }
+        else if (enemy != null)
+        {
+            int index = enemyTeamList.IndexOf(enemy);
+
+            inactiveEnemyTeamList.Add(enemyTeamList[index]);
+
+            if (enemyTeamList.Count > 1)
+            {
+                SwitchCharacter(null, enemy);
+                enemyTeamList.Remove(enemy);
+            }
+            else
+            {
+                //endenemy turn
+                enemy.EnemyTurnVariables.isTurnActive = false;
+                enemyTeamList.Remove(enemy);
+
+                RoundSetup();
+            }
+        }
+    }
+
+    public void RemoveFromTeam(CharacterTurn character, EnemyTurn enemy)
+    {
+        if (character != null)
+        {
+            playerTeamList.Remove(character);
+            inactivePlayerTeamList.Remove(character);
+        }
+        else if (enemy != null)
+        {
+            enemyTeamList.Remove(enemy);
+            inactivePlayerTeamList.Remove(enemy);
+        }
+
+        CheckEndStageCondition();
+    }
+
+    public void CheckEndStageCondition()
+    {
+        if (playerTeamList.Count < 1 && inactivePlayerTeamList.Count < 1)
+        {
+            isGameOver = true;
+            Debug.Log("GAME OVER, PAL!");
+            
+        }
+        else if (enemyTeamList.Count < 1 && inactiveEnemyTeamList.Count < 1)
+        {
+            isGameWon = true;
+            Debug.Log("GAME WON!!!!");
+        }
+    }
 
 
 
