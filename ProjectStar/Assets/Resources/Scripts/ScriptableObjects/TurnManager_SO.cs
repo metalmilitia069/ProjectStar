@@ -41,12 +41,16 @@ public class TurnManager_SO : ScriptableObject
     public void ResetLocalLists()
     {
         playerTeamList = new List<GroupableEntities>();
-        inactiveEnemyTeamList = new List<GroupableEntities>();
+        inactivePlayerTeamList = new List<GroupableEntities>();
         enemyTeamList = new List<GroupableEntities>();
         inactiveEnemyTeamList = new List<GroupableEntities>();
+        
+        
         roundQueueGameObject = new Queue<List<GroupableEntities>>();
 
         roundCounter = 0;
+
+        Debug.Log("ai");
     }
 
     public void SortActionOrder()
@@ -59,20 +63,20 @@ public class TurnManager_SO : ScriptableObject
 
         //items = items.OrderBy(w => w.startPos).ToList();
 
-        foreach (var item in listOfAllCharacters.GetList())
-        {
-            Debug.Log(item.name);
-        }
+        //foreach (var item in listOfAllCharacters.GetList())
+        //{
+        //    Debug.Log(item.name);
+        //}
 
 
         playerTeamList = listOfAllCharacters.GetList();
-        playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
+        //playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
         //playerTeamList[0].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
 
-        foreach (var item in playerTeamList)
-        {
-            Debug.Log("p " + item.name);
-        }
+        //foreach (var item in playerTeamList)
+        //{
+        //    Debug.Log("p " + item.name);
+        //}
 
         enemyTeamList = listOfAllEnemies.GetList();
         
@@ -123,6 +127,29 @@ public class TurnManager_SO : ScriptableObject
         //ATTENTION!!! >>> IF MORE CLASSES, ADD MORE IFS-ELSES
     }
 
+    public void Swing()
+    {
+        foreach (var chara in playerTeamList)
+        {
+            if (chara.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive)
+            {
+                Debug.Log("aaaaaaaaaaaaaaa");
+                int index = playerTeamList.IndexOf(chara);
+                chara.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = false;
+                if (index == playerTeamList.Count-1)
+                {
+                    index = 0;
+                    playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
+                }
+                else
+                {
+                    index++;
+                    playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
+                    break;
+                }
+            }
+        }
+    }
 
 
     public void SwitchCharacter(CharacterTurn character, EnemyTurn enemy)
@@ -130,11 +157,12 @@ public class TurnManager_SO : ScriptableObject
         if (character != null)
         {
             int index = playerTeamList.IndexOf(character);
-            
+
             playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = false;
+            playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
             Debug.Log("index = " + index);
             //index++;
-            if (index >= playerTeamList.Count - 1 )
+            if (index >= playerTeamList.Count - 1)
             {
                 index = 0;
             }
@@ -144,7 +172,18 @@ public class TurnManager_SO : ScriptableObject
             }
             Debug.Log("index apos mudanca = " + index);
             playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
-            
+
+            //int index = playerTeamList.IndexOf(character);
+            //if (index >= playerTeamList.Count -1)
+            //{
+            //    index = 0;
+            //}
+            //else
+            //{
+            //    index++;
+            //}
+            //playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
+
         }
         else if (enemy != null)
         {

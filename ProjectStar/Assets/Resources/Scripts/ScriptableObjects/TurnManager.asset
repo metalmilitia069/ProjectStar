@@ -16,8 +16,9 @@ MonoBehaviour:
     type: 2}
   listOfAllEnemies: {fileID: 11400000, guid: a10c61caabd1d0044b11ca5e474f1671, type: 2}
   playerTeamList: []
-  playerTurnList: []
+  inactivePlayerTeamList: []
   enemyTeamList: []
-  isTurnStarted: 1
-  isPlayerTurn: 1
-  isEnemyTurn: 0
+  inactiveEnemyTeamList: []
+  roundCounter: 1
+  isGameOver: 0
+  isGameWon: 0

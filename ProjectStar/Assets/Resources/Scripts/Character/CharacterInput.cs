@@ -53,7 +53,7 @@ public class CharacterInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (characterTurnVariables.isTurnActive)
+        if (this.characterTurnVariables.isTurnActive)
         {
             //if (CameraTargetManager.instance.isLocked)//
             //{
@@ -128,12 +128,18 @@ public class CharacterInput : MonoBehaviour
                 //}
             }
 
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.Tab))// && !this.characterTurnVariables.isDone)
             {
-                TurnManager.SwitchCharacter(this.GetComponent<CharacterTurn>(), null);
+                //this.characterTurnVariables.isTurnActive = false;
+                //TurnManager.SwitchCharacter(this.GetComponent<CharacterTurn>(), null);
+                TurnManager.Swing();
+                Debug.Log("CU");
                 characterMoveVariables.isTilesFound = false;
+                this.characterTurnVariables.isDone = true;
             }
         }
+
+        
     }    
 
     //private void OnMouseDown()
@@ -185,7 +191,7 @@ public class CharacterInput : MonoBehaviour
                     {
                         if (Input.GetMouseButtonDown(0))
                         {                            
-                            GetComponent<CharacterCombat>().Attack(enemy);
+                            GetComponent<CharacterCombat>().Attack(enemy);                           
                         }
                         else
                         {
