@@ -48,38 +48,17 @@ public class TurnManager_SO : ScriptableObject
         
         roundQueueGameObject = new Queue<List<GroupableEntities>>();
 
-        roundCounter = 0;
-
-        Debug.Log("ai");
-    }
+        roundCounter = 0;        
+    }    
 
     public void SortActionOrder()
     {
         ResetLocalLists();
 
-       //listOfAllCharacters.GetList().Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
-
-        //listOfAllCharacters.GetList()
-
-        //items = items.OrderBy(w => w.startPos).ToList();
-
-        //foreach (var item in listOfAllCharacters.GetList())
-        //{
-        //    Debug.Log(item.name);
-        //}
-
-
         playerTeamList = listOfAllCharacters.GetList();
-        //playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
-        //playerTeamList[0].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
-
-        //foreach (var item in playerTeamList)
-        //{
-        //    Debug.Log("p " + item.name);
-        //}
-
-        enemyTeamList = listOfAllEnemies.GetList();
+        playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().teamId.CompareTo(ch2.GetComponent<CharacterTurn>().teamId));
         
+        enemyTeamList = listOfAllEnemies.GetList();        
 
         RoundSetup();
     }
@@ -93,6 +72,7 @@ public class TurnManager_SO : ScriptableObject
             {
                 chara.GetComponent<CharacterTurn>().ResetActionPoints();
             }
+            
             playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
 
             enemyTeamList = inactiveEnemyTeamList;
@@ -101,8 +81,6 @@ public class TurnManager_SO : ScriptableObject
                 enem.GetComponent<EnemyTurn>().ResetActionPoints();
             }
         }
-
-
 
         roundQueueGameObject.Enqueue(playerTeamList);
         roundQueueGameObject.Enqueue(enemyTeamList);
@@ -127,31 +105,6 @@ public class TurnManager_SO : ScriptableObject
         //ATTENTION!!! >>> IF MORE CLASSES, ADD MORE IFS-ELSES
     }
 
-    public void Swing()
-    {
-        foreach (var chara in playerTeamList)
-        {
-            if (chara.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive)
-            {
-                Debug.Log("aaaaaaaaaaaaaaa");
-                int index = playerTeamList.IndexOf(chara);
-                chara.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = false;
-                if (index == playerTeamList.Count-1)
-                {
-                    index = 0;
-                    playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
-                }
-                else
-                {
-                    index++;
-                    playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
-                    break;
-                }
-            }
-        }
-    }
-
-
     public void SwitchCharacter(CharacterTurn character, EnemyTurn enemy)
     {
         if (character != null)
@@ -160,8 +113,8 @@ public class TurnManager_SO : ScriptableObject
 
             playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = false;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
-            Debug.Log("index = " + index);
-            //index++;
+            playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
+            
             if (index >= playerTeamList.Count - 1)
             {
                 index = 0;
@@ -171,18 +124,7 @@ public class TurnManager_SO : ScriptableObject
                 index++;
             }
             Debug.Log("index apos mudanca = " + index);
-            playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
-
-            //int index = playerTeamList.IndexOf(character);
-            //if (index >= playerTeamList.Count -1)
-            //{
-            //    index = 0;
-            //}
-            //else
-            //{
-            //    index++;
-            //}
-            //playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
+            playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;            
 
         }
         else if (enemy != null)

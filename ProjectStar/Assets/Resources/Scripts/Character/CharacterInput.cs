@@ -127,20 +127,13 @@ public class CharacterInput : MonoBehaviour
                 //    ChangeWeapon();
                 //}
             }
-
-            if (Input.GetKeyDown(KeyCode.Tab))// && !this.characterTurnVariables.isDone)
-            {
-                //this.characterTurnVariables.isTurnActive = false;
-                //TurnManager.SwitchCharacter(this.GetComponent<CharacterTurn>(), null);
-                TurnManager.Swing();
-                Debug.Log("CU");
-                characterMoveVariables.isTilesFound = false;
-                this.characterTurnVariables.isDone = true;
-            }
+            
         }
 
         
-    }    
+    }
+
+    public bool canChange = false;
 
     //private void OnMouseDown()
     //{
@@ -229,7 +222,5 @@ public class CharacterInput : MonoBehaviour
         }
 
         GridManager.ClearSelectableTiles();
-    }
-
-    
+    }    
 }

@@ -430,9 +430,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 7.7926035, y: 6.075, z: -1.4721131}
+    m_Target: {x: -3.678545, y: -6.622646, z: -11.775461}
     speed: 2
-    m_Value: {x: 7.7926035, y: 6.075, z: -1.4721131}
+    m_Value: {x: -3.678545, y: -6.622646, z: -11.775461}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -478,13 +478,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.33642972, y: -0.059285913, z: 0.021214537, w: 0.9396669}
+    m_Target: {x: 0.061901975, y: -0.9373026, z: 0.2627441, w: 0.22073257}
     speed: 2
-    m_Value: {x: 0.3364089, y: -0.059282243, z: 0.021213224, w: 0.9396088}
+    m_Value: {x: 0.061898094, y: -0.9372438, z: 0.26272762, w: 0.22071873}
   m_Size:
-    m_Target: 6.446723
+    m_Target: 11.828885
     speed: 2
-    m_Value: 6.446723
+    m_Value: 11.828885
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 13532
+  m_LastSelectedObjectID: 13248
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -657,9 +657,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 72beebff
       m_LastClickedID: 0
-      m_ExpandedIDs: 70fbffff
+      m_ExpandedIDs: 70fbffffae340000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -721,8 +721,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Resources/Scripts/ScriptableObjects
+    m_Folders: []
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -759,10 +758,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 340}
+    scrollPos: {x: 0, y: 98}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000ea350000ec350000ee350000f0350000f2350000f4350000f6350000f8350000fa350000fc350000fe3500000236000054360000
+    m_ExpandedIDs: ffffffff00000000ea350000ec350000ee350000f0350000f2350000f4350000f6350000fa350000fc350000fe35000000360000023600002e790000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

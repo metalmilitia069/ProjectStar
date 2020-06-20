@@ -31,22 +31,6 @@ public class CharacterTurn : GroupableEntities
     // Update is called once per frame
     void Update()
     {
-        //if (this.characterTurnVariables.isTurnActive)
-        //{
-        //    if (this.GetComponent<CharacterMove>().characterMoveVariables._isMoveMode)
-        //    {
-        //        if (Input.GetKeyDown(KeyCode.Tab))// && !this.characterTurnVariables.isDone)
-        //        {
-        //            //this.characterTurnVariables.isTurnActive = false;
-        //            //if (teamId == 1)
-        //            //{
-        //                GetComponent<CharacterInput>().TurnManager.SwitchCharacter(this.GetComponent<CharacterTurn>(), null);
-        //            //}
-        //            Debug.Log("CU");
-        //            //characterMoveVariables.isTilesFound = false;
-        //            this.characterTurnVariables.isDone = true;
-        //        }
-        //    }
-        //}
+        
     }
 }
