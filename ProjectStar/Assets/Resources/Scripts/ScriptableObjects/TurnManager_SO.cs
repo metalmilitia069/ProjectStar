@@ -123,7 +123,7 @@ public class TurnManager_SO : ScriptableObject
             {
                 index++;
             }
-            Debug.Log("index apos mudanca = " + index);
+            
             playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;            
 
         }
