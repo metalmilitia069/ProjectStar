@@ -25,6 +25,7 @@ public class CharacterGlobalController : MonoBehaviour
                 if (character.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive)
                 {
                     TurnManager.SwitchCharacter(character.GetComponent<CharacterTurn>(), null);
+                    character.GetComponent<CharacterInput>().MainCameraControllerVariables.LockCamera(character.transform);
                     break;
                 }
             }

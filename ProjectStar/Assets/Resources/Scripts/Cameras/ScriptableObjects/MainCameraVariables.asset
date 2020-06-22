@@ -16,13 +16,13 @@ MonoBehaviour:
   cameraTransform: {fileID: 0}
   isLocked: 1
   speed: 5
-  movementTime: 0
-  rotationAmount: 0
-  zoomAmount: {x: 0, y: 0, z: 0}
-  newZoom: {x: 0, y: 0, z: 0}
+  movementTime: 3
+  rotationAmount: 2
+  zoomAmount: {x: 0, y: 1, z: -1}
+  newZoom: {x: 0, y: 13, z: -13}
   newPosition: {x: 0, y: 0, z: 0}
-  newRotation: {x: 0, y: 0, z: 0, w: 0}
-  dragStartPosition: {x: 0, y: 0, z: 0}
-  dragCurrentPosition: {x: 0, y: 0, z: 0}
-  rotateStartPosition: {x: 0, y: 0, z: 0}
-  rotateCurrentPosition: {x: 0, y: 0, z: 0}
+  newRotation: {x: 0, y: 0.03141062, z: 0, w: 0.99950314}
+  dragStartPosition: {x: 13.492006, y: 0, z: 7.646386}
+  dragCurrentPosition: {x: 14.731766, y: 0, z: 8.4168}
+  rotateStartPosition: {x: 826.5, y: 276, z: 0}
+  rotateCurrentPosition: {x: 826.5, y: 276, z: 0}

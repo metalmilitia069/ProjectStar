@@ -10,6 +10,8 @@ public class CharacterInput : MonoBehaviour
     public CombatCalculatorManager_SO CombatCalculatorManager;
     [Header("INSERT A TURN MANAGER SO :")]
     public TurnManager_SO TurnManager;
+    [Header("INSERT THE MAIN CAMERA CONTROLLER VARIABLES :")]
+    public MainCameraController_SO MainCameraControllerVariables;
 
 
     [Header("CHARACTER MOVE VARIABLES - INSTANCE :")]
@@ -55,13 +57,13 @@ public class CharacterInput : MonoBehaviour
     {
         if (this.characterTurnVariables.isTurnActive)
         {
-            //if (CameraTargetManager.instance.isLocked)//
-            //{
-            //    //CameraTargetManager.instance.transform.parent = this.transform;//
-            //    //CameraTargetManager.instance.transform.position = this.transform.position;//
+            if (MainCameraControllerVariables.isLocked)//
+            {
+                //    //CameraTargetManager.instance.transform.parent = this.transform;//
+                //    //CameraTargetManager.instance.transform.position = this.transform.position;//
 
-            //    CameraTargetManager.instance.followTransform = transform;
-            //}
+                MainCameraControllerVariables.followTransform = transform;
+            }
 
             if (characterMoveVariables._isMoveMode)
             {
@@ -133,16 +135,29 @@ public class CharacterInput : MonoBehaviour
         
     }
 
-    public bool canChange = false;
+    //public bool canChange = false;
 
-    //private void OnMouseDown()
-    //{
-    //    CameraTargetManager.instance.followTransform = transform;
-    //}
+    private void OnMouseOver()
+    {
+        this.GetComponent<CharacterMove>().enabled = false;
+       
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            MainCameraControllerVariables.LockCamera(transform);
+            TurnManager.SelectCharacterOnClick(this.GetComponent<CharacterTurn>());
+        }
+        //SelectCharacterOnClick(CharacterTurn characterTurn)
+    }
+
+    private void OnMouseExit()
+    {
+        //this.GetComponent<CharacterMove>().enabled = true;
+    }
 
     protected void ActivateMouseToMovement()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -222,5 +237,7 @@ public class CharacterInput : MonoBehaviour
         }
 
         GridManager.ClearSelectableTiles();
-    }    
+    }
+    
+
 }

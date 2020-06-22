@@ -105,6 +105,45 @@ public class TurnManager_SO : ScriptableObject
         //ATTENTION!!! >>> IF MORE CLASSES, ADD MORE IFS-ELSES
     }
 
+    public void SelectCharacterOnClick(CharacterTurn characterTurn)
+    {
+        bool conditionOne = false;
+        bool conditionTwo = false;
+        CharacterTurn characterTempToBeActivated = default;
+        CharacterTurn charTempToBeDeactivated = default;
+        Debug.Log("MOZO");
+
+        foreach (var character in playerTeamList)
+        {
+            if (character == characterTurn.GetComponent<GroupableEntities>())
+            {
+                characterTempToBeActivated = character.GetComponent<CharacterTurn>();
+                conditionOne = true;
+            }
+
+            if (character.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive)
+            {
+                charTempToBeDeactivated = character.GetComponent<CharacterTurn>();
+                conditionTwo = true;
+            }
+
+            if (conditionOne && conditionTwo)
+            {
+                charTempToBeDeactivated.characterTurnVariables.isTurnActive = false;
+                charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
+                charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
+
+
+                characterTempToBeActivated.characterTurnVariables.isTurnActive = true;
+            }
+        }
+
+
+
+
+        characterTurn.GetComponent<CharacterMove>().enabled = true;
+    }
+
     public void SwitchCharacter(CharacterTurn character, EnemyTurn enemy)
     {
         if (character != null)

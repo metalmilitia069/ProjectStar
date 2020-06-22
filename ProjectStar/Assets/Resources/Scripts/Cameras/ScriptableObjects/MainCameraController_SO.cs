@@ -24,4 +24,17 @@ public class MainCameraController_SO : ScriptableObject
     public Vector3 dragCurrentPosition;
     public Vector3 rotateStartPosition;
     public Vector3 rotateCurrentPosition;
+
+    public void UnlockCamera()
+    {
+        isLocked = false;
+        followTransform = null;
+    }
+
+    public void LockCamera(Transform transform)
+    {
+        isLocked = true;
+        followTransform = transform;
+    }
+
 }

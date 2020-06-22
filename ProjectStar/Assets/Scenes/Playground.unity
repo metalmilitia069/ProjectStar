@@ -223,11 +223,12 @@ MonoBehaviour:
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
   TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
+  MainCameraControllerVariables: {fileID: 11400000, guid: d77d1dce774166949a5304f35e5beee0,
+    type: 2}
   characterMoveVariables: {fileID: 0}
   characterCombatVariables: {fileID: 0}
   characterStatsVariables: {fileID: 0}
   characterTurnVariables: {fileID: 0}
-  canChange: 0
 --- !u!114 &30301484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,11 +671,12 @@ MonoBehaviour:
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
   TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
+  MainCameraControllerVariables: {fileID: 11400000, guid: d77d1dce774166949a5304f35e5beee0,
+    type: 2}
   characterMoveVariables: {fileID: 0}
   characterCombatVariables: {fileID: 0}
   characterStatsVariables: {fileID: 0}
   characterTurnVariables: {fileID: 0}
-  canChange: 0
 --- !u!114 &292916632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,11 +834,12 @@ MonoBehaviour:
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
   TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
+  MainCameraControllerVariables: {fileID: 11400000, guid: d77d1dce774166949a5304f35e5beee0,
+    type: 2}
   characterMoveVariables: {fileID: 0}
   characterCombatVariables: {fileID: 0}
   characterStatsVariables: {fileID: 0}
   characterTurnVariables: {fileID: 0}
-  canChange: 0
 --- !u!114 &334614435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2049,6 +2052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCameraControllerVariables: {fileID: 11400000, guid: d77d1dce774166949a5304f35e5beee0,
     type: 2}
+  cameraPrefab: {fileID: 963194228}
 --- !u!65 &699181313
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2058,7 +2062,7 @@ BoxCollider:
   m_GameObject: {fileID: 699181311}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2069,7 +2073,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699181311}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5014,11 +5018,12 @@ MonoBehaviour:
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
   TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
+  MainCameraControllerVariables: {fileID: 11400000, guid: d77d1dce774166949a5304f35e5beee0,
+    type: 2}
   characterMoveVariables: {fileID: 0}
   characterCombatVariables: {fileID: 0}
   characterStatsVariables: {fileID: 0}
   characterTurnVariables: {fileID: 0}
-  canChange: 0
 --- !u!114 &1960115365
 MonoBehaviour:
   m_ObjectHideFlags: 0

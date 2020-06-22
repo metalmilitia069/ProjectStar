@@ -8,38 +8,49 @@ public class MainCameraController : MonoBehaviour
     public MainCameraController_SO MainCameraControllerVariables;
 
 
+    public Transform cameraPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
+        MainCameraControllerVariables.cameraTransform = cameraPrefab;
+
         MainCameraControllerVariables.newRotation = transform.rotation;
+
+
+        MainCameraControllerVariables.dragStartPosition = default;
+        MainCameraControllerVariables.dragCurrentPosition = default;
+        MainCameraControllerVariables.rotateStartPosition = default;
+        MainCameraControllerVariables.rotateCurrentPosition = default;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (MainCameraControllerVariables.followTransform != null)
-        {
-            transform.position = MainCameraControllerVariables.followTransform.position;
+        {            
+            transform.position = Vector3.Lerp(transform.position, MainCameraControllerVariables.followTransform.position, MainCameraControllerVariables.speed * Time.deltaTime);
+            //transform.position = MainCameraControllerVariables.followTransform.position;
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            UnlockCamera();
+            MainCameraControllerVariables.UnlockCamera();
             transform.position += (transform.forward * MainCameraControllerVariables.speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            UnlockCamera();
+            MainCameraControllerVariables.UnlockCamera();
             transform.position += (-transform.right * MainCameraControllerVariables.speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            UnlockCamera();
+            MainCameraControllerVariables.UnlockCamera();
             transform.position += (transform.right * MainCameraControllerVariables.speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            UnlockCamera();
+            MainCameraControllerVariables.UnlockCamera();
             transform.position += (-transform.forward * MainCameraControllerVariables.speed * Time.deltaTime);
         }
 
@@ -64,15 +75,18 @@ public class MainCameraController : MonoBehaviour
             MainCameraControllerVariables.newRotation *= Quaternion.Euler(Vector3.up * MainCameraControllerVariables.rotationAmount);
         }
 
+        transform.rotation = Quaternion.Lerp(transform.rotation, MainCameraControllerVariables.newRotation, Time.deltaTime * MainCameraControllerVariables.speed);
+
+
         MouseInput();
 
     }
 
-    public void UnlockCamera()
-    {
-        MainCameraControllerVariables.isLocked = false;
-        MainCameraControllerVariables.followTransform = null;
-    }
+    //public void UnlockCamera()
+    //{
+    //    MainCameraControllerVariables.isLocked = false;
+    //    MainCameraControllerVariables.followTransform = null;
+    //}
 
     public void MouseInput()
     {
