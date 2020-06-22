@@ -131,15 +131,13 @@ public class TurnManager_SO : ScriptableObject
             {
                 charTempToBeDeactivated.characterTurnVariables.isTurnActive = false;
                 charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
+                charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables.isAttackRangeFound = false;
                 charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
 
 
                 characterTempToBeActivated.characterTurnVariables.isTurnActive = true;
             }
         }
-
-
-
 
         characterTurn.GetComponent<CharacterMove>().enabled = true;
     }

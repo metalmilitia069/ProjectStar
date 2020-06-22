@@ -57,11 +57,8 @@ public class CharacterInput : MonoBehaviour
     {
         if (this.characterTurnVariables.isTurnActive)
         {
-            if (MainCameraControllerVariables.isLocked)//
+            if (MainCameraControllerVariables.isLocked)
             {
-                //    //CameraTargetManager.instance.transform.parent = this.transform;//
-                //    //CameraTargetManager.instance.transform.position = this.transform.position;//
-
                 MainCameraControllerVariables.followTransform = transform;
             }
 
@@ -83,6 +80,8 @@ public class CharacterInput : MonoBehaviour
                 }
                 else
                 {
+
+
                     GetComponent<CharacterMove>().Move();
                 }
 
@@ -139,21 +138,23 @@ public class CharacterInput : MonoBehaviour
 
     private void OnMouseOver()
     {
-        this.GetComponent<CharacterMove>().enabled = false;
-       
+        foreach (var character in TurnManager.listOfAllCharacters.GetList())
+        {
+            if (character.GetComponent<CharacterInput>().characterMoveVariables.isMoving)
+            {
+                return;
+            }
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
 
+            MainCameraControllerVariables.canMouseInput = false;
+
             MainCameraControllerVariables.LockCamera(transform);
             TurnManager.SelectCharacterOnClick(this.GetComponent<CharacterTurn>());
-        }
-        //SelectCharacterOnClick(CharacterTurn characterTurn)
-    }
-
-    private void OnMouseExit()
-    {
-        //this.GetComponent<CharacterMove>().enabled = true;
-    }
+        }        
+    }   
 
     protected void ActivateMouseToMovement()
     {

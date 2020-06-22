@@ -10,6 +10,6 @@ public class CharacterTurn_SO : ScriptableObject
     public int teamId;
     public bool isTurnActive = false;
     public int actionPoints = 2;
-    public bool isDone = false;
+    public bool canMouseOver = true;
 
 }

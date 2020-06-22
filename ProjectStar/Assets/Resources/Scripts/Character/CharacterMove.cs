@@ -179,11 +179,5 @@ public class CharacterMove : MonoBehaviour
             characterMoveVariables._velocity /= 5.0f;
             characterMoveVariables._velocity.y = 1.5f;
         }
-    }
-
-    //public void AddPlayerToTeamList()
-    //{
-    //    //TurnManager.instance.playerTeam.Add((IPlayerTeam)this);
-    //    TurnManager.instance.playerTeamList.Add((CharacterStats)this);
-    //}
+    }    
 }

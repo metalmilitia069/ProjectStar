@@ -37,4 +37,6 @@ public class MainCameraController_SO : ScriptableObject
         followTransform = transform;
     }
 
+    public bool canMouseInput = true;
+
 }

@@ -14,6 +14,7 @@ public class MainCameraController : MonoBehaviour
     void Start()
     {
         MainCameraControllerVariables.cameraTransform = cameraPrefab;
+        MainCameraControllerVariables.isLocked = true;
 
         MainCameraControllerVariables.newRotation = transform.rotation;
 
@@ -27,12 +28,48 @@ public class MainCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MainCameraControllerVariables.followTransform != null)
-        {            
-            transform.position = Vector3.Lerp(transform.position, MainCameraControllerVariables.followTransform.position, MainCameraControllerVariables.speed * Time.deltaTime);
-            //transform.position = MainCameraControllerVariables.followTransform.position;
-        }
+        BindCameraToCharacter();
+        CameraMoveKeyboardInput();
+        CameraZoomKeyboardInput();
 
+        MainCameraControllerVariables.cameraTransform.localPosition = Vector3.Lerp(MainCameraControllerVariables.cameraTransform.localPosition, MainCameraControllerVariables.newZoom, MainCameraControllerVariables.speed * Time.deltaTime);
+        
+        CameraRotationKeyBoardInput();
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, MainCameraControllerVariables.newRotation, Time.deltaTime * MainCameraControllerVariables.speed);
+
+        if (MainCameraControllerVariables.canMouseInput)
+        {
+            MouseInput();
+        }
+    }
+
+    private void CameraRotationKeyBoardInput()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            MainCameraControllerVariables.newRotation *= Quaternion.Euler(Vector3.up * -MainCameraControllerVariables.rotationAmount);
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            MainCameraControllerVariables.newRotation *= Quaternion.Euler(Vector3.up * MainCameraControllerVariables.rotationAmount);
+        }
+    }
+
+    private void CameraZoomKeyboardInput()
+    {
+        if (Input.GetKey(KeyCode.R))
+        {
+            MainCameraControllerVariables.newZoom += MainCameraControllerVariables.zoomAmount;
+        }
+        if (Input.GetKey(KeyCode.T))
+        {
+            MainCameraControllerVariables.newZoom -= MainCameraControllerVariables.zoomAmount;
+        }
+    }
+
+    private void CameraMoveKeyboardInput()
+    {
         if (Input.GetKey(KeyCode.W))
         {
             MainCameraControllerVariables.UnlockCamera();
@@ -53,40 +90,22 @@ public class MainCameraController : MonoBehaviour
             MainCameraControllerVariables.UnlockCamera();
             transform.position += (-transform.forward * MainCameraControllerVariables.speed * Time.deltaTime);
         }
-
-        if (Input.GetKey(KeyCode.R))
-        {
-            MainCameraControllerVariables.newZoom += MainCameraControllerVariables.zoomAmount;
-        }
-        if (Input.GetKey(KeyCode.T))
-        {
-            MainCameraControllerVariables.newZoom -= MainCameraControllerVariables.zoomAmount;
-        }
-
-        MainCameraControllerVariables.cameraTransform.localPosition = Vector3.Lerp(MainCameraControllerVariables.cameraTransform.localPosition, MainCameraControllerVariables.newZoom, MainCameraControllerVariables.speed * Time.deltaTime);
-
-
-        if (Input.GetKey(KeyCode.E))
-        {
-            MainCameraControllerVariables.newRotation *= Quaternion.Euler(Vector3.up * -MainCameraControllerVariables.rotationAmount);
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            MainCameraControllerVariables.newRotation *= Quaternion.Euler(Vector3.up * MainCameraControllerVariables.rotationAmount);
-        }
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, MainCameraControllerVariables.newRotation, Time.deltaTime * MainCameraControllerVariables.speed);
-
-
-        MouseInput();
-
     }
 
-    //public void UnlockCamera()
-    //{
-    //    MainCameraControllerVariables.isLocked = false;
-    //    MainCameraControllerVariables.followTransform = null;
-    //}
+    private void BindCameraToCharacter()
+    {
+        if (MainCameraControllerVariables.followTransform != null)
+        {
+            transform.position = Vector3.Lerp(transform.position, MainCameraControllerVariables.followTransform.position, MainCameraControllerVariables.speed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, MainCameraControllerVariables.followTransform.position) <= 0.5f)
+            {
+                MainCameraControllerVariables.canMouseInput = true;
+            }
+        }
+    }
+
+    
 
     public void MouseInput()
     {
@@ -116,6 +135,8 @@ public class MainCameraController : MonoBehaviour
                 MainCameraControllerVariables.dragCurrentPosition = ray.GetPoint(entry);
 
                 transform.position = transform.position + (MainCameraControllerVariables.dragStartPosition - MainCameraControllerVariables.dragCurrentPosition);
+
+                DragMouseToUnlockCamera();
             }
         }
 
@@ -128,6 +149,7 @@ public class MainCameraController : MonoBehaviour
         {
             MainCameraControllerVariables.rotateStartPosition = Input.mousePosition;
         }
+
         if (Input.GetMouseButton(2))
         {
             MainCameraControllerVariables.rotateCurrentPosition = Input.mousePosition;
@@ -137,6 +159,14 @@ public class MainCameraController : MonoBehaviour
             MainCameraControllerVariables.rotateStartPosition = MainCameraControllerVariables.rotateCurrentPosition;
 
             MainCameraControllerVariables.newRotation *= Quaternion.Euler(Vector3.up * (-difference.x / 5f));
+        }
+    }
+
+    public void DragMouseToUnlockCamera()
+    {
+        if (Vector3.Distance(MainCameraControllerVariables.dragCurrentPosition, MainCameraControllerVariables.dragStartPosition) > 1.0f)
+        {
+            MainCameraControllerVariables.UnlockCamera();
         }
     }
 
