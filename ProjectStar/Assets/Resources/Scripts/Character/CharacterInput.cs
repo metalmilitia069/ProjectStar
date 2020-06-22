@@ -80,8 +80,6 @@ public class CharacterInput : MonoBehaviour
                 }
                 else
                 {
-
-
                     GetComponent<CharacterMove>().Move();
                 }
 
