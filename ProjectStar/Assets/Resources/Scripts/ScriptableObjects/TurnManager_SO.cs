@@ -144,6 +144,11 @@ public class TurnManager_SO : ScriptableObject
 
     public void SwitchCharacter(CharacterTurn character, EnemyTurn enemy)
     {
+        if (character.GetComponent<CharacterMove>().characterMoveVariables.isMoving)
+        {
+            return;
+        }
+
         if (character != null)
         {
             int index = playerTeamList.IndexOf(character);

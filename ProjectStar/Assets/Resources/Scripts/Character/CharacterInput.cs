@@ -172,7 +172,7 @@ public class CharacterInput : MonoBehaviour
 
 
 
-                    characterTurnVariables.actionPoints--;                    
+                    //characterTurnVariables.actionPoints--;  ///botei em characterInput                   
                 }
             }
         }

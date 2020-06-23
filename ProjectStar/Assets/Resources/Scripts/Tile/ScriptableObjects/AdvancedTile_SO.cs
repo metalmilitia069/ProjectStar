@@ -15,4 +15,9 @@ public class AdvancedTile_SO : ScriptableObject
     public bool isRightDirection = false;    
     public bool isLeftDirection = false;    
     public Vector3 direction;
+
+    //Needed for A*
+    public float f = 0;
+    public float g = 0;
+    public float h = 0;
 }

@@ -9,6 +9,8 @@ public class EnemyInjection : MonoBehaviour
 
     private void OnEnable()
     {
+        GetComponent<EnemyPathAI>().enemyPathAIVariables = ScriptableObject.CreateInstance<EnemyPathAI_SO>();
+        GetComponent<EnemyPathAI>().enemyPathAIVariables.name = "InstanceEnemyPathAI";
 
         GetComponent<EnemyMove>().enemyMoveVariables = ScriptableObject.CreateInstance<EnemyMove_SO>();
         GetComponent<EnemyMove>().enemyMoveVariables.name = "InstanceEnemyMove";
@@ -22,6 +24,9 @@ public class EnemyInjection : MonoBehaviour
         GetComponent<EnemyTurn>().EnemyTurnVariables = ScriptableObject.CreateInstance<EnemyTurn_SO>();
         GetComponent<EnemyTurn>().EnemyTurnVariables.name = "InstanceEnemyTurn";
 
+
+
+        GetComponent<EnemyInput>().enemyPathAIVariables = GetComponent<EnemyPathAI>().enemyPathAIVariables;
         GetComponent<EnemyInput>().EnemyMoveVariables = GetComponent<EnemyMove>().enemyMoveVariables;
         GetComponent<EnemyInput>().EnemyCombatVariables = GetComponent<EnemyCombat>().EnemyCombatVariables;
         GetComponent<EnemyInput>().EnemyStatsVariables = GetComponent<EnemyStats>().EnemyStatsVariables;

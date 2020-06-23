@@ -62,6 +62,10 @@ public class CharacterMove : MonoBehaviour
             characterMoveVariables.isMoving = false;
             characterMoveVariables.isTilesFound = false;
 
+
+
+            GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
+
             //PUT EVENT TO HIDE TILES
         }
     }

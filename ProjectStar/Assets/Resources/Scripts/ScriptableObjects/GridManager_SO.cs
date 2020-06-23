@@ -18,7 +18,8 @@ public class GridManager_SO : ScriptableObject
 
 
 
-    public CharacterInput baseCharacter;
+    public CharacterInput inputCharacter;
+    public EnemyInput inputEnemy;
 
     [SerializeField]
     public Stack<AdvancedTile> stackTilePath = new Stack<AdvancedTile>();
@@ -35,11 +36,16 @@ public class GridManager_SO : ScriptableObject
     private void OnDisable()
     {
         listOfSelectableTiles.Clear();
-        baseCharacter = default;
+        inputCharacter = default;
+        inputEnemy = default;
         stackTilePath = default;
         tilePlaceholder = default;
     }
 
+    public AdvancedTile GetTilePlaceHolder()
+    {
+        return tilePlaceholder;
+    }
     
 
 
@@ -55,21 +61,53 @@ public class GridManager_SO : ScriptableObject
             tilePlaceholder.basicTileVariables.isCurrent = true;
 
 
-            tilePlaceholder.basicTileVariables.isMoveMode = baseCharacter.characterMoveVariables._isMoveMode; //To CHange Move or Attack Tile Neighbours
+            if (characterStandingOnTile.GetComponent<CharacterInput>())
+            {
+                tilePlaceholder.basicTileVariables.isMoveMode = inputCharacter.characterMoveVariables._isMoveMode; //To CHange Move or Attack Tile Neighbours
 
 
-            if (tilePlaceholder.basicTileVariables.isCover) //&& tilePlaceholder.isCurrent)
-            {
-                baseCharacter.GetComponent<CharacterMove>().CoverMode(true);
+                if (tilePlaceholder.basicTileVariables.isCover) //&& tilePlaceholder.isCurrent)
+                {
+                    inputCharacter.GetComponent<CharacterMove>().CoverMode(true);
+                }
+                else
+                {
+                    inputCharacter.GetComponent<CharacterMove>().CoverMode(false);
+                }
             }
-            else
+            else if (characterStandingOnTile.GetComponent<EnemyInput>()) //CHANGE TO WHILE TESTING AI
             {
-                baseCharacter.GetComponent<CharacterMove>().CoverMode(false);
-            }
+                tilePlaceholder.basicTileVariables.isMoveMode = inputEnemy.EnemyMoveVariables._isMoveMode;
+
+                if (tilePlaceholder.basicTileVariables.isCover)
+                {
+                    inputEnemy.GetComponent<EnemyMove>().CoverMode(true);
+                }
+                else
+                {
+                    inputEnemy.GetComponent<EnemyMove>().CoverMode(false);
+                }
+            }                                                             //CHANGE WHILE TESTING AI
         }
     }
 
     //NEWWWWWWWWWWWWWWWWWWWWWWWWW
+
+    //AI RELATED >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    public AdvancedTile GetTileWhereTheSelectedCharacterTargetIs(GameObject characterTarget)
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(characterTarget.transform.position, Vector3.down, out hit, 1))
+        {
+            tilePlaceholder = hit.collider.transform.GetComponent<AdvancedTile>();
+        }
+
+        return tilePlaceholder;
+    }
+
+    //AI RELATED >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     public void UpdateScanAllTiles()
     {
@@ -83,7 +121,7 @@ public class GridManager_SO : ScriptableObject
 
     public void CalculateAvailablePath(GameObject character)
     {
-        baseCharacter = character.GetComponent<CharacterInput>();
+        inputCharacter = character.GetComponent<CharacterInput>();
 
 
 
@@ -105,7 +143,7 @@ public class GridManager_SO : ScriptableObject
             listOfSelectableTiles.Add(t);
             t.basicTileVariables.isSelectable = true;
 
-            if (t.basicTileVariables.distance < baseCharacter.characterMoveVariables._movePoints)
+            if (t.basicTileVariables.distance < inputCharacter.characterMoveVariables._movePoints)
             {
                 foreach (var tile in t.basicTileVariables.listOfNearbyValidTiles)
                 {
@@ -119,14 +157,14 @@ public class GridManager_SO : ScriptableObject
                 }
             }
         }
-        baseCharacter.characterMoveVariables.currentTile = tilePlaceholder;
-        baseCharacter.characterMoveVariables.isTilesFound = true;
+        inputCharacter.characterMoveVariables.currentTile = tilePlaceholder;
+        inputCharacter.characterMoveVariables.isTilesFound = true;
     }
 
     public void CalculatePathToDesignatedTile(AdvancedTile tile)
     {
         tile.basicTileVariables.isTarget = true;
-        baseCharacter.characterMoveVariables.isMoving = true;
+        inputCharacter.characterMoveVariables.isMoving = true;
 
         stackTilePath.Clear();
 
@@ -157,7 +195,7 @@ public class GridManager_SO : ScriptableObject
 
     public void CalculateAttackPath(GameObject character)
     {
-        baseCharacter = character.GetComponent<CharacterInput>();
+        inputCharacter = character.GetComponent<CharacterInput>();
 
         UpdateScanAllTiles(); //EventScanTilesUpdate();
         GetCurrentTile(character);
@@ -175,7 +213,7 @@ public class GridManager_SO : ScriptableObject
             listOfSelectableTiles.Add(t);
             t.basicTileVariables.isAttakable = true;
 
-            if (t.basicTileVariables.distance < baseCharacter.characterMoveVariables._weaponRange)
+            if (t.basicTileVariables.distance < inputCharacter.characterMoveVariables._weaponRange)
             {
                 foreach (var tile in t.basicTileVariables.listOfNearbyValidTiles)
                 {
@@ -189,7 +227,7 @@ public class GridManager_SO : ScriptableObject
                 }
             }
         }
-        baseCharacter.characterMoveVariables.currentTile = tilePlaceholder;
-        baseCharacter.characterMoveVariables.isAttackRangeFound = true;
+        inputCharacter.characterMoveVariables.currentTile = tilePlaceholder;
+        inputCharacter.characterMoveVariables.isAttackRangeFound = true;
     }
 }

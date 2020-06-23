@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class EnemyInput : MonoBehaviour
 {
+    [Header("INSERT A GRIDMANAGER SO :")]
+    public GridManager_SO GridManager;
     [Header("INSERT A COMBAT CALCULATOR MANAGER SO :")]
-    public CombatCalculatorManager_SO CombatCalculatorManager;
+    public CombatCalculatorManager_SO CombatCalculatorManager;    
+    [Header("INSERT A TURN MANAGER SO :")]
+    public TurnManager_SO TurnManager;
 
 
+    [Header("ENEMY PATH AI VARIABLES - INSTANCE :")]
+    public EnemyPathAI_SO enemyPathAIVariables;
     [Header("ENEMY MOVE VARIABLES - INSTANCE :")]
     public EnemyMove_SO EnemyMoveVariables;
     [Header("ENEMY COMBAT VARIABLES - INSTANCE :")]
@@ -32,6 +38,8 @@ public class EnemyInput : MonoBehaviour
             {
                 if (!EnemyMoveVariables.isMoving)
                 {
+                    GetComponent<EnemyPathAI>().FindNearestTarget();
+                    //GetComponent<EnemyPathAI>().CalculatePath();
 
                 }
                 else

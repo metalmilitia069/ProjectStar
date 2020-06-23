@@ -2340,6 +2340,7 @@ GameObject:
   - component: {fileID: 839363722}
   - component: {fileID: 839363721}
   - component: {fileID: 839363726}
+  - component: {fileID: 839363728}
   - component: {fileID: 839363725}
   - component: {fileID: 839363724}
   - component: {fileID: 839363723}
@@ -2364,8 +2365,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255a4f8dc9eb3a74e9d77005a3c5bc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridManager: {fileID: 0}
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
+  TurnManager: {fileID: 0}
+  enemyPathAIVariables: {fileID: 0}
+  EnemyMoveVariables: {fileID: 0}
   EnemyCombatVariables: {fileID: 0}
   EnemyStatsVariables: {fileID: 0}
   EnemyTurnVariables: {fileID: 0}
@@ -2443,6 +2448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108a0bcb74ad4be4291196c247116b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridManager: {fileID: 0}
+  enemyMoveVariables: {fileID: 0}
 --- !u!114 &839363726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2470,6 +2477,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyTurnVariables: {fileID: 0}
+--- !u!114 &839363728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839363719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555274c7e214b994b996820a4e9660af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GridManager: {fileID: 0}
+  enemyPathAIVariables: {fileID: 0}
 --- !u!1 &843660674
 GameObject:
   m_ObjectHideFlags: 0
@@ -4302,6 +4323,7 @@ GameObject:
   - component: {fileID: 1648025668}
   - component: {fileID: 1648025667}
   - component: {fileID: 1648025666}
+  - component: {fileID: 1648025670}
   - component: {fileID: 1648025665}
   - component: {fileID: 1648025664}
   - component: {fileID: 1648025663}
@@ -4326,8 +4348,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255a4f8dc9eb3a74e9d77005a3c5bc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridManager: {fileID: 0}
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
+  TurnManager: {fileID: 0}
+  enemyPathAIVariables: {fileID: 0}
+  EnemyMoveVariables: {fileID: 0}
   EnemyCombatVariables: {fileID: 0}
   EnemyStatsVariables: {fileID: 0}
   EnemyTurnVariables: {fileID: 0}
@@ -4374,6 +4400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108a0bcb74ad4be4291196c247116b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridManager: {fileID: 0}
+  enemyMoveVariables: {fileID: 0}
 --- !u!114 &1648025666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4432,6 +4460,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyTurnVariables: {fileID: 0}
+--- !u!114 &1648025670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648025661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555274c7e214b994b996820a4e9660af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GridManager: {fileID: 0}
+  enemyPathAIVariables: {fileID: 0}
 --- !u!1 &1669668374
 GameObject:
   m_ObjectHideFlags: 0
@@ -5480,6 +5522,7 @@ GameObject:
   - component: {fileID: 2138281300}
   - component: {fileID: 2138281299}
   - component: {fileID: 2138281298}
+  - component: {fileID: 2138281302}
   - component: {fileID: 2138281297}
   - component: {fileID: 2138281296}
   - component: {fileID: 2138281295}
@@ -5504,8 +5547,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255a4f8dc9eb3a74e9d77005a3c5bc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridManager: {fileID: 0}
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
+  TurnManager: {fileID: 0}
+  enemyPathAIVariables: {fileID: 0}
+  EnemyMoveVariables: {fileID: 0}
   EnemyCombatVariables: {fileID: 0}
   EnemyStatsVariables: {fileID: 0}
   EnemyTurnVariables: {fileID: 0}
@@ -5552,6 +5599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108a0bcb74ad4be4291196c247116b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GridManager: {fileID: 0}
+  enemyMoveVariables: {fileID: 0}
 --- !u!114 &2138281298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5610,6 +5659,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyTurnVariables: {fileID: 0}
+--- !u!114 &2138281302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138281293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 555274c7e214b994b996820a4e9660af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GridManager: {fileID: 0}
+  enemyPathAIVariables: {fileID: 0}
 --- !u!1 &2139656516
 GameObject:
   m_ObjectHideFlags: 0
