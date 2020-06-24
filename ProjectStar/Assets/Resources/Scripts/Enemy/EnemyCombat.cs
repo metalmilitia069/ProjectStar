@@ -44,6 +44,7 @@ public class EnemyCombat : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Debug.Log("ENEMY IS DEAD!!!!");
+            GetComponent<EnemyInput>().TurnManager.RemoveFromTeam(null, GetComponent<EnemyTurn>());
             Destroy(this.gameObject);
         }
     }

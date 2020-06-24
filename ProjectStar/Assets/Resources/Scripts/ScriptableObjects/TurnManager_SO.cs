@@ -129,7 +129,9 @@ public class TurnManager_SO : ScriptableObject
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables.isAttackRangeFound = false;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
-            
+            playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables._isCombatMode = false;
+
+
             if (index >= playerTeamList.Count - 1)
             {
                 index = 0;
@@ -150,6 +152,7 @@ public class TurnManager_SO : ScriptableObject
             enemyTeamList[index].GetComponent<EnemyInput>().EnemyMoveVariables.isTilesFound = false;
             enemyTeamList[index].GetComponent<EnemyInput>().EnemyMoveVariables.isAttackRangeFound = false;
             enemyTeamList[index].GetComponent<EnemyInput>().EnemyMoveVariables._isMoveMode = true;
+            enemyTeamList[index].GetComponent<EnemyInput>().EnemyMoveVariables._isCombatMode = false;
 
             if (index >= enemyTeamList.Count - 1)
             {

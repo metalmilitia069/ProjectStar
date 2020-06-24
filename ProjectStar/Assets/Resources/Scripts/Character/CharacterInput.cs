@@ -101,11 +101,11 @@ public class CharacterInput : MonoBehaviour
                 {
                     //>>>>>>>REDO THIS WITH WEAPON BELT!!!!!!!!!!!
                     characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
-                    //if (characterTurnVariables.actionPoints <= 0)
-                    //{
-                    //    TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
-                    //    return;
-                    //}
+                    if (characterTurnVariables.actionPoints <= 0)
+                    {
+                        TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+                        return;
+                    }
                     GridManager.CalculateAttackPath(this.gameObject);
                     GetComponent<CharacterCombat>().ScanForEnemies();
                 }

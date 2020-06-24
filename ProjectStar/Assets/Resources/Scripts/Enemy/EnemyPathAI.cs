@@ -13,20 +13,6 @@ public class EnemyPathAI : MonoBehaviour
     public EnemyPathAI_SO enemyPathAIVariables;
 
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void FindNearestTarget()
     {
         List<GroupableEntities> targets = GetComponent<EnemyInput>().TurnManager.listOfAllCharacters.GetList();
@@ -55,9 +41,7 @@ public class EnemyPathAI : MonoBehaviour
 
     public void CalculatePath()
     {
-        AdvancedTile advancedTile = GridManager.GetTileWhereTheSelectedCharacterTargetIs(characterTarget: enemyPathAIVariables.characterTarget);
-        //AdvancedTile targetTile = GetTargetTile(target);
-        //FindPathAI(targetTile);
+        AdvancedTile advancedTile = GridManager.GetTileWhereTheSelectedCharacterTargetIs(characterTarget: enemyPathAIVariables.characterTarget); 
         FindPathAI(advancedTile);
     }
 
@@ -88,8 +72,7 @@ public class EnemyPathAI : MonoBehaviour
 
             if (t == targetTile)
             {
-                enemyPathAIVariables.actualTargetTile = FindEndTile(t);
-                //GridManager.CalculatePathToDesignatedTile(enemyPathAIVariables.actualTargetTile);
+                enemyPathAIVariables.actualTargetTile = FindEndTile(t);                
                 GridManager.CalculateEnemyAIPathToDesignatedTile(enemyPathAIVariables.actualTargetTile);
                 return;
             }

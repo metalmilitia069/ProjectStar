@@ -153,7 +153,7 @@ public class CharacterCombat : MonoBehaviour
         transform.LookAt(enemy.transform);
 
         CharacterInput charInput = GetComponent<CharacterInput>();
-        
+
         weapon.GetComponent<WeaponBasic>().GatherWeaponAttackStats(charInput, enemy); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
 
         charInput.CombatCalculatorManager.GatherEnemyDefenseStats(enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
@@ -162,4 +162,20 @@ public class CharacterCombat : MonoBehaviour
 
         enemy.ShowProbability();
     }
+
+
+    //DAMAGE FROM ENEMY
+
+    public void ApplyDamage(int Damage)
+    {
+        int playerHealth = GetComponent<CharacterStats>().characterStatsVariables.health -= Damage;
+
+        if (playerHealth <= 0)
+        {
+            Debug.Log("PLAYER IS DEAD!!!!");
+            GetComponent<CharacterInput>().TurnManager.RemoveFromTeam(GetComponent<CharacterTurn>(), null);
+            Destroy(this.gameObject);
+        }
+    }
 }
+

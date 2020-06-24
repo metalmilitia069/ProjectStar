@@ -36,18 +36,6 @@ public class EnemyInput : MonoBehaviour
         {
             if (EnemyMoveVariables._isMoveMode)
             {
-                //if (!EnemyMoveVariables.isMoving)
-                //{
-                //    GetComponent<EnemyPathAI>().FindNearestTarget();
-                //    GetComponent<EnemyPathAI>().CalculatePath();
-                //    GridManager.CalculateAvailablePathForTheAI(this.gameObject);
-
-                //}
-                //else
-                //{
-                //    GetComponent<EnemyMove>().Move();
-                //}
-
                 if (EnemyMoveVariables.isMoving)
                 {
                     GetComponent<EnemyMove>().Move();
@@ -64,6 +52,21 @@ public class EnemyInput : MonoBehaviour
                     GetComponent<EnemyPathAI>().FindNearestTarget();
                     GetComponent<EnemyPathAI>().CalculatePath();
                     GridManager.CalculateAvailablePathForTheAI(this.gameObject);
+                }
+            }
+            if (EnemyMoveVariables._isCombatMode)
+            {
+                if (!EnemyMoveVariables.isAttackRangeFound)
+                {
+                    ////>>>>>>>REDO THIS WITH WEAPON BELT!!!!!!!!!!!
+                    //characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
+                    //if (characterTurnVariables.actionPoints <= 0)
+                    //{
+                    //    TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+                    //    return;
+                    //}
+                    //GridManager.CalculateAttackPath(this.gameObject);
+                    //GetComponent<CharacterCombat>().ScanForEnemies();
                 }
             }
         }
