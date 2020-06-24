@@ -65,7 +65,7 @@ public class EnemyPathAI : MonoBehaviour
     //A-STAR ALGORITHM
     public void FindPathAI(AdvancedTile targetTile)
     {
-        GridManager.UpdateScanAllTiles();
+        GridManager.UpdateScanAllTiles(targetTile);
         GridManager.GetCurrentTile(this.gameObject);
 
 
@@ -89,7 +89,8 @@ public class EnemyPathAI : MonoBehaviour
             if (t == targetTile)
             {
                 enemyPathAIVariables.actualTargetTile = FindEndTile(t);
-                GridManager.CalculatePathToDesignatedTile(enemyPathAIVariables.actualTargetTile);
+                //GridManager.CalculatePathToDesignatedTile(enemyPathAIVariables.actualTargetTile);
+                GridManager.CalculateEnemyAIPathToDesignatedTile(enemyPathAIVariables.actualTargetTile);
                 return;
             }
 

@@ -654,7 +654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &292916631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,7 +817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &334614434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2365,10 +2365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255a4f8dc9eb3a74e9d77005a3c5bc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridManager: {fileID: 0}
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
-  TurnManager: {fileID: 0}
+  TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
   enemyPathAIVariables: {fileID: 0}
   EnemyMoveVariables: {fileID: 0}
   EnemyCombatVariables: {fileID: 0}
@@ -2448,7 +2448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108a0bcb74ad4be4291196c247116b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridManager: {fileID: 0}
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   enemyMoveVariables: {fileID: 0}
 --- !u!114 &839363726
 MonoBehaviour:
@@ -2489,7 +2489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555274c7e214b994b996820a4e9660af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridManager: {fileID: 0}
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   enemyPathAIVariables: {fileID: 0}
 --- !u!1 &843660674
 GameObject:
@@ -4348,10 +4348,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255a4f8dc9eb3a74e9d77005a3c5bc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridManager: {fileID: 0}
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
-  TurnManager: {fileID: 0}
+  TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
   enemyPathAIVariables: {fileID: 0}
   EnemyMoveVariables: {fileID: 0}
   EnemyCombatVariables: {fileID: 0}
@@ -4400,7 +4400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108a0bcb74ad4be4291196c247116b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridManager: {fileID: 0}
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   enemyMoveVariables: {fileID: 0}
 --- !u!114 &1648025666
 MonoBehaviour:
@@ -4472,7 +4472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555274c7e214b994b996820a4e9660af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridManager: {fileID: 0}
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   enemyPathAIVariables: {fileID: 0}
 --- !u!1 &1669668374
 GameObject:
@@ -5043,7 +5043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1960115364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5534,7 +5534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2138281294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5547,10 +5547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255a4f8dc9eb3a74e9d77005a3c5bc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridManager: {fileID: 0}
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   CombatCalculatorManager: {fileID: 11400000, guid: d1d9ce599d18ae34ead5078ef25071f2,
     type: 2}
-  TurnManager: {fileID: 0}
+  TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
   enemyPathAIVariables: {fileID: 0}
   EnemyMoveVariables: {fileID: 0}
   EnemyCombatVariables: {fileID: 0}
@@ -5599,7 +5599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108a0bcb74ad4be4291196c247116b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridManager: {fileID: 0}
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   enemyMoveVariables: {fileID: 0}
 --- !u!114 &2138281298
 MonoBehaviour:
@@ -5671,7 +5671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555274c7e214b994b996820a4e9660af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridManager: {fileID: 0}
+  GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   enemyPathAIVariables: {fileID: 0}
 --- !u!1 &2139656516
 GameObject:

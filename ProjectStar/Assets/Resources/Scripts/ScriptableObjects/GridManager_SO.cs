@@ -109,12 +109,54 @@ public class GridManager_SO : ScriptableObject
 
     //AI RELATED >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    public void UpdateScanAllTiles()
+    public void UpdateScanAllTiles(AdvancedTile advancedTile)
     {
         foreach (var tile in tileList_SO.GetList())
         {
-            tile.GetComponent<BasicTile>().ScanTiles();
+            tile.GetComponent<BasicTile>().ScanTiles(advancedTile);
         }
+    }
+
+    public void CalculateAvailablePathForTheAI(GameObject enemy)
+    {
+        //inputEnemy = enemy.GetComponent<EnemyInput>(); >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+        UpdateScanAllTiles(null); //EventScanTilesUpdate();
+        GetCurrentTile(enemy);
+
+
+
+        //BFS Algorithm
+        var queueProcess = new Queue<AdvancedTile>();
+
+        queueProcess.Enqueue(tilePlaceholder);
+        tilePlaceholder.basicTileVariables.isVisited = true;
+
+        while (queueProcess.Count > 0)
+        {
+            AdvancedTile t = queueProcess.Dequeue();
+
+            listOfSelectableTiles.Add(t);
+            t.basicTileVariables.isSelectable = true;
+
+            if (t.basicTileVariables.distance < inputEnemy.EnemyMoveVariables._movePoints)
+            {
+                foreach (var tile in t.basicTileVariables.listOfNearbyValidTiles)
+                {
+                    if (!tile.basicTileVariables.isVisited)
+                    {
+                        tile.basicTileVariables.parent = t;
+                        tile.basicTileVariables.isVisited = true;
+                        tile.basicTileVariables.distance = 1 + t.basicTileVariables.distance;
+                        queueProcess.Enqueue(tile);
+                    }
+                }
+            }
+        }
+        inputEnemy.EnemyMoveVariables.currentTile = tilePlaceholder;
+        inputEnemy.EnemyMoveVariables.isTilesFound = true;
     }
 
     //NEWWWWWWWWWWWWWWWWWWWWWWWWW
@@ -125,7 +167,7 @@ public class GridManager_SO : ScriptableObject
 
 
 
-        UpdateScanAllTiles(); //EventScanTilesUpdate();
+        UpdateScanAllTiles(null); //EventScanTilesUpdate();
         GetCurrentTile(character);
 
 
@@ -177,6 +219,28 @@ public class GridManager_SO : ScriptableObject
         }
     }
 
+    //AI STUFF
+
+    public void CalculateEnemyAIPathToDesignatedTile(AdvancedTile tile)
+    {
+        tile.basicTileVariables.isTarget = true;
+        inputEnemy.EnemyMoveVariables.isMoving = true;
+
+        stackTilePath.Clear();
+
+        AdvancedTile next = tile;
+
+        while (next != null)
+        {
+            stackTilePath.Push(next);
+            next = next.basicTileVariables.parent;
+        }
+    }
+
+    //AI STUFF
+
+
+
     public void ClearSelectableTiles()
     {
         if (tilePlaceholder != null)
@@ -197,7 +261,7 @@ public class GridManager_SO : ScriptableObject
     {
         inputCharacter = character.GetComponent<CharacterInput>();
 
-        UpdateScanAllTiles(); //EventScanTilesUpdate();
+        UpdateScanAllTiles(null); //EventScanTilesUpdate();
         GetCurrentTile(character);
 
         //BFS Algorithm

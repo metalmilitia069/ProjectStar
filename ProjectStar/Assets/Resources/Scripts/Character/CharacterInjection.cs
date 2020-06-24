@@ -38,7 +38,9 @@ public class CharacterInjection : MonoBehaviour
     private void OnDisable()
     {
         //listOfAllCharacters_SO.RemoveTile(this.GetComponent<AdvancedTile>());
+        //Debug.Log("mozo");
         listOfAllCharacters_SO.RemoveCharacter(this.GetComponent<CharacterTurn>());
+
     }
 
 

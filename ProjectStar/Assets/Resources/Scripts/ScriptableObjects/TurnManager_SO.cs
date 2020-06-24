@@ -55,19 +55,25 @@ public class TurnManager_SO : ScriptableObject
     {
         ResetLocalLists();
 
-        playerTeamList = listOfAllCharacters.GetList();
+        //playerTeamList = listOfAllCharacters.GetList();
+        playerTeamList = new List<GroupableEntities>(listOfAllCharacters.GetList());
         playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().teamId.CompareTo(ch2.GetComponent<CharacterTurn>().teamId));
-        
-        enemyTeamList = listOfAllEnemies.GetList();        
+
+        //enemyTeamList = listOfAllEnemies.GetList();
+        enemyTeamList = new List<GroupableEntities>(listOfAllEnemies.GetList());
 
         RoundSetup();
     }
 
     public void RoundSetup()
     {
+
+
         if (inactivePlayerTeamList.Count > 0 && inactiveEnemyTeamList.Count > 0)
         {
-            playerTeamList = inactivePlayerTeamList;
+            playerTeamList = new List<GroupableEntities>(inactivePlayerTeamList);
+            inactivePlayerTeamList.Clear();
+
             foreach (var chara in playerTeamList)
             {
                 chara.GetComponent<CharacterTurn>().ResetActionPoints();
@@ -75,7 +81,9 @@ public class TurnManager_SO : ScriptableObject
             
             playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
 
-            enemyTeamList = inactiveEnemyTeamList;
+            enemyTeamList = new List<GroupableEntities>(inactiveEnemyTeamList);
+            inactiveEnemyTeamList.Clear();
+
             foreach (var enem in enemyTeamList)
             {
                 enem.GetComponent<EnemyTurn>().ResetActionPoints();
@@ -103,54 +111,18 @@ public class TurnManager_SO : ScriptableObject
             enemyTurn.EnemyTurnVariables.isTurnActive = true;
         }
         //ATTENTION!!! >>> IF MORE CLASSES, ADD MORE IFS-ELSES
-    }
-
-    public void SelectCharacterOnClick(CharacterTurn characterTurn)
-    {
-        bool conditionOne = false;
-        bool conditionTwo = false;
-        CharacterTurn characterTempToBeActivated = default;
-        CharacterTurn charTempToBeDeactivated = default;
-        Debug.Log("MOZO");
-
-        foreach (var character in playerTeamList)
-        {
-            if (character == characterTurn.GetComponent<GroupableEntities>())
-            {
-                characterTempToBeActivated = character.GetComponent<CharacterTurn>();
-                conditionOne = true;
-            }
-
-            if (character.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive)
-            {
-                charTempToBeDeactivated = character.GetComponent<CharacterTurn>();
-                conditionTwo = true;
-            }
-
-            if (conditionOne && conditionTwo)
-            {
-                charTempToBeDeactivated.characterTurnVariables.isTurnActive = false;
-                charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
-                charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables.isAttackRangeFound = false;
-                charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
-
-
-                characterTempToBeActivated.characterTurnVariables.isTurnActive = true;
-            }
-        }
-
-        characterTurn.GetComponent<CharacterMove>().enabled = true;
-    }
+    }       
 
     public void SwitchCharacter(CharacterTurn character, EnemyTurn enemy)
     {
-        if (character.GetComponent<CharacterMove>().characterMoveVariables.isMoving)
-        {
-            return;
-        }
 
         if (character != null)
         {
+            if (character.GetComponent<CharacterMove>().characterMoveVariables.isMoving)
+            {
+                return;
+            }
+
             int index = playerTeamList.IndexOf(character);
 
             playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = false;
@@ -213,9 +185,6 @@ public class TurnManager_SO : ScriptableObject
 
                 ContinueRound();
             }
-
-
-
         }
         else if (enemy != null)
         {
@@ -270,6 +239,45 @@ public class TurnManager_SO : ScriptableObject
         }
     }
 
+
+
+
+    public void SelectCharacterOnClick(CharacterTurn characterTurn)
+    {
+        bool conditionOne = false;
+        bool conditionTwo = false;
+        CharacterTurn characterTempToBeActivated = default;
+        CharacterTurn charTempToBeDeactivated = default;
+        Debug.Log("MOZO");
+
+        foreach (var character in playerTeamList)
+        {
+            if (character == characterTurn.GetComponent<GroupableEntities>())
+            {
+                characterTempToBeActivated = character.GetComponent<CharacterTurn>();
+                conditionOne = true;
+            }
+
+            if (character.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive)
+            {
+                charTempToBeDeactivated = character.GetComponent<CharacterTurn>();
+                conditionTwo = true;
+            }
+
+            if (conditionOne && conditionTwo)
+            {
+                charTempToBeDeactivated.characterTurnVariables.isTurnActive = false;
+                charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
+                charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables.isAttackRangeFound = false;
+                charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
+
+
+                characterTempToBeActivated.characterTurnVariables.isTurnActive = true;
+            }
+        }
+
+        characterTurn.GetComponent<CharacterMove>().enabled = true;
+    }
 
 
 

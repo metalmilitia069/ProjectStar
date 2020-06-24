@@ -12,7 +12,7 @@ public class EnemyMove_SO : ScriptableObject
     public AdvancedTile currentTile;
 
     [SerializeField]
-    public int _movePoints = 5;
+    public int _movePoints = 3;
     public bool isMoving = false;
     public float halfHeight = 1;
     public bool isTilesFound = false;

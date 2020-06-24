@@ -9,7 +9,7 @@ public class BasicTile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ScanTiles();
+        ScanTiles(null);
     }
 
     // Update is called once per frame
@@ -47,18 +47,21 @@ public class BasicTile : MonoBehaviour
         basicTileVariables.isAttakable = false;
 
 
+        //AI STUFF
+        GetComponent<AdvancedTile>().advancedTileVariables.f = GetComponent<AdvancedTile>().advancedTileVariables.g = GetComponent<AdvancedTile>().advancedTileVariables.h = 0;
+
     }
 
-    public void ScanTiles()
+    public void ScanTiles(AdvancedTile advancedTile)
     {
         ResetTileData();
 
         //Debug.Log("cucucucufhdgd");
 
-        GatherNearbyTiles(Vector3.forward);
-        GatherNearbyTiles(Vector3.back);
-        GatherNearbyTiles(Vector3.left);
-        GatherNearbyTiles(Vector3.right);
+        GatherNearbyTiles(Vector3.forward, advancedTile);
+        GatherNearbyTiles(Vector3.back, advancedTile);
+        GatherNearbyTiles(Vector3.left, advancedTile);
+        GatherNearbyTiles(Vector3.right, advancedTile);
 
         if (basicTileVariables.isLatter)
         {
@@ -72,7 +75,7 @@ public class BasicTile : MonoBehaviour
 
     }
 
-    public void GatherNearbyTiles(Vector3 direction)
+    public void GatherNearbyTiles(Vector3 direction, AdvancedTile advancedTile)
     {
         Vector3 halfExtends = new Vector3(0.25f, basicTileVariables.jumpHeight, 0.25f);
         Collider[] colliders = Physics.OverlapBox(transform.position + direction, halfExtends);
@@ -85,7 +88,7 @@ public class BasicTile : MonoBehaviour
             {
                 RaycastHit hit;
 
-                if (!Physics.Raycast(basicTileVariables.referenceTile.transform.position, Vector3.up, out hit, 1))
+                if (!Physics.Raycast(basicTileVariables.referenceTile.transform.position, Vector3.up, out hit, 1) || (basicTileVariables.referenceTile == advancedTile))
                 {
                     basicTileVariables.listOfNearbyValidTiles.Add(basicTileVariables.referenceTile);
                 }

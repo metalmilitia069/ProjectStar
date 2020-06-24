@@ -36,20 +36,34 @@ public class EnemyInput : MonoBehaviour
         {
             if (EnemyMoveVariables._isMoveMode)
             {
-                if (!EnemyMoveVariables.isMoving)
-                {
-                    GetComponent<EnemyPathAI>().FindNearestTarget();
-                    //GetComponent<EnemyPathAI>().CalculatePath();
+                //if (!EnemyMoveVariables.isMoving)
+                //{
+                //    GetComponent<EnemyPathAI>().FindNearestTarget();
+                //    GetComponent<EnemyPathAI>().CalculatePath();
+                //    GridManager.CalculateAvailablePathForTheAI(this.gameObject);
 
-                }
-                else
+                //}
+                //else
+                //{
+                //    GetComponent<EnemyMove>().Move();
+                //}
+
+                if (EnemyMoveVariables.isMoving)
                 {
                     GetComponent<EnemyMove>().Move();
                 }
 
                 if (!EnemyMoveVariables.isTilesFound)
                 {
-
+                    if (EnemyTurnVariables.actionPoints <= 0)
+                    {
+                        TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
+                        return;
+                    }
+                    GridManager.inputEnemy = this;
+                    GetComponent<EnemyPathAI>().FindNearestTarget();
+                    GetComponent<EnemyPathAI>().CalculatePath();
+                    GridManager.CalculateAvailablePathForTheAI(this.gameObject);
                 }
             }
         }
