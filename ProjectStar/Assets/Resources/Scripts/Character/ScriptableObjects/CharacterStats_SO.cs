@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterStats", menuName = "ScriptableVariables/Type: CharacterStats")]
 public class CharacterStats_SO : ScriptableObject
 {
+    public bool canBeAttacked = false;
+
     //Character Stats
     //Attack Stats
     [Header("ATTACK STATS")]

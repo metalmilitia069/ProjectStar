@@ -5,5 +5,28 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyCombat", menuName = "ScriptableVariables/Type: EnemyCombat")]
 public class EnemyCombat_SO : ScriptableObject
 {
-    
+    [SerializeField]
+    public WeaponClass _weaponClass;// = WeaponClass.Gun;    
+    public int _currentWeaponIndex;
+
+
+
+    public List<CharacterInput> _listOfScannedCharacters = new List<CharacterInput>();
+
+    public GameObject weaponGripPlace;
+
+    //public delegate void OnAttack(WeaponInput weaponBaseClass);
+    //public static event OnAttack EventAttackTarget;
+
+    //TEST 
+    public GameObject[] weaponPrefabBelt;
+    public GameObject[] weaponInstanceBelt;
+    public GameObject[] weaponHolsters;
+    public int weaponBeltSize = 4;
+
+
+    private void OnDisable()
+    {
+        _listOfScannedCharacters.Clear();
+    }
 }

@@ -132,4 +132,56 @@ public class WeaponBasic : MonoBehaviour
         weaponBasicVariables.successShotProbability = 1;
         weaponBasicVariables.damagePenalty = 1.0f;
     }
+
+    //AI WEAPON METHODS
+    public void GatherAIWeaponAttackStats(EnemyInput enemy, CharacterInput character)//(CharacterCombat character, EnemyBaseClass enemy)
+    {
+        transform.LookAt(character.transform);
+        Ray ray = new Ray(weaponBasicVariables.firePoint.transform.position, transform.forward * 100);//enemy.transform.position);//Input.mousePosition);
+        Debug.DrawRay(weaponBasicVariables.firePoint.transform.position, transform.forward * 100, Color.red, 2);//enemy.transform.position, Color.red, 1);//Input.mousePosition, Color.red, 1);
+
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(ray, Vector3.Distance(this.transform.position, character.transform.position));//Mathf.Infinity);//enemy.transform.position.magnitude);
+
+        foreach (var hit in hits)
+        {
+            TileModifier cover = hit.collider.GetComponent<TileModifier>();
+
+            if (cover && cover.isCover)
+            {
+                if (cover.isHalfCover)
+                {
+                    Debug.Log("Hit HALF Cover");
+                    weaponBasicVariables.successShotProbability -= cover.halfCoverPenalty;
+                    weaponBasicVariables.isHalfCover = true;
+                }
+                else if (cover.isFullCover)//&& !isCoverComputed)
+                {
+                    Debug.Log("Hit FULL Cover");
+                    weaponBasicVariables.successShotProbability -= cover.fullCoverPenalty;
+                    weaponBasicVariables.isFullCover = true;
+                }
+            }
+
+            CharacterInput characterclass = hit.collider.GetComponent<CharacterInput>();
+
+            if (characterclass)
+            {
+                //Debug.Log("Hit Enemy!!!");
+                weaponBasicVariables.distanceFromTarget = Vector3.Distance(enemy.transform.position, character.transform.position);
+                //Debug.Log("Distance From The Target: " + distanceFromTarget);
+                if (weaponBasicVariables.optimalRange + 1 >= weaponBasicVariables.distanceFromTarget && weaponBasicVariables.optimalRange - 1 <= weaponBasicVariables.distanceFromTarget)//
+                {
+                    weaponBasicVariables.damagePenalty -= 0f;
+                    weaponBasicVariables.successShotProbability -= 0f;
+                }
+                else
+                {
+                    weaponBasicVariables.damagePenalty -= 0.2f;
+                    weaponBasicVariables.successShotProbability -= .1f;
+                }
+                CalculateBaseDamage();
+            }
+        }
+    }
 }

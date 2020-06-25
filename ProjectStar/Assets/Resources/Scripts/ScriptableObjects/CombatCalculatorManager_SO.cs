@@ -26,6 +26,15 @@ public class CombatCalculatorManager_SO : ScriptableObject
     [SerializeField]
     public float _playerCriticalDamageModifier;
 
+    [Header("ENEMY GATHERED ATTACK STATS")]
+    //Attack Stats
+    [SerializeField]
+    public int _enemyDamageModifier;
+    [SerializeField]
+    public float _enemyCriticalChanceModifier;
+    [SerializeField]
+    public float _enemyCriticalDamageModifier;
+
     //TODO: Elemental Attack
     [Header("PLAYER GATHERED ELEMENTAL ATTACK STATS")]
     [SerializeField]
@@ -37,7 +46,26 @@ public class CombatCalculatorManager_SO : ScriptableObject
     [SerializeField]
     public int _playerElementalDmgPoison;
 
+    [Header("ENEMY GATHERED ELEMENTAL ATTACK STATS")]
+    [SerializeField]
+    public int _enemyElementalDmgFire;
+    [SerializeField]
+    public int _enemyElementalDmgElectricity;
+    [SerializeField]
+    public int _enemyElementalDmgCold;
+    [SerializeField]
+    public int _enemyElementalDmgPoison;
+
     [Header("DEFENSE STATS")]
+
+    [Header("PLAYER GATHERED DEFENSE STATS")]
+    //Defense Stats
+    [SerializeField]
+    public int _playerArmorNormal;
+    [SerializeField]
+    public int _playerArmorBlindage;
+    [SerializeField]
+    public float _playerDodgeChance;
 
     [Header("ENEMY GATHERED DEFENSE STATS")]
     //Defense Stats
@@ -49,7 +77,18 @@ public class CombatCalculatorManager_SO : ScriptableObject
     public float _enemyDodgeChance;
 
     //TODO: Elemental Defense
-    [Header("ELEMENTAL DEFENSE STATS")]
+
+    [Header("PLAYER GATHERED ELEMENTAL DEFENSE STATS")]
+    [SerializeField]
+    public int _playerElementalDefFire;
+    [SerializeField]
+    public int _playerElementalDefElectricity;
+    [SerializeField]
+    public int _playerElementalDefCold;
+    [SerializeField]
+    public int _playerElementalDefPoison;
+
+    [Header("ENEMY GATHERED ELEMENTAL DEFENSE STATS")]
     [SerializeField]
     public int _enemyElementalDefFire;
     [SerializeField]
@@ -94,11 +133,11 @@ public class CombatCalculatorManager_SO : ScriptableObject
     }
 
     public void PlayerFinalAttackCalculation(EnemyInput enemy)
-    {        
+    {
         float finalAttackProbability = _weaponSuccessShotProbability - _enemyDodgeChance;
         float diceRoll = Random.Range(0.0f, 1.0f);
         bool success = (diceRoll <= finalAttackProbability);
-        
+
 
         if (!isShowProbabilities)
         {
@@ -131,10 +170,10 @@ public class CombatCalculatorManager_SO : ScriptableObject
             isShowProbabilities = true;
 
             enemy.GetComponent<EnemyCombat>().ApplyDamage(_finalDamage);
-        }        
+        }
 
         ResetCalculaterVariables();
-    }   
+    }
 
     public string DisplayShotChance()
     {
@@ -149,5 +188,62 @@ public class CombatCalculatorManager_SO : ScriptableObject
     {
         _finalDamage = default;
         _finalCriticalProbability = default;
+    }
+
+    //NPC AI COMBAT CALCULATIONS
+
+    public void GatherPlayerDefenseStats(CharacterInput CharacterRef)//(CharacterInput character, EnemyInput enemyRef)
+    {
+        _playerArmorNormal = CharacterRef.characterStatsVariables._armorNormal;//
+        _playerArmorBlindage = CharacterRef.characterStatsVariables._armorBlindage;//
+        _playerDodgeChance = CharacterRef.characterStatsVariables._dodgeChance;//        
+    }
+
+    public void GatherEnemyAttackStats(EnemyInput enemyRef)
+    {
+        _enemyDamageModifier = enemyRef.EnemyStatsVariables._damageModifier;//   
+        _enemyCriticalChanceModifier = enemyRef.EnemyStatsVariables._criticalChanceModifier;//        
+        _enemyCriticalDamageModifier = enemyRef.EnemyStatsVariables._criticalDamageModifier;//
+    }
+
+    public void EnemyFinalAttackCalculation(CharacterInput character)
+    {
+        float finalAttackProbability = _weaponSuccessShotProbability - _playerDodgeChance;
+        float diceRoll = Random.Range(0.0f, 1.0f);
+        bool success = (diceRoll <= finalAttackProbability);
+        
+        
+            if (success)
+            {
+                int finalDamage = _weaponCalculatedBaseDamage + _enemyDamageModifier - _playerArmorNormal - _playerArmorBlindage;
+                _finalDamage = finalDamage;
+                float finalCriticalProbability = _weaponCriticalChance + _enemyCriticalChanceModifier;
+                _finalCriticalProbability = finalCriticalProbability;
+                float diceRoll02 = Random.Range(0.0f, 1.0f);
+                bool success02 = (diceRoll02 <= finalCriticalProbability);
+
+                if (success02)
+                {
+                    finalDamage = (finalDamage * ((int)(_weaponCriticalDamage + _enemyCriticalDamageModifier)));
+                    _finalDamage = finalDamage;
+                    Debug.Log("Enemy Critical Shot Success!!!");
+                }
+            }
+            else
+            {
+                Debug.Log("Enemy Shot MISSED!!!");
+                _finalDamage = 0;
+            }
+
+
+            Debug.Log("Calculated Critical Chance = " + _finalCriticalProbability);
+            Debug.Log("FINAL DAMAGE ON ENEMY = " + _finalDamage);
+
+            
+
+            character.GetComponent<CharacterCombat>().ApplyDamage(_finalDamage);
+        
+
+        ResetCalculaterVariables();
     }
 }

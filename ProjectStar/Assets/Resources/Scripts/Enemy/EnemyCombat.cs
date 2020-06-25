@@ -37,6 +37,57 @@ public class EnemyCombat : MonoBehaviour
         
     }
 
+    public void ScanForCharacters()
+    {
+        if (EnemyCombatVariables._listOfScannedCharacters.Count > 0)
+        {
+            foreach (var character in EnemyCombatVariables._listOfScannedCharacters)
+            {
+                character.characterStatsVariables.canBeAttacked = false;
+            }
+        }
+
+        EnemyCombatVariables._listOfScannedCharacters.Clear();
+
+        foreach (var item in GetComponent<CharacterInput>().GridManager.listOfSelectableTiles)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(item.transform.position, Vector3.up, out hit, 1))
+            {
+                CharacterInput characterPlaceHolder = hit.collider.GetComponent<CharacterInput>();
+                if (characterPlaceHolder)
+                {
+                    EnemyCombatVariables._listOfScannedCharacters.Add(characterPlaceHolder);
+                    characterPlaceHolder.characterStatsVariables.canBeAttacked = true;
+
+                }
+            }
+        }
+    }
+
+    public void Attack(CharacterInput character)
+    {
+        transform.LookAt(character.transform);
+
+        EnemyInput enemyInput = GetComponent<EnemyInput>();        
+
+        weapon.GetComponent<WeaponBasic>().GatherAIWeaponAttackStats(enemyInput, character); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
+
+        enemyInput.CombatCalculatorManager.GatherPlayerDefenseStats(character); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
+        enemyInput.CombatCalculatorManager.GatherEnemyAttackStats(enemyInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
+        enemyInput.CombatCalculatorManager.EnemyFinalAttackCalculation(character); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
+
+        this.GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints--;
+
+        if (this.GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints <= 0)
+        {
+            GetComponent<EnemyInput>().TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
+            return;
+            //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);  //TODO: implement TURN MANAGER
+        }
+
+    }
+
     public void ApplyDamage(int Damage)
     {
         int enemyHealth = GetComponent<EnemyStats>().EnemyStatsVariables.health -= Damage;
