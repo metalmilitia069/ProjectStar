@@ -66,8 +66,6 @@ public class EnemyMove : MonoBehaviour
             GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints--;
             //PUT EVENT TO HIDE TILES
         }
-
-
     }
 
     private void SetMovementDirection(Vector3 destinationCoordinates)

@@ -61,13 +61,13 @@ public class EnemyPathAI : MonoBehaviour
         openList.Add(currentTile);
         currentTile.advancedTileVariables.h = Vector3.Distance(currentTile.transform.position, targetTile.transform.position);
         currentTile.advancedTileVariables.f = currentTile.advancedTileVariables.h;
-
+        
         while (openList.Count > 0)
         {
             //A* algorithm
 
             AdvancedTile t = FindLowestF(openList);
-
+            
             closeList.Add(t);
 
             if (t == targetTile)
@@ -141,16 +141,25 @@ public class EnemyPathAI : MonoBehaviour
             next = next.basicTileVariables.parent;
         }
 
-        if (tempPath.Count <= GetComponent<EnemyMove>().enemyMoveVariables._movePoints)
+        if (tempPath.Count <= GetComponent<EnemyCombat>().weapon.GetComponent<WeaponBasic>().weaponBasicVariables.weaponRange)//GetComponent<EnemyMove>().enemyMoveVariables._movePoints)
         {
-            return t.basicTileVariables.parent;
+            int distance = tempPath.Count - GetComponent<EnemyMove>().enemyMoveVariables._movePoints;
+
+            AdvancedTile temp = tempPath.Pop();
+            return temp;
+
+
+            //Debug.Log("teu cu");
+            //return t.basicTileVariables.parent;
         }
 
         AdvancedTile endTile = null;//default;
         for (int i = 0; i <= GetComponent<EnemyMove>().enemyMoveVariables._movePoints; i++)
-        {
+        {            
             endTile = tempPath.Pop();
         }
+
+        Debug.Log("end tile mozo");
 
         return endTile;
 

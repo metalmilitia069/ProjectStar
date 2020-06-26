@@ -216,7 +216,7 @@ public class GridManager_SO : ScriptableObject
         return tilePlaceholder;
     }
 
-    public void CalculateAvailablePathForTheAI(GameObject enemy)
+    public void CalculateAvailablePathForTheAI(GameObject enemy)// THE ONLY FUNCTION OF THIS METHOD IS TO USE BFS ALGORITHM TO SHOW AI MOVEMENT OPTIONS. NOT RELEVANT TO ITS MOVEMENT
     {
         //inputEnemy = enemy.GetComponent<EnemyInput>(); >>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -269,8 +269,12 @@ public class GridManager_SO : ScriptableObject
 
         while (next != null)
         {
-            stackTilePath.Push(next);
+            stackTilePath.Push(next);            
             next = next.basicTileVariables.parent;
         }
+
+        // UNCOMMENT THIS IF YOU DONT NEED TO SHOW AI PATH OPTIONS
+        //inputEnemy.EnemyMoveVariables.currentTile = tilePlaceholder;
+        //inputEnemy.EnemyMoveVariables.isTilesFound = true;
     }
 }

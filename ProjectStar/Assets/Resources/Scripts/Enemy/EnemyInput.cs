@@ -51,7 +51,7 @@ public class EnemyInput : MonoBehaviour
                     GridManager.inputEnemy = this;
                     GetComponent<EnemyPathAI>().FindNearestTarget();
                     GetComponent<EnemyPathAI>().CalculatePath();
-                    GridManager.CalculateAvailablePathForTheAI(this.gameObject);
+                    GridManager.CalculateAvailablePathForTheAI(this.gameObject); // THE ONLY FUNCTION OF THIS METHOD IS TO USE BFS ALGORITHM TO SHOW AI MOVEMENT OPTIONS. NOT RELEVANT TO ITS MOVEMENT
                 }
             }
             if (EnemyMoveVariables._isCombatMode)
