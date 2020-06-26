@@ -143,7 +143,7 @@ public class EnemyPathAI : MonoBehaviour
 
         if (tempPath.Count <= GetComponent<EnemyCombat>().weapon.GetComponent<WeaponBasic>().weaponBasicVariables.weaponRange)//GetComponent<EnemyMove>().enemyMoveVariables._movePoints)
         {
-            int distance = tempPath.Count - GetComponent<EnemyMove>().enemyMoveVariables._movePoints;
+            
 
             AdvancedTile temp = tempPath.Pop();
             return temp;

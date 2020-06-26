@@ -139,12 +139,19 @@ public class CharacterCombat : MonoBehaviour
 
         this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
 
+        
+
+
         if (this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0)
         {
             GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+            
+            GetComponent<CharacterInput>().ChangeMode();
             return;
             //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);  //TODO: implement TURN MANAGER
         }
+
+        
 
     }
 
