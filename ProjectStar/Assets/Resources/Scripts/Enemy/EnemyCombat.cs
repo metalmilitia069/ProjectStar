@@ -37,7 +37,14 @@ public class EnemyCombat : MonoBehaviour
         
     }
 
-    public void ScanForCharacters()
+    public void ScanRoutine()
+    {
+        ChooseTargetAI(ScanForPlayerCharacters());
+
+
+    }
+
+    public bool ScanForPlayerCharacters()
     {
         if (EnemyCombatVariables._listOfScannedCharacters.Count > 0)
         {
@@ -49,7 +56,7 @@ public class EnemyCombat : MonoBehaviour
 
         EnemyCombatVariables._listOfScannedCharacters.Clear();
 
-        foreach (var item in GetComponent<CharacterInput>().GridManager.listOfSelectableTiles)
+        foreach (var item in GetComponent<EnemyInput>().GridManager.listOfSelectableTiles)
         {
             RaycastHit hit;
             if (Physics.Raycast(item.transform.position, Vector3.up, out hit, 1))
@@ -59,10 +66,35 @@ public class EnemyCombat : MonoBehaviour
                 {
                     EnemyCombatVariables._listOfScannedCharacters.Add(characterPlaceHolder);
                     characterPlaceHolder.characterStatsVariables.canBeAttacked = true;
-
                 }
             }
         }
+
+        return (EnemyCombatVariables._listOfScannedCharacters.Count > 0);
+    }
+
+    public void ChooseTargetAI(bool foundEnemies) //RIGHT NOW, IT LOOKS FOR THE CLOSEST PLAYER CHARACTER!!!!  MODIFY LATER TO INCLUDE OTHER CASES!!!!
+    {
+        if (!foundEnemies)
+        {
+            return;
+        }
+
+        float closest = float.MaxValue;
+        int index = default;
+
+        foreach (var character in EnemyCombatVariables._listOfScannedCharacters)
+        {
+            float distance = Vector3.Distance(this.transform.position, character.transform.position);
+            if (distance < closest)
+            {
+                closest = distance;
+                index = EnemyCombatVariables._listOfScannedCharacters.IndexOf(character);
+            }
+        }
+
+
+        Attack(EnemyCombatVariables._listOfScannedCharacters[index]);
     }
 
     public void Attack(CharacterInput character)
@@ -79,14 +111,16 @@ public class EnemyCombat : MonoBehaviour
 
         this.GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints--;
 
-        if (this.GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints <= 0)
-        {
-            GetComponent<EnemyInput>().TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
-            return;
-            //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);  //TODO: implement TURN MANAGER
-        }
+        //if (this.GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints <= 0)
+        //{
+        //    GetComponent<EnemyInput>().TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
+        //    return;
+        //    //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);  //TODO: implement TURN MANAGER
+        //}
 
     }
+
+    //DAMAGE FROM PLAYER
 
     public void ApplyDamage(int Damage)
     {

@@ -11,7 +11,6 @@ public class EnemyInput : MonoBehaviour
     [Header("INSERT A TURN MANAGER SO :")]
     public TurnManager_SO TurnManager;
 
-
     [Header("ENEMY PATH AI VARIABLES - INSTANCE :")]
     public EnemyPathAI_SO enemyPathAIVariables;
     [Header("ENEMY MOVE VARIABLES - INSTANCE :")]
@@ -34,20 +33,29 @@ public class EnemyInput : MonoBehaviour
     {
         if (EnemyTurnVariables.isTurnActive)
         {
+            if (EnemyTurnVariables.actionPoints <= 0)
+            {
+                TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
+                return;
+            }
+
             if (EnemyMoveVariables._isMoveMode)
             {
                 if (EnemyMoveVariables.isMoving)
                 {
                     GetComponent<EnemyMove>().Move();
+                    enemyPathAIVariables.isScanRoutineDone = false;
+                    return;
+                }
+
+                if (!enemyPathAIVariables.isScanRoutineDone)
+                {                    
+                    ChangeMode();
+                    return;
                 }
 
                 if (!EnemyMoveVariables.isTilesFound)
-                {
-                    if (EnemyTurnVariables.actionPoints <= 0)
-                    {
-                        TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
-                        return;
-                    }
+                {                    
                     GridManager.inputEnemy = this;
                     GetComponent<EnemyPathAI>().FindNearestTarget();
                     GetComponent<EnemyPathAI>().CalculatePath();
@@ -58,15 +66,12 @@ public class EnemyInput : MonoBehaviour
             {
                 if (!EnemyMoveVariables.isAttackRangeFound)
                 {
-                    ////>>>>>>>REDO THIS WITH WEAPON BELT!!!!!!!!!!!
-                    //characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
-                    //if (characterTurnVariables.actionPoints <= 0)
-                    //{
-                    //    TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
-                    //    return;
-                    //}
-                    //GridManager.CalculateAttackPath(this.gameObject);
-                    //GetComponent<CharacterCombat>().ScanForEnemies();
+                    EnemyMoveVariables._weaponRange = GetComponent<EnemyCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //CHANGE ONCE THE WEAPON BELT SYSTEM IS DONE!!!!
+                    GridManager.CalculateAttackPathForTheAI(this.gameObject);
+                    GetComponent<EnemyCombat>().ScanRoutine();
+                    enemyPathAIVariables.isScanRoutineDone = true;
+                    ChangeMode();
+                    return;                    
                 }
             }
         }
@@ -77,5 +82,32 @@ public class EnemyInput : MonoBehaviour
         Debug.Log(CombatCalculatorManager.DisplayShotChance());
     }
 
-    
+    public void ChangeMode()
+    {
+        if (EnemyMoveVariables._isMoveMode)
+        {
+            EnemyMoveVariables._isCombatMode = true;
+            EnemyMoveVariables._isMoveMode = false;
+            EnemyMoveVariables.isAttackRangeFound = false;
+            foreach (var item in GridManager.tileList_SO.GetList())
+            {
+                item.basicTileVariables.isMoveMode = false;
+            }
+
+        }
+        else if (EnemyMoveVariables._isCombatMode)
+        {
+            EnemyMoveVariables._isCombatMode = false;
+            EnemyMoveVariables._isMoveMode = true;
+            EnemyMoveVariables.isTilesFound = false;
+            foreach (var item in GridManager.tileList_SO.GetList())
+            {
+                item.basicTileVariables.isMoveMode = true;
+            }
+        }
+
+        GridManager.ClearSelectableTiles();
+    }
+
+
 }

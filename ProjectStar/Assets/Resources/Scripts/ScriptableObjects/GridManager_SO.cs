@@ -216,9 +216,11 @@ public class GridManager_SO : ScriptableObject
         return tilePlaceholder;
     }
 
+    //##################################################################### AI-ONLY METHODS ##########################################################################################
+
     public void CalculateAvailablePathForTheAI(GameObject enemy)// THE ONLY FUNCTION OF THIS METHOD IS TO USE BFS ALGORITHM TO SHOW AI MOVEMENT OPTIONS. NOT RELEVANT TO ITS MOVEMENT
     {
-        //inputEnemy = enemy.GetComponent<EnemyInput>(); >>>>>>>>>>>>>>>>>>>>>>>>
+        inputEnemy = enemy.GetComponent<EnemyInput>(); // REDUNDANT>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 
@@ -276,5 +278,43 @@ public class GridManager_SO : ScriptableObject
         // UNCOMMENT THIS IF YOU DONT NEED TO SHOW AI PATH OPTIONS
         //inputEnemy.EnemyMoveVariables.currentTile = tilePlaceholder;
         //inputEnemy.EnemyMoveVariables.isTilesFound = true;
+    }
+
+    public void CalculateAttackPathForTheAI(GameObject enemy)
+    {
+        inputEnemy = enemy.GetComponent<EnemyInput>(); //REDUNDANT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        UpdateScanAllTiles(null); //EventScanTilesUpdate();
+        GetCurrentTile(enemy);
+
+        //BFS Algorithm
+        var queueProcess = new Queue<AdvancedTile>();
+
+        queueProcess.Enqueue(tilePlaceholder);
+        tilePlaceholder.basicTileVariables.isVisited = true;
+
+        while (queueProcess.Count > 0)
+        {
+            AdvancedTile t = queueProcess.Dequeue();
+
+            listOfSelectableTiles.Add(t);
+            t.basicTileVariables.isAttakable = true;
+
+            if (t.basicTileVariables.distance < inputEnemy.EnemyMoveVariables._weaponRange) //CHANGE THE CURRENT WEAPON RANGE ONCE THE WEAPON BELT SYSTEM IS IN PLACE!!!!!!!!!!!!!!!!!
+            {
+                foreach (var tile in t.basicTileVariables.listOfNearbyValidTiles)
+                {
+                    if (!tile.basicTileVariables.isVisited)
+                    {
+                        tile.basicTileVariables.parent = t;
+                        tile.basicTileVariables.isVisited = true;
+                        tile.basicTileVariables.distance = 1 + t.basicTileVariables.distance;
+                        queueProcess.Enqueue(tile);
+                    }
+                }
+            }
+        }
+        inputCharacter.characterMoveVariables.currentTile = tilePlaceholder;
+        inputCharacter.characterMoveVariables.isAttackRangeFound = true;
     }
 }

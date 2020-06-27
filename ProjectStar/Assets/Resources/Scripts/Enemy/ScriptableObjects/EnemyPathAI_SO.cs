@@ -8,4 +8,6 @@ public class EnemyPathAI_SO : ScriptableObject
     public GameObject characterTarget;
 
     public AdvancedTile actualTargetTile;
+
+    public bool isScanRoutineDone = false;
 }

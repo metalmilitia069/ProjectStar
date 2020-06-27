@@ -100,6 +100,10 @@ public class BasicTile : MonoBehaviour
                         {
                             basicTileVariables.listOfNearbyValidTiles.Add(basicTileVariables.referenceTile);
                         }
+                        if (hit.transform.GetComponent<CharacterInput>())
+                        {
+                            basicTileVariables.listOfNearbyValidTiles.Add(basicTileVariables.referenceTile);
+                        }
                     }
                 }
 
