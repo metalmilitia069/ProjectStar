@@ -233,13 +233,19 @@ public class TurnManager_SO : ScriptableObject
         {
             isGameOver = true;
             Debug.Log("GAME OVER, PAL!");
-            
+            Debug.Log("TODO: Implement END GAME Sequence and Stuff!!!!");
+            Time.timeScale = 0;
         }
         else if (enemyTeamList.Count < 1 && inactiveEnemyTeamList.Count < 1)
         {
             isGameWon = true;
             Debug.Log("GAME WON!!!!");
+            Debug.Log("TODO: Implement END GAME Sequence and Stuff!!!!");
+            Time.timeScale = 0;
         }
+
+
+        
     }
 
 
@@ -251,7 +257,6 @@ public class TurnManager_SO : ScriptableObject
         bool conditionTwo = false;
         CharacterTurn characterTempToBeActivated = default;
         CharacterTurn charTempToBeDeactivated = default;
-        Debug.Log("MOZO");
 
         foreach (var character in playerTeamList)
         {
