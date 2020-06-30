@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f213b8881c2f878479294727ce592fb3, type: 3}
+  m_Name: WeaponBasic
+  m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 0}
+  weaponGripSocket: {fileID: 0}
+  weaponHolsterSocket: {fileID: 0}
+  firePoint: {fileID: 0}
+  weaponClass: 0
+  isCurrent: 0
+  weaponRange: 1
+  optimalRange: 1
+  minDamage: 5
+  maxDamage: 7
+  calculatedBaseDamage: 0
+  distanceFromTarget: 0
+  weaponCriticalChance: 0.1
+  successShotProbability: 1
+  damagePenalty: 1
+  weaponCriticalDamage: 1.5
+  isFullCover: 0
+  isHalfCover: 0
+  hasSpread: 0
+  fireRate: 0

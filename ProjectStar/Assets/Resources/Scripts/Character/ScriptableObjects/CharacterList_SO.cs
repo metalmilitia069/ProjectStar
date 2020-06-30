@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerCharacterList", menuName = "ScriptableLists/Type: Player")]
 public class CharacterList_SO : ScriptableObject
 {
-    public List<GroupableEntities> listOfAllCharacters;
+    public List<GroupableEntities> listOfAllCharacters = new List<GroupableEntities>();
 
     public void AddCharacter(GroupableEntities adChar)
     {

@@ -29,6 +29,11 @@ public class CharacterInjection : MonoBehaviour
         GetComponent<CharacterInput>().characterTurnVariables = GetComponent<CharacterTurn>().characterTurnVariables;
 
 
+        //
+        //GetComponent<CharacterMove>().GridManager = ScriptableObject.CreateInstance<GridManager_SO>();  //
+        //GetComponent<CharacterInput>().GridManager = GetComponent<CharacterMove>().GridManager;  //        
+        //
+
 
         listOfAllCharacters_SO.AddCharacter(this.GetComponent<CharacterTurn>());
 

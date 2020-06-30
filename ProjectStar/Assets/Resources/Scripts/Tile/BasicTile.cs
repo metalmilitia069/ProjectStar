@@ -28,8 +28,10 @@ public class BasicTile : MonoBehaviour
         basicTileVariables.isTarget = false;//
 
 
-
-        basicTileVariables.listOfNearbyValidTiles.Clear();//
+        if (basicTileVariables.listOfNearbyValidTiles != null)
+        {            
+            basicTileVariables.listOfNearbyValidTiles.Clear();//            
+        }
 
 
 
@@ -49,7 +51,7 @@ public class BasicTile : MonoBehaviour
 
         //AI STUFF
         GetComponent<AdvancedTile>().advancedTileVariables.f = GetComponent<AdvancedTile>().advancedTileVariables.g = GetComponent<AdvancedTile>().advancedTileVariables.h = 0;
-
+        
     }
 
     public void ScanTiles(AdvancedTile advancedTile)

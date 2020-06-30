@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TilesList", menuName = "ScriptableLists/Type: Tiles")]
 public class TileList_SO : ScriptableObject
 {
-    private List<AdvancedTile> listOfAllTiles;
+    private List<AdvancedTile> listOfAllTiles = new List<AdvancedTile>();
     
     public void AddTile(AdvancedTile adTile)
     {

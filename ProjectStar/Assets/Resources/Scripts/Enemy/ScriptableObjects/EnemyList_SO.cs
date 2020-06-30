@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AllEnemiesList", menuName = "ScriptableLists/Type: Enemy")]
 public class EnemyList_SO : ScriptableObject
 {
-    private List<GroupableEntities> listOfAllEnemies;
+    private List<GroupableEntities> listOfAllEnemies = new List<GroupableEntities>();
 
     public void AddCharacter(GroupableEntities adChar)
     {
