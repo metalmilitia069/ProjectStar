@@ -16,7 +16,7 @@ MonoBehaviour:
   characterLevel: 10
   characterGender: 0
   characterClass: 0
-  characterGeometryMale: {fileID: -927199367670048503, guid: 4b0d6498f3767b34297648a0eaeef66c,
+  characterGeometryMale: {fileID: 7810445314511055672, guid: b023dc28b7e2eb24eaf4be5d78cb7002,
     type: 3}
-  characterGeometryFemale: {fileID: -927199367670048503, guid: 94e448671b6a2814d9af95c9ea11ec8a,
+  characterGeometryFemale: {fileID: 9099968337019836694, guid: 2107c6e2a13cdc04d8e4a14e0efc098e,
     type: 3}
