@@ -164,13 +164,14 @@ GameObject:
   - component: {fileID: 30301481}
   - component: {fileID: 30301488}
   - component: {fileID: 30301487}
+  - component: {fileID: 30301490}
   - component: {fileID: 30301486}
   - component: {fileID: 30301485}
   - component: {fileID: 30301484}
   - component: {fileID: 30301489}
   - component: {fileID: 30301483}
   m_Layer: 0
-  m_Name: PlayerCharacter01
+  m_Name: PlayerCharacter0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,6 +226,7 @@ MonoBehaviour:
   TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
   MainCameraControllerVariables: {fileID: 11400000, guid: d77d1dce774166949a5304f35e5beee0,
     type: 2}
+  characterSetupVariables: {fileID: 0}
   characterMoveVariables: {fileID: 11400000, guid: da0c41caeee90ce459bc90185aa05248,
     type: 2}
   characterCombatVariables: {fileID: 11400000, guid: eea9094c4fed89847ba7577a07587f58,
@@ -323,6 +325,26 @@ MonoBehaviour:
   characterTurnVariables: {fileID: 11400000, guid: 2b423a142b6c98443bb98ce1c6c2f738,
     type: 2}
   teamId: 1
+--- !u!114 &30301490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30301480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39081f91328f75343947f24196369cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterSetupVariables: {fileID: 11400000, guid: ce17c3a72fa72c1429c6abf511cf573f,
+    type: 2}
+  Description: SETUP CHARACTER BASIC CONFIGURATION
+  characterName: Veio Bebo
+  characterLevel: 1
+  characterGender: 1
+  characterClass: 5
+  characterGeometryPoint: {fileID: 1029333888}
 --- !u!1 &37326591
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +679,7 @@ GameObject:
   - component: {fileID: 292916632}
   - component: {fileID: 292916631}
   m_Layer: 0
-  m_Name: PlayerCharacter04
+  m_Name: PlayerCharacter03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -681,6 +703,7 @@ MonoBehaviour:
   TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
   MainCameraControllerVariables: {fileID: 11400000, guid: d77d1dce774166949a5304f35e5beee0,
     type: 2}
+  characterSetupVariables: {fileID: 0}
   characterMoveVariables: {fileID: 0}
   characterCombatVariables: {fileID: 0}
   characterStatsVariables: {fileID: 0}
@@ -800,7 +823,7 @@ Transform:
   - {fileID: 9760052}
   - {fileID: 185594136}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &334614433
 GameObject:
@@ -820,7 +843,7 @@ GameObject:
   - component: {fileID: 334614435}
   - component: {fileID: 334614434}
   m_Layer: 0
-  m_Name: PlayerCharacter03
+  m_Name: PlayerCharacter02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -844,6 +867,7 @@ MonoBehaviour:
   TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
   MainCameraControllerVariables: {fileID: 11400000, guid: d77d1dce774166949a5304f35e5beee0,
     type: 2}
+  characterSetupVariables: {fileID: 0}
   characterMoveVariables: {fileID: 0}
   characterCombatVariables: {fileID: 0}
   characterStatsVariables: {fileID: 0}
@@ -963,7 +987,7 @@ Transform:
   - {fileID: 1576089925}
   - {fileID: 2046874784}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &337840610
 GameObject:
@@ -1831,7 +1855,7 @@ Transform:
   - {fileID: 460952664}
   - {fileID: 238998606}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &683346654
 GameObject:
@@ -2134,7 +2158,7 @@ Transform:
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -2632,6 +2656,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: character_test
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4b0d6498f3767b34297648a0eaeef66c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b0d6498f3767b34297648a0eaeef66c, type: 3}
 --- !u!1 &963194225
@@ -2732,7 +2761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &977883722
 Transform:
   m_ObjectHideFlags: 0
@@ -2748,7 +2777,7 @@ Transform:
   - {fileID: 1648025668}
   - {fileID: 2138281300}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1011313227
 GameObject:
@@ -4961,7 +4990,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1854447610
 MonoBehaviour:
@@ -5106,7 +5135,7 @@ GameObject:
   - component: {fileID: 1960115365}
   - component: {fileID: 1960115364}
   m_Layer: 0
-  m_Name: PlayerCharacter02
+  m_Name: PlayerCharacter01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5130,6 +5159,7 @@ MonoBehaviour:
   TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
   MainCameraControllerVariables: {fileID: 11400000, guid: d77d1dce774166949a5304f35e5beee0,
     type: 2}
+  characterSetupVariables: {fileID: 0}
   characterMoveVariables: {fileID: 0}
   characterCombatVariables: {fileID: 0}
   characterStatsVariables: {fileID: 0}
@@ -5249,7 +5279,7 @@ Transform:
   - {fileID: 1330003502}
   - {fileID: 514236117}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1973803014
 PrefabInstance:

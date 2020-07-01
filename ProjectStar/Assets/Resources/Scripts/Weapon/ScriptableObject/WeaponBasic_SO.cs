@@ -88,6 +88,16 @@ public class WeaponBasic_SO : ScriptableObject
 
                 successShotProbability = 1.0f;
                 break;
+            case WeaponClass.Sniper:
+                weaponRange = 8;
+                optimalRange = 7;
+                minDamage = 5;
+                maxDamage = 7;
+                weaponCriticalChance = .3f;
+                weaponCriticalDamage = 1.5f;
+
+                successShotProbability = 1.0f;
+                break;
             default:
                 Debug.Log("No Weapon Selected");
                 break;
@@ -101,4 +111,5 @@ public enum WeaponClass
     Gun,
     Rifle,
     MiniGun,
+    Sniper,
 }

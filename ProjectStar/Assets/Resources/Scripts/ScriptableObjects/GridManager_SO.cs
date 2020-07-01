@@ -91,7 +91,7 @@ public class GridManager_SO : ScriptableObject
 
     public void CalculateAvailablePath(GameObject character)
     {
-        Debug.Log("listOfSelecatbleTiles.Count = " + listOfSelectableTiles.Count);
+        //Debug.Log("listOfSelecatbleTiles.Count = " + listOfSelectableTiles.Count);
         inputCharacter = character.GetComponent<CharacterInput>();
 
 
@@ -161,13 +161,15 @@ public class GridManager_SO : ScriptableObject
         {
             foreach (var tile in listOfSelectableTiles)
             {
-
-                Debug.Log("listOfSelecatbleTiles.Count = " + listOfSelectableTiles.Count);
-                Debug.Log("tile name = " + tile.name);
-                tile.GetComponent<BasicTile>().ResetTileData();
+                if (tile != null)
+                {
+                    //Debug.Log("tile name = " + tile.name);
+                    tile.GetComponent<BasicTile>().ResetTileData();
+                }
             }
-            
+
             listOfSelectableTiles.Clear();
+            //Debug.Log("listOfSelecatbleTiles.Count = " + listOfSelectableTiles.Count);
         }
 
     }

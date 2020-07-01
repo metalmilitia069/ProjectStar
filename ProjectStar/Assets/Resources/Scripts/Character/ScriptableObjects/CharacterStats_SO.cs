@@ -5,7 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterStats", menuName = "ScriptableVariables/Type: CharacterStats")]
 public class CharacterStats_SO : ScriptableObject
 {
+
+    [TextArea(1, 10)]
+    public string Description = "SETUP CHARACTER STATS CONFIGURATION";
+
+
+
     public bool canBeAttacked = false;
+    public int maxActionPoints = 2;
 
     //Character Stats
     //Attack Stats
@@ -57,5 +64,4 @@ public class CharacterStats_SO : ScriptableObject
     //[Header("TURN VARIABLES")]
     //public bool isTurnActive = false;
 
-    public int maxActionPoints = 2;
 }

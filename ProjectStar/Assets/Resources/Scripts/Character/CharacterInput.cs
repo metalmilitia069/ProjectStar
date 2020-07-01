@@ -14,6 +14,8 @@ public class CharacterInput : MonoBehaviour
     public MainCameraController_SO MainCameraControllerVariables;
 
 
+    [Header("CHARACTER SETUP VARIABLES - COPY FROM SETUP :")]
+    public CharacterSetup_SO characterSetupVariables;
     [Header("CHARACTER MOVE VARIABLES - INSTANCE :")]
     public CharacterMove_SO characterMoveVariables;
     [Header("CHARACTER COMBAT VARIABLES - INSTANCE :")]
