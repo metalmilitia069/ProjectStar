@@ -18,10 +18,19 @@ public class CharacterSetup_SO : ScriptableObject
     private void OnDisable()
     {
         characterGender = Gender.underfined; //DELETE THIS WHEN IMPLEMENTING THE CHARACTER POOL!!!!!!!!!!!!!!!
+        characterClass = CharacterClass.undefined; //DELETE THIS WHEN IMPLEMENTING THE CHARACTER POOL!!!!!!!!!!!!!!!
         characterName = default; //DELETE THIS WHEN IMPLEMENTING THE CHARACTER POOL!!!!!!!!!!!!!!!
+        characterLevel = 1; //DELETE THIS WHEN IMPLEMENTING THE CHARACTER POOL!!!!!!!!!!!!!!!
+
     }
 
-
+    public void ResetVariables()
+    {
+        characterGender = Gender.underfined; 
+        characterClass = CharacterClass.undefined;
+        characterName = default;
+        characterLevel = 1; 
+    }
 
     public GameObject SetCharacterGeometry()
     {
@@ -38,14 +47,6 @@ public class CharacterSetup_SO : ScriptableObject
 
         return characterGeometryMale;
     }
-
-    public void SetCharacterName()
-    {
-
-    }
-
-
-
 }
 
 public enum Gender

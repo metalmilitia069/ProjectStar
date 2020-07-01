@@ -23,8 +23,10 @@ public class CharacterSetup : MonoBehaviour
     void Start()
     {
         GetCharacterGeometry();
+        GetCharacterClass();
 
         GetCharacterName();
+        GetCharacterLevel();
     }
 
     // Update is called once per frame
@@ -62,13 +64,25 @@ public class CharacterSetup : MonoBehaviour
 
     public void GetCharacterName()
     {
-        if (characterSetupVariables.characterName == default)
+        if (characterSetupVariables.characterName == string.Empty)
         {
-            characterSetupVariables.characterName = characterName;
+            characterSetupVariables.characterName = characterName;            
         }
         else
         {
             characterName = characterSetupVariables.characterName;
+        }
+    }
+
+    public void GetCharacterLevel()
+    {
+        if (characterSetupVariables.characterLevel == 1)
+        {
+            characterSetupVariables.characterLevel = characterLevel;
+        }
+        else
+        {
+            characterLevel = characterSetupVariables.characterLevel;
         }
     }
 

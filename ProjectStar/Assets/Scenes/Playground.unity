@@ -340,10 +340,10 @@ MonoBehaviour:
   characterSetupVariables: {fileID: 11400000, guid: ce17c3a72fa72c1429c6abf511cf573f,
     type: 2}
   Description: SETUP CHARACTER BASIC CONFIGURATION
-  characterName: Veio Bebo
-  characterLevel: 1
-  characterGender: 1
-  characterClass: 5
+  characterName: Veio Bebo e Cagado
+  characterLevel: 10
+  characterGender: 0
+  characterClass: 0
   characterGeometryPoint: {fileID: 1029333888}
 --- !u!1 &37326591
 GameObject:
