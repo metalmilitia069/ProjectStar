@@ -28,6 +28,7 @@ public class WeaponBasic : MonoBehaviour
     void Start()
     {
         weaponBasicVariables.weaponClass = weaponClass;
+
         weaponBasicVariables.weaponPrefab = weaponPrefab;
         weaponBasicVariables.weaponGripSocket = weaponGripSocket;
         weaponBasicVariables.weaponHolsterSocket = weaponHolsterSocket;
@@ -43,14 +44,14 @@ public class WeaponBasic : MonoBehaviour
         
     }
 
-    public void GatherWeaponAttackStats(CharacterInput character, EnemyInput enemy)//(CharacterCombat character, EnemyBaseClass enemy)
+    public void GatherWeaponAttackStats(CharacterInput character, EnemyInput enemy)
     {
         transform.LookAt(enemy.transform);
-        Ray ray = new Ray(weaponBasicVariables.firePoint.transform.position, transform.forward * 100);//enemy.transform.position);//Input.mousePosition);
-        Debug.DrawRay(weaponBasicVariables.firePoint.transform.position, transform.forward * 100, Color.red, 2);//enemy.transform.position, Color.red, 1);//Input.mousePosition, Color.red, 1);
+        Ray ray = new Ray(weaponBasicVariables.firePoint.transform.position, transform.forward * 100);
+        Debug.DrawRay(weaponBasicVariables.firePoint.transform.position, transform.forward * 100, Color.red, 2);
 
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(ray, Vector3.Distance(this.transform.position, enemy.transform.position));//Mathf.Infinity);//enemy.transform.position.magnitude);
+        hits = Physics.RaycastAll(ray, Vector3.Distance(this.transform.position, enemy.transform.position));
 
         foreach (var hit in hits)
         {
@@ -136,14 +137,14 @@ public class WeaponBasic : MonoBehaviour
     }
 
     //AI WEAPON METHODS
-    public void GatherAIWeaponAttackStats(EnemyInput enemy, CharacterInput character)//(CharacterCombat character, EnemyBaseClass enemy)
+    public void GatherAIWeaponAttackStats(EnemyInput enemy, CharacterInput character)
     {
         transform.LookAt(character.transform);
-        Ray ray = new Ray(weaponBasicVariables.firePoint.transform.position, transform.forward * 100);//enemy.transform.position);//Input.mousePosition);
-        Debug.DrawRay(weaponBasicVariables.firePoint.transform.position, transform.forward * 100, Color.red, 2);//enemy.transform.position, Color.red, 1);//Input.mousePosition, Color.red, 1);
+        Ray ray = new Ray(weaponBasicVariables.firePoint.transform.position, transform.forward * 100);
+        Debug.DrawRay(weaponBasicVariables.firePoint.transform.position, transform.forward * 100, Color.red, 2);
 
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(ray, Vector3.Distance(this.transform.position, character.transform.position));//Mathf.Infinity);//enemy.transform.position.magnitude);
+        hits = Physics.RaycastAll(ray, Vector3.Distance(this.transform.position, character.transform.position));
 
         foreach (var hit in hits)
         {

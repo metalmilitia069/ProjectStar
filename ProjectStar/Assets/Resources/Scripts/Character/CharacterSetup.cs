@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterSetup : MonoBehaviour
 {
-    [Header("CHARACTER SETUP VARIABLES - INSTANCE :")]
+    [Header("INSERT CHARACTER SETUP VARIABLES :")]
     public CharacterSetup_SO characterSetupVariables;
 
     [TextArea(1, 10)]
