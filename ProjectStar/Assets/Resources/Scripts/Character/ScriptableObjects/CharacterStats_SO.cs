@@ -46,7 +46,9 @@ public class CharacterStats_SO : ScriptableObject
     [SerializeField]
     public float _dodgeChance = 0.0f;
     [SerializeField]
-    public int health = 10;
+    public int health = 20;
+    [SerializeField]
+    public int maxHealth = 20;
 
     //TODO: Elemental Defense
     [Header("ELEMENTAL DEFENSE STATS")]

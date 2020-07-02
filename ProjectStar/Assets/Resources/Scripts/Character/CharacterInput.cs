@@ -18,6 +18,10 @@ public class CharacterInput : MonoBehaviour
     public CharacterSetup_SO characterSetupVariables;
     [Header("CHARACTER MOVE VARIABLES - INSTANCE :")]
     public CharacterMove_SO characterMoveVariables;
+    [Header("CHARACTER EQUIPMENT VARIABLES - COPY FROM SETUP :")]
+    public CharacterEquipment_SO characterEquipmentVariables;
+    [Header("CHARACTER GEOMETRY VARIABLES = COPY FROM SETUP :")]
+    public CharacterGeometry_SO characterGeometryVariables;
     [Header("CHARACTER COMBAT VARIABLES - INSTANCE :")]
     public CharacterCombat_SO characterCombatVariables;
     [Header("CHARACTER STATS VARIABLES - INSTANCE :")]
@@ -102,7 +106,21 @@ public class CharacterInput : MonoBehaviour
                 if (!characterMoveVariables.isAttackRangeFound)
                 {
                     //>>>>>>>REDO THIS WITH WEAPON BELT!!!!!!!!!!!
-                    characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
+
+                    foreach (var weapon in GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt)
+                    {
+                        if (weapon.weaponBasicVariables.isCurrent)
+                        {
+                            characterMoveVariables._weaponRange = weapon.weaponBasicVariables.weaponRange;
+                            break;
+                        }
+                    }
+                    
+                    
+                    //characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
+
+
+
                     if (characterTurnVariables.actionPoints <= 0)
                     {
                         TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);

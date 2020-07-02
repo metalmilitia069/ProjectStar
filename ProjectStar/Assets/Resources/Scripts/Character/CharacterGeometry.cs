@@ -18,6 +18,11 @@ public class CharacterGeometry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //SetupBeltSockets();
+    }
+
+    private void Awake()
+    {
         SetupBeltSockets();
     }
 

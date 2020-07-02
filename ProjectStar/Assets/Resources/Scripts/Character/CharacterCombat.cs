@@ -24,6 +24,9 @@ public class CharacterCombat : MonoBehaviour
     private Vector3 weaponLocation;
     private Quaternion weaponRotation;
 
+
+    private bool isWeaponBeltReady = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,12 +37,50 @@ public class CharacterCombat : MonoBehaviour
 
         weapon.transform.localPosition = weaponLocation;
         weapon.transform.localRotation = weaponRotation;
+
+
+
+        //if (GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt.Count > 0)
+        //{
+        //    GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].weaponBasicVariables.isCurrent = true;
+        //    GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].transform.parent = GetComponent<CharacterInput>().characterGeometryVariables.handWeaponGripPoint.transform;
+
+        //    weaponLocation = GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].weaponBasicVariables.weaponGripSocket.transform.localPosition * (-1);
+        //    weaponRotation = GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].weaponBasicVariables.weaponGripSocket.transform.localRotation;
+
+        //    GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].transform.localPosition = weaponLocation;
+        //    GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].transform.localRotation = weaponRotation;
+
+        //}
+        //else
+        //{
+        //    Debug.Log("CUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
+        //}
+
+
+        //GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].weaponBasicVariables.weaponGripSocket
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isWeaponBeltReady)
+        {
+            if (GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt.Count > 0)
+            {
+                GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].weaponBasicVariables.isCurrent = true;
+                GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].transform.parent = GetComponent<CharacterInput>().characterGeometryVariables.handWeaponGripPoint.transform;
 
+                weaponLocation = GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].weaponBasicVariables.weaponGripSocket.transform.localPosition * (-1);
+                weaponRotation = GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].weaponBasicVariables.weaponGripSocket.transform.localRotation;
+
+                GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].transform.localPosition = weaponLocation;
+                GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].transform.localRotation = weaponRotation;
+
+                isWeaponBeltReady = true;
+            }
+        }
 
         //if (Input.GetKeyDown(KeyCode.R))
         //{

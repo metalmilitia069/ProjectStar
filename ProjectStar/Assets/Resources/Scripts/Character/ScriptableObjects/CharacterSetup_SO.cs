@@ -15,6 +15,9 @@ public class CharacterSetup_SO : ScriptableObject
     public GameObject characterGeometryMale;
     public GameObject characterGeometryFemale;
 
+    [Header("CHARACTER GEOMETRY REFERENCE :")]
+    public GameObject characterGeometryReference;
+
     private void OnDisable()
     {
         characterGender = Gender.underfined; //DELETE THIS WHEN IMPLEMENTING THE CHARACTER POOL!!!!!!!!!!!!!!!
@@ -22,6 +25,7 @@ public class CharacterSetup_SO : ScriptableObject
         characterName = default; //DELETE THIS WHEN IMPLEMENTING THE CHARACTER POOL!!!!!!!!!!!!!!!
         characterLevel = 1; //DELETE THIS WHEN IMPLEMENTING THE CHARACTER POOL!!!!!!!!!!!!!!!
 
+        characterGeometryReference = default;
     }
 
     public void ResetVariables()

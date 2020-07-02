@@ -17,10 +17,7 @@ public class CharacterSetup : MonoBehaviour
     public CharacterClass characterClass = CharacterClass.undefined;
     public GameObject characterGeometryPoint;
 
-    
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         GetCharacterGeometry();
         GetCharacterClass();
@@ -28,6 +25,16 @@ public class CharacterSetup : MonoBehaviour
         GetCharacterName();
         GetCharacterLevel();
     }
+
+    // Start is called before the first frame update
+    //void Start()
+    //{
+    //    GetCharacterGeometry();
+    //    GetCharacterClass();
+
+    //    GetCharacterName();
+    //    GetCharacterLevel();
+    //}
 
     // Update is called once per frame
     void Update()
@@ -46,7 +53,7 @@ public class CharacterSetup : MonoBehaviour
             characterGender = characterSetupVariables.characterGender;
         }
 
-        Instantiate(characterSetupVariables.SetCharacterGeometry(), characterGeometryPoint.transform); 
+        characterSetupVariables.characterGeometryReference = Instantiate(characterSetupVariables.SetCharacterGeometry(), characterGeometryPoint.transform); 
 
     }
 
