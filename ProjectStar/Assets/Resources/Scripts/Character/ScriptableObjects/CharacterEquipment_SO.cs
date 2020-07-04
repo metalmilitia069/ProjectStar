@@ -17,9 +17,11 @@ public class CharacterEquipment_SO : ScriptableObject
     public WeaponInput minigunWeaponPrefab;
 
     public List<WeaponInput> weaponBelt = new List<WeaponInput>();
+    public Dictionary<WeaponClass, WeaponInput> dicWeaponBelt = new Dictionary<WeaponClass, WeaponInput>();
 
     private void OnDisable()
     {
         weaponBelt.Clear(); // REVIEW THIS WHEN CREATING THE POOLS!!!!!!!
+        dicWeaponBelt.Clear(); // REVIEW THIS WHEN CREATING THE POOLS!!!!!!!
     }
 }

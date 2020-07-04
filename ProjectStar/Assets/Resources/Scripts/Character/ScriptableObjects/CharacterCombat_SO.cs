@@ -25,6 +25,9 @@ public class CharacterCombat_SO : ScriptableObject
     public int weaponBeltSize = 4;
 
 
+
+
+
     private void OnDisable()
     {
         _listOfScannedEnemies.Clear();

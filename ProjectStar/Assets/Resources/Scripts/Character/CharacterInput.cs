@@ -115,6 +115,16 @@ public class CharacterInput : MonoBehaviour
                             break;
                         }
                     }
+
+                    foreach (var weapon in GetComponent<CharacterInput>().characterEquipmentVariables.dicWeaponBelt)
+                    {
+                        if (weapon.Value.weaponBasicVariables.isCurrent)
+                        {
+                            characterMoveVariables._weaponRange = weapon.Value.weaponBasicVariables.weaponRange;
+
+                        }
+                        
+                    }
                     
                     
                     //characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;

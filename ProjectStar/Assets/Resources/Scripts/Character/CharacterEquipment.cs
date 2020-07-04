@@ -12,6 +12,11 @@ public class CharacterEquipment : MonoBehaviour
     [TextArea(1, 3)]
     public string description;
     public List<WeaponInput> weaponBelt = new List<WeaponInput>();
+    public Dictionary<WeaponClass, WeaponInput> dicWeaponBelt = new Dictionary<WeaponClass, WeaponInput>();
+
+
+    private CharacterGeometry_SO charGeo;
+    private WeaponInput tempWeapon;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +33,7 @@ public class CharacterEquipment : MonoBehaviour
 
     public void GetWeapons()
     {
-        CharacterGeometry_SO charGeo = GetComponent<CharacterInput>().characterSetupVariables.characterGeometryReference.GetComponent<CharacterGeometry>().CharacterGeometryVariables;
+        charGeo = GetComponent<CharacterInput>().characterSetupVariables.characterGeometryReference.GetComponent<CharacterGeometry>().CharacterGeometryVariables;
 
         weaponBelt.Clear();
         characterEquipmentVariables.weaponBelt.Clear();
@@ -36,10 +41,17 @@ public class CharacterEquipment : MonoBehaviour
         switch (GetComponent<CharacterInput>().characterSetupVariables.characterClass)
         {
             case CharacterClass.support:
-                weaponBelt.Add(Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform));//characterEquipmentVariables.rifleWeaponPrefab);
+                //weaponBelt.Add(Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform));//characterEquipmentVariables.rifleWeaponPrefab);
                 //Instantiate(weaponBelt[0], charGeo.rifleWeaponHolster.transform);
+                tempWeapon = Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform); //
+                //WaitForSeconds waitForSeconds = 5.0f;
+                //Debug.Log(tempWeapon.weaponBasicVariables.weaponClass);
+                dicWeaponBelt.Add(tempWeapon.weaponBasicVariables.weaponClass, tempWeapon); //
 
-                weaponBelt.Add(Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform));
+                //weaponBelt.Add(Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform));
+                tempWeapon = Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform); //
+                //Debug.Log(tempWeapon.weaponBasicVariables.weaponClass);
+                dicWeaponBelt.Add(tempWeapon.weaponBasicVariables.weaponClass, tempWeapon); //
                 //Instantiate(weaponBelt[1], charGeo.gunWeaponHolster.transform);
 
                 description = CharacterClass.support + " Class Weapon Belt";
@@ -80,7 +92,10 @@ public class CharacterEquipment : MonoBehaviour
         }
 
         characterEquipmentVariables.weaponBelt = weaponBelt;
+        characterEquipmentVariables.dicWeaponBelt = dicWeaponBelt;//
     }
+
+
 
     public void LoadWeaponsIntoCharacterGeometryBelt()
     {
