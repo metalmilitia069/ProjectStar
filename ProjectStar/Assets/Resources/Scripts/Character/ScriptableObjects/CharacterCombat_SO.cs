@@ -25,7 +25,7 @@ public class CharacterCombat_SO : ScriptableObject
     public int weaponBeltSize = 4;
 
 
-
+    public WeaponInput currentWeapon;
 
 
     private void OnDisable()

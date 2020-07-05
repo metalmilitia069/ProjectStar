@@ -18,6 +18,7 @@ public class CharacterEquipment_SO : ScriptableObject
 
     public List<WeaponInput> weaponBelt = new List<WeaponInput>();
     public Dictionary<WeaponClass, WeaponInput> dicWeaponBelt = new Dictionary<WeaponClass, WeaponInput>();
+    
 
     private void OnDisable()
     {

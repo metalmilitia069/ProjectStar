@@ -450,8 +450,8 @@ MonoBehaviour:
   Description: SETUP CHARACTER BASIC CONFIGURATION
   characterName: Bilbo Baggins
   characterLevel: 1
-  characterGender: 0
-  characterClass: 0
+  characterGender: 1
+  characterClass: 4
   characterGeometryPoint: {fileID: 1029333888}
 --- !u!114 &30301491
 MonoBehaviour:

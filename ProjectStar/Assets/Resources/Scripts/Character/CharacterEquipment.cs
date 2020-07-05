@@ -41,17 +41,17 @@ public class CharacterEquipment : MonoBehaviour
         switch (GetComponent<CharacterInput>().characterSetupVariables.characterClass)
         {
             case CharacterClass.support:
-                //weaponBelt.Add(Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform));//characterEquipmentVariables.rifleWeaponPrefab);
+                weaponBelt.Add(Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform));//characterEquipmentVariables.rifleWeaponPrefab);
                 //Instantiate(weaponBelt[0], charGeo.rifleWeaponHolster.transform);
-                tempWeapon = Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform); //
+                //tempWeapon = Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform); //
                 //WaitForSeconds waitForSeconds = 5.0f;
                 //Debug.Log(tempWeapon.weaponBasicVariables.weaponClass);
-                dicWeaponBelt.Add(tempWeapon.weaponBasicVariables.weaponClass, tempWeapon); //
+                //dicWeaponBelt.Add(tempWeapon.weaponBasicVariables.weaponClass, tempWeapon); //
 
-                //weaponBelt.Add(Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform));
-                tempWeapon = Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform); //
+                weaponBelt.Add(Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform));
+                //tempWeapon = Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform); //
                 //Debug.Log(tempWeapon.weaponBasicVariables.weaponClass);
-                dicWeaponBelt.Add(tempWeapon.weaponBasicVariables.weaponClass, tempWeapon); //
+                //dicWeaponBelt.Add(tempWeapon.weaponBasicVariables.weaponClass, tempWeapon); //
                 //Instantiate(weaponBelt[1], charGeo.gunWeaponHolster.transform);
 
                 description = CharacterClass.support + " Class Weapon Belt";

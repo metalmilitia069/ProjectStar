@@ -107,26 +107,31 @@ public class CharacterInput : MonoBehaviour
                 {
                     //>>>>>>>REDO THIS WITH WEAPON BELT!!!!!!!!!!!
 
-                    foreach (var weapon in GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt)
-                    {
-                        if (weapon.weaponBasicVariables.isCurrent)
-                        {
-                            characterMoveVariables._weaponRange = weapon.weaponBasicVariables.weaponRange;
-                            break;
-                        }
-                    }
+                    //WeaponInput weaponInputRef = new WeaponInput();
 
-                    foreach (var weapon in GetComponent<CharacterInput>().characterEquipmentVariables.dicWeaponBelt)
-                    {
-                        if (weapon.Value.weaponBasicVariables.isCurrent)
-                        {
-                            characterMoveVariables._weaponRange = weapon.Value.weaponBasicVariables.weaponRange;
+                    //foreach (var weapon in GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt)
+                    //{
+                    //    if (weapon.weaponBasicVariables.isCurrent)
+                    //    {
+                    //        characterMoveVariables._weaponRange = weapon.weaponBasicVariables.weaponRange;
+                    //        break;
+                    //    }
+                    //}
 
-                        }
-                        
-                    }
-                    
-                    
+                    //foreach (var weapon in GetComponent<CharacterInput>().characterEquipmentVariables.dicWeaponBelt)
+                    //{
+                    //    if (weapon.Value.weaponBasicVariables.isCurrent)
+                    //    {
+                    //        //characterMoveVariables._weaponRange = weapon.Value.weaponBasicVariables.weaponRange;
+                    //        weaponInputRef = weapon;
+                    //        break;
+                    //    }
+
+                    //}
+                    Debug.Log("cuuuuuuuuuuuu");
+
+
+                    characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().GetCurrentWeapon().weaponBasicVariables.weaponRange;
                     //characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
 
 
@@ -149,8 +154,11 @@ public class CharacterInput : MonoBehaviour
                 ChangeMode();
             }
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.G))
             {
+                GetComponent<CharacterCombat>().ChangeWeapon();
+                GridManager.ClearSelectableTiles();
+                characterMoveVariables.isAttackRangeFound = false;
                 //if (_isCombatMode)
                 //{
                 //    ChangeWeapon();
@@ -267,6 +275,31 @@ public class CharacterInput : MonoBehaviour
 
         GridManager.ClearSelectableTiles();
     }
+
+    //public WeaponInput GetCurrentWeapon()
+    //{
+    //    foreach (var weapon in characterEquipmentVariables.dicWeaponBelt)
+    //    {
+    //        if (weapon.Value.weaponBasicVariables.isCurrent)
+    //        {
+    //            return weapon.Value;
+    //        }
+    //    }
+
+    //    return characterEquipmentVariables.dicWeaponBelt[0];
+    //}
+
+    //public void ChangeWeapon()
+    //{
+    //    if (characterEquipmentVariables.dicWeaponBelt.ContainsKey(WeaponClass.Gun))
+    //    {
+    //        WeaponInput value;
+    //        characterEquipmentVariables.dicWeaponBelt.TryGetValue(WeaponClass.Gun, out value);
+            
+    //    }
+        
+    //}
+
     
 
 }

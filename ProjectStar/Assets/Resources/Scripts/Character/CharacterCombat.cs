@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CharacterCombat : MonoBehaviour
@@ -112,29 +113,105 @@ public class CharacterCombat : MonoBehaviour
 
     }
 
+    private WeaponInput currentWeapon;
+    private WeaponInput nextWeapon;
+    private CharacterGeometry_SO charGeo;
+    public WeaponInput GetCurrentWeapon()
+    {
+        for (int index = 0; index < GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt.Count; index++)
+        {
+            if (GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[index].weaponBasicVariables.isCurrent)
+            {
+                if (index == GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt.Count -1)
+                {
+                    nextWeapon = GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0];
+                }
+                else
+                {
+                    int i = index + 1;
+                    nextWeapon = GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[i];
+                }
+                currentWeapon = GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[index];
+                return currentWeapon;
+            }
+        }
+        Debug.Log("cuuu");
+        return currentWeapon;//GetComponent<CharacterInput>().characterEquipmentVariables.dicWeaponBelt[0];
+    }
+
     public void ChangeWeapon()
     {
-        //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().isCurrent = false;
-        //weaponInstanceBelt[_currentWeaponIndex].transform.localPosition = weaponHolsters[_currentWeaponIndex].transform.localPosition;
-
-        //if (_currentWeaponIndex < weaponInstanceBelt.Length - 1)
-        //{
-        //    _currentWeaponIndex++;
-        //}
-        //else
-        //{
-        //    _currentWeaponIndex = 0;
-        //}
-
-        //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().isCurrent = true;
-        //weaponInstanceBelt[_currentWeaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
-
-        //_weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;
-
-        //isAttackRangeFound = false;
-
-        //GridManager.instance.ClearSelectableTiles();
+        HolsterCurrentWeapon();
+        DrawNextWeapon();
     }
+
+    public void HolsterCurrentWeapon()
+    {        
+        charGeo = GetComponent<CharacterInput>().characterSetupVariables.characterGeometryReference.GetComponent<CharacterGeometry>().CharacterGeometryVariables;
+        
+        currentWeapon.weaponBasicVariables.isCurrent = false;
+
+        switch (currentWeapon.weaponBasicVariables.weaponClass)
+        {
+            case WeaponClass.Melee:                
+                currentWeapon.transform.parent = charGeo.meleeWeaponHolster.transform;                
+                break;
+            case WeaponClass.Gun:                
+                currentWeapon.transform.parent = charGeo.gunWeaponHolster.transform;
+                break;
+            case WeaponClass.Rifle:
+                currentWeapon.transform.parent = charGeo.rifleWeaponHolster.transform;
+                break;
+            case WeaponClass.MiniGun:
+                currentWeapon.transform.parent = charGeo.minigunWeaponHolster.transform;
+                break;
+            case WeaponClass.Sniper:
+                currentWeapon.transform.parent = charGeo.sniperWeaponHolster.transform;
+                break;
+            default:
+                break;
+        }
+        currentWeapon.transform.localPosition = default;
+        currentWeapon.transform.localRotation = default;
+    }
+
+    public void DrawNextWeapon()
+    {
+        nextWeapon.transform.parent = charGeo.handWeaponGripPoint.transform;
+
+        weaponLocation = nextWeapon.weaponBasicVariables.weaponGripSocket.transform.localPosition * (-1);
+        weaponRotation = nextWeapon.weaponBasicVariables.weaponGripSocket.transform.localRotation;
+
+        nextWeapon.transform.localPosition = weaponLocation;
+        nextWeapon.transform.localRotation = weaponRotation;
+
+        currentWeapon = nextWeapon;
+        currentWeapon.weaponBasicVariables.isCurrent = true;
+    }
+
+    //public void ChangeWeapon()
+    //{
+    //    //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().isCurrent = false;
+    //    //weaponInstanceBelt[_currentWeaponIndex].transform.localPosition = weaponHolsters[_currentWeaponIndex].transform.localPosition;
+
+    //    //if (_currentWeaponIndex < weaponInstanceBelt.Length - 1)
+    //    //{
+    //    //    _currentWeaponIndex++;
+    //    //}
+    //    //else
+    //    //{
+    //    //    _currentWeaponIndex = 0;
+    //    //}
+
+    //    //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().isCurrent = true;
+    //    //weaponInstanceBelt[_currentWeaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
+
+    //    //_weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;
+
+    //    //isAttackRangeFound = false;
+
+    //    //GridManager.instance.ClearSelectableTiles();
+    //}
 
     public void ScanForEnemies()
     {
@@ -172,7 +249,7 @@ public class CharacterCombat : MonoBehaviour
 
         charInput.CombatCalculatorManager.isShowProbabilities = false;
         
-        weapon.GetComponent<WeaponBasic>().GatherWeaponAttackStats(charInput, enemy); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
+        currentWeapon.GetComponent<WeaponBasic>().GatherWeaponAttackStats(charInput, enemy); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
         
         charInput.CombatCalculatorManager.GatherEnemyDefenseStats(enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
         charInput.CombatCalculatorManager.GatherPlayerAttackStats(charInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
@@ -202,7 +279,7 @@ public class CharacterCombat : MonoBehaviour
 
         CharacterInput charInput = GetComponent<CharacterInput>();
 
-        weapon.GetComponent<WeaponBasic>().GatherWeaponAttackStats(charInput, enemy); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
+        currentWeapon.GetComponent<WeaponBasic>().GatherWeaponAttackStats(charInput, enemy); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
 
         charInput.CombatCalculatorManager.GatherEnemyDefenseStats(enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
         charInput.CombatCalculatorManager.GatherPlayerAttackStats(charInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
