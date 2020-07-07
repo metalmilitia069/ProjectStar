@@ -702,7 +702,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 8f56d0ad3621ee8a58c6c4e6635c4ed1
+      Hash: 21e095a97b93795cbe1a675531e04fee
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CharacterCombat_SO
@@ -943,4 +943,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/Playground.unity
-  playerPath: D:/upar/test_exe02/ProjectStar.exe
+  playerPath: D:/upar/test_exe03/ProjectStar.exe

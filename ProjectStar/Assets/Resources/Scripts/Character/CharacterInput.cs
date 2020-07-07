@@ -276,6 +276,23 @@ public class CharacterInput : MonoBehaviour
         GridManager.ClearSelectableTiles();
     }
 
+    public void ChangeModeFromButton()
+    {
+        if (characterMoveVariables._isMoveMode)
+        {
+            characterMoveVariables._isCombatMode = true;
+            characterMoveVariables._isMoveMode = false;
+            characterMoveVariables.isAttackRangeFound = false;
+            foreach (var item in GridManager.tileList_SO.GetList())
+            {
+                item.basicTileVariables.isMoveMode = false;
+            }
+
+        }
+
+        GridManager.ClearSelectableTiles();
+    }
+
     //public WeaponInput GetCurrentWeapon()
     //{
     //    foreach (var weapon in characterEquipmentVariables.dicWeaponBelt)
