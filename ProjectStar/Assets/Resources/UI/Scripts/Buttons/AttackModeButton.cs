@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AttackModeButton : MonoBehaviour
 {
+    public CharacterInput charInput;
+
     public void ButtonAction()
     {
         SwitchToCombatMode();
@@ -11,7 +13,7 @@ public class AttackModeButton : MonoBehaviour
 
     public void SwitchToCombatMode()
     {
-        CharacterInput charInput = GetComponent<ButtonInjection>().GetActiveCharacter();
+        charInput = GetComponent<ButtonInjection>().GetActiveCharacter();
         charInput.ChangeMode();
     }
 }

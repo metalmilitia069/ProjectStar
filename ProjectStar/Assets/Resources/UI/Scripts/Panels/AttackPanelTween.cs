@@ -16,6 +16,9 @@ public class AttackPanelTween : MonoBehaviour
     private bool isTweendIn = true;
     private bool TweenComplete = true;
 
+    [Header("BUTTONS RELATED TO THIS PANEL")]
+    public AttackModeButton AttackModeButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,11 @@ public class AttackPanelTween : MonoBehaviour
     void Update()
     {
         //InitialSetup();
+        //if (AttackModeButton.charInput != null && AttackModeButton.charInput.characterTurnVariables.actionPoints < 0)
+        //{
+        //    //ToggleTween();
+        //    transform.LeanMoveY(outPos, TweenSpeed).setEase(TweenType).setOnComplete(() => TweenComplete = true);
+        //}
     }
 
     public void InitialSetup()
@@ -52,5 +60,4 @@ public class AttackPanelTween : MonoBehaviour
         
         isTweendIn = !isTweendIn;
     }
-
 }
