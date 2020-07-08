@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IButton
 {
-    public void ButtonAction();    
+    void ButtonAction();    
 }

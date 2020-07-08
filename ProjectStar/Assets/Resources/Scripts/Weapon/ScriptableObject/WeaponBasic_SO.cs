@@ -42,6 +42,8 @@ public class WeaponBasic_SO : ScriptableObject
     [Header("WEAPON BEHAVIOR")]
     public bool hasSpread = false;
     public float fireRate;
+    public int maxAmmunition;
+    public int currentAmmunition;
 
 
     public void WeaponBasicSetup()
@@ -55,6 +57,7 @@ public class WeaponBasic_SO : ScriptableObject
                 maxDamage = 7;
                 weaponCriticalChance = .1f;
                 weaponCriticalDamage = 1.5f;
+                currentAmmunition = maxAmmunition = 0;
 
                 successShotProbability = 1.0f;
                 break;
@@ -65,6 +68,7 @@ public class WeaponBasic_SO : ScriptableObject
                 maxDamage = 5;
                 weaponCriticalChance = .1f;
                 weaponCriticalDamage = 1.5f;
+                currentAmmunition = maxAmmunition = 6;
 
                 successShotProbability = 1.0f;
                 break;
@@ -75,6 +79,7 @@ public class WeaponBasic_SO : ScriptableObject
                 maxDamage = 6;
                 weaponCriticalChance = .1f;
                 weaponCriticalDamage = 1.5f;
+                currentAmmunition = maxAmmunition = 4;
 
                 successShotProbability = 1.0f;
                 break;
@@ -85,6 +90,7 @@ public class WeaponBasic_SO : ScriptableObject
                 maxDamage = 7;
                 weaponCriticalChance = .1f;
                 weaponCriticalDamage = 1.5f;
+                currentAmmunition = maxAmmunition = 6;
 
                 successShotProbability = 1.0f;
                 break;
@@ -95,6 +101,7 @@ public class WeaponBasic_SO : ScriptableObject
                 maxDamage = 7;
                 weaponCriticalChance = .3f;
                 weaponCriticalDamage = 1.5f;
+                currentAmmunition = maxAmmunition = 4;
 
                 successShotProbability = 1.0f;
                 break;

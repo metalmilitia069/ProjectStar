@@ -2059,7 +2059,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3779,7 +3779,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 11c99b49c8be91540bced0801a417e1a, type: 3}
-    m_FontSize: 10
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -4544,8 +4544,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -19.8, y: 22.500004}
-  m_SizeDelta: {x: 21.622414, y: 21.622414}
+  m_AnchoredPosition: {x: -120, y: 69.700195}
+  m_SizeDelta: {x: 106, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &967753441
 MonoBehaviour:
@@ -4672,6 +4672,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 967753445}
+          m_MethodName: SwitchToCombatMode
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1009867010}
+          m_MethodName: ToggleTween
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &967753445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4696,6 +4722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73958d289ec4a1a42a1e73921ed2abab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TurnManager: {fileID: 11400000, guid: 86ed434347885b341bc30bdfbaf2dd1f, type: 2}
 --- !u!1 &977883721
 GameObject:
   m_ObjectHideFlags: 0
@@ -4834,6 +4861,8 @@ GameObject:
   - component: {fileID: 1009867006}
   - component: {fileID: 1009867008}
   - component: {fileID: 1009867007}
+  - component: {fileID: 1009867010}
+  - component: {fileID: 1009867009}
   m_Layer: 5
   m_Name: AttackPanel
   m_TagString: Untagged
@@ -4856,11 +4885,11 @@ RectTransform:
   m_Father: {fileID: 85437498}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -167.55954}
-  m_SizeDelta: {x: -386.1748, y: -355.11908}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1711, y: 477}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1009867007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4898,6 +4927,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009867005}
   m_CullTransparentMesh: 0
+--- !u!114 &1009867009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009867005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f4277496ea913438f81b2d968819b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1009867010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009867005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9932d37a9032640b9ee37eb7fd5d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TweenSpeed: 0.5
+  TweenType: 0
+  Canvas: {fileID: 417043103}
 --- !u!1 &1011313227
 GameObject:
   m_ObjectHideFlags: 0
@@ -5054,8 +5110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.54, y: 35.11}
-  m_SizeDelta: {x: 99.11905, y: 19.661568}
+  m_AnchoredPosition: {x: -0.000039101, y: 181}
+  m_SizeDelta: {x: 339, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1043330923
 MonoBehaviour:
@@ -5652,8 +5708,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 5.28, y: 22.500004}
-  m_SizeDelta: {x: 21.622414, y: 21.622414}
+  m_AnchoredPosition: {x: 0, y: 69.700195}
+  m_SizeDelta: {x: 106, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1110918559
 MonoBehaviour:

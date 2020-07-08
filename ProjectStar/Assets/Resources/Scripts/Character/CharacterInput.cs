@@ -128,7 +128,7 @@ public class CharacterInput : MonoBehaviour
                     //    }
 
                     //}
-                    Debug.Log("cuuuuuuuuuuuu");
+
 
 
                     characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().GetCurrentWeapon().weaponBasicVariables.weaponRange;

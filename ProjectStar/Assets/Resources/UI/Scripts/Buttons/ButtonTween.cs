@@ -51,7 +51,6 @@ public class ButtonTween : MonoBehaviour
     {
         Color color = new Color(.7f, .7f, .7f, 1f);
         LeanTween.color(transform.GetComponent<RectTransform>(), color, EmphasiseSpeed);
-        Debug.Log("mozo");
     }
 
     public void ButtonUp()
