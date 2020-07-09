@@ -7,4 +7,6 @@ public class UIManager_SO : ScriptableObject
 {
     public UIGizmoSign crossSignUIGizmo;
     public UIGizmoSign spawnedCrossSignUI;
+
+    public bool canAttackPanelDataBeTurnedOff = false;
 }

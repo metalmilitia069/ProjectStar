@@ -112,6 +112,7 @@ public class CharacterCombat : MonoBehaviour
 
     public void ChangeWeapon()
     {
+
         HolsterCurrentWeapon();
         DrawNextWeapon();
     }

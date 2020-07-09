@@ -72,16 +72,7 @@ public class CharacterInput : MonoBehaviour
 
             if (characterMoveVariables._isMoveMode)
             {
-                if (characterCombatVariables._listOfScannedEnemies.Count > 0)
-                {
-                    foreach (var enemy in characterCombatVariables._listOfScannedEnemies)
-                    {
-                        enemy.EnemyStatsVariables.canBeAttacked = false;
-                    }
-                }
-
-                UnMarkEnemy();
-                characterCombatVariables._listOfScannedEnemies.Clear();
+                ClearScannedEnemiesList();
 
                 if (!characterMoveVariables.isMoving)
                 {
@@ -117,6 +108,7 @@ public class CharacterInput : MonoBehaviour
                     }
                     GridManager.CalculateAttackPath(this.gameObject);
                     GetComponent<CharacterCombat>().ScanForEnemies();
+                    //CombatScanMode();
                 }
 
                 ActivateMouseToAttack();
@@ -129,7 +121,11 @@ public class CharacterInput : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.G))
-            {
+            {                
+                ClearScannedEnemiesList();
+                
+                TurnOffCombatScanMode();
+                
                 GetComponent<CharacterCombat>().ChangeWeapon();
                 GridManager.ClearSelectableTiles();
                 characterMoveVariables.isAttackRangeFound = false;
@@ -138,10 +134,24 @@ public class CharacterInput : MonoBehaviour
                 //    ChangeWeapon();
                 //}
             }
-            
+
         }
 
         
+    }
+
+    private void ClearScannedEnemiesList()
+    {
+        if (characterCombatVariables._listOfScannedEnemies.Count > 0)
+        {
+            foreach (var enemy in characterCombatVariables._listOfScannedEnemies)
+            {
+                enemy.EnemyStatsVariables.canBeAttacked = false;
+            }
+        }
+
+        UnMarkEnemy();
+        characterCombatVariables._listOfScannedEnemies.Clear();
     }
 
     //public bool canChange = false;
@@ -210,10 +220,10 @@ public class CharacterInput : MonoBehaviour
                         {
                             //GetComponent<CharacterCombat>().Attack(enemy);
                             CombatScanMode(enemy);
+                            //GetComponent<CharacterCombat>().ShowProbability(enemy);
                         }
                         else
                         {
-                            GetComponent<CharacterCombat>().ShowProbability(enemy);
                         }
                     }
 
@@ -230,12 +240,18 @@ public class CharacterInput : MonoBehaviour
 
         enemy.EnemyCombatVariables.isMarkedEnemy = true;
 
+        GetComponent<CharacterCombat>().ShowProbability(enemy);
+
+        uiManager.canAttackPanelDataBeTurnedOff = false;
+
         uiManager.spawnedCrossSignUI.transform.position = enemy.transform.position;
         uiManager.spawnedCrossSignUI.gameObject.SetActive(true);
     }
 
     public void UnMarkEnemy()
     {
+        uiManager.canAttackPanelDataBeTurnedOff = true;
+
         Debug.Log(characterCombatVariables._listOfScannedEnemies.Count);
         EnemyInput searchedEnemy = SearchMarkedEnemy();
         if (searchedEnemy != null)
@@ -256,6 +272,11 @@ public class CharacterInput : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void GetAttackDAta()
+    {
+
     }
 
     public void TurnOffCombatScanMode()
@@ -282,6 +303,7 @@ public class CharacterInput : MonoBehaviour
             characterMoveVariables._isMoveMode = true;
             characterMoveVariables.isTilesFound = false;
             TurnOffCombatScanMode();
+            UnMarkEnemy();
             foreach (var item in GridManager.tileList_SO.GetList())
             {
                 item.basicTileVariables.isMoveMode = true;

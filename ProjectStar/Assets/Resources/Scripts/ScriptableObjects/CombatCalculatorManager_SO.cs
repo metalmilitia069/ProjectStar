@@ -186,7 +186,7 @@ public class CombatCalculatorManager_SO : ScriptableObject
         finalAttackProbability = _weaponSuccessShotProbability - _enemyDodgeChance;
         weaponDamageMedian = (int)((_cachedWeapon.weaponBasicVariables.maxDamage + _cachedWeapon.weaponBasicVariables.minDamage) / 2);
         finalDamage = weaponDamageMedian + _playerDamageModifier - _enemyArmorNormal - _enemyArmorBlindage;
-
+        _finalCriticalProbability = _weaponCriticalChance + _playerCriticalChanceModifier;
         string probabilityText = ("Shot Success Chance = " + finalAttackProbability * 100 + "%  || Damage Preview = " + finalDamage);
         return probabilityText;
     }

@@ -55,7 +55,7 @@ public class WeaponBasic_SO : ScriptableObject
                 optimalRange = 1;
                 minDamage = 5;
                 maxDamage = 7;
-                weaponCriticalChance = .1f;
+                weaponCriticalChance = .4f;
                 weaponCriticalDamage = 1.5f;
                 currentAmmunition = maxAmmunition = 0;
 
