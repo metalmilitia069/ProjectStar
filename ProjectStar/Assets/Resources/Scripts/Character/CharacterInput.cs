@@ -10,6 +10,8 @@ public class CharacterInput : MonoBehaviour
     public CombatCalculatorManager_SO CombatCalculatorManager;
     [Header("INSERT A TURN MANAGER SO :")]
     public TurnManager_SO TurnManager;
+    [Header("INSERT A UI MANAGER SO :")]
+    public UIManager_SO uiManager;
     [Header("INSERT THE MAIN CAMERA CONTROLLER VARIABLES :")]
     public MainCameraController_SO MainCameraControllerVariables;
 
@@ -78,6 +80,7 @@ public class CharacterInput : MonoBehaviour
                     }
                 }
 
+                UnMarkEnemy();
                 characterCombatVariables._listOfScannedEnemies.Clear();
 
                 if (!characterMoveVariables.isMoving)
@@ -105,36 +108,7 @@ public class CharacterInput : MonoBehaviour
 
                 if (!characterMoveVariables.isAttackRangeFound)
                 {
-                    //>>>>>>>REDO THIS WITH WEAPON BELT!!!!!!!!!!!
-
-                    //WeaponInput weaponInputRef = new WeaponInput();
-
-                    //foreach (var weapon in GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt)
-                    //{
-                    //    if (weapon.weaponBasicVariables.isCurrent)
-                    //    {
-                    //        characterMoveVariables._weaponRange = weapon.weaponBasicVariables.weaponRange;
-                    //        break;
-                    //    }
-                    //}
-
-                    //foreach (var weapon in GetComponent<CharacterInput>().characterEquipmentVariables.dicWeaponBelt)
-                    //{
-                    //    if (weapon.Value.weaponBasicVariables.isCurrent)
-                    //    {
-                    //        //characterMoveVariables._weaponRange = weapon.Value.weaponBasicVariables.weaponRange;
-                    //        weaponInputRef = weapon;
-                    //        break;
-                    //    }
-
-                    //}
-
-
-
                     characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().GetCurrentWeapon().weaponBasicVariables.weaponRange;
-                    //characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponRange + attackRangeModifier;
-
-
 
                     if (characterTurnVariables.actionPoints <= 0)
                     {
@@ -216,8 +190,6 @@ public class CharacterInput : MonoBehaviour
         }
     }
 
-
-
     public void ActivateMouseToAttack()
     {        
         //if(Input.GetMouseButtonDown(0))
@@ -235,18 +207,60 @@ public class CharacterInput : MonoBehaviour
                     if (enemy == enemyPlaceHolder)
                     {
                         if (Input.GetMouseButtonDown(0))
-                        {                            
-                            GetComponent<CharacterCombat>().Attack(enemy);                           
+                        {
+                            //GetComponent<CharacterCombat>().Attack(enemy);
+                            CombatScanMode(enemy);
                         }
                         else
                         {
                             GetComponent<CharacterCombat>().ShowProbability(enemy);
                         }
                     }
+
+
                 }
             }
         }
         //}
+    }
+
+    public void CombatScanMode(EnemyInput enemy)
+    {
+        UnMarkEnemy();
+
+        enemy.EnemyCombatVariables.isMarkedEnemy = true;
+
+        uiManager.spawnedCrossSignUI.transform.position = enemy.transform.position;
+        uiManager.spawnedCrossSignUI.gameObject.SetActive(true);
+    }
+
+    public void UnMarkEnemy()
+    {
+        Debug.Log(characterCombatVariables._listOfScannedEnemies.Count);
+        EnemyInput searchedEnemy = SearchMarkedEnemy();
+        if (searchedEnemy != null)
+        {
+            Debug.Log("search enemy found!");
+            searchedEnemy.EnemyCombatVariables.isMarkedEnemy = false;
+        }
+    }
+
+    public EnemyInput SearchMarkedEnemy()
+    {
+        foreach (var scannedEnemy in characterCombatVariables._listOfScannedEnemies)
+        {
+            if (scannedEnemy.EnemyCombatVariables.isMarkedEnemy)
+            {
+                //scannedEnemy.EnemyCombatVariables.isMarkedEnemy = false;
+                return scannedEnemy;
+            }
+        }
+        return null;
+    }
+
+    public void TurnOffCombatScanMode()
+    {
+        uiManager.spawnedCrossSignUI.gameObject.SetActive(false);
     }
 
     public void ChangeMode()
@@ -267,6 +281,7 @@ public class CharacterInput : MonoBehaviour
             characterMoveVariables._isCombatMode = false;
             characterMoveVariables._isMoveMode = true;
             characterMoveVariables.isTilesFound = false;
+            TurnOffCombatScanMode();
             foreach (var item in GridManager.tileList_SO.GetList())
             {
                 item.basicTileVariables.isMoveMode = true;

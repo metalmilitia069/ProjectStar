@@ -13,6 +13,8 @@ public class EnemyCombat_SO : ScriptableObject
 
     public List<CharacterInput> _listOfScannedCharacters = new List<CharacterInput>();
 
+    public bool isMarkedEnemy = false;
+
     public GameObject weaponGripPlace;
 
     //public delegate void OnAttack(WeaponInput weaponBaseClass);
@@ -23,6 +25,7 @@ public class EnemyCombat_SO : ScriptableObject
     public GameObject[] weaponInstanceBelt;
     public GameObject[] weaponHolsters;
     public int weaponBeltSize = 4;
+
 
 
     private void OnDisable()

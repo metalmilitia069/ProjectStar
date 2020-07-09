@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518397b0feb7bb9449e3ec6d03f0c223, type: 3}
+  m_Name: UIManager
+  m_EditorClassIdentifier: 
+  crossSignUIGizmo: {fileID: 4726805058227572286, guid: 0f80c1bace913fb40a0aefe356938615,
+    type: 3}
+  spawnedCrossSignUI: {fileID: 0}

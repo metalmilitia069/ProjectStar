@@ -108,6 +108,12 @@ public class CombatCalculatorManager_SO : ScriptableObject
     [SerializeField]
     public bool isShowProbabilities = false;
 
+    [Header("CALCULATED VARIABLES TO DISPLAY")]
+    public float finalAttackProbability;
+    public int weaponDamageMedian;
+    public int finalDamage;
+
+
     public void GatherWeaponAttackStats(WeaponInput weaponRef)//, CharacterInput character, EnemyInput enemy)
     {
         _cachedWeapon = weaponRef;
@@ -177,9 +183,10 @@ public class CombatCalculatorManager_SO : ScriptableObject
 
     public string DisplayShotChance()
     {
-        float finalAttackProbability = _weaponSuccessShotProbability - _enemyDodgeChance;
-        int weaponDamageMedian = (int)((_cachedWeapon.weaponBasicVariables.maxDamage + _cachedWeapon.weaponBasicVariables.minDamage) / 2);
-        int finalDamage = weaponDamageMedian + _playerDamageModifier - _enemyArmorNormal - _enemyArmorBlindage;
+        finalAttackProbability = _weaponSuccessShotProbability - _enemyDodgeChance;
+        weaponDamageMedian = (int)((_cachedWeapon.weaponBasicVariables.maxDamage + _cachedWeapon.weaponBasicVariables.minDamage) / 2);
+        finalDamage = weaponDamageMedian + _playerDamageModifier - _enemyArmorNormal - _enemyArmorBlindage;
+
         string probabilityText = ("Shot Success Chance = " + finalAttackProbability * 100 + "%  || Damage Preview = " + finalDamage);
         return probabilityText;
     }

@@ -21,9 +21,7 @@ public class ButtonTween : MonoBehaviour
         {
             isTweening = true;
             activeTween = transform.LeanScale(Vector3.one * EmphasisAmount, EmphasiseSpeed).setEase(TweenType).setOnComplete(() => isTweening = false);
-            LeanTween.color(transform.GetComponent<RectTransform>(), Color.red, EmphasiseSpeed); //color(gameObject, Color.white, 2.0f);
-            //LeanTween.color()
-            //transform.GetComponent<Image>()
+            LeanTween.color(transform.GetComponent<RectTransform>(), Color.red, EmphasiseSpeed); //color(gameObject, Color.white, 2.0f);            
         }
         else
         {
@@ -56,18 +54,5 @@ public class ButtonTween : MonoBehaviour
     public void ButtonUp()
     {
         LeanTween.color(transform.GetComponent<RectTransform>(), Color.white, EmphasiseSpeed);
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -81,36 +81,7 @@ public class CharacterCombat : MonoBehaviour
 
                 isWeaponBeltReady = true;
             }
-        }
-
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    Debug.Log("CUUUU");
-        //    if (weapon.transform.parent == playerGrip.transform)
-        //    {
-        //        weapon.transform.parent = gunHolster.transform;
-
-        //        weaponLocation = weaponHolsterPoint.transform.localPosition * (-1);
-        //        weaponRotation = weaponHolsterPoint.transform.localRotation;
-
-        //        weapon.transform.localPosition = weaponLocation;
-        //        weapon.transform.localRotation = weaponRotation;
-        //    }
-        //    else //if (weapon.transform.parent == weaponHolsterPoint.transform)
-        //    {
-                
-        //        weapon.transform.parent = playerGrip.transform;
-
-        //        weaponLocation = weapongrip.transform.localPosition * (-1);
-        //        weaponRotation = weapongrip.transform.localRotation;
-
-        //        weapon.transform.localPosition = weaponLocation;
-        //        weapon.transform.localRotation = weaponRotation;
-        //    }
-        //}
-
-
-
+        }        
     }
 
     private WeaponInput currentWeapon;
@@ -257,9 +228,6 @@ public class CharacterCombat : MonoBehaviour
 
         this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
 
-        
-
-
         if (this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0)
         {
             GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
@@ -268,9 +236,6 @@ public class CharacterCombat : MonoBehaviour
             return;
             //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);  //TODO: implement TURN MANAGER
         }
-
-        
-
     }
 
     public void ShowProbability(EnemyInput enemy)
