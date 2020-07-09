@@ -45,6 +45,7 @@ public class AttackPanelTween : MonoBehaviour
             if (attackModeButton.charInput.GetComponent<CharacterInput>().characterMoveVariables._isCombatMode)
             {
                 isAttackModeOn = true;
+                Debug.Log("CUUUUUUUUUUUUU");
             }
             else
             {
@@ -88,5 +89,6 @@ public class AttackPanelTween : MonoBehaviour
     public void OutPosTween()
     {
         transform.LeanMoveY(outPos, TweenSpeed).setEase(TweenType);
+        isTweendIn = true;
     }
 }

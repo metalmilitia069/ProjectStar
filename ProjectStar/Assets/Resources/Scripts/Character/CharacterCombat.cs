@@ -231,10 +231,16 @@ public class CharacterCombat : MonoBehaviour
 
         if (this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0)
         {
-            GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
-            
+            //GetComponent<CharacterInput>().ClearScannedEnemiesList();
+            //Debug.Log("CUUUUUUUUU");
+            //GetComponent<CharacterInput>().TurnOffCombatScanMode();
+            //Debug.Log("MOOOOOOZOOOOOOOOOO");
+            //GetComponent<CharacterInput>().UnMarkEnemy();
+
+
             GetComponent<CharacterInput>().ChangeMode();
-            return;
+            GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+            //return;
             //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);  //TODO: implement TURN MANAGER
         }
     }

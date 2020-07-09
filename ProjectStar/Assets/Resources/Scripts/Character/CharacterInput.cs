@@ -96,16 +96,30 @@ public class CharacterInput : MonoBehaviour
 
             if (characterMoveVariables._isCombatMode)
             {
+                    //if (this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0)
+                    //{
+                    //    GetComponent<CharacterInput>().ChangeMode();
+                    //    GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+
+                    //    return;
+                    //    //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);  //TODO: implement TURN MANAGER
+                    //}
 
                 if (!characterMoveVariables.isAttackRangeFound)
                 {
+
                     characterMoveVariables._weaponRange = GetComponent<CharacterCombat>().GetCurrentWeapon().weaponBasicVariables.weaponRange;
 
-                    if (characterTurnVariables.actionPoints <= 0)
-                    {
-                        TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
-                        return;
-                    }
+
+                    //if (characterTurnVariables.actionPoints <= 0)
+                    //{
+                    //    ClearScannedEnemiesList();
+                    //    Debug.Log("CUUUUUUUUU");
+                    //    TurnOffCombatScanMode();
+
+                    //    TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+                    //    return;
+                    //}
                     GridManager.CalculateAttackPath(this.gameObject);
                     GetComponent<CharacterCombat>().ScanForEnemies();
                     //CombatScanMode();
@@ -140,7 +154,7 @@ public class CharacterInput : MonoBehaviour
         
     }
 
-    private void ClearScannedEnemiesList()
+    public void ClearScannedEnemiesList()
     {
         if (characterCombatVariables._listOfScannedEnemies.Count > 0)
         {
@@ -218,12 +232,20 @@ public class CharacterInput : MonoBehaviour
                     {
                         if (Input.GetMouseButtonDown(0))
                         {
+                            if (enemy.EnemyCombatVariables.isMarkedEnemy)
+                            {
+                                GetComponent<CharacterCombat>().Attack(enemy);
+                            }
+                            else
+                            {
+                                CombatScanMode(enemy);
+                            }
                             //GetComponent<CharacterCombat>().Attack(enemy);
-                            CombatScanMode(enemy);
                             //GetComponent<CharacterCombat>().ShowProbability(enemy);
                         }
                         else
                         {
+                            //TODO: highlight selectable enemy (UI)
                         }
                     }
 

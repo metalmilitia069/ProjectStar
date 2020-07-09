@@ -53,21 +53,26 @@ public class AttackPanel : MonoBehaviour
     {
         CharacterInput selectedCharacterInput = attackPanelTweenRef.attackModeButton.charInput;
 
-        if (selectedCharacterInput.SearchMarkedEnemy() != null)
+        if (selectedCharacterInput.SearchMarkedEnemy() != null  || selectedCharacterInput.characterMoveVariables._isMoveMode)
         {
             return;
         }
+        
 
         float minDistance = float.MaxValue;
         EnemyInput closestEnemyInput = default;
 
         foreach (var enemy in selectedCharacterInput.characterCombatVariables._listOfScannedEnemies)
         {
-            float distance = Vector3.Distance(enemy.transform.position, attackPanelTweenRef.attackModeButton.charInput.transform.position);
-            if (distance < minDistance)
+            if (enemy != null)
             {
-                minDistance = distance;
-                closestEnemyInput = enemy;
+                float distance = Vector3.Distance(enemy.transform.position, attackPanelTweenRef.attackModeButton.charInput.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestEnemyInput = enemy;
+                    Debug.Log("AIIIIIIIIIII DENTUUUUUUUUUU");
+                }
             }
         }
 

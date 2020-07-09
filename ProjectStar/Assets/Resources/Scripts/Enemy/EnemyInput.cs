@@ -82,6 +82,17 @@ public class EnemyInput : MonoBehaviour
         Debug.Log(CombatCalculatorManager.DisplayShotChance());
     }
 
+    //private void OnMouseOver()
+    //{
+    //    if (!EnemyCombatVariables.isMarkedEnemy)
+    //    {
+    //        return;
+    //    }
+
+
+
+    //}
+
     public void ChangeMode()
     {
         if (EnemyMoveVariables._isMoveMode)
