@@ -214,7 +214,11 @@ public class CharacterCombat : MonoBehaviour
     }
 
     public void Attack(EnemyInput enemy)
-    {        
+    {
+        if (currentWeapon.GetComponent<WeaponBasic>().weaponBasicVariables.currentAmmunition == 0)
+        {
+            return;
+        }
         transform.LookAt(enemy.transform);
 
         CharacterInput charInput = GetComponent<CharacterInput>();
@@ -222,26 +226,19 @@ public class CharacterCombat : MonoBehaviour
         charInput.CombatCalculatorManager.isShowProbabilities = false;
         
         currentWeapon.GetComponent<WeaponBasic>().GatherWeaponAttackStats(charInput, enemy); //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().GatherWeaponAttackStats((CharacterStats)this, enemy);
-        
+        currentWeapon.GetComponent<WeaponBasic>().weaponBasicVariables.currentAmmunition--;
+
         charInput.CombatCalculatorManager.GatherEnemyDefenseStats(enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
         charInput.CombatCalculatorManager.GatherPlayerAttackStats(charInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
         charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
 
         this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
 
+
         if (this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0)
-        {
-            //GetComponent<CharacterInput>().ClearScannedEnemiesList();
-            //Debug.Log("CUUUUUUUUU");
-            //GetComponent<CharacterInput>().TurnOffCombatScanMode();
-            //Debug.Log("MOOOOOOZOOOOOOOOOO");
-            //GetComponent<CharacterInput>().UnMarkEnemy();
-
-
+        {            
             GetComponent<CharacterInput>().ChangeMode();
-            GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
-            //return;
-            //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);  //TODO: implement TURN MANAGER
+            GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);            
         }
     }
 

@@ -76,10 +76,12 @@ public class CharacterInput : MonoBehaviour
 
                 if (!characterMoveVariables.isMoving)
                 {
+                    uiManager.EnableButtons();
                     ActivateMouseToMovement();
                 }
                 else
                 {
+                    uiManager.DisableButtons();
                     GetComponent<CharacterMove>().Move();
                 }
 

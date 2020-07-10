@@ -71,7 +71,7 @@ public class AttackPanel : MonoBehaviour
                 {
                     minDistance = distance;
                     closestEnemyInput = enemy;
-                    Debug.Log("AIIIIIIIIIII DENTUUUUUUUUUU");
+                    //Debug.Log("AIIIIIIIIIII DENTUUUUUUUUUU");
                 }
             }
         }

@@ -9,4 +9,16 @@ public class UIManager_SO : ScriptableObject
     public UIGizmoSign spawnedCrossSignUI;
 
     public bool canAttackPanelDataBeTurnedOff = false;
+
+    public AttackModeButton attackModeButton;
+
+    public void DisableButtons()
+    {
+        attackModeButton.gameObject.SetActive(false);
+    }
+
+    public void EnableButtons()
+    {
+        attackModeButton.gameObject.SetActive(true);
+    }
 }

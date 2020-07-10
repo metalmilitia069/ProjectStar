@@ -6,19 +6,15 @@ public class ButtonInjection : MonoBehaviour
 {
     [Header("INSERT TURN MANAGER SO :")]
     public TurnManager_SO TurnManager;
+    [Header("INSERT UI MANAGER SO :")]
+    public UIManager_SO uiManager;
 
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        uiManager.attackModeButton = GetComponent<AttackModeButton>();        
     }
 
     public CharacterInput GetActiveCharacter()
