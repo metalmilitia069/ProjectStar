@@ -16,6 +16,9 @@ public class WeaponBasic_SO : ScriptableObject
     [Header("WEAPON CLASS :")]
     public WeaponClass weaponClass;
 
+    [Header("WEAPON UI INFORMATION")]
+    public Sprite weaponDisplaySprite;
+
     public bool isCurrent = false;
 
     //Weapon Stats Calculations

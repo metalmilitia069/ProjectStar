@@ -24,15 +24,21 @@ public class WeaponBasic : MonoBehaviour
     public GameObject weaponHolsterSocket;
     public GameObject firePoint;
 
+    [Header("WEAPON UI SETUP")]
+    public Sprite weaponDisplaySprite;
+
     // Start is called before the first frame update
     void Awake()//Start()
     {
         weaponBasicVariables.weaponClass = weaponClass;
 
         weaponBasicVariables.weaponPrefab = weaponPrefab;
+
         weaponBasicVariables.weaponGripSocket = weaponGripSocket;
         weaponBasicVariables.weaponHolsterSocket = weaponHolsterSocket;
         weaponBasicVariables.firePoint = firePoint;
+
+        weaponBasicVariables.weaponDisplaySprite = weaponDisplaySprite;
 
 
         weaponBasicVariables.WeaponBasicSetup();

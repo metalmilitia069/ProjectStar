@@ -6,11 +6,15 @@ using UnityEngine;
 public class UIManager_SO : ScriptableObject
 {
     public UIGizmoSign crossSignUIGizmo;
+    
     public UIGizmoSign spawnedCrossSignUI;
 
     public bool canAttackPanelDataBeTurnedOff = false;
 
     public AttackModeButton attackModeButton;
+
+
+    public WeaponDisplayPanel weaponDisplayPanel;
 
     public void DisableButtons()
     {
@@ -20,5 +24,13 @@ public class UIManager_SO : ScriptableObject
     public void EnableButtons()
     {
         attackModeButton.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        spawnedCrossSignUI = default;
+        canAttackPanelDataBeTurnedOff = false;
+        attackModeButton = default;
+        weaponDisplayPanel = default;
     }
 }

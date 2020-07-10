@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c434c98d44fae0c49aff5e315e54cd76, type: 3}
+  m_Name: CharacterEquipment 1
+  m_EditorClassIdentifier: 
+  meleeWeaponPrefab: {fileID: 8538320389354228338, guid: 26e79f69c5c1c3b4693a45d935b9972d,
+    type: 3}
+  gunWeaponPrefab: {fileID: 5078915904666259878, guid: 09132784f70397c4ba70c33a7843f609,
+    type: 3}
+  rifleWeaponPrefab: {fileID: 5522530203180896178, guid: 6c89e0f53f5cc094d897e2d7d74a415d,
+    type: 3}
+  sniperWeaponPrefab: {fileID: 262502377159612068, guid: 8fb66e31df61c90478f34622d854ffda,
+    type: 3}
+  minigunWeaponPrefab: {fileID: 2670961017004285015, guid: af2539893854aa94492fdacf55556474,
+    type: 3}
+  weaponBelt: []
