@@ -28,6 +28,8 @@ public class CharacterCombat_SO : ScriptableObject
     public WeaponInput currentWeapon;
 
 
+
+
     private void OnDisable()
     {
         _listOfScannedEnemies.Clear();

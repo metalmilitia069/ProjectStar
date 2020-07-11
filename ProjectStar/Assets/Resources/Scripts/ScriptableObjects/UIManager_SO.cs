@@ -12,6 +12,7 @@ public class UIManager_SO : ScriptableObject
     public bool canAttackPanelDataBeTurnedOff = false;
 
     public AttackModeButton attackModeButton;
+    public ReloadButton reloadButton;
 
 
     public WeaponDisplayPanel weaponDisplayPanel;
@@ -27,11 +28,13 @@ public class UIManager_SO : ScriptableObject
     public void DisableButtons()
     {
         attackModeButton.gameObject.SetActive(false);
+        reloadButton.gameObject.SetActive(false);
     }
 
     public void EnableButtons()
     {
         attackModeButton.gameObject.SetActive(true);
+        reloadButton.gameObject.SetActive(true);
     }
 
     public Sprite DisplayBullets(int maxAmmo, int curAmmo)

@@ -114,6 +114,15 @@ public class WeaponBasic_SO : ScriptableObject
                 break;
         }
     }
+
+    public int[] ReloadWeapon()
+    {
+        currentAmmunition = maxAmmunition;
+        int[] bullets = { maxAmmunition, maxAmmunition};
+
+
+        return bullets;
+    }
 }
 
 public enum WeaponClass
@@ -124,3 +133,5 @@ public enum WeaponClass
     MiniGun,
     Sniper,
 }
+
+
