@@ -15,19 +15,51 @@ public class WeaponDisplayPanel : MonoBehaviour
     public Image weaponDisplayImage;
     public Image bulletsDisplayImage;
 
+
+    bool isWeaponDisplayInitialized = false;
+
     private void Awake()
     {
         uiManager.weaponDisplayPanel = this;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (isWeaponDisplayInitialized)
+        {
+            return;
+        }
+        if (GetActiveCharacter().GetComponent<CharacterCombat>().GetCurrentWeapon() != null)
+        {
+            SetWeaponToDisplay();
+            isWeaponDisplayInitialized = true;
+        }
+    }
+
+    public void SetWeaponToDisplay()
+    {
+        if (GetActiveCharacter().GetComponent<CharacterCombat>().GetCurrentWeapon() != null)
+        {
+            weaponDisplayImage.sprite = GetActiveCharacter().GetComponent<CharacterCombat>().GetCurrentWeapon().weaponBasicVariables.weaponDisplaySprite;
+        }
+    }
+
+    public void ChangeWeapon()
+    {
+        GetActiveCharacter().ChangeWeapon();
+    }
+
+    public CharacterInput GetActiveCharacter()
+    {
+        foreach (var groupableEntity in TurnManager.listOfAllCharacters.GetList())
+        {
+            if (groupableEntity.GetComponent<CharacterInput>().characterTurnVariables.isTurnActive)
+            {
+                return groupableEntity.GetComponent<CharacterInput>();
+            }
+        }
+
+        return null;
     }
 }

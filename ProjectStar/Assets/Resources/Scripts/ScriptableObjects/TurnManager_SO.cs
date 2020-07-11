@@ -66,6 +66,7 @@ public class TurnManager_SO : ScriptableObject
             }
             
             playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
+            //playerTeamList[0].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
 
             enemyTeamList = new List<GroupableEntities>(inactiveEnemyTeamList);
             inactiveEnemyTeamList.Clear();
@@ -84,8 +85,12 @@ public class TurnManager_SO : ScriptableObject
 
     public void StartRound()
     {
-        roundQueueGameObject.Dequeue()[0].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
-        
+        CharacterTurn characterTurn = roundQueueGameObject.Dequeue()[0].GetComponent<CharacterTurn>();
+        //roundQueueGameObject.Dequeue()[0].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
+        characterTurn.characterTurnVariables.isTurnActive = true;
+
+        characterTurn.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
+
         roundCounter++;
     }
 
@@ -127,7 +132,9 @@ public class TurnManager_SO : ScriptableObject
                 index++;
             }
             
-            playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;            
+            playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
+            playerTeamList[index].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
+            //character.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
 
         }
         else if (enemy != null)

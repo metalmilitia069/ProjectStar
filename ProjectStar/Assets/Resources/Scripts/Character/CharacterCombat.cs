@@ -61,6 +61,10 @@ public class CharacterCombat : MonoBehaviour
 
         //GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].weaponBasicVariables.weaponGripSocket
 
+
+
+        
+
     }
 
     // Update is called once per frame
@@ -71,6 +75,7 @@ public class CharacterCombat : MonoBehaviour
             if (GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt.Count > 0)
             {
                 GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].weaponBasicVariables.isCurrent = true;
+
                 GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].transform.parent = GetComponent<CharacterInput>().characterGeometryVariables.handWeaponGripPoint.transform;
 
                 weaponLocation = GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].weaponBasicVariables.weaponGripSocket.transform.localPosition * (-1);
@@ -80,8 +85,10 @@ public class CharacterCombat : MonoBehaviour
                 GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[0].transform.localRotation = weaponRotation;
 
                 isWeaponBeltReady = true;
+
+                GetCurrentWeapon();
             }
-        }        
+        }
     }
 
     private WeaponInput currentWeapon;

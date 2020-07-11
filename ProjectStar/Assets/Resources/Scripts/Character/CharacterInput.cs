@@ -137,14 +137,8 @@ public class CharacterInput : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.G))
-            {                
-                ClearScannedEnemiesList();
-                
-                TurnOffCombatScanMode();
-                
-                GetComponent<CharacterCombat>().ChangeWeapon();
-                GridManager.ClearSelectableTiles();
-                characterMoveVariables.isAttackRangeFound = false;
+            {
+                ChangeWeapon();
                 //if (_isCombatMode)
                 //{
                 //    ChangeWeapon();
@@ -154,6 +148,21 @@ public class CharacterInput : MonoBehaviour
         }
 
         
+    }
+
+    public void ChangeWeapon()
+    {
+        ClearScannedEnemiesList();
+
+        TurnOffCombatScanMode();
+
+        if (!characterMoveVariables._isMoveMode)
+        {
+            GridManager.ClearSelectableTiles();
+        }
+
+        GetComponent<CharacterCombat>().ChangeWeapon();
+        characterMoveVariables.isAttackRangeFound = false;
     }
 
     public void ClearScannedEnemiesList()
