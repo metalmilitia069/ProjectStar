@@ -39,10 +39,20 @@ public class WeaponDisplayPanel : MonoBehaviour
 
     public void SetWeaponToDisplay()
     {
-        if (GetActiveCharacter().GetComponent<CharacterCombat>().GetCurrentWeapon() != null)
+        WeaponInput weaponInput = GetActiveCharacter().GetComponent<CharacterCombat>().GetCurrentWeapon();
+        if (weaponInput != null)
         {
-            weaponDisplayImage.sprite = GetActiveCharacter().GetComponent<CharacterCombat>().GetCurrentWeapon().weaponBasicVariables.weaponDisplaySprite;
+            //GetComponent<WeaponDisplayPanelTween>().ToggleTween();
+            weaponDisplayImage.sprite = weaponInput.weaponBasicVariables.weaponDisplaySprite;
+            weaponNameText.text = weaponInput.weaponBasicVariables.weaponName;
+            bulletsDisplayImage.sprite = uiManager.DisplayBullets(weaponInput.weaponBasicVariables.maxAmmunition, weaponInput.weaponBasicVariables.currentAmmunition);
+            //GetComponent<WeaponDisplayPanelTween>().ToggleTween();
         }
+    }
+
+    public void ToggleTween()
+    {
+        GetComponent<WeaponDisplayPanelTween>().ToggleTween();
     }
 
     public void ChangeWeapon()

@@ -18,6 +18,7 @@ public class WeaponBasic_SO : ScriptableObject
 
     [Header("WEAPON UI INFORMATION")]
     public Sprite weaponDisplaySprite;
+    public string weaponName;
 
     public bool isCurrent = false;
 

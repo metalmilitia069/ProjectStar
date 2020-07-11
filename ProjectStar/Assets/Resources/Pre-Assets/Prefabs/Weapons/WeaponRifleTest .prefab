@@ -224,6 +224,7 @@ MonoBehaviour:
   firePoint: {fileID: 2047135249771760213}
   weaponDisplaySprite: {fileID: 21300000, guid: 18fc529ea3b004e408f195bc035824a0,
     type: 3}
+  weaponName: Cyber Rifle +1
 --- !u!114 &5522530203180896178
 MonoBehaviour:
   m_ObjectHideFlags: 0

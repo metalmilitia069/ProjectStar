@@ -16,6 +16,14 @@ public class UIManager_SO : ScriptableObject
 
     public WeaponDisplayPanel weaponDisplayPanel;
 
+
+    [Header("UI SPRITES COLLECTION FOR BULLET COUNT :")]
+    public Sprite[] magazine2;
+    public Sprite[] magazine4;
+    public Sprite[] magazine6;
+    public Sprite[] magazine8;
+    public Sprite[] magazine10;
+
     public void DisableButtons()
     {
         attackModeButton.gameObject.SetActive(false);
@@ -26,6 +34,36 @@ public class UIManager_SO : ScriptableObject
         attackModeButton.gameObject.SetActive(true);
     }
 
+    public Sprite DisplayBullets(int maxAmmo, int curAmmo)
+    {
+        Sprite[] magazine = default;
+
+        switch (maxAmmo)
+        {
+            case 2:
+                magazine = magazine2;
+                break;
+            case 4:
+                magazine = magazine4;
+                break;
+            case 6:
+                magazine = magazine6;
+                break;
+            case 8:
+                magazine = magazine8;
+                break;
+            case 10:
+                magazine = magazine10;
+                break;
+            default:
+                Debug.Log("Weapon Magazine Not Located!!!");
+
+                return null;//magazine2[2];                
+        }
+
+        return magazine[curAmmo];
+    }
+
     private void OnDisable()
     {
         spawnedCrossSignUI = default;
@@ -33,4 +71,6 @@ public class UIManager_SO : ScriptableObject
         attackModeButton = default;
         weaponDisplayPanel = default;
     }
+
+
 }

@@ -150,6 +150,7 @@ MonoBehaviour:
   firePoint: {fileID: 5583377198623367814}
   weaponDisplaySprite: {fileID: 21300000, guid: da460c0750f99af4cb3390f78512265c,
     type: 3}
+  weaponName: Destroyer +3
 --- !u!114 &2670961017004285015
 MonoBehaviour:
   m_ObjectHideFlags: 0

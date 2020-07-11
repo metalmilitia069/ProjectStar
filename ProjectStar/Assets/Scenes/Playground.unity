@@ -643,7 +643,7 @@ MonoBehaviour:
   characterName: Bilbo Baggins
   characterLevel: 1
   characterGender: 1
-  characterClass: 4
+  characterClass: 1
   characterGeometryPoint: {fileID: 1029333888}
 --- !u!114 &30301491
 MonoBehaviour:
@@ -1128,7 +1128,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hit Chance
+  m_Text: Crit Chance
 --- !u!222 &166981473
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1618,6 +1618,7 @@ MonoBehaviour:
   weaponHolsterSocket: {fileID: 898349682}
   firePoint: {fileID: 1564541936}
   weaponDisplaySprite: {fileID: 0}
+  weaponName: 
 --- !u!114 &238998609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2619,6 +2620,7 @@ MonoBehaviour:
   weaponHolsterSocket: {fileID: 90505586}
   firePoint: {fileID: 1540513931}
   weaponDisplaySprite: {fileID: 0}
+  weaponName: 
 --- !u!114 &460952667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2885,6 +2887,7 @@ MonoBehaviour:
   weaponHolsterSocket: {fileID: 1014772291}
   firePoint: {fileID: 365770629}
   weaponDisplaySprite: {fileID: 0}
+  weaponName: 
 --- !u!114 &512387640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3821,6 +3824,7 @@ MonoBehaviour:
   weaponHolsterSocket: {fileID: 1128840419}
   firePoint: {fileID: 1786521612}
   weaponDisplaySprite: {fileID: 0}
+  weaponName: 
 --- !u!114 &692875726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6028,6 +6032,7 @@ MonoBehaviour:
   weaponHolsterSocket: {fileID: 603256913}
   firePoint: {fileID: 1542379479}
   weaponDisplaySprite: {fileID: 0}
+  weaponName: 
 --- !u!114 &1049560433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6237,6 +6242,7 @@ MonoBehaviour:
   weaponHolsterSocket: {fileID: 617368758}
   firePoint: {fileID: 711401957}
   weaponDisplaySprite: {fileID: 0}
+  weaponName: 
 --- !u!114 &1074730822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7818,7 +7824,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 9e5a12d0a56cac74db1091a432d1ca74, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8626,6 +8632,7 @@ MonoBehaviour:
   weaponHolsterSocket: {fileID: 1460063106}
   firePoint: {fileID: 337840610}
   weaponDisplaySprite: {fileID: 0}
+  weaponName: 
 --- !u!114 &1517463506
 MonoBehaviour:
   m_ObjectHideFlags: 0

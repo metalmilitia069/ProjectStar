@@ -113,7 +113,7 @@ public class CharacterCombat : MonoBehaviour
                 return currentWeapon;
             }
         }
-        Debug.Log("cuuu");
+
         return currentWeapon;//GetComponent<CharacterInput>().characterEquipmentVariables.dicWeaponBelt[0];
     }
 
@@ -240,6 +240,8 @@ public class CharacterCombat : MonoBehaviour
         charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
 
         this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
+        //GetComponent<CharacterInput>().uiManager.DisplayBullets();
+        GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
 
 
         if (this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0)

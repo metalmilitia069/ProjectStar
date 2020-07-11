@@ -45,7 +45,6 @@ public class AttackPanelTween : MonoBehaviour
             if (attackModeButton.charInput.GetComponent<CharacterInput>().characterMoveVariables._isCombatMode)
             {
                 isAttackModeOn = true;
-                Debug.Log("CUUUUUUUUUUUUU");
             }
             else
             {

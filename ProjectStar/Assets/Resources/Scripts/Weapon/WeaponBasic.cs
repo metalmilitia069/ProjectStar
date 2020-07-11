@@ -26,6 +26,7 @@ public class WeaponBasic : MonoBehaviour
 
     [Header("WEAPON UI SETUP")]
     public Sprite weaponDisplaySprite;
+    public string weaponName;
 
     // Start is called before the first frame update
     void Awake()//Start()
@@ -39,6 +40,7 @@ public class WeaponBasic : MonoBehaviour
         weaponBasicVariables.firePoint = firePoint;
 
         weaponBasicVariables.weaponDisplaySprite = weaponDisplaySprite;
+        weaponBasicVariables.weaponName = weaponName;
 
 
         weaponBasicVariables.WeaponBasicSetup();

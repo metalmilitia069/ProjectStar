@@ -194,6 +194,7 @@ MonoBehaviour:
   firePoint: {fileID: 5078915904999796130}
   weaponDisplaySprite: {fileID: 21300000, guid: ce25f7258ab9fca429da2c1da3f77206,
     type: 3}
+  weaponName: Gun of the Glory +2
 --- !u!114 &5078915904666259878
 MonoBehaviour:
   m_ObjectHideFlags: 0

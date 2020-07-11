@@ -285,11 +285,10 @@ public class CharacterInput : MonoBehaviour
     {
         uiManager.canAttackPanelDataBeTurnedOff = true;
 
-        Debug.Log(characterCombatVariables._listOfScannedEnemies.Count);
+
         EnemyInput searchedEnemy = SearchMarkedEnemy();
         if (searchedEnemy != null)
-        {
-            Debug.Log("search enemy found!");
+        {            
             searchedEnemy.EnemyCombatVariables.isMarkedEnemy = false;
         }
     }

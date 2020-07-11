@@ -15,3 +15,46 @@ MonoBehaviour:
   crossSignUIGizmo: {fileID: 4726805058227572286, guid: 0f80c1bace913fb40a0aefe356938615,
     type: 3}
   spawnedCrossSignUI: {fileID: 0}
+  canAttackPanelDataBeTurnedOff: 1
+  attackModeButton: {fileID: 0}
+  weaponDisplayPanel: {fileID: 0}
+  magazine2:
+  - {fileID: 21300000, guid: 50271b7dec99a424a978e17c142def5f, type: 3}
+  - {fileID: 21300000, guid: 519be60f6615f864d90032a10185b640, type: 3}
+  - {fileID: 21300000, guid: e7726044efe292142a6c2cb9e579636e, type: 3}
+  magazine4:
+  - {fileID: 21300000, guid: 749fa783eda03d341952be90c5686924, type: 3}
+  - {fileID: 21300000, guid: c640ac1c72629f241894aa05186c79d2, type: 3}
+  - {fileID: 21300000, guid: 0ce917e68d04e114e854453e8749fda9, type: 3}
+  - {fileID: 21300000, guid: d3f760f7ad5008d46a255f4297f415e7, type: 3}
+  - {fileID: 21300000, guid: 87b3e9a29519af64284be8d51decf0a1, type: 3}
+  magazine6:
+  - {fileID: 21300000, guid: 66b8187ece7b6794ea4b54c59b17bcc0, type: 3}
+  - {fileID: 21300000, guid: cb166d34ee6f5974b9c4fa9d496d1ddf, type: 3}
+  - {fileID: 21300000, guid: c859dc025b181c249bedbb583dd58d2e, type: 3}
+  - {fileID: 21300000, guid: dbdfd525ac5505c43825fda75d41693a, type: 3}
+  - {fileID: 21300000, guid: 89210a245f35ef946b9dbdacd791728a, type: 3}
+  - {fileID: 21300000, guid: e0d1359279cd78941972f629ad48ed32, type: 3}
+  - {fileID: 21300000, guid: 5233dc1404455234db3d74379ab16f97, type: 3}
+  magazine8:
+  - {fileID: 21300000, guid: 786b4a040e2c54143bb59b94c0e1bd23, type: 3}
+  - {fileID: 21300000, guid: a8395d569149d6b40aaf6f1288da588c, type: 3}
+  - {fileID: 21300000, guid: fd1c4108ac5dfb440a067c61c952f0b3, type: 3}
+  - {fileID: 21300000, guid: 672c7b5f9ebacea48acdb0b6e724fac4, type: 3}
+  - {fileID: 21300000, guid: c328c35744a2c9e48a867e49a5f25743, type: 3}
+  - {fileID: 21300000, guid: 0eddc03a5ad42e84ca3d5ce9cfba0a9f, type: 3}
+  - {fileID: 21300000, guid: 62477f49a972bf54591d6f405902c7f9, type: 3}
+  - {fileID: 21300000, guid: 20967fd38ca944c4680cfcfb0b2283b9, type: 3}
+  - {fileID: 21300000, guid: 6b79e20036b563640ad95eea16aa7131, type: 3}
+  magazine10:
+  - {fileID: 21300000, guid: 9aae4278161bd45429ebf4c6564a8994, type: 3}
+  - {fileID: 21300000, guid: c3c05cb9972d1c2449ff2b131f8aefe7, type: 3}
+  - {fileID: 21300000, guid: 6e38a756d303f1449a5e33467c3dda1b, type: 3}
+  - {fileID: 21300000, guid: 3d0169dfb4b04ac4dba45c4d768ce2b4, type: 3}
+  - {fileID: 21300000, guid: 0d5ce19e1d0778748bedf185f7712320, type: 3}
+  - {fileID: 21300000, guid: 2d9f31b2994363c4e9c954e1935d1e88, type: 3}
+  - {fileID: 21300000, guid: 438696fec17b2944f9dd2f594f461d62, type: 3}
+  - {fileID: 21300000, guid: 5628ba56d252f57458c34cea9a361b00, type: 3}
+  - {fileID: 21300000, guid: 3f8d219b35e95e34c8514a6f79526b18, type: 3}
+  - {fileID: 21300000, guid: 31dfea75b382379459cfa9294c93f5df, type: 3}
+  - {fileID: 21300000, guid: 9e5a12d0a56cac74db1091a432d1ca74, type: 3}
