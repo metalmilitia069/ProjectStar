@@ -13,10 +13,10 @@ public class WeaponDisplayPanelTween : MonoBehaviour
 
     public void ToggleTween()
     {
-        if (!TweenComplete)
-        {
-            return;
-        }
+        //if (!TweenComplete)
+        //{
+        //    return;
+        //}
 
         TweenComplete = false;
         transform.LeanScale(isTweendIn ? Vector3.zero : Vector3.one, TweenSpeed).setEase(TweenType).setOnComplete(() => TweenComplete = true);

@@ -8,10 +8,13 @@ public class EnemyStats : MonoBehaviour
     public EnemyStats_SO EnemyStatsVariables;
 
 
+    [Header("ENEMY STATS CONFIGURATION :")]
+    public Sprite enemySigil;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetEnemySigil();
     }
 
     // Update is called once per frame
@@ -19,4 +22,10 @@ public class EnemyStats : MonoBehaviour
     {
         
     }
+
+    public void SetEnemySigil()
+    {
+        EnemyStatsVariables.enemySigilReference = enemySigil;
+    }
+
 }

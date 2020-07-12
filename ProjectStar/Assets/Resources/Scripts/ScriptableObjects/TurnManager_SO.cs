@@ -86,6 +86,11 @@ public class TurnManager_SO : ScriptableObject
 
     public void StartRound()
     {
+        playerTeamList[0].GetComponent<CharacterInput>().uiManager.turnPanel.CallTurnPanel(playerTeamList[0]);
+
+        playerTeamList[0].GetComponent<CharacterInput>().MainCameraControllerVariables.LockCamera(playerTeamList[0].transform);
+
+
         CharacterTurn characterTurn = roundQueueGameObject.Dequeue()[0].GetComponent<CharacterTurn>();
         //roundQueueGameObject.Dequeue()[0].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
         characterTurn.characterTurnVariables.isTurnActive = true;
@@ -96,15 +101,29 @@ public class TurnManager_SO : ScriptableObject
         roundCounter++;
     }
 
+    public bool canContinue = false;
+
+    public void PrepareToContinueRound()
+    {
+        //canContinue = false;
+        enemyTeamList[0].GetComponent<EnemyInput>().uiManager.turnPanel.CallTurnPanel(enemyTeamList[0]);
+
+
+    }
+
     public void ContinueRound()
     {
 
+        //if (canContinue)
+        //{
+            EnemyTurn enemyTurn = roundQueueGameObject.Dequeue()[0].GetComponent<EnemyTurn>();
+            if (enemyTurn)
+            {
+                enemyTurn.EnemyTurnVariables.isTurnActive = true;
+            }
+            //canContinue = false;
+        //}
 
-        EnemyTurn enemyTurn = roundQueueGameObject.Dequeue()[0].GetComponent<EnemyTurn>();
-        if (enemyTurn)
-        {
-            enemyTurn.EnemyTurnVariables.isTurnActive = true;
-        }
         //ATTENTION!!! >>> IF MORE CLASSES, ADD MORE IFS-ELSES
     }       
 
@@ -186,7 +205,8 @@ public class TurnManager_SO : ScriptableObject
 
                 playerTeamList.Remove(character);
 
-                ContinueRound();
+                PrepareToContinueRound();
+                //ContinueRound();
             }
         }
         else if (enemy != null)

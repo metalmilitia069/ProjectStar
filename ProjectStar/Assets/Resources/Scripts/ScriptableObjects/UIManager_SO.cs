@@ -11,11 +11,15 @@ public class UIManager_SO : ScriptableObject
 
     public bool canAttackPanelDataBeTurnedOff = false;
 
+
+
     public AttackModeButton attackModeButton;
     public ReloadButton reloadButton;
+    public ChangeWeaponButton changeWeaponButton;
 
 
     public WeaponDisplayPanel weaponDisplayPanel;
+    public TurnPanel turnPanel;
 
 
     [Header("UI SPRITES COLLECTION FOR BULLET COUNT :")]
@@ -29,12 +33,14 @@ public class UIManager_SO : ScriptableObject
     {
         attackModeButton.gameObject.SetActive(false);
         reloadButton.gameObject.SetActive(false);
+        changeWeaponButton.gameObject.SetActive(false);
     }
 
     public void EnableButtons()
     {
         attackModeButton.gameObject.SetActive(true);
         reloadButton.gameObject.SetActive(true);
+        changeWeaponButton.gameObject.SetActive(true);
     }
 
     public Sprite DisplayBullets(int maxAmmo, int curAmmo)
@@ -72,7 +78,10 @@ public class UIManager_SO : ScriptableObject
         spawnedCrossSignUI = default;
         canAttackPanelDataBeTurnedOff = false;
         attackModeButton = default;
+        changeWeaponButton = default;
+
         weaponDisplayPanel = default;
+        turnPanel = default;
     }
 
 

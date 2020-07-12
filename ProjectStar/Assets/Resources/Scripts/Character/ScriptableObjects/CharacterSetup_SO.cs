@@ -18,6 +18,9 @@ public class CharacterSetup_SO : ScriptableObject
     [Header("CHARACTER GEOMETRY REFERENCE :")]
     public GameObject characterGeometryReference;
 
+    [Header("CHARACTER SIGIL REFERENCE :")]
+    public Sprite characterSigilReference;
+
     private void OnDisable()
     {
         characterGender = Gender.underfined; //DELETE THIS WHEN IMPLEMENTING THE CHARACTER POOL!!!!!!!!!!!!!!!

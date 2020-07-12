@@ -53,6 +53,7 @@ public class WeaponDisplayPanel : MonoBehaviour
     public void ToggleTween()
     {
         GetComponent<WeaponDisplayPanelTween>().ToggleTween();
+        Debug.Log("toggleou o Tween do mozovos!!!!");
     }
 
     public void ChangeWeapon()

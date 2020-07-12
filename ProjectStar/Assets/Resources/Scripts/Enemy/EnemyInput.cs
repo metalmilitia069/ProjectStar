@@ -10,6 +10,9 @@ public class EnemyInput : MonoBehaviour
     public CombatCalculatorManager_SO CombatCalculatorManager;    
     [Header("INSERT A TURN MANAGER SO :")]
     public TurnManager_SO TurnManager;
+    [Header("INSERT A UI MANAGER SO :")]
+    public UIManager_SO uiManager;
+
 
     [Header("ENEMY PATH AI VARIABLES - INSTANCE :")]
     public EnemyPathAI_SO enemyPathAIVariables;

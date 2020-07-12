@@ -10,7 +10,7 @@ public class ReloadButton : MonoBehaviour
     public UIManager_SO uiManager;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         uiManager.reloadButton = this;
     }
@@ -23,9 +23,28 @@ public class ReloadButton : MonoBehaviour
 
     public void ReloadWeapon()
     {
-        int[] weaponArr = GetActiveCharacter().GetComponent<CharacterCombat>().GetCurrentWeapon().weaponBasicVariables.ReloadWeapon();
+        CharacterInput characterInput = GetActiveCharacter();
+        int[] weaponArr = characterInput.GetComponent<CharacterCombat>().GetCurrentWeapon().weaponBasicVariables.ReloadWeapon();
 
-        uiManager.weaponDisplayPanel.bulletsDisplayImage.sprite = uiManager.DisplayBullets(weaponArr[0], weaponArr[1]);
+        if (weaponArr != null)
+        {
+            uiManager.weaponDisplayPanel.bulletsDisplayImage.sprite = uiManager.DisplayBullets(weaponArr[0], weaponArr[1]);
+
+            characterInput.characterTurnVariables.actionPoints--;
+
+            if (characterInput.characterTurnVariables.actionPoints < 1)
+            {
+                if (characterInput.characterMoveVariables._isCombatMode)
+                {
+                    characterInput.ChangeMode();
+                }
+
+                TurnManager.RemoveFromTurn(characterInput.GetComponent<CharacterTurn>(), null);                
+            }
+        }
+
+
+
     }
 
     public CharacterInput GetActiveCharacter()

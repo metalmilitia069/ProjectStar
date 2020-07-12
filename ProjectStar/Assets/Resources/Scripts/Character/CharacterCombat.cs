@@ -222,7 +222,7 @@ public class CharacterCombat : MonoBehaviour
 
     public void Attack(EnemyInput enemy)
     {
-        if (currentWeapon.GetComponent<WeaponBasic>().weaponBasicVariables.currentAmmunition == 0)
+        if (currentWeapon.weaponBasicVariables.currentAmmunition == 0 && currentWeapon.weaponBasicVariables.weaponClass != WeaponClass.Melee)
         {
             return;
         }

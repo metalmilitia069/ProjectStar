@@ -117,8 +117,16 @@ public class WeaponBasic_SO : ScriptableObject
 
     public int[] ReloadWeapon()
     {
+        if (currentAmmunition == maxAmmunition)
+        {
+            Debug.Log("Ammunition is Full!!!");
+            return null;
+        }
+
         currentAmmunition = maxAmmunition;
         int[] bullets = { maxAmmunition, maxAmmunition};
+
+
 
 
         return bullets;

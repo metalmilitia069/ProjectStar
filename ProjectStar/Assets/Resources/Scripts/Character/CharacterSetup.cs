@@ -16,6 +16,7 @@ public class CharacterSetup : MonoBehaviour
     public Gender characterGender = Gender.underfined;
     public CharacterClass characterClass = CharacterClass.undefined;
     public GameObject characterGeometryPoint;
+    public Sprite characterSigil;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class CharacterSetup : MonoBehaviour
 
         GetCharacterName();
         GetCharacterLevel();
+
+        GetCharacterSigil();
     }
 
     // Start is called before the first frame update
@@ -91,6 +94,11 @@ public class CharacterSetup : MonoBehaviour
         {
             characterLevel = characterSetupVariables.characterLevel;
         }
+    }
+
+    public void GetCharacterSigil()
+    {
+        characterSetupVariables.characterSigilReference = characterSigil;
     }
 
 

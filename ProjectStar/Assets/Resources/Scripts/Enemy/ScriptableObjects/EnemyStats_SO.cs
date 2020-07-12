@@ -53,4 +53,8 @@ public class EnemyStats_SO : ScriptableObject
     public int elementalDefPoison = 0;
 
     public int maxActionPoints = 2;
+
+    [Header("ENEMY UI ELEMENTS")]
+    public Sprite enemySigilReference;
+
 }
