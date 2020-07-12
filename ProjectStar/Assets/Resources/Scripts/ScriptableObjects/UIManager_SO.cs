@@ -17,9 +17,13 @@ public class UIManager_SO : ScriptableObject
     public ReloadButton reloadButton;
     public ChangeWeaponButton changeWeaponButton;
 
+    public EndTurnButton endTurnButton;
+    
+
 
     public WeaponDisplayPanel weaponDisplayPanel;
     public TurnPanel turnPanel;
+    public EndTurnConfirmPanel endTurnConfirmPanel;
 
 
     [Header("UI SPRITES COLLECTION FOR BULLET COUNT :")]
@@ -34,6 +38,7 @@ public class UIManager_SO : ScriptableObject
         attackModeButton.gameObject.SetActive(false);
         reloadButton.gameObject.SetActive(false);
         changeWeaponButton.gameObject.SetActive(false);
+        endTurnButton.gameObject.SetActive(false);
     }
 
     public void EnableButtons()
@@ -41,6 +46,7 @@ public class UIManager_SO : ScriptableObject
         attackModeButton.gameObject.SetActive(true);
         reloadButton.gameObject.SetActive(true);
         changeWeaponButton.gameObject.SetActive(true);
+        endTurnButton.gameObject.SetActive(true);
     }
 
     public Sprite DisplayBullets(int maxAmmo, int curAmmo)

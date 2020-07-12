@@ -93,7 +93,9 @@ public class TurnManager_SO : ScriptableObject
 
         CharacterTurn characterTurn = roundQueueGameObject.Dequeue()[0].GetComponent<CharacterTurn>();
         //roundQueueGameObject.Dequeue()[0].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
+        characterTurn.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
         characterTurn.characterTurnVariables.isTurnActive = true;
+        //characterTurn.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
 
         characterTurn.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
         //characterTurn.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.ToggleTween();
@@ -299,5 +301,24 @@ public class TurnManager_SO : ScriptableObject
         }
 
         characterTurn.GetComponent<CharacterMove>().enabled = true;
-    }    
+    }
+
+    public void EndPlayerTurn()
+    {
+        foreach (var activeCharacter in playerTeamList)
+        {
+            activeCharacter.GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
+            activeCharacter.GetComponent<CharacterInput>().characterTurnVariables.isTurnActive = false;
+            inactivePlayerTeamList.Add(activeCharacter);
+            activeCharacter.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
+            //playerTeamList.Remove(activeCharacter);
+
+        }
+        playerTeamList.Clear();
+
+        inactivePlayerTeamList[0].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.ToggleTween();
+        PrepareToContinueRound();
+
+        
+    }
 }
