@@ -63,6 +63,7 @@ public class TurnManager_SO : ScriptableObject
             foreach (var chara in playerTeamList)
             {
                 chara.GetComponent<CharacterTurn>().ResetActionPoints();
+                chara.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
             }
             
             playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
@@ -317,8 +318,12 @@ public class TurnManager_SO : ScriptableObject
         playerTeamList.Clear();
 
         inactivePlayerTeamList[0].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.ToggleTween();
-        PrepareToContinueRound();
+        PrepareToContinueRound();        
+    }
 
-        
+    public void EndUnitsTurn(CharacterInput characterInput)
+    {
+        characterInput.characterTurnVariables.actionPoints = 0;
+        RemoveFromTurn(characterInput.GetComponent<CharacterTurn>(), null);
     }
 }

@@ -18,25 +18,11 @@ public class TurnPanel : MonoBehaviour
     {
         uiManager.turnPanel = this;
     }
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void CallTurnPanel(GroupableEntities groupableEntity)
     {
         if (groupableEntity.GetComponent<CharacterInput>())
-        {
-            Debug.Log("Peidei");
+        {            
             CharacterInput characterInput = groupableEntity.GetComponent<CharacterInput>();
             SetupTurnPanel(characterInput, null);
 

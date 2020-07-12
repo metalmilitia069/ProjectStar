@@ -18,6 +18,7 @@ public class UIManager_SO : ScriptableObject
     public ChangeWeaponButton changeWeaponButton;
 
     public EndTurnButton endTurnButton;
+    public EndUnitsTurnButton endUnitsTurnButton;
     
 
 
@@ -39,6 +40,7 @@ public class UIManager_SO : ScriptableObject
         reloadButton.gameObject.SetActive(false);
         changeWeaponButton.gameObject.SetActive(false);
         endTurnButton.gameObject.SetActive(false);
+        endUnitsTurnButton.gameObject.SetActive(false);
     }
 
     public void EnableButtons()
@@ -47,6 +49,7 @@ public class UIManager_SO : ScriptableObject
         reloadButton.gameObject.SetActive(true);
         changeWeaponButton.gameObject.SetActive(true);
         endTurnButton.gameObject.SetActive(true);
+        endUnitsTurnButton.gameObject.SetActive(true);
     }
 
     public Sprite DisplayBullets(int maxAmmo, int curAmmo)
