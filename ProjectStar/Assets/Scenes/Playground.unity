@@ -657,7 +657,7 @@ MonoBehaviour:
   characterName: Bilbo Baggins
   characterLevel: 1
   characterGender: 1
-  characterClass: 1
+  characterClass: 0
   characterGeometryPoint: {fileID: 1029333888}
   characterAfiliationSigil: {fileID: 21300000, guid: 46f3f7c9aa09ffa43b030978c12275ea,
     type: 3}
@@ -4156,6 +4156,11 @@ MonoBehaviour:
   characterNameText: {fileID: 583363470}
   characterClassText: {fileID: 1076811604}
   characterClassSigil: {fileID: 683997169}
+  assaultSigil: {fileID: 21300000, guid: 7ca3ddf0e493d2f4498079d6dac91a56, type: 3}
+  sniperSigil: {fileID: 21300000, guid: 0581d57d41f819c4cb6804aed47f9fbf, type: 3}
+  heavySigil: {fileID: 21300000, guid: 4efbefcb1d9769f43aed5ecbe83a21a9, type: 3}
+  supportSigil: {fileID: 21300000, guid: dfea7e69889a9154e81d8b9af4d08e1f, type: 3}
+  heroSigil: {fileID: 21300000, guid: 4234464d5e2c75240b8e76c92177837c, type: 3}
 --- !u!114 &683997172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7226,7 +7231,7 @@ MonoBehaviour:
   characterName: Frodo Baggins
   characterLevel: 2
   characterGender: 0
-  characterClass: 2
+  characterClass: 3
   characterGeometryPoint: {fileID: 350993266}
   characterAfiliationSigil: {fileID: 21300000, guid: 46f3f7c9aa09ffa43b030978c12275ea,
     type: 3}

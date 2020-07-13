@@ -14,11 +14,21 @@ public class PlayerIdentificationPanel : MonoBehaviour
     public Text characterClassText;
     public Image characterClassSigil;
 
+    //LEAVE JUST ONE CLASS SIGIL SPRITE LATER, WHEN CREATING POOLS AND SPAWNMANAGER!!!!!!!!!!
+    public Sprite assaultSigil;
+    public Sprite sniperSigil;
+    public Sprite heavySigil;
+    public Sprite supportSigil;
+    public Sprite heroSigil;
+
+    private void Awake()
+    {
+        uiManager.playerIdentificationPanel = this;        
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        uiManager.playerIdentificationPanel = this;
     }
      
     // Update is called once per frame
@@ -35,18 +45,23 @@ public class PlayerIdentificationPanel : MonoBehaviour
         {
             case CharacterClass.support:
                 characterClassText.text = "Support";
+                characterInput.characterSetupVariables.characterClassSigilReference = supportSigil;
                 break;
             case CharacterClass.sniper:
                 characterClassText.text = "Sniper";
+                characterInput.characterSetupVariables.characterClassSigilReference = sniperSigil;
                 break;
             case CharacterClass.assault:
                 characterClassText.text = "Assault";
+                characterInput.characterSetupVariables.characterClassSigilReference = assaultSigil;
                 break;
             case CharacterClass.heavy:
                 characterClassText.text = "Heavy";
+                characterInput.characterSetupVariables.characterClassSigilReference = heavySigil;
                 break;
             case CharacterClass.hero:
                 characterClassText.text = "Hero";
+                characterInput.characterSetupVariables.characterClassSigilReference = heroSigil;
                 break;
             case CharacterClass.undefined:
                 characterClassText.text = "NOT DEFINED";
@@ -56,6 +71,7 @@ public class PlayerIdentificationPanel : MonoBehaviour
         }
 
         characterClassSigil.sprite = characterInput.characterSetupVariables.characterClassSigilReference;
+        characterClassSigil.SetNativeSize();
     }
 
     public void ToggleTween()

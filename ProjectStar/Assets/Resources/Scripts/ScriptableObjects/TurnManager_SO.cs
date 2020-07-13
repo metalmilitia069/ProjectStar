@@ -147,13 +147,14 @@ public class TurnManager_SO : ScriptableObject
 
             int index = playerTeamList.IndexOf(character);
 
-
+            character.GetComponent<CharacterInput>().UnMarkEnemy();
+            character.GetComponent<CharacterInput>().uiManager.attackPanel.GetComponent<AttackPanelTween>().OutPosTween();
             playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = false;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables.isAttackRangeFound = false;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables._isCombatMode = false;
-            
+
 
 
             if (index >= playerTeamList.Count - 1)
@@ -211,6 +212,7 @@ public class TurnManager_SO : ScriptableObject
             {
                 //endplayer turn
                 character.characterTurnVariables.isTurnActive = false;
+                character.GetComponent<CharacterInput>().UnMarkEnemy();
 
                 character.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.ToggleTween();
                 character.GetComponent<CharacterInput>().uiManager.playerIdentificationPanel.ToggleTween();
@@ -221,7 +223,12 @@ public class TurnManager_SO : ScriptableObject
                 character.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
                 
                 character.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
-                //character.GetComponent<CharacterInput>().UnMarkEnemy();
+
+                character.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = false;
+                character.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
+                character.GetComponent<CharacterInput>().characterMoveVariables.isAttackRangeFound = false;
+                character.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
+                character.GetComponent<CharacterInput>().characterMoveVariables._isCombatMode = false;
 
 
                 playerTeamList.Remove(character);

@@ -18,15 +18,19 @@ public class CharacterSetup : MonoBehaviour
     public GameObject characterGeometryPoint;
     public Sprite characterAfiliationSigil;
 
+
+
     private void Awake()
     {
+        
+        //GetCharacterSigil();
+
         GetCharacterGeometry();
         GetCharacterClass();
 
         GetCharacterName();
         GetCharacterLevel();
 
-        GetCharacterSigil();
     }
 
     // Start is called before the first frame update

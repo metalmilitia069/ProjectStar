@@ -125,6 +125,7 @@ public class CharacterInput : MonoBehaviour
                     //}
                     GridManager.CalculateAttackPath(this.gameObject);
                     GetComponent<CharacterCombat>().ScanForEnemies();
+                    //CombatScanMode(SearchMarkedEnemy());
 
                     //CombatScanMode();
                 }

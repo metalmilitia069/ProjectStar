@@ -39,6 +39,7 @@ public class CharacterSetup_SO : ScriptableObject
         characterLevel = 1; //DELETE THIS WHEN IMPLEMENTING THE CHARACTER POOL!!!!!!!!!!!!!!!
 
         characterGeometryReference = default;
+        characterClassSigilReference = default;
     }
 
     public void ResetVariables()
