@@ -19,6 +19,7 @@ public class AttackPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        uiManager.attackPanel = this;
         attackPanelTweenRef = GetComponent<AttackPanelTween>();
     }
 

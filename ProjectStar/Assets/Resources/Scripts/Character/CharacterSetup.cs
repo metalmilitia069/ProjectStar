@@ -16,7 +16,7 @@ public class CharacterSetup : MonoBehaviour
     public Gender characterGender = Gender.underfined;
     public CharacterClass characterClass = CharacterClass.undefined;
     public GameObject characterGeometryPoint;
-    public Sprite characterSigil;
+    public Sprite characterAfiliationSigil;
 
     private void Awake()
     {
@@ -98,7 +98,7 @@ public class CharacterSetup : MonoBehaviour
 
     public void GetCharacterSigil()
     {
-        characterSetupVariables.characterSigilReference = characterSigil;
+        characterSetupVariables.characterAfiliationSigilReference = characterAfiliationSigil;
     }
 
 

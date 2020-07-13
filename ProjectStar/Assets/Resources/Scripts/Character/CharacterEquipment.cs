@@ -41,18 +41,11 @@ public class CharacterEquipment : MonoBehaviour
         switch (GetComponent<CharacterInput>().characterSetupVariables.characterClass)
         {
             case CharacterClass.support:
-                weaponBelt.Add(Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform));//characterEquipmentVariables.rifleWeaponPrefab);
-                //Instantiate(weaponBelt[0], charGeo.rifleWeaponHolster.transform);
-                //tempWeapon = Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform); //
-                //WaitForSeconds waitForSeconds = 5.0f;
-                //Debug.Log(tempWeapon.weaponBasicVariables.weaponClass);
-                //dicWeaponBelt.Add(tempWeapon.weaponBasicVariables.weaponClass, tempWeapon); //
+                weaponBelt.Add(Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform));                
 
                 weaponBelt.Add(Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform));
-                //tempWeapon = Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform); //
-                //Debug.Log(tempWeapon.weaponBasicVariables.weaponClass);
-                //dicWeaponBelt.Add(tempWeapon.weaponBasicVariables.weaponClass, tempWeapon); //
-                //Instantiate(weaponBelt[1], charGeo.gunWeaponHolster.transform);
+
+                GetComponent<CharacterInput>().characterSetupVariables.characterClassSigilReference = GetComponent<CharacterInput>().characterSetupVariables.supportSigil; //TODO: create a new place to assign this (organization)
 
                 description = CharacterClass.support + " Class Weapon Belt";
                 break;
@@ -61,12 +54,16 @@ public class CharacterEquipment : MonoBehaviour
 
                 weaponBelt.Add(Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform));
 
+                GetComponent<CharacterInput>().characterSetupVariables.characterClassSigilReference = GetComponent<CharacterInput>().characterSetupVariables.sniperSigil; //TODO: create a new place to assign this (organization)
+
                 description = CharacterClass.sniper + " Class Weapon Belt";
                 break;
             case CharacterClass.assault:
                 weaponBelt.Add(Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform));
 
                 weaponBelt.Add(Instantiate(characterEquipmentVariables.meleeWeaponPrefab, charGeo.meleeWeaponHolster.transform));
+
+                GetComponent<CharacterInput>().characterSetupVariables.characterClassSigilReference = GetComponent<CharacterInput>().characterSetupVariables.assaultSigil; //TODO: create a new place to assign this (organization)
 
                 description = CharacterClass.assault + " Class Weapon Belt";
                 break;
@@ -75,12 +72,17 @@ public class CharacterEquipment : MonoBehaviour
                 
                 weaponBelt.Add(Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform));
 
+                GetComponent<CharacterInput>().characterSetupVariables.characterClassSigilReference = GetComponent<CharacterInput>().characterSetupVariables.heavySigil; //TODO: create a new place to assign this (organization)
+
                 description = CharacterClass.heavy + " Class Weapon Belt";
                 break;
             case CharacterClass.hero:
                 weaponBelt.Add(Instantiate(characterEquipmentVariables.rifleWeaponPrefab, charGeo.rifleWeaponHolster.transform));
                 weaponBelt.Add(Instantiate(characterEquipmentVariables.meleeWeaponPrefab, charGeo.meleeWeaponHolster.transform));
                 weaponBelt.Add(Instantiate(characterEquipmentVariables.gunWeaponPrefab, charGeo.gunWeaponHolster.transform));
+
+                GetComponent<CharacterInput>().characterSetupVariables.characterClassSigilReference = GetComponent<CharacterInput>().characterSetupVariables.heroSigil; //TODO: create a new place to assign this (organization)
+
                 description = CharacterClass.support + " Class Weapon Belt";
                 break;
             case CharacterClass.undefined:

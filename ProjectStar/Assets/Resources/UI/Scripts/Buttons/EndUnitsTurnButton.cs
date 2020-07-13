@@ -18,6 +18,7 @@ public class EndUnitsTurnButton : MonoBehaviour
     public void EndUnitsTurn()
     {
         TurnManager.EndUnitsTurn(GetActiveCharacter());
+        //uiManager.spawnedCrossSignUI.gameObject.SetActive(false);
     }
 
     public CharacterInput GetActiveCharacter()

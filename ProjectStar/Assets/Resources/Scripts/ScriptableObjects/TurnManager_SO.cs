@@ -69,6 +69,8 @@ public class TurnManager_SO : ScriptableObject
             playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
             //playerTeamList[0].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
             playerTeamList[0].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.ToggleTween();
+            playerTeamList[0].GetComponent<CharacterInput>().uiManager.playerIdentificationPanel.ToggleTween();
+
 
             enemyTeamList = new List<GroupableEntities>(inactiveEnemyTeamList);
             inactiveEnemyTeamList.Clear();
@@ -89,6 +91,8 @@ public class TurnManager_SO : ScriptableObject
     {
         playerTeamList[0].GetComponent<CharacterInput>().uiManager.turnPanel.CallTurnPanel(playerTeamList[0]);
 
+
+
         playerTeamList[0].GetComponent<CharacterInput>().MainCameraControllerVariables.LockCamera(playerTeamList[0].transform);
 
 
@@ -99,6 +103,7 @@ public class TurnManager_SO : ScriptableObject
         //characterTurn.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
 
         characterTurn.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
+        characterTurn.GetComponent<CharacterInput>().uiManager.playerIdentificationPanel.SetupPlayerIdentificationPanel(characterTurn.GetComponent<CharacterInput>());
         //characterTurn.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.ToggleTween();
 
         roundCounter++;
@@ -142,11 +147,13 @@ public class TurnManager_SO : ScriptableObject
 
             int index = playerTeamList.IndexOf(character);
 
+
             playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = false;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables.isAttackRangeFound = false;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables._isCombatMode = false;
+            
 
 
             if (index >= playerTeamList.Count - 1)
@@ -160,6 +167,7 @@ public class TurnManager_SO : ScriptableObject
             
             playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
             playerTeamList[index].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
+            playerTeamList[index].GetComponent<CharacterInput>().uiManager.playerIdentificationPanel.SetupPlayerIdentificationPanel(playerTeamList[index].GetComponent<CharacterInput>());
             //character.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
 
         }
@@ -205,6 +213,16 @@ public class TurnManager_SO : ScriptableObject
                 character.characterTurnVariables.isTurnActive = false;
 
                 character.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.ToggleTween();
+                character.GetComponent<CharacterInput>().uiManager.playerIdentificationPanel.ToggleTween();
+                character.GetComponent<CharacterInput>().uiManager.attackPanel.GetComponent<AttackPanelTween>().OutPosTween();
+                character.GetComponent<CharacterInput>().uiManager.DisableButtons();
+
+                
+                character.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
+                
+                character.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
+                //character.GetComponent<CharacterInput>().UnMarkEnemy();
+
 
                 playerTeamList.Remove(character);
 
@@ -313,17 +331,21 @@ public class TurnManager_SO : ScriptableObject
             inactivePlayerTeamList.Add(activeCharacter);
             activeCharacter.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
             //playerTeamList.Remove(activeCharacter);
+            activeCharacter.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
+            activeCharacter.GetComponent<CharacterInput>().UnMarkEnemy();
 
         }
         playerTeamList.Clear();
 
         inactivePlayerTeamList[0].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.ToggleTween();
+
         PrepareToContinueRound();        
     }
 
     public void EndUnitsTurn(CharacterInput characterInput)
     {
         characterInput.characterTurnVariables.actionPoints = 0;
+        //characterInput.GetComponent<CharacterInput>().UnMarkEnemy();
         RemoveFromTurn(characterInput.GetComponent<CharacterTurn>(), null);
     }
 }

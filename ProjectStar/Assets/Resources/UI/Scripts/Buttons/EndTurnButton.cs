@@ -19,7 +19,11 @@ public class EndTurnButton : MonoBehaviour
     {
         TurnManager.EndPlayerTurn();
         uiManager.DisableButtons();
+        //uiManager.DisablePanels();
         uiManager.endTurnConfirmPanel.GetComponent<TurnPanelTween>().ToggleTween();
+        uiManager.attackPanel.GetComponent<AttackPanelTween>().OutPosTween();
+        uiManager.playerIdentificationPanel.ToggleTween();
+        uiManager.spawnedCrossSignUI.gameObject.SetActive(false);
     }
 
     public void AskEndTurnConfirmation()

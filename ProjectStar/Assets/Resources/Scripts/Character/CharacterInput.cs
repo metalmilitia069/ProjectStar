@@ -72,6 +72,7 @@ public class CharacterInput : MonoBehaviour
 
             if (characterMoveVariables._isMoveMode)
             {
+
                 ClearScannedEnemiesList();
 
                 if (!characterMoveVariables.isMoving)
@@ -124,6 +125,7 @@ public class CharacterInput : MonoBehaviour
                     //}
                     GridManager.CalculateAttackPath(this.gameObject);
                     GetComponent<CharacterCombat>().ScanForEnemies();
+
                     //CombatScanMode();
                 }
 
@@ -291,6 +293,8 @@ public class CharacterInput : MonoBehaviour
         {            
             searchedEnemy.EnemyCombatVariables.isMarkedEnemy = false;
         }
+
+        TurnOffCombatScanMode();
     }
 
     public EnemyInput SearchMarkedEnemy()
@@ -323,6 +327,7 @@ public class CharacterInput : MonoBehaviour
             characterMoveVariables._isCombatMode = true;
             characterMoveVariables._isMoveMode = false;
             characterMoveVariables.isAttackRangeFound = false;
+            
             foreach (var item in GridManager.tileList_SO.GetList())
             {
                 item.basicTileVariables.isMoveMode = false;

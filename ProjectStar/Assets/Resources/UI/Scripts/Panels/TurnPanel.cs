@@ -41,7 +41,7 @@ public class TurnPanel : MonoBehaviour
     {
         if (characterInput != null)
         {
-            sigilImage.sprite = characterInput.characterSetupVariables.characterSigilReference;
+            sigilImage.sprite = characterInput.characterSetupVariables.characterAfiliationSigilReference;
             turnsNameText.text = "Player's Turn";
         }
         else if (enemyInput != null)

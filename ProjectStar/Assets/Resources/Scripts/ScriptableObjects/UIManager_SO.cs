@@ -25,6 +25,9 @@ public class UIManager_SO : ScriptableObject
     public WeaponDisplayPanel weaponDisplayPanel;
     public TurnPanel turnPanel;
     public EndTurnConfirmPanel endTurnConfirmPanel;
+    public AttackPanel attackPanel;
+
+    public PlayerIdentificationPanel playerIdentificationPanel;
 
 
     [Header("UI SPRITES COLLECTION FOR BULLET COUNT :")]
@@ -41,6 +44,7 @@ public class UIManager_SO : ScriptableObject
         changeWeaponButton.gameObject.SetActive(false);
         endTurnButton.gameObject.SetActive(false);
         endUnitsTurnButton.gameObject.SetActive(false);
+        
     }
 
     public void EnableButtons()
@@ -50,6 +54,34 @@ public class UIManager_SO : ScriptableObject
         changeWeaponButton.gameObject.SetActive(true);
         endTurnButton.gameObject.SetActive(true);
         endUnitsTurnButton.gameObject.SetActive(true);
+        
+    }
+
+    public void DisablePanels()
+    {
+        weaponDisplayPanel.ToggleTween(); //.gameObject.SetActive(false);
+        turnPanel.GetComponent<TurnPanelTween>().ToggleTween();//gameObject.SetActive(false);
+        //endTurnConfirmPanel//.gameObject.SetActive(false);
+        attackPanel.GetComponent<AttackPanelTween>().OutPosTween();//.gameObject.SetActive(false);
+
+        playerIdentificationPanel.ToggleTween();//.gameObject.SetActive(false);
+}
+
+    public void EnablePanels()
+    {
+        //weaponDisplayPanel.gameObject.SetActive(true);
+        //turnPanel.gameObject.SetActive(true);
+        //endTurnConfirmPanel.gameObject.SetActive(true);
+        //attackPanel.gameObject.SetActive(true);
+
+        //playerIdentificationPanel.gameObject.SetActive(true);
+
+        weaponDisplayPanel.ToggleTween(); //.gameObject.SetActive(false);
+        turnPanel.GetComponent<TurnPanelTween>().ToggleTween();//gameObject.SetActive(false);
+        //endTurnConfirmPanel//.gameObject.SetActive(false);
+        attackPanel.GetComponent<AttackPanelTween>().ToggleTween();//.gameObject.SetActive(false);
+
+        playerIdentificationPanel.ToggleTween();//.gameObject.SetActive(false);
     }
 
     public Sprite DisplayBullets(int maxAmmo, int curAmmo)
@@ -91,6 +123,8 @@ public class UIManager_SO : ScriptableObject
 
         weaponDisplayPanel = default;
         turnPanel = default;
+
+        playerIdentificationPanel = default;
     }
 
 

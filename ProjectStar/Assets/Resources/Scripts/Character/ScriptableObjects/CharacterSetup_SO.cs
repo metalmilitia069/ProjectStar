@@ -15,11 +15,21 @@ public class CharacterSetup_SO : ScriptableObject
     public GameObject characterGeometryMale;
     public GameObject characterGeometryFemale;
 
+    //LEAVE JUST ONE CLASS SIGIL SPRITE LATER, WHEN CREATING POOLS AND SPAWNMANAGER!!!!!!!!!!
+    public Sprite assaultSigil;
+    public Sprite sniperSigil;
+    public Sprite heavySigil;
+    public Sprite supportSigil;
+    public Sprite heroSigil;
+
     [Header("CHARACTER GEOMETRY REFERENCE :")]
     public GameObject characterGeometryReference;
 
-    [Header("CHARACTER SIGIL REFERENCE :")]
-    public Sprite characterSigilReference;
+    [Header("CHARACTER AFFILIATION SIGIL REFERENCE :")]
+    public Sprite characterAfiliationSigilReference;
+    [Header("CHARACTER AFFILIATION SIGIL REFERENCE :")]
+    public Sprite characterClassSigilReference;
+
 
     private void OnDisable()
     {
