@@ -13,7 +13,8 @@ public class EnemyInput : MonoBehaviour
     [Header("INSERT A UI MANAGER SO :")]
     public UIManager_SO uiManager;
 
-
+    [Header("ENEMY SAVED DATA SO - COPY FROM ENEMY SAVED DATA")]
+    public SavedEnemies_SO enemySavedData;
     [Header("ENEMY PATH AI VARIABLES - INSTANCE :")]
     public EnemyPathAI_SO enemyPathAIVariables;
     [Header("ENEMY MOVE VARIABLES - INSTANCE :")]

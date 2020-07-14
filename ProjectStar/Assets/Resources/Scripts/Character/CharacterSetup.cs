@@ -10,7 +10,9 @@ public class CharacterSetup : MonoBehaviour
     [TextArea(1, 10)]
     public string Description = "SETUP CHARACTER BASIC CONFIGURATION";
 
-    public string characterName = default;
+    
+    public string characterName = default;    
+    public string callSign = default;
     [Range(1,30)]
     public int characterLevel;
     public Gender characterGender = Gender.underfined;
@@ -23,13 +25,15 @@ public class CharacterSetup : MonoBehaviour
     private void Awake()
     {
         
-        //GetCharacterSigil();
+        GetCharacterAffiliationSigil();
 
         GetCharacterGeometry();
         GetCharacterClass();
 
         GetCharacterName();
         GetCharacterLevel();
+
+        GetCharacterCallSign();
 
     }
 
@@ -77,9 +81,13 @@ public class CharacterSetup : MonoBehaviour
     }
 
     public void GetCharacterName()
-    {
+    {        
         if (characterSetupVariables.characterName == string.Empty)
         {
+            if (characterName.Length > 20)
+            {
+                characterName = characterName.Substring(0, 19);
+            }
             characterSetupVariables.characterName = characterName;            
         }
         else
@@ -100,9 +108,26 @@ public class CharacterSetup : MonoBehaviour
         }
     }
 
-    public void GetCharacterSigil()
+    public void GetCharacterAffiliationSigil()
     {
         characterSetupVariables.characterAfiliationSigilReference = characterAfiliationSigil;
+    }
+
+    public void GetCharacterCallSign()
+    {
+        if (characterSetupVariables.callSign == string.Empty)
+        {
+            if (callSign.Length > 18)
+            {
+                callSign = callSign.Substring(0, 17);            
+            }
+            callSign = "'" + callSign + "'";
+            characterSetupVariables.callSign = callSign;
+        }
+        else
+        {
+            callSign = characterSetupVariables.callSign;
+        }
     }
 
 

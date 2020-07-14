@@ -237,7 +237,7 @@ public class CharacterCombat : MonoBehaviour
 
         charInput.CombatCalculatorManager.GatherEnemyDefenseStats(enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
         charInput.CombatCalculatorManager.GatherPlayerAttackStats(charInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
-        charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
+        charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy, charInput); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
 
         this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
         //GetComponent<CharacterInput>().uiManager.DisplayBullets();
@@ -261,7 +261,7 @@ public class CharacterCombat : MonoBehaviour
 
         charInput.CombatCalculatorManager.GatherEnemyDefenseStats(enemy); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
         charInput.CombatCalculatorManager.GatherPlayerAttackStats(charInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
-        charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy); //CombatCalculatorManager.instance.DisplayShotChance();//(weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>());
+        charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy, null); //CombatCalculatorManager.instance.DisplayShotChance();//(weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>());
 
         enemy.ShowProbability();
     }
@@ -276,8 +276,12 @@ public class CharacterCombat : MonoBehaviour
         if (playerHealth <= 0)
         {
             Debug.Log("PLAYER IS DEAD!!!!");
+            GetComponent<CharacterInput>().characterStatsVariables.isAlive = false;
+            
+            GetComponent<CharacterInput>().characterSavedData.AddMissionCharacter(this.GetComponent<CharacterInput>());
             GetComponent<CharacterInput>().TurnManager.RemoveFromTeam(GetComponent<CharacterTurn>(), null);
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+            //Destroy(this.gameObject);
         }
     }
 }

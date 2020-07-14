@@ -57,4 +57,10 @@ public class EnemyStats_SO : ScriptableObject
     [Header("ENEMY UI ELEMENTS")]
     public Sprite enemySigilReference;
 
+    [Header("ENEMY STATISTICS")]
+    public int playerKills = 0;
+    public int enemyLevel = 0;
+    public bool isAlive = true;
+    public string enemyCLass = "Normal Grunt";
+
 }

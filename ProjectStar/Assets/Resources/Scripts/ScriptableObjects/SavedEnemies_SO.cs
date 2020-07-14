@@ -40,4 +40,10 @@ public class SavedEnemies_SO : ScriptableObject
     {
         return listOfAllMissionSavedEnemies;
     }
+
+    private void OnDisable()
+    {
+        listOfAllSavedEnemies.Clear();
+        listOfAllMissionSavedEnemies.Clear();
+    }
 }

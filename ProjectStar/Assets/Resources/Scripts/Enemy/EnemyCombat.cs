@@ -122,7 +122,7 @@ public class EnemyCombat : MonoBehaviour
 
     //DAMAGE FROM PLAYER
 
-    public void ApplyDamage(int Damage)
+    public void ApplyDamage(int Damage, CharacterInput characterInput)
     {
         int enemyHealth = GetComponent<EnemyStats>().EnemyStatsVariables.health -= Damage;
 
@@ -130,6 +130,9 @@ public class EnemyCombat : MonoBehaviour
         {
             Debug.Log("ENEMY IS DEAD!!!!");
             EnemyCombatVariables.isMarkedEnemy = false;
+
+
+
             GetComponent<EnemyInput>().TurnManager.RemoveFromTeam(null, GetComponent<EnemyTurn>());
             Destroy(this.gameObject);
         }

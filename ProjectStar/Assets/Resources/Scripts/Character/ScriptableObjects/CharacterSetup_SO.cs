@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterSetup", menuName = "ScriptableVariables/Type: CharacterSetup")]
 public class CharacterSetup_SO : ScriptableObject
 {
-    public string characterName = default;
+    
+    public string characterName = default;    
+    public string callSign = default;
     [Range(1, 30)]
     public int characterLevel = 1;
     public Gender characterGender = Gender.underfined;
@@ -27,7 +29,7 @@ public class CharacterSetup_SO : ScriptableObject
 
     [Header("CHARACTER AFFILIATION SIGIL REFERENCE :")]
     public Sprite characterAfiliationSigilReference;
-    [Header("CHARACTER AFFILIATION SIGIL REFERENCE :")]
+    [Header("CHARACTER CLASS SIGIL REFERENCE :")]
     public Sprite characterClassSigilReference;
 
 
@@ -39,6 +41,7 @@ public class CharacterSetup_SO : ScriptableObject
         characterLevel = 1; //DELETE THIS WHEN IMPLEMENTING THE CHARACTER POOL!!!!!!!!!!!!!!!
 
         characterGeometryReference = default;
+        characterAfiliationSigilReference = default;
         characterClassSigilReference = default;
     }
 

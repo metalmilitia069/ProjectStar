@@ -8,7 +8,7 @@ public class CharacterStats_SO : ScriptableObject
 
     [TextArea(1, 10)]
     public string Description = "SETUP CHARACTER STATS CONFIGURATION";
-
+    
 
 
     public bool canBeAttacked = false;
@@ -60,6 +60,12 @@ public class CharacterStats_SO : ScriptableObject
     public int _elementalDefCold = 0;
     [SerializeField]
     public int _elementalDefPoison = 0;
+
+    [Header("CHARACTER STATISTICS")]
+    public bool isAlive = true;
+    public int missionKills = 0;
+    public int allTimeKills = 0;
+
 
 
     //Other Variables

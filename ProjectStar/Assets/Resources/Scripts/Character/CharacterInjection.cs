@@ -22,6 +22,7 @@ public class CharacterInjection : MonoBehaviour
         GetComponent<CharacterTurn>().characterTurnVariables = ScriptableObject.CreateInstance<CharacterTurn_SO>();
         GetComponent<CharacterTurn>().characterTurnVariables.name = "InstanceCharacterTurn";
 
+        GetComponent<CharacterInput>().characterSavedData = GetComponent<CharacterSavedData>().savedPlayerCharacters_SO; //COPY, NOT AN INSTANCE!!!!!
         GetComponent<CharacterInput>().characterSetupVariables = GetComponent<CharacterSetup>().characterSetupVariables; //NOT AN INSTANCE!!!!
         GetComponent<CharacterInput>().characterMoveVariables = GetComponent<CharacterMove>().characterMoveVariables;
         GetComponent<CharacterInput>().characterEquipmentVariables = GetComponent<CharacterEquipment>().characterEquipmentVariables; //NOT AN INSTANCE!!!!

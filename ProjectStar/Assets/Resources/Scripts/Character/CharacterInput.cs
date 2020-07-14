@@ -16,7 +16,8 @@ public class CharacterInput : MonoBehaviour
     [Header("INSERT THE MAIN CAMERA CONTROLLER VARIABLES :")]
     public MainCameraController_SO MainCameraControllerVariables;
 
-
+    [Header("CHARACTER SAVED DATA SO - COPY FROM CHARACTER SAVED DATA")]
+    public SavedPlayerCharacters_SO characterSavedData;
     [Header("CHARACTER SETUP VARIABLES - COPY FROM SETUP :")]
     public CharacterSetup_SO characterSetupVariables;
     [Header("CHARACTER MOVE VARIABLES - INSTANCE :")]

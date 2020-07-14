@@ -138,7 +138,7 @@ public class CombatCalculatorManager_SO : ScriptableObject
         _playerCriticalDamageModifier = characterRef.characterStatsVariables.criticalDamageModifier;//
     }
 
-    public void PlayerFinalAttackCalculation(EnemyInput enemy)
+    public void PlayerFinalAttackCalculation(EnemyInput enemy, CharacterInput characterInput)
     {
         float finalAttackProbability = _weaponSuccessShotProbability - _enemyDodgeChance;
         float diceRoll = Random.Range(0.0f, 1.0f);
@@ -175,7 +175,7 @@ public class CombatCalculatorManager_SO : ScriptableObject
 
             isShowProbabilities = true;
 
-            enemy.GetComponent<EnemyCombat>().ApplyDamage(_finalDamage);
+            enemy.GetComponent<EnemyCombat>().ApplyDamage(_finalDamage, characterInput);
         }
 
         ResetCalculaterVariables();

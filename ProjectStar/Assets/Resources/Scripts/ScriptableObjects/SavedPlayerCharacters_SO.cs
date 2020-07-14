@@ -41,6 +41,12 @@ public class SavedPlayerCharacters_SO : ScriptableObject
         return listOfAllMissionSavedCharacters;
     }
 
+    private void OnDisable()
+    {
+        listOfAllSavedCharacters.Clear();
+        listOfAllMissionSavedCharacters.Clear();
+    }
+
 
 
 
