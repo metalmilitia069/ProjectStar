@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CharacterInput : MonoBehaviour
 {
@@ -194,6 +195,11 @@ public class CharacterInput : MonoBehaviour
             }
         }
 
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -206,6 +212,11 @@ public class CharacterInput : MonoBehaviour
 
     protected void ActivateMouseToMovement()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -229,7 +240,11 @@ public class CharacterInput : MonoBehaviour
     }
 
     public void ActivateMouseToAttack()
-    {        
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         //if(Input.GetMouseButtonDown(0))
         //{
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -246,6 +261,10 @@ public class CharacterInput : MonoBehaviour
                     {
                         if (Input.GetMouseButtonDown(0))
                         {
+                            if (EventSystem.current.IsPointerOverGameObject())
+                            {
+                                return;
+                            }
                             if (enemy.EnemyCombatVariables.isMarkedEnemy)
                             {
                                 GetComponent<CharacterCombat>().Attack(enemy);

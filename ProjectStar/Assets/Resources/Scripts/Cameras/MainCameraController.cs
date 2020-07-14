@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MainCameraController : MonoBehaviour
 {
@@ -109,8 +110,17 @@ public class MainCameraController : MonoBehaviour
 
     public void MouseInput()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
             Plane plane = new Plane(Vector3.up, Vector3.zero);
 
             Ray ray = MainCameraControllerVariables.cameraTransform.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
@@ -147,6 +157,10 @@ public class MainCameraController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(2))
         {
+            //if (EventSystem.current.IsPointerOverGameObject())
+            //{
+            //    return;
+            //}
             MainCameraControllerVariables.rotateStartPosition = Input.mousePosition;
         }
 
