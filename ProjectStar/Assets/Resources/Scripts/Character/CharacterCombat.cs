@@ -31,13 +31,13 @@ public class CharacterCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        weapon.transform.parent = playerGrip.transform;
+        //weapon.transform.parent = playerGrip.transform;
 
-        weaponLocation = weapongrip.transform.localPosition * (-1);
-        weaponRotation = weapongrip.transform.localRotation;
+        //weaponLocation = weapongrip.transform.localPosition * (-1);
+        //weaponRotation = weapongrip.transform.localRotation;
 
-        weapon.transform.localPosition = weaponLocation;
-        weapon.transform.localRotation = weaponRotation;
+        //weapon.transform.localPosition = weaponLocation;
+        //weapon.transform.localRotation = weaponRotation;
 
 
 
