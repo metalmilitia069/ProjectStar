@@ -107,7 +107,7 @@ public class EnemyCombat : MonoBehaviour
 
         enemyInput.CombatCalculatorManager.GatherPlayerDefenseStats(character); //CombatCalculatorManager.instance.GatherEnemyDefenseStats(enemy);
         enemyInput.CombatCalculatorManager.GatherEnemyAttackStats(enemyInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
-        enemyInput.CombatCalculatorManager.EnemyFinalAttackCalculation(character); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
+        enemyInput.CombatCalculatorManager.EnemyFinalAttackCalculation(character, enemyInput); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
 
         this.GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints--;
 
@@ -131,10 +131,15 @@ public class EnemyCombat : MonoBehaviour
             Debug.Log("ENEMY IS DEAD!!!!");
             EnemyCombatVariables.isMarkedEnemy = false;
 
+            EnemyInput enemyInput = GetComponent<EnemyInput>();
+            enemyInput.EnemyStatsVariables.isAlive = false;
 
+            characterInput.characterStatsVariables.missionKills++;
+            characterInput.characterStatsVariables.allTimeKills += characterInput.characterStatsVariables.missionKills++;
 
             GetComponent<EnemyInput>().TurnManager.RemoveFromTeam(null, GetComponent<EnemyTurn>());
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+            //Destroy(this.gameObject);
         }
     }
 

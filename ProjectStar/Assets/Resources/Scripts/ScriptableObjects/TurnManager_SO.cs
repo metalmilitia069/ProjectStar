@@ -281,7 +281,10 @@ public class TurnManager_SO : ScriptableObject
         {
             isGameOver = true;
             Debug.Log("GAME OVER, PAL!");
-            Debug.Log("TODO: Implement END GAME Sequence and Stuff!!!!");
+            
+
+
+
             Time.timeScale = 0;
         }
         else if (enemyTeamList.Count < 1 && inactiveEnemyTeamList.Count < 1)

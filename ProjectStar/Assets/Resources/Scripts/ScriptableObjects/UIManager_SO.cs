@@ -29,6 +29,8 @@ public class UIManager_SO : ScriptableObject
 
     public PlayerIdentificationPanel playerIdentificationPanel;
 
+    public EndLevelBoard endLevelBoard;
+
 
     [Header("UI SPRITES COLLECTION FOR BULLET COUNT :")]
     public Sprite[] magazine2;

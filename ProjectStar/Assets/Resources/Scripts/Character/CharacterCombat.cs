@@ -269,7 +269,7 @@ public class CharacterCombat : MonoBehaviour
 
     //DAMAGE FROM ENEMY
 
-    public void ApplyDamage(int Damage)
+    public void ApplyDamage(int Damage, EnemyInput enemyInput)
     {
         int playerHealth = GetComponent<CharacterStats>().characterStatsVariables.health -= Damage;
 
@@ -277,6 +277,7 @@ public class CharacterCombat : MonoBehaviour
         {
             Debug.Log("PLAYER IS DEAD!!!!");
             GetComponent<CharacterInput>().characterStatsVariables.isAlive = false;
+            enemyInput.EnemyStatsVariables.playersKilled++;
             
             GetComponent<CharacterInput>().characterSavedData.AddMissionCharacter(this.GetComponent<CharacterInput>());
             GetComponent<CharacterInput>().TurnManager.RemoveFromTeam(GetComponent<CharacterTurn>(), null);
