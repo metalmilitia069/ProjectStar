@@ -290,6 +290,9 @@ public class TurnManager_SO : ScriptableObject
             Debug.Log("GAME OVER, PAL!");
 
             listOfAllCharacters.GetList()[0].GetComponent<CharacterInput>().uiManager.endLevelBoard.PreparePlayerInfoCards();
+            listOfAllCharacters.GetList()[0].GetComponent<CharacterInput>().uiManager.DisableButtons();
+            listOfAllCharacters.GetList()[0].GetComponent<CharacterInput>().uiManager.DisablePanels();
+            listOfAllEnemies.GetList()[0].GetComponent<EnemyInput>().uiManager.turnPanel.TweenPanelOut();
 
 
             //Time.timeScale = 0;
@@ -299,6 +302,9 @@ public class TurnManager_SO : ScriptableObject
             isGameWon = true;
             Debug.Log("GAME WON!!!!");
             listOfAllEnemies.GetList()[0].GetComponent<EnemyInput>().uiManager.endLevelBoard.PreparePlayerInfoCards();
+            listOfAllEnemies.GetList()[0].GetComponent<EnemyInput>().uiManager.DisableButtons();
+            listOfAllEnemies.GetList()[0].GetComponent<EnemyInput>().uiManager.DisablePanels();
+            listOfAllEnemies.GetList()[0].GetComponent<EnemyInput>().uiManager.turnPanel.TweenPanelOut();
 
 
             //Time.timeScale = 0;

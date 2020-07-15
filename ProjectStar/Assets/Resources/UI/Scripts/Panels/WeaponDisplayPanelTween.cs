@@ -8,7 +8,7 @@ public class WeaponDisplayPanelTween : MonoBehaviour
     public float TweenSpeed;
     public LeanTweenType TweenType;
 
-    private bool isTweendIn = true;
+    public bool isTweendIn = true;
     private bool TweenComplete = true;
 
     public void ToggleTween()
@@ -23,21 +23,7 @@ public class WeaponDisplayPanelTween : MonoBehaviour
         isTweendIn = !isTweendIn;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            ToggleTween();
-        }
-
-    }
+    
 
    
 }

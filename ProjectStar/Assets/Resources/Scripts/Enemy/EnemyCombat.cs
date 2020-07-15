@@ -135,7 +135,7 @@ public class EnemyCombat : MonoBehaviour
             enemyInput.EnemyStatsVariables.isAlive = false;
 
             characterInput.characterStatsVariables.missionKills++;
-            characterInput.characterStatsVariables.allTimeKills += characterInput.characterStatsVariables.missionKills++;
+            characterInput.characterStatsVariables.allTimeKills += characterInput.characterStatsVariables.missionKills;
 
             enemyInput.enemySavedData.AddMissionEnemy(enemyInput);
             enemyInput.TurnManager.RemoveFromTeam(null, GetComponent<EnemyTurn>());

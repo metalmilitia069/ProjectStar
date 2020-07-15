@@ -8,7 +8,7 @@ public class PlayerIdentificationPanelTween : MonoBehaviour
     public float TweenSpeed;
     public LeanTweenType TweenType;
 
-    private bool isTweendIn = true;
+    public bool isTweendIn = true;
     private bool TweenComplete = true;
 
     public void ToggleTween()

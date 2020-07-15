@@ -65,6 +65,11 @@ public class TurnPanel : MonoBehaviour
         }
     }
 
+    public void TweenPanelOut()
+    {
+        GetComponent<TurnPanelTween>().TweenOut();
+    }
+
 
 
 

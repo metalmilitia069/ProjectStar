@@ -61,11 +61,14 @@ public class UIManager_SO : ScriptableObject
 
     public void DisablePanels()
     {
+        weaponDisplayPanel.GetComponent<WeaponDisplayPanelTween>().isTweendIn = true;
         weaponDisplayPanel.ToggleTween(); //.gameObject.SetActive(false);
+
         turnPanel.GetComponent<TurnPanelTween>().ToggleTween();//gameObject.SetActive(false);
         //endTurnConfirmPanel//.gameObject.SetActive(false);
         attackPanel.GetComponent<AttackPanelTween>().OutPosTween();//.gameObject.SetActive(false);
 
+        playerIdentificationPanel.GetComponent<PlayerIdentificationPanelTween>().isTweendIn = true;
         playerIdentificationPanel.ToggleTween();//.gameObject.SetActive(false);
 }
 

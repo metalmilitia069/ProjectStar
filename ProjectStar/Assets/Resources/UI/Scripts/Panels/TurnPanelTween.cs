@@ -23,6 +23,12 @@ public class TurnPanelTween : MonoBehaviour
         isTweendIn = !isTweendIn;
     }
 
+    public void TweenOut()
+    {
+        isTweendIn = true;
+        ToggleTween();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

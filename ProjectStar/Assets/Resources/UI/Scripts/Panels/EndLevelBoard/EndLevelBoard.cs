@@ -55,9 +55,12 @@ public class EndLevelBoard : MonoBehaviour
     {
         foreach (var groupableEntity in listOfAllCharactersCopy)//listOfAllCharacters.GetList())
         {
-            PlayerInfoCard playerInfoCard = Instantiate(playerInfoCardPrefab).GetComponent<PlayerInfoCard>();
-            CharacterInput characterInput = groupableEntity.GetComponent<CharacterInput>();
+            /*Instantiate(enemyInfoCardPrefab.GetComponent<EnemyInfoCard>(), enemyListContent.transform);*/
+            //EnemyInfoCard enemyInfoCard = Instantiate(enemyInfoCardPrefab.GetComponent<EnemyInfoCard>(), enemyListContent.transform);
+            //enemyInfoCard.gameObject.SetActive(true);
+            PlayerInfoCard playerInfoCard = Instantiate(playerInfoCardPrefab.GetComponent<PlayerInfoCard>(), playerListContent.transform);
             playerInfoCard.gameObject.SetActive(true);
+            CharacterInput characterInput = groupableEntity.GetComponent<CharacterInput>();
 
             switch (characterInput.characterSetupVariables.characterClass)
             {
@@ -106,7 +109,7 @@ public class EndLevelBoard : MonoBehaviour
             }
 
 
-            playerInfoCard.transform.parent = playerListContent.transform;
+            //playerInfoCard.transform.parent = playerListContent.transform;
         }
 
         int numberOfNormalGrunts = 0;
