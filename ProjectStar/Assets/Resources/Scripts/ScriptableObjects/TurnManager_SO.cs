@@ -38,7 +38,9 @@ public class TurnManager_SO : ScriptableObject
         
         roundQueueGameObject = new Queue<List<GroupableEntities>>();
 
-        roundCounter = 0;        
+        roundCounter = 0;
+        isGameWon = false;
+        isGameOver = false;
     }    
 
     public void SortActionOrder()
@@ -55,6 +57,10 @@ public class TurnManager_SO : ScriptableObject
 
     public void RoundSetup()
     {
+        if (isGameOver || isGameWon)
+        {
+            return;
+        }
         if (inactivePlayerTeamList.Count > 0 && inactiveEnemyTeamList.Count > 0)
         {
             playerTeamList = new List<GroupableEntities>(inactivePlayerTeamList);
@@ -89,6 +95,7 @@ public class TurnManager_SO : ScriptableObject
 
     public void StartRound()
     {
+
         playerTeamList[0].GetComponent<CharacterInput>().uiManager.turnPanel.CallTurnPanel(playerTeamList[0]);
 
 
@@ -281,18 +288,20 @@ public class TurnManager_SO : ScriptableObject
         {
             isGameOver = true;
             Debug.Log("GAME OVER, PAL!");
-            
+
+            listOfAllCharacters.GetList()[0].GetComponent<CharacterInput>().uiManager.endLevelBoard.PreparePlayerInfoCards();
 
 
-
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
         else if (enemyTeamList.Count < 1 && inactiveEnemyTeamList.Count < 1)
         {
             isGameWon = true;
             Debug.Log("GAME WON!!!!");
-            Debug.Log("TODO: Implement END GAME Sequence and Stuff!!!!");
-            Time.timeScale = 0;
+            listOfAllEnemies.GetList()[0].GetComponent<EnemyInput>().uiManager.endLevelBoard.PreparePlayerInfoCards();
+
+
+            //Time.timeScale = 0;
         }
     }
 
