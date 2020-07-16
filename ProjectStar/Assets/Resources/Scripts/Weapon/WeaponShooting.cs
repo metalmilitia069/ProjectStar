@@ -49,21 +49,101 @@ public class WeaponShooting : MonoBehaviour
         GameObject vfx;
         timeToFire = Time.time + (1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
 
-        vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+        float weaponfireRate = GetComponent<WeaponBasic>().weaponBasicVariables.fireRate;
 
-        yield return new WaitForSeconds(1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+        //l
 
-        vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+        switch (GetComponent<WeaponBasic>().weaponBasicVariables.weaponClass)
+        {
+            case WeaponClass.Melee:
+                break;
+            case WeaponClass.Gun:
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
 
-        yield return new WaitForSeconds(1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+                yield return new WaitForSeconds(1 / weaponfireRate);
 
-        vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
 
-        yield return new WaitForSeconds(1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+                yield return new WaitForSeconds(1 / weaponfireRate);
+                
+                break;
+            case WeaponClass.Rifle:
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
 
-        vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+                yield return new WaitForSeconds(1 / weaponfireRate);
 
-        yield return new WaitForSeconds(1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+                break;
+            case WeaponClass.MiniGun:
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                break;
+            case WeaponClass.Sniper:
+                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+                break;
+            default:
+                break;
+        }
+
+        //vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+        //yield return new WaitForSeconds(1 / weaponfireRate);
+
+        //vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+
+        //yield return new WaitForSeconds(1 / weaponfireRate);//projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+
+        //vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+
+        //yield return new WaitForSeconds(1 / weaponfireRate); //projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+
+        //vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+
+        //yield return new WaitForSeconds(1 / weaponfireRate); //projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+
+        yield return new WaitForSeconds(1);
 
     }
 }
