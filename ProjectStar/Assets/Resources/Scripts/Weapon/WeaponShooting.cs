@@ -22,22 +22,48 @@ public class WeaponShooting : MonoBehaviour
         if (Input.GetKey(KeyCode.U) && Time.time > timeToFire)
         {
             timeToFire = Time.time + (1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
-            Shoot();
+            //Shoot();
         }
     }
 
-    public void Shoot()
+    public void Shoot(EnemyInput enemy, int _finaldamage, CharacterInput characterInput)
+    {
+        //GameObject vfx;
+        //timeToFire = 0;
+
+        //if (firePointer != null)
+        //{
+        //    vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+
+        //}
+        //else
+        //{
+        //    Debug.Log("No Fire Point Found!");
+        //}
+
+        StartCoroutine(GetComponent<WeaponBasic>().CombatCalculatorManager.ApplyDamage(StartCoroutine(Shooting()), enemy, _finaldamage, characterInput));
+    }
+
+    public IEnumerator Shooting()
     {
         GameObject vfx;
+        timeToFire = Time.time + (1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
 
-        if (firePointer != null)
-        {
-            vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
-            
-        }
-        else
-        {
-            Debug.Log("No Fire Point Found!");
-        }
+        vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+
+        yield return new WaitForSeconds(1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+
+        vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+
+        yield return new WaitForSeconds(1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+
+        vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+
+        yield return new WaitForSeconds(1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+
+        vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
+
+        yield return new WaitForSeconds(1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
+
     }
 }

@@ -9656,7 +9656,7 @@ GameObject:
   - component: {fileID: 9102787200666170712}
   - component: {fileID: 2740858744975977929}
   - component: {fileID: 7373839771447605542}
-  - component: {fileID: 5095550095184849207}
+  - component: {fileID: 6684615967760525441}
   m_Layer: 0
   m_Name: Projectile01
   m_TagString: Untagged
@@ -9694,7 +9694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  fireRate: 4
+  fireRate: 8
   muzzlePrefab: {fileID: 4947190641575105440, guid: 3b9ad654b1abea448a784f257f200489,
     type: 3}
   hitPrefab: {fileID: 8617693380825012687, guid: c4e597225c3fe2b4d94190a575017c53,
@@ -9712,7 +9712,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2393741, y: 0.29620957, z: 1}
   m_Center: {x: 0.0010010302, y: 0.005374193, z: -3.4771033e-19}
---- !u!54 &5095550095184849207
+--- !u!54 &6684615967760525441
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

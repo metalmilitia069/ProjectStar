@@ -74,6 +74,8 @@ public class WeaponBasic_SO : ScriptableObject
                 weaponCriticalDamage = 1.5f;
                 currentAmmunition = maxAmmunition = 6;
 
+                fireRate = 2;
+
                 successShotProbability = 1.0f;
                 break;
             case WeaponClass.Rifle:
@@ -84,6 +86,8 @@ public class WeaponBasic_SO : ScriptableObject
                 weaponCriticalChance = .1f;
                 weaponCriticalDamage = 1.5f;
                 currentAmmunition = maxAmmunition = 4;
+
+                fireRate = 6;
 
                 successShotProbability = 1.0f;
                 break;
@@ -96,6 +100,8 @@ public class WeaponBasic_SO : ScriptableObject
                 weaponCriticalDamage = 1.5f;
                 currentAmmunition = maxAmmunition = 6;
 
+                fireRate = 8;
+
                 successShotProbability = 1.0f;
                 break;
             case WeaponClass.Sniper:
@@ -106,6 +112,8 @@ public class WeaponBasic_SO : ScriptableObject
                 weaponCriticalChance = .3f;
                 weaponCriticalDamage = 1.5f;
                 currentAmmunition = maxAmmunition = 4;
+
+                fireRate = 1;
 
                 successShotProbability = 1.0f;
                 break;

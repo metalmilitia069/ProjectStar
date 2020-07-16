@@ -156,7 +156,7 @@ public class CombatCalculatorManager_SO : ScriptableObject
                 float diceRoll02 = Random.Range(0.0f, 1.0f);
                 bool success02 = (diceRoll02 <= finalCriticalProbability);
 
-                _cachedWeapon.GetComponent<WeaponShooting>().Shoot();
+                //_cachedWeapon.GetComponent<WeaponShooting>().Shoot(enemy, _finalDamage, characterInput);
 
                 if (success02)
                 {
@@ -177,11 +177,32 @@ public class CombatCalculatorManager_SO : ScriptableObject
 
             isShowProbabilities = true;
 
-            enemy.GetComponent<EnemyCombat>().ApplyDamage(_finalDamage, characterInput);
+            _cachedWeapon.GetComponent<WeaponShooting>().Shoot(enemy, _finalDamage, characterInput);
+            //StartCoroutine(ApplyDamage());//(ApplyDamage(_cachedWeapon.GetComponent<WeaponShooting>().Shooting(), enemy, _finalDamage, characterInput));
+            return;
+            //enemy.GetComponent<EnemyCombat>().ApplyDamage(_finalDamage, characterInput);
         }
 
         ResetCalculaterVariables();
     }
+
+    public IEnumerator ApplyDamage(Coroutine co, EnemyInput enemy, int _finaldamage, CharacterInput characterInput)
+    {
+        yield return co;
+        enemy.GetComponent<EnemyCombat>().ApplyDamage(_finalDamage, characterInput);
+
+        yield return new WaitForSeconds(1);//co;
+        characterInput.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
+        
+        if (characterInput.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0)
+        {
+            characterInput.ChangeMode();
+            characterInput.TurnManager.RemoveFromTurn(characterInput.GetComponent<CharacterTurn>(), null);
+        }
+        ResetCalculaterVariables();
+    }
+
+
 
     public string DisplayShotChance()
     {

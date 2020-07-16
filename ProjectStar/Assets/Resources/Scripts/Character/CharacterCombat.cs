@@ -239,7 +239,9 @@ public class CharacterCombat : MonoBehaviour
         charInput.CombatCalculatorManager.GatherPlayerAttackStats(charInput); //CombatCalculatorManager.instance.GatherPlayerAttackStats((CharacterStats)this);
         charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy, charInput); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
 
-        this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
+        //this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;//ITS ON COMBAT CALCULATOR NOW!!!!!!!!!!!!!!!!!!!!!!
+        
+        
         //GetComponent<CharacterInput>().uiManager.DisplayBullets();
         GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
 

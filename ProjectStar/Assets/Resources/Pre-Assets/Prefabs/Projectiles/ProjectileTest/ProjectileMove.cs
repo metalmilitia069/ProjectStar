@@ -21,6 +21,8 @@ public class ProjectileMove : MonoBehaviour
         muzzlePrefab.transform.forward = gameObject.transform.forward;
         var muzzleChild = muzzleVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
         Destroy(muzzleVFX.gameObject, muzzleChild.main.duration);
+
+        //Physics.IgnoreCollision(this.GetComponent<Collider>(), )
     }
 
     // Update is called once per frame
@@ -42,14 +44,38 @@ public class ProjectileMove : MonoBehaviour
         Debug.Log("Collision!");
         speed = 0;
         ContactPoint contactPoint = collision.contacts[0];
-        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contactPoint.normal);
 
-        Vector3 pos = contactPoint.point;
+        if (collision.gameObject.GetComponent<ProjectileMove>())
+        {
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.collider);//(this.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
+        }
 
-        var hitVFX = Instantiate(hitPrefab, pos, rot);
-        var hitChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-        Destroy(hitVFX.gameObject, hitChild.main.duration);
 
-        Destroy(gameObject);
+        if (!collision.gameObject.GetComponent<ProjectileMove>())
+        {
+            speed = 0;
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contactPoint.normal);
+
+            Vector3 pos = contactPoint.point;
+
+            var hitVFX = Instantiate(hitPrefab, pos, rot);
+            var hitChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+            Destroy(hitVFX.gameObject, hitChild.main.duration);
+
+            Destroy(gameObject);
+            //return;
+        }
+
+        //Quaternion rot = Quaternion.FromToRotation(Vector3.up, contactPoint.normal);
+
+        //Vector3 pos = contactPoint.point;
+
+        //var hitVFX = Instantiate(hitPrefab, pos, rot);
+        //var hitChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+        //Destroy(hitVFX.gameObject, hitChild.main.duration);
+
+        //Destroy(gameObject);
     }
+
+    
 }
