@@ -156,6 +156,8 @@ public class CombatCalculatorManager_SO : ScriptableObject
                 float diceRoll02 = Random.Range(0.0f, 1.0f);
                 bool success02 = (diceRoll02 <= finalCriticalProbability);
 
+                _cachedWeapon.GetComponent<WeaponShooting>().Shoot();
+
                 if (success02)
                 {
                     finalDamage = (finalDamage * ((int)(_weaponCriticalDamage + _playerCriticalDamageModifier)));

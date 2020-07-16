@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5791370512403320161}
   - component: {fileID: 7292504740252644338}
+  - component: {fileID: 5207363361252651967}
   - component: {fileID: 3264528059764714996}
   - component: {fileID: 2670961017004285015}
   m_Layer: 0
@@ -128,6 +129,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e22ae24d8fd86b48a5f49a91d26f6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5207363361252651967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292490778647531809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd52fb81ed02ffc4eaf4af7a6fae717d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 9102787200666170713, guid: 3286bb5135550d5458c5d81e134c7591,
+    type: 3}
+  firePointer: {fileID: 5583377198623367814}
+  speed: 5
+  timeToFire: 5
 --- !u!114 &3264528059764714996
 MonoBehaviour:
   m_ObjectHideFlags: 0

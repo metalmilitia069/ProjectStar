@@ -240,6 +240,7 @@ public class TurnManager_SO : ScriptableObject
 
                 playerTeamList.Remove(character);
 
+                CheckEndStageCondition();
                 PrepareToContinueRound();
                 //ContinueRound();
             }
