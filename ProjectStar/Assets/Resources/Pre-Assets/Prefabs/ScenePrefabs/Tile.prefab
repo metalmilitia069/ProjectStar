@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468b80414282cde4bb2f24a68b649fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicTileVariables: {fileID: 0}
 --- !u!114 &1240510004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,3 +134,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e002241f539417141b1311b3ccd57c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicTileVariables: {fileID: 0}
+  advancedTileVariables: {fileID: 0}
