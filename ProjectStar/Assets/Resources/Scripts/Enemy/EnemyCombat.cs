@@ -120,6 +120,8 @@ public class EnemyCombat : MonoBehaviour
 
     }
 
+
+
     //DAMAGE FROM PLAYER
 
     public void ApplyDamage(int Damage, CharacterInput characterInput)

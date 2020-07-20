@@ -14,6 +14,11 @@ public class CharacterGlobalController : MonoBehaviour
         {
             CallSwitchCharacter();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            CallOverWatch();
+        }
     }
 
     private void CallSwitchCharacter()
@@ -31,6 +36,23 @@ public class CharacterGlobalController : MonoBehaviour
                     character.GetComponent<CharacterInput>().MainCameraControllerVariables.LockCamera(character.transform);
                     break;
                 }
+            }
+        }
+    }
+
+    public void CallOverWatch()
+    {
+        foreach (var character in TurnManager.playerTeamList)
+        {
+            if (character.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive)
+            {
+                //TurnManager.SwitchCharacter(character.GetComponent<CharacterTurn>(), null);
+
+                ////character.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
+
+                //character.GetComponent<CharacterInput>().MainCameraControllerVariables.LockCamera(character.transform);
+                character.GetComponent<CharacterCombat>().PrepareOverWatch();
+                break;
             }
         }
     }

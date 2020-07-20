@@ -84,6 +84,7 @@ public class TurnManager_SO : ScriptableObject
             foreach (var enem in enemyTeamList)
             {
                 enem.GetComponent<EnemyTurn>().ResetActionPoints();
+                enem.GetComponent<EnemyInput>().EnemyStatsVariables.ResetOverWatchable();
             }
         }
 
@@ -276,9 +277,30 @@ public class TurnManager_SO : ScriptableObject
         }
         else if (enemy != null)
         {
+            if (enemy.EnemyTurnVariables.isTurnActive)
+            {
+                int index = enemyTeamList.IndexOf(enemy);
+                if (enemyTeamList.Count > 1)
+                {
+                    index++;
+                    if (index >= enemyTeamList.Count - 1)
+                    {
+                        index = 0;
+                    }
+                    enemyTeamList[index].GetComponent<EnemyInput>().EnemyTurnVariables.isTurnActive = true;
+                    Debug.Log("CUUUUUUUUUUUUUUAAAAAAAAAAAAADDDDDDDDDDDDDDSSSSSSSSSS");
+                }
+            }
             enemyTeamList.Remove(enemy);
             inactivePlayerTeamList.Remove(enemy);
+            
+            //if (enemyTeamList.Count > 0)
+            //{
+            //    enemyTeamList[0].get
+            //}
         }
+
+        
 
         CheckEndStageCondition();
     }

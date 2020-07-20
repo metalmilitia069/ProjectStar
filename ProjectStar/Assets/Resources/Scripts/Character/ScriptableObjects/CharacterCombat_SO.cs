@@ -6,8 +6,8 @@ using UnityEngine;
 public class CharacterCombat_SO : ScriptableObject
 {
     [SerializeField]
-    public WeaponClass _weaponClass;// = WeaponClass.Gun;    
-    public int _currentWeaponIndex;
+    public WeaponClass _weaponClass = default;// = WeaponClass.Gun;    
+    public int _currentWeaponIndex = default;
 
 
 
@@ -25,8 +25,8 @@ public class CharacterCombat_SO : ScriptableObject
     public int weaponBeltSize = 4;
 
 
-    public WeaponInput currentWeapon;
-
+    public WeaponInput currentWeapon = default;
+    public bool isOverWatching = false;
 
 
 

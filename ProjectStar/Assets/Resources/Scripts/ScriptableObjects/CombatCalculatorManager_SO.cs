@@ -189,12 +189,12 @@ public class CombatCalculatorManager_SO : ScriptableObject
     public IEnumerator ApplyDamage(Coroutine co, EnemyInput enemy, int _finaldamage, CharacterInput characterInput)
     {
         yield return co;
-        enemy.GetComponent<EnemyCombat>().ApplyDamage(_finalDamage, characterInput);
-
+        enemy.GetComponent<EnemyCombat>().ApplyDamage(_finaldamage, characterInput);
+        Debug.Log("_final damage = " + _finaldamage);
         yield return new WaitForSeconds(1);//co;
         characterInput.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
-        
-        if (characterInput.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0)
+
+        if (characterInput.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0 && !characterInput.characterCombatVariables.isOverWatching)
         {
             characterInput.ChangeMode();
             characterInput.TurnManager.RemoveFromTurn(characterInput.GetComponent<CharacterTurn>(), null);

@@ -168,30 +168,6 @@ public class CharacterCombat : MonoBehaviour
         currentWeapon.weaponBasicVariables.isCurrent = true;
     }
 
-    //public void ChangeWeapon()
-    //{
-    //    //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().isCurrent = false;
-    //    //weaponInstanceBelt[_currentWeaponIndex].transform.localPosition = weaponHolsters[_currentWeaponIndex].transform.localPosition;
-
-    //    //if (_currentWeaponIndex < weaponInstanceBelt.Length - 1)
-    //    //{
-    //    //    _currentWeaponIndex++;
-    //    //}
-    //    //else
-    //    //{
-    //    //    _currentWeaponIndex = 0;
-    //    //}
-
-    //    //weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().isCurrent = true;
-    //    //weaponInstanceBelt[_currentWeaponIndex].transform.localPosition = weaponGripPlace.transform.localPosition;
-
-    //    //_weaponClass = weaponInstanceBelt[_currentWeaponIndex].GetComponent<WeaponBaseClass>().weaponClass;
-
-    //    //isAttackRangeFound = false;
-
-    //    //GridManager.instance.ClearSelectableTiles();
-    //}
-
     public void ScanForEnemies()
     {
         if (characterCombatVariables._listOfScannedEnemies.Count > 0)
@@ -240,17 +216,21 @@ public class CharacterCombat : MonoBehaviour
         charInput.CombatCalculatorManager.PlayerFinalAttackCalculation(enemy, charInput); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
 
         //this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;//ITS ON COMBAT CALCULATOR NOW!!!!!!!!!!!!!!!!!!!!!!
-        
-        
+
+
         //GetComponent<CharacterInput>().uiManager.DisplayBullets();
-        GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
-
-
-        if (this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0)
-        {            
-            GetComponent<CharacterInput>().ChangeMode();
-            GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);            
+        if (!characterCombatVariables.isOverWatching)
+        {
+            //charInput.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
+            GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
         }
+
+
+        //if (this.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0 && !characterCombatVariables.isOverWatching)
+        //{            
+        //    GetComponent<CharacterInput>().ChangeMode();
+        //    GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);            
+        //}
     }
 
     public void ShowProbability(EnemyInput enemy)
@@ -268,6 +248,48 @@ public class CharacterCombat : MonoBehaviour
         enemy.ShowProbability();
     }
 
+    public void PrepareOverWatch()
+    {
+        if (GetCurrentWeapon().weaponBasicVariables.currentAmmunition < 0)
+        {
+            characterCombatVariables.isOverWatching = false;
+            return;
+        }
+
+        if (GetComponent<CharacterInput>().characterTurnVariables.isTurnActive)
+        {
+            Debug.Log("CUZAOOOOOOOOO");
+            GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
+            GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+        }
+
+        characterCombatVariables.isOverWatching = true;
+        OverWatch();
+    }
+
+    public void OverWatch()
+    {
+       
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, GetCurrentWeapon().weaponBasicVariables.weaponRange);
+
+        foreach (var col in hitColliders)
+        {
+            if (GetCurrentWeapon().weaponBasicVariables.currentAmmunition > 0 && col.gameObject.GetComponent<EnemyInput>())
+            {
+                if(col.gameObject.GetComponent<EnemyInput>().EnemyMoveVariables.isMoving)
+                {
+                    if (!col.gameObject.GetComponent<EnemyInput>().EnemyStatsVariables.isOverWatched)
+                    {
+                        Attack(col.gameObject.GetComponent<EnemyInput>());
+                        col.gameObject.GetComponent<EnemyInput>().EnemyStatsVariables.isOverWatched = true;
+                    }
+                }
+            }
+        }
+
+        //GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
+    }
 
     //DAMAGE FROM ENEMY
 

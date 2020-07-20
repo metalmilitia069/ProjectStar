@@ -32,7 +32,7 @@ public class ReloadButton : MonoBehaviour
 
             characterInput.characterTurnVariables.actionPoints--;
 
-            if (characterInput.characterTurnVariables.actionPoints < 1)
+            if (characterInput.characterTurnVariables.actionPoints < 0)
             {
                 if (characterInput.characterMoveVariables._isCombatMode)
                 {

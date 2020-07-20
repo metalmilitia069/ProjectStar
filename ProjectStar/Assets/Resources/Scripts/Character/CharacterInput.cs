@@ -67,6 +67,9 @@ public class CharacterInput : MonoBehaviour
     {
         if (this.characterTurnVariables.isTurnActive)
         {
+            characterCombatVariables.isOverWatching = false;
+
+
             if (MainCameraControllerVariables.isLocked)
             {
                 MainCameraControllerVariables.followTransform = transform;
@@ -141,16 +144,28 @@ public class CharacterInput : MonoBehaviour
                 ChangeMode();
             }
 
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                ChangeWeapon();
-                //if (_isCombatMode)
-                //{
-                //    ChangeWeapon();
-                //}
-            }
+            //if (Input.GetKeyDown(KeyCode.Alpha9))
+            //{
+            //    GetComponent<CharacterCombat>().PrepareOverWatch();
+            //    GetComponent<CharacterCombat>().OverWatch();
+            //    //ChangeWeapon();
+            //    //if (_isCombatMode)
+            //    //{
+            //    //    ChangeWeapon();
+            //    //}
+            //}
 
         }
+        else
+        {
+            if (characterCombatVariables.isOverWatching)
+            {           
+                GetComponent<CharacterCombat>().OverWatch();            
+            }
+        }
+
+
+
 
         
     }
