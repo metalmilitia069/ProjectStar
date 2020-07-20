@@ -61,6 +61,7 @@ public class EnemyInput : MonoBehaviour
             {
                 if (EnemyMoveVariables.isMoving)
                 {
+                    Debug.Log(this.name + " Is moving");
                     GetComponent<EnemyMove>().Move();
                     enemyPathAIVariables.isScanRoutineDone = false;
                     return;

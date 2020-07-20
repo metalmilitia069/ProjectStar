@@ -190,13 +190,19 @@ public class CombatCalculatorManager_SO : ScriptableObject
     {
         yield return co;
         enemy.GetComponent<EnemyCombat>().ApplyDamage(_finaldamage, characterInput);
-        Debug.Log("_final damage = " + _finaldamage);
+        
+        if (!characterInput.characterCombatVariables.isOverWatching)
+        {
+            Debug.Log("overwatching? " + characterInput.characterCombatVariables.isOverWatching);
+            characterInput.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
+        }
         yield return new WaitForSeconds(1);//co;
-        characterInput.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
 
         if (characterInput.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0 && !characterInput.characterCombatVariables.isOverWatching)
         {
+            //Debug.Log("overwatching? " + characterInput.characterCombatVariables.isOverWatching);
             characterInput.ChangeMode();
+            characterInput.GetComponent<CharacterTurn>().ResetActionPoints();
             characterInput.TurnManager.RemoveFromTurn(characterInput.GetComponent<CharacterTurn>(), null);
         }
         ResetCalculaterVariables();

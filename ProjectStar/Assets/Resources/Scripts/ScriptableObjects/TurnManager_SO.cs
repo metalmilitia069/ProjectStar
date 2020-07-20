@@ -68,6 +68,7 @@ public class TurnManager_SO : ScriptableObject
 
             foreach (var chara in playerTeamList)
             {
+                //chara.GetComponent<CharacterInput>().characterCombatVariables.isOverWatching = false;
                 chara.GetComponent<CharacterTurn>().ResetActionPoints();
                 chara.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
             }
@@ -261,6 +262,7 @@ public class TurnManager_SO : ScriptableObject
             {
                 //endenemy turn
                 enemy.EnemyTurnVariables.isTurnActive = false;
+
                 enemyTeamList.Remove(enemy);
 
                 RoundSetup();

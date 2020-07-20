@@ -67,7 +67,7 @@ public class CharacterInput : MonoBehaviour
     {
         if (this.characterTurnVariables.isTurnActive)
         {
-            characterCombatVariables.isOverWatching = false;
+            //characterCombatVariables.isOverWatching = false;
 
 
             if (MainCameraControllerVariables.isLocked)
