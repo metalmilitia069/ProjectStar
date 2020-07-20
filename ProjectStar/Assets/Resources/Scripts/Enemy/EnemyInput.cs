@@ -15,6 +15,8 @@ public class EnemyInput : MonoBehaviour
 
     [Header("ENEMY SAVED DATA SO - COPY FROM ENEMY SAVED DATA")]
     public SavedEnemies_SO enemySavedData;
+    [Header("ENEMY DETECTION AI VARIABLES - INSTANCE :")]
+    public EnemyDetectionAI_SO enemyDetectionAIVariables;
     [Header("ENEMY PATH AI VARIABLES - INSTANCE :")]
     public EnemyPathAI_SO enemyPathAIVariables;
     [Header("ENEMY MOVE VARIABLES - INSTANCE :")]
@@ -32,6 +34,11 @@ public class EnemyInput : MonoBehaviour
         
     }
 
+    public IEnumerator WaitForDetection(Coroutine co)
+    {        
+        yield return co;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -40,6 +47,13 @@ public class EnemyInput : MonoBehaviour
             if (EnemyTurnVariables.actionPoints <= 0)
             {
                 TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
+                return;
+            }
+
+            if (!enemyDetectionAIVariables.isAlertMode)
+            {
+                GetComponent<EnemyDetectionAI>().AIDetectHostiles(true);
+                StartCoroutine(WaitForDetection(StartCoroutine(GetComponent<EnemyDetectionAI>().WaitForDetection())));
                 return;
             }
 
