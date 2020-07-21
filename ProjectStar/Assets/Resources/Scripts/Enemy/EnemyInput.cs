@@ -94,6 +94,13 @@ public class EnemyInput : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if (EnemyCombatVariables.isOverWatching)
+            {
+                GetComponent<EnemyCombat>().OverWatch();
+            }
+        }
     }
 
     public void ShowProbability()

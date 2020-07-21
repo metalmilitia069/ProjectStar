@@ -61,6 +61,7 @@ public class EnemyDetectionAI : MonoBehaviour
                 if (col.gameObject.GetComponent<CharacterInput>())
                 {
                     enemyDetectionAIVariables.isAlertMode = true;
+                    break;
                 }
             }
         }

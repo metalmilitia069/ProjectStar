@@ -154,7 +154,7 @@ public class TurnManager_SO : ScriptableObject
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables.isAttackRangeFound = false;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
             playerTeamList[index].GetComponent<CharacterInput>().characterMoveVariables._isCombatMode = false;
-
+            //playerTeamList[index].GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0; //
 
 
             if (index >= playerTeamList.Count - 1)
@@ -201,8 +201,15 @@ public class TurnManager_SO : ScriptableObject
 
             inactivePlayerTeamList.Add(playerTeamList[index]);
 
+            foreach (var groupableEntity in inactiveEnemyTeamList)
+            {
+                groupableEntity.GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
+            }
+
             if (playerTeamList.Count > 1)
             {
+                character.characterTurnVariables.isTurnActive = false;                
+
                 SwitchCharacter(character, null);
                 playerTeamList.Remove(character);
             }
@@ -261,6 +268,26 @@ public class TurnManager_SO : ScriptableObject
     {
         if (character != null)
         {
+            if (character.characterTurnVariables.isTurnActive)
+            {
+                int index = playerTeamList.IndexOf(character);
+                Debug.Log("index " + index);
+                Debug.Log("playerTeamList.Count " + playerTeamList.Count);
+                if (playerTeamList.Count > 1)
+                {
+                    index++;
+                    if (index >= playerTeamList.Count)
+                    {
+                        index = 0;
+                    }
+
+                    playerTeamList[index].GetComponent<CharacterInput>().characterTurnVariables.isTurnActive = true;
+                    Debug.Log("cu " + index);
+                }
+                character.characterTurnVariables.isTurnActive = false;
+            }
+
+
             playerTeamList.Remove(character);
             inactivePlayerTeamList.Remove(character);
         }
@@ -272,7 +299,7 @@ public class TurnManager_SO : ScriptableObject
                 if (enemyTeamList.Count > 1)
                 {
                     index++;
-                    if (index >= enemyTeamList.Count - 1)
+                    if (index >= enemyTeamList.Count)//
                     {
                         index = 0;
                     }
@@ -369,9 +396,7 @@ public class TurnManager_SO : ScriptableObject
     }
 
     public void EndUnitsTurn(CharacterInput characterInput)
-    {
-        
+    {        
         RemoveFromTurn(characterInput.GetComponent<CharacterTurn>(), null);
-        characterInput.characterTurnVariables.actionPoints = 0;
     }
 }

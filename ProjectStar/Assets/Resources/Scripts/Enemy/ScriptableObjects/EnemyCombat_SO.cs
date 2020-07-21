@@ -27,6 +27,8 @@ public class EnemyCombat_SO : ScriptableObject
     public int weaponBeltSize = 4;
 
 
+    public bool isOverWatching = false;
+
 
     private void OnDisable()
     {

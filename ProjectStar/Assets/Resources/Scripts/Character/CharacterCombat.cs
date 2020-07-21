@@ -308,5 +308,27 @@ public class CharacterCombat : MonoBehaviour
             //Destroy(this.gameObject);
         }
     }
+
+    //public void ApplyDamage(int Damage, CharacterInput characterInput)
+    //{
+    //    int enemyHealth = GetComponent<EnemyStats>().EnemyStatsVariables.health -= Damage;
+
+    //    if (enemyHealth <= 0)
+    //    {
+    //        Debug.Log("ENEMY IS DEAD!!!!");
+    
+
+    //        EnemyInput enemyInput = GetComponent<EnemyInput>();//888888888888888888888888888888888888888888888888888888888888888888
+    //        enemyInput.EnemyStatsVariables.isAlive = false;
+
+    //        characterInput.characterStatsVariables.missionKills++;
+    //        characterInput.characterStatsVariables.allTimeKills += characterInput.characterStatsVariables.missionKills;
+
+    //        enemyInput.enemySavedData.AddMissionEnemy(enemyInput);
+    //        enemyInput.TurnManager.RemoveFromTeam(null, GetComponent<EnemyTurn>());
+    //        this.gameObject.SetActive(false);
+    //        //Destroy(this.gameObject);
+    //    }
+    //}
 }
 

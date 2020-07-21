@@ -120,6 +120,45 @@ public class EnemyCombat : MonoBehaviour
 
     }
 
+    public void PrepareAIOverWatch()
+    {
+        //if (weapon.GetComponent<WeaponBasic>().weaponBasicVariables.currentAmmunition <= 0)
+        //{
+            //EnemyCombatVariables.isOverWatching = false;
+            //return;
+        //}
+
+        if (GetComponent<EnemyInput>().EnemyTurnVariables.isTurnActive)
+        {
+            GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
+            GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+        }
+
+        EnemyCombatVariables.isOverWatching = true;
+        OverWatch();
+    }
+
+    public void OverWatch()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, weapon.GetComponent<WeaponBasic>().weaponBasicVariables.weaponRange);
+
+        foreach (var col in hitColliders)
+        {
+            if (col.gameObject.GetComponent<CharacterInput>())
+            {
+                if (col.gameObject.GetComponent<CharacterInput>().characterMoveVariables.isMoving)
+                {
+                    if (!col.gameObject.GetComponent<CharacterInput>().characterStatsVariables.isOverWatched)
+                    {
+                        Attack(col.gameObject.GetComponent<CharacterInput>());
+                        col.gameObject.GetComponent<CharacterInput>().characterStatsVariables.isOverWatched = true;
+                    }
+                }
+            }
+        }
+        //GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
+    }
+
 
 
     //DAMAGE FROM PLAYER

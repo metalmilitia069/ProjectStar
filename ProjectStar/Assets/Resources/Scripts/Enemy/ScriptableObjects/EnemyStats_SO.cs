@@ -62,6 +62,8 @@ public class EnemyStats_SO : ScriptableObject
     public int enemyLevel = 1;
     public bool isAlive = true;
     public string enemyCLass = "Normal Grunt";
+
+
     public bool isOverWatched = false;
 
     public void ResetOverWatchable()

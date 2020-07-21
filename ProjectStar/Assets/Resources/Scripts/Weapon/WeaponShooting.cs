@@ -28,21 +28,15 @@ public class WeaponShooting : MonoBehaviour
 
     public void Shoot(EnemyInput enemy, int _finaldamage, CharacterInput characterInput)
     {
-        //GameObject vfx;
-        //timeToFire = 0;
-
-        //if (firePointer != null)
-        //{
-        //    vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
-
-        //}
-        //else
-        //{
-        //    Debug.Log("No Fire Point Found!");
-        //}
-
         StartCoroutine(GetComponent<WeaponBasic>().CombatCalculatorManager.ApplyDamage(StartCoroutine(Shooting()), enemy, _finaldamage, characterInput));
     }
+
+    public void AIShoot(EnemyInput enemy, int _finaldamage, CharacterInput characterInput)
+    {
+        StartCoroutine(GetComponent<WeaponBasic>().CombatCalculatorManager.AIApplyDamage(StartCoroutine(Shooting()), enemy, _finaldamage, characterInput));
+    }
+
+
 
     public IEnumerator Shooting()
     {

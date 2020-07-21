@@ -68,6 +68,14 @@ public class CharacterStats_SO : ScriptableObject
 
 
 
+
+    public bool isOverWatched = false;
+
+    public void ResetOverWatchable()
+    {
+        isOverWatched = false;
+    }
+
     //Other Variables
     //[Header("TURN VARIABLES")]
     //public bool isTurnActive = false;

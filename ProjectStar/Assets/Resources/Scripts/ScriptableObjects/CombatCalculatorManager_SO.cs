@@ -190,7 +190,7 @@ public class CombatCalculatorManager_SO : ScriptableObject
     {
         yield return co;
         enemy.GetComponent<EnemyCombat>().ApplyDamage(_finaldamage, characterInput);
-        
+
         if (!characterInput.characterCombatVariables.isOverWatching)
         {
             Debug.Log("overwatching? " + characterInput.characterCombatVariables.isOverWatching);
@@ -199,10 +199,9 @@ public class CombatCalculatorManager_SO : ScriptableObject
         yield return new WaitForSeconds(1);//co;
 
         if (characterInput.GetComponent<CharacterTurn>().characterTurnVariables.actionPoints <= 0 && !characterInput.characterCombatVariables.isOverWatching)
-        {
-            //Debug.Log("overwatching? " + characterInput.characterCombatVariables.isOverWatching);
+        {            
             characterInput.ChangeMode();
-            characterInput.GetComponent<CharacterTurn>().ResetActionPoints();
+            characterInput.GetComponent<CharacterTurn>().ResetActionPoints(); 
             characterInput.TurnManager.RemoveFromTurn(characterInput.GetComponent<CharacterTurn>(), null);
         }
 
@@ -258,7 +257,7 @@ public class CombatCalculatorManager_SO : ScriptableObject
                 float finalCriticalProbability = _weaponCriticalChance + _enemyCriticalChanceModifier;
                 _finalCriticalProbability = finalCriticalProbability;
                 float diceRoll02 = Random.Range(0.0f, 1.0f);
-                bool success02 = (diceRoll02 <= finalCriticalProbability);
+                bool success02 = (diceRoll02 <= finalCriticalProbability); 
 
                 if (success02)
                 {
@@ -277,11 +276,39 @@ public class CombatCalculatorManager_SO : ScriptableObject
             Debug.Log("Calculated Critical Chance = " + _finalCriticalProbability);
             Debug.Log("FINAL DAMAGE ON ENEMY = " + _finalDamage);
 
-            
+            //
 
-            character.GetComponent<CharacterCombat>().ApplyDamage(_finalDamage, enemyInput);
+            //###########################character.GetComponent<CharacterCombat>().ApplyDamage(_finalDamage, enemyInput); //
+            _cachedWeapon.GetComponent<WeaponShooting>().AIShoot(enemyInput, _finalDamage, character);
+            return;
+    
         
 
+        //ResetCalculaterVariables();
+    }
+
+    public IEnumerator AIApplyDamage(Coroutine co, EnemyInput enemy, int _finaldamage, CharacterInput characterInput)
+    {
+        yield return co;
+        //yield return new WaitForSeconds(2);
+        characterInput.GetComponent<CharacterCombat>().ApplyDamage(_finaldamage, enemy);
+
+        if (!enemy.EnemyCombatVariables.isOverWatching)
+        {
+            Debug.Log("overwatching? " + enemy.EnemyCombatVariables.isOverWatching);
+            enemy.GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints--;
+        }
+        yield return new WaitForSeconds(1);//co;
+
+        if (enemy.GetComponent<EnemyInput>().EnemyTurnVariables.actionPoints <= 0 && !enemy.EnemyCombatVariables.isOverWatching)
+        {
+            //Debug.Log("overwatching? " + characterInput.characterCombatVariables.isOverWatching);
+            enemy.ChangeMode();
+            enemy.GetComponent<EnemyTurn>().ResetActionPoints();
+            enemy.TurnManager.RemoveFromTurn(null, enemy.GetComponent<EnemyTurn>());
+        }
+
+        enemy.GetComponent<EnemyInput>().EnemyCombatVariables.isOverWatching = false;
         ResetCalculaterVariables();
     }
 }
