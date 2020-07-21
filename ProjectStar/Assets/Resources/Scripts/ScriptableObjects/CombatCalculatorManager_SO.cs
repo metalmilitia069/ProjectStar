@@ -205,6 +205,8 @@ public class CombatCalculatorManager_SO : ScriptableObject
             characterInput.GetComponent<CharacterTurn>().ResetActionPoints();
             characterInput.TurnManager.RemoveFromTurn(characterInput.GetComponent<CharacterTurn>(), null);
         }
+
+        characterInput.GetComponent<CharacterInput>().characterCombatVariables.isOverWatching = false;
         ResetCalculaterVariables();
     }
 

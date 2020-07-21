@@ -24,8 +24,7 @@ public class TurnManager_SO : ScriptableObject
 
     private void OnEnable()
     {
-        //listOfAllCharacters.GetList().Sort((ch1, ch2) => ch1.characterMoveVariables.teamId.CompareTo(ch2.characterMoveVariables.teamId));
-        
+        ResetLocalLists();        
     }
 
     public void ResetLocalLists()
@@ -67,14 +66,13 @@ public class TurnManager_SO : ScriptableObject
             inactivePlayerTeamList.Clear();
 
             foreach (var chara in playerTeamList)
-            {
-                //chara.GetComponent<CharacterInput>().characterCombatVariables.isOverWatching = false;
+            {                
                 chara.GetComponent<CharacterTurn>().ResetActionPoints();
                 chara.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
             }
             
             playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
-            //playerTeamList[0].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
+            
             playerTeamList[0].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.ToggleTween();
             playerTeamList[0].GetComponent<CharacterInput>().uiManager.playerIdentificationPanel.ToggleTween();
 
@@ -106,14 +104,15 @@ public class TurnManager_SO : ScriptableObject
 
 
         CharacterTurn characterTurn = roundQueueGameObject.Dequeue()[0].GetComponent<CharacterTurn>();
-        //roundQueueGameObject.Dequeue()[0].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
+        
         characterTurn.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
         characterTurn.characterTurnVariables.isTurnActive = true;
-        //characterTurn.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
+        
+        
 
         characterTurn.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
         characterTurn.GetComponent<CharacterInput>().uiManager.playerIdentificationPanel.SetupPlayerIdentificationPanel(characterTurn.GetComponent<CharacterInput>());
-        //characterTurn.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.ToggleTween();
+        
 
         roundCounter++;
     }
@@ -121,25 +120,17 @@ public class TurnManager_SO : ScriptableObject
     public bool canContinue = false;
 
     public void PrepareToContinueRound()
-    {
-        //canContinue = false;
+    {        
         enemyTeamList[0].GetComponent<EnemyInput>().uiManager.turnPanel.CallTurnPanel(enemyTeamList[0]);
-
-
     }
 
     public void ContinueRound()
     {
-
-        //if (canContinue)
-        //{
             EnemyTurn enemyTurn = roundQueueGameObject.Dequeue()[0].GetComponent<EnemyTurn>();
             if (enemyTurn)
             {
                 enemyTurn.EnemyTurnVariables.isTurnActive = true;
-            }
-            //canContinue = false;
-        //}
+            }            
 
         //ATTENTION!!! >>> IF MORE CLASSES, ADD MORE IFS-ELSES
     }       
@@ -178,8 +169,6 @@ public class TurnManager_SO : ScriptableObject
             playerTeamList[index].GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive = true;
             playerTeamList[index].GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
             playerTeamList[index].GetComponent<CharacterInput>().uiManager.playerIdentificationPanel.SetupPlayerIdentificationPanel(playerTeamList[index].GetComponent<CharacterInput>());
-            //character.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
-
         }
         else if (enemy != null)
         {
@@ -243,8 +232,7 @@ public class TurnManager_SO : ScriptableObject
                 playerTeamList.Remove(character);
 
                 CheckEndStageCondition();
-                PrepareToContinueRound();
-                //ContinueRound();
+                PrepareToContinueRound();                
             }
         }
         else if (enemy != null)
@@ -259,8 +247,7 @@ public class TurnManager_SO : ScriptableObject
                 enemyTeamList.Remove(enemy);
             }
             else
-            {
-                //endenemy turn
+            {                
                 enemy.EnemyTurnVariables.isTurnActive = false;
 
                 enemyTeamList.Remove(enemy);
@@ -289,17 +276,12 @@ public class TurnManager_SO : ScriptableObject
                     {
                         index = 0;
                     }
-                    enemyTeamList[index].GetComponent<EnemyInput>().EnemyTurnVariables.isTurnActive = true;
-                    Debug.Log("CUUUUUUUUUUUUUUAAAAAAAAAAAAADDDDDDDDDDDDDDSSSSSSSSSS");
+
+                    enemyTeamList[index].GetComponent<EnemyInput>().EnemyTurnVariables.isTurnActive = true;                    
                 }
             }
             enemyTeamList.Remove(enemy);
             inactivePlayerTeamList.Remove(enemy);
-            
-            //if (enemyTeamList.Count > 0)
-            //{
-            //    enemyTeamList[0].get
-            //}
         }
 
         
@@ -318,9 +300,6 @@ public class TurnManager_SO : ScriptableObject
             listOfAllCharacters.GetList()[0].GetComponent<CharacterInput>().uiManager.DisableButtons();
             listOfAllCharacters.GetList()[0].GetComponent<CharacterInput>().uiManager.DisablePanels();
             listOfAllEnemies.GetList()[0].GetComponent<EnemyInput>().uiManager.turnPanel.TweenPanelOut();
-
-
-            //Time.timeScale = 0;
         }
         else if (enemyTeamList.Count < 1 && inactiveEnemyTeamList.Count < 1)
         {
@@ -330,9 +309,6 @@ public class TurnManager_SO : ScriptableObject
             listOfAllEnemies.GetList()[0].GetComponent<EnemyInput>().uiManager.DisableButtons();
             listOfAllEnemies.GetList()[0].GetComponent<EnemyInput>().uiManager.DisablePanels();
             listOfAllEnemies.GetList()[0].GetComponent<EnemyInput>().uiManager.turnPanel.TweenPanelOut();
-
-
-            //Time.timeScale = 0;
         }
     }
 
@@ -380,7 +356,7 @@ public class TurnManager_SO : ScriptableObject
             activeCharacter.GetComponent<CharacterInput>().characterTurnVariables.isTurnActive = false;
             inactivePlayerTeamList.Add(activeCharacter);
             activeCharacter.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
-            //playerTeamList.Remove(activeCharacter);
+            
             activeCharacter.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
             activeCharacter.GetComponent<CharacterInput>().UnMarkEnemy();
 
@@ -394,8 +370,8 @@ public class TurnManager_SO : ScriptableObject
 
     public void EndUnitsTurn(CharacterInput characterInput)
     {
-        characterInput.characterTurnVariables.actionPoints = 0;
-        //characterInput.GetComponent<CharacterInput>().UnMarkEnemy();
+        
         RemoveFromTurn(characterInput.GetComponent<CharacterTurn>(), null);
+        characterInput.characterTurnVariables.actionPoints = 0;
     }
 }

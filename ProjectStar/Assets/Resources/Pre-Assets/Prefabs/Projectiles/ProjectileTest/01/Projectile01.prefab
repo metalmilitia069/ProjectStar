@@ -9693,7 +9693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f987cc9f779c34a90f5da2869e28e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 55
   fireRate: 9
   muzzlePrefab: {fileID: 4947190641575105440, guid: 3b9ad654b1abea448a784f257f200489,
     type: 3}

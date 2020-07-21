@@ -250,15 +250,14 @@ public class CharacterCombat : MonoBehaviour
 
     public void PrepareOverWatch()
     {
-        if (GetCurrentWeapon().weaponBasicVariables.currentAmmunition < 0)
+        if (GetCurrentWeapon().weaponBasicVariables.currentAmmunition <= 0)
         {
             characterCombatVariables.isOverWatching = false;
             return;
         }
 
         if (GetComponent<CharacterInput>().characterTurnVariables.isTurnActive)
-        {
-            Debug.Log("CUZAOOOOOOOOO");
+        {            
             GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
             GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
         }

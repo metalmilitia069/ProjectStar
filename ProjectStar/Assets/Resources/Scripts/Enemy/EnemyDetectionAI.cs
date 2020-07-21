@@ -24,6 +24,11 @@ public class EnemyDetectionAI : MonoBehaviour
 
     public void AIDetectHostiles(bool option)
     {
+        //if(option)
+        //{
+        //    listOfColliders.Clear();
+        //    Debug.Log("option: " + option);
+        //}
         detectionCollider.enabled = option;        
     }
 
@@ -44,25 +49,32 @@ public class EnemyDetectionAI : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {        
         listOfColliders.Add(other);
+        //Debug.Log("List Of Colliders: " + listOfColliders.Count);
     }
 
     public void EnterAlertStateAndAlertOthers()
     {
         foreach (var col in listOfColliders)
         {
-            if (col.gameObject.GetComponent<CharacterInput>())
+            if (col != null)
             {
-                enemyDetectionAIVariables.isAlertMode = true;
+                if (col.gameObject.GetComponent<CharacterInput>())
+                {
+                    enemyDetectionAIVariables.isAlertMode = true;
+                }
             }
         }
 
         foreach (var col in listOfColliders)
         {
-            if (enemyDetectionAIVariables.isAlertMode)
+            if (col != null)
             {
-                if (col.gameObject.GetComponent<EnemyInput>())
+                if (enemyDetectionAIVariables.isAlertMode)
                 {
-                    col.gameObject.GetComponent<EnemyInput>().enemyDetectionAIVariables.isAlertMode = true;
+                    if (col.gameObject.GetComponent<EnemyInput>())
+                    {
+                        col.gameObject.GetComponent<EnemyInput>().enemyDetectionAIVariables.isAlertMode = true;
+                    }
                 }
             }
         }

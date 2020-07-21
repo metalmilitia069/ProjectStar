@@ -39,43 +39,65 @@ public class ProjectileMove : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log("Collision!");
+    //    speed = 0;
+    //    ContactPoint contactPoint = collision.contacts[0];
+
+    //    if (collision.gameObject.GetComponent<ProjectileMove>())
+    //    {
+    //        Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.collider);//(this.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
+    //    }
+
+
+    //    if (!collision.gameObject.GetComponent<ProjectileMove>())
+    //    {
+    //        speed = 0;
+    //        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contactPoint.normal);
+
+    //        Vector3 pos = contactPoint.point;
+
+    //        var hitVFX = Instantiate(hitPrefab, pos, rot);
+    //        var hitChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+    //        Destroy(hitVFX.gameObject, hitChild.main.duration);
+
+    //        Destroy(gameObject);
+    //        //return;
+    //    }
+
+    //    //Quaternion rot = Quaternion.FromToRotation(Vector3.up, contactPoint.normal);
+
+    //    //Vector3 pos = contactPoint.point;
+
+    //    //var hitVFX = Instantiate(hitPrefab, pos, rot);
+    //    //var hitChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+    //    //Destroy(hitVFX.gameObject, hitChild.main.duration);
+
+    //    //Destroy(gameObject);
+    //}
+
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision!");
-        speed = 0;
-        ContactPoint contactPoint = collision.contacts[0];
+        Debug.Log("Triggou!");
+        //speed = 0;
+        //ContactPoint contactPoint = collision.contacts[0];
 
-        if (collision.gameObject.GetComponent<ProjectileMove>())
+        if (other.GetComponent<EnemyInput>())//(collision.gameObject.GetComponent<ProjectileMove>())
         {
-            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.collider);//(this.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
-        }
-
-
-        if (!collision.gameObject.GetComponent<ProjectileMove>())
-        {
+            //Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.collider);//(this.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
             speed = 0;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contactPoint.normal);
+            //Quaternion rot = Quaternion.FromToRotation(Vector3.up, other.bounds);
 
-            Vector3 pos = contactPoint.point;
+            //Vector3 pos = contactPoint.point;
 
-            var hitVFX = Instantiate(hitPrefab, pos, rot);
+            var hitVFX = Instantiate(hitPrefab);//(hitPrefab, pos, rot);
             var hitChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
             Destroy(hitVFX.gameObject, hitChild.main.duration);
 
             Destroy(gameObject);
-            //return;
-        }
-
-        //Quaternion rot = Quaternion.FromToRotation(Vector3.up, contactPoint.normal);
-
-        //Vector3 pos = contactPoint.point;
-
-        //var hitVFX = Instantiate(hitPrefab, pos, rot);
-        //var hitChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-        //Destroy(hitVFX.gameObject, hitChild.main.duration);
-
-        //Destroy(gameObject);
+        }        
     }
 
-    
+
 }
