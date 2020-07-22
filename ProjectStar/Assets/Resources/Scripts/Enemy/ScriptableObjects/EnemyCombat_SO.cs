@@ -12,6 +12,9 @@ public class EnemyCombat_SO : ScriptableObject
 
 
     public List<CharacterInput> _listOfScannedCharacters = new List<CharacterInput>();
+    public List<CharacterInput> listOfWatchedCharacters = new List<CharacterInput>();
+    public bool canOverwatch = true;
+    public bool checkOverwatch = true;
 
     public bool isMarkedEnemy = false;
 
@@ -32,6 +35,7 @@ public class EnemyCombat_SO : ScriptableObject
 
     private void OnDisable()
     {
-        _listOfScannedCharacters.Clear();
+        _listOfScannedCharacters.Clear();        
+
     }
 }

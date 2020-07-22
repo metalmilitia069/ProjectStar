@@ -19,6 +19,9 @@ public class EnemyCombat : MonoBehaviour
     private Vector3 weaponLocation;
     private Quaternion weaponRotation;
 
+    bool canOverWatch = true;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -121,41 +124,73 @@ public class EnemyCombat : MonoBehaviour
     }
 
     public void PrepareAIOverWatch()
-    {
-        //if (weapon.GetComponent<WeaponBasic>().weaponBasicVariables.currentAmmunition <= 0)
-        //{
-            //EnemyCombatVariables.isOverWatching = false;
-            //return;
-        //}
-
+    {        
         if (GetComponent<EnemyInput>().EnemyTurnVariables.isTurnActive)
         {
-            GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
-            GetComponent<CharacterInput>().TurnManager.RemoveFromTurn(this.GetComponent<CharacterTurn>(), null);
+            GetComponent<EnemyInput>().EnemyTurnVariables.actionPoints = 0;
+            GetComponent<EnemyInput>().TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
         }
 
         EnemyCombatVariables.isOverWatching = true;
         OverWatch();
     }
-
     public void OverWatch()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, weapon.GetComponent<WeaponBasic>().weaponBasicVariables.weaponRange);
 
-        foreach (var col in hitColliders)
+
+        if (EnemyCombatVariables.canOverwatch)
         {
-            if (col.gameObject.GetComponent<CharacterInput>())
+            foreach (var col in hitColliders)
             {
-                if (col.gameObject.GetComponent<CharacterInput>().characterMoveVariables.isMoving)
+                if (col.gameObject.GetComponent<CharacterInput>())
                 {
-                    if (!col.gameObject.GetComponent<CharacterInput>().characterStatsVariables.isOverWatched)
+                    if (col.gameObject.GetComponent<CharacterInput>().characterMoveVariables.isMoving)
                     {
+                        //if (!col.gameObject.GetComponent<CharacterInput>().characterStatsVariables.isOverWatched)
+                        //{
                         Attack(col.gameObject.GetComponent<CharacterInput>());
-                        col.gameObject.GetComponent<CharacterInput>().characterStatsVariables.isOverWatched = true;
+                        EnemyCombatVariables.canOverwatch = false;
+
+                            //col.gameObject.GetComponent<CharacterInput>().characterStatsVariables.isOverWatched = true;
+                        //}
                     }
                 }
             }
         }
+
+
+        //bool canAdd = false;
+
+        //for (int i = 0; i < hitColliders.Length - 1; i++)
+        //{
+        //    if (hitColliders[i].gameObject.GetComponent<CharacterInput>())
+        //    {
+        //        if (hitColliders[i].gameObject.GetComponent<CharacterInput>().characterMoveVariables.isMoving)
+        //        {
+        //            foreach (var chara in EnemyCombatVariables.listOfWatchedCharacters)
+        //            {
+        //                if (chara.Equals(hitColliders[i].gameObject.GetComponent<CharacterInput>()))
+        //                {
+        //                    canAdd = false;
+        //                    break;
+        //                }
+        //                canAdd = true;
+        //            }
+        //            if (canAdd)
+        //            {
+        //                EnemyCombatVariables.listOfWatchedCharacters.Add(hitColliders[i].gameObject.GetComponent<CharacterInput>());
+        //            }
+        //        }
+        //    }
+        //}
+
+        //foreach (var chara in EnemyCombatVariables.listOfWatchedCharacters)
+        //{
+        //    Attack(chara);
+        //}
+
+
         //GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
     }
 

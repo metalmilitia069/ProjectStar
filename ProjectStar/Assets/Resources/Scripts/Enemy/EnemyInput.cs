@@ -57,6 +57,22 @@ public class EnemyInput : MonoBehaviour
                 return;
             }
 
+            //AI DECISION 
+
+            if (EnemyCombatVariables.checkOverwatch)
+            {
+                EnemyCombatVariables.checkOverwatch = false;
+
+                if(GetComponent<EnemyDetectionAI>().AIChooseOverWatchState())
+                {
+                    return;
+                }                
+            }
+
+            Debug.Log("not overwathing");
+
+            //END OF AI DECISION
+
             if (EnemyMoveVariables._isMoveMode)
             {
                 if (EnemyMoveVariables.isMoving)

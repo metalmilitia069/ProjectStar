@@ -272,22 +272,41 @@ public class CharacterCombat : MonoBehaviour
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, GetCurrentWeapon().weaponBasicVariables.weaponRange);
 
+        //foreach (var col in hitColliders)
+        //{
+        //    if (GetCurrentWeapon().weaponBasicVariables.currentAmmunition > 0 && col.gameObject.GetComponent<EnemyInput>())
+        //    {
+        //        if(col.gameObject.GetComponent<EnemyInput>().EnemyMoveVariables.isMoving)
+        //        {
+        //            if (!col.gameObject.GetComponent<EnemyInput>().EnemyStatsVariables.isOverWatched)
+        //            {
+        //                Attack(col.gameObject.GetComponent<EnemyInput>());
+        //                col.gameObject.GetComponent<EnemyInput>().EnemyStatsVariables.isOverWatched = true;
+        //            }
+        //        }
+        //    }
+        //}
+
         foreach (var col in hitColliders)
         {
             if (GetCurrentWeapon().weaponBasicVariables.currentAmmunition > 0 && col.gameObject.GetComponent<EnemyInput>())
             {
-                if(col.gameObject.GetComponent<EnemyInput>().EnemyMoveVariables.isMoving)
+                if (col.gameObject.GetComponent<EnemyInput>().EnemyMoveVariables.isMoving)
                 {
-                    if (!col.gameObject.GetComponent<EnemyInput>().EnemyStatsVariables.isOverWatched)
+                    foreach (var enemy in characterCombatVariables.listOfWatchedEnemies)
                     {
-                        Attack(col.gameObject.GetComponent<EnemyInput>());
-                        col.gameObject.GetComponent<EnemyInput>().EnemyStatsVariables.isOverWatched = true;
+                        if (col.gameObject.GetComponent<EnemyInput>() == enemy)
+                        {
+                            return;
+                        }
                     }
+                                       
+                    Attack(col.gameObject.GetComponent<EnemyInput>());
+                    characterCombatVariables.listOfWatchedEnemies.Add(col.gameObject.GetComponent<EnemyInput>());
+                    
                 }
             }
         }
-
-        //GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
     }
 
     //DAMAGE FROM ENEMY

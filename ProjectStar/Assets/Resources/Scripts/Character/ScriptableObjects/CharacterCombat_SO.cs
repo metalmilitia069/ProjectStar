@@ -12,6 +12,9 @@ public class CharacterCombat_SO : ScriptableObject
 
 
     public List<EnemyInput> _listOfScannedEnemies = new List<EnemyInput>();
+    public List<EnemyInput> listOfWatchedEnemies = new List<EnemyInput>();
+    public bool canOverwatch = true;
+    public bool checkOverwatch = true;
 
     public GameObject weaponGripPlace;
 

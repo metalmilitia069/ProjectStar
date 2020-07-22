@@ -69,6 +69,10 @@ public class TurnManager_SO : ScriptableObject
             {                
                 chara.GetComponent<CharacterTurn>().ResetActionPoints();
                 chara.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
+                chara.GetComponent<CharacterInput>().characterStatsVariables.ResetOverWatchable();
+                chara.GetComponent<CharacterInput>().characterCombatVariables.listOfWatchedEnemies.Clear();
+                chara.GetComponent<CharacterInput>().characterCombatVariables.canOverwatch = true;
+                chara.GetComponent<CharacterInput>().characterCombatVariables.checkOverwatch = true;
             }
             
             playerTeamList.Sort((ch1, ch2) => ch1.GetComponent<CharacterTurn>().characterTurnVariables.teamId.CompareTo(ch2.GetComponent<CharacterTurn>().characterTurnVariables.teamId));
@@ -84,6 +88,9 @@ public class TurnManager_SO : ScriptableObject
             {
                 enem.GetComponent<EnemyTurn>().ResetActionPoints();
                 enem.GetComponent<EnemyInput>().EnemyStatsVariables.ResetOverWatchable();
+                enem.GetComponent<EnemyInput>().EnemyCombatVariables.listOfWatchedCharacters.Clear();
+                enem.GetComponent<EnemyInput>().EnemyCombatVariables.canOverwatch = true;
+                enem.GetComponent<EnemyInput>().EnemyCombatVariables.checkOverwatch = true;
             }
         }
 

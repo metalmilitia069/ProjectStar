@@ -295,7 +295,7 @@ public class CombatCalculatorManager_SO : ScriptableObject
 
         if (!enemy.EnemyCombatVariables.isOverWatching)
         {
-            Debug.Log("overwatching? " + enemy.EnemyCombatVariables.isOverWatching);
+            //Debug.Log("overwatching? " + enemy.EnemyCombatVariables.isOverWatching);
             enemy.GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints--;
         }
         yield return new WaitForSeconds(1);//co;

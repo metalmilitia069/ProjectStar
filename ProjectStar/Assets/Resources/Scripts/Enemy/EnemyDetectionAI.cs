@@ -80,10 +80,23 @@ public class EnemyDetectionAI : MonoBehaviour
             }
         }
     }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
+
+    public bool AIChooseOverWatchState()
+    {
+        float coinFlip = Random.Range(0.0f, 1.0f);
+        Debug.Log("coinflip = " + coinFlip);
+
+        if (coinFlip > 0.5f)
+        {
+            GetComponent<EnemyCombat>().PrepareAIOverWatch();
+            Debug.Log("AI OVERWATCHING");
+            return true;
+        }
+        return false;
     }
 }
