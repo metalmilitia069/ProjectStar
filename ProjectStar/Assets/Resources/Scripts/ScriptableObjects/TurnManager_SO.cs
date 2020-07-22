@@ -376,7 +376,9 @@ public class TurnManager_SO : ScriptableObject
                 charTempToBeDeactivated.characterTurnVariables.isTurnActive = false;
                 charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables.isTilesFound = false;
                 charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables.isAttackRangeFound = false;
+                charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables._isCombatMode = false;
                 charTempToBeDeactivated.GetComponent<CharacterInput>().characterMoveVariables._isMoveMode = true;
+                charTempToBeDeactivated.GetComponent<CharacterInput>().uiManager.attackPanel.GetAttackPanelTween().OutPosTween();
 
 
                 characterTempToBeActivated.characterTurnVariables.isTurnActive = true;

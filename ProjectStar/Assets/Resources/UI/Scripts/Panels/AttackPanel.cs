@@ -23,6 +23,11 @@ public class AttackPanel : MonoBehaviour
         attackPanelTweenRef = GetComponent<AttackPanelTween>();
     }
 
+    public AttackPanelTween GetAttackPanelTween()
+    {
+        return attackPanelTweenRef;
+    }
+
     // Update is called once per frame
     void Update()
     {
