@@ -9,18 +9,15 @@ public class ReloadButton : MonoBehaviour
     [Header("INSERT UI MANAGER SO :")]
     public UIManager_SO uiManager;
 
+    public string buttonToolTip;
+    public ToolTipPanel toolTipPanel;
+
     // Start is called before the first frame update
     private void Awake()
     {
         uiManager.reloadButton = this;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void ReloadWeapon()
     {
         CharacterInput characterInput = GetActiveCharacter();
@@ -58,5 +55,25 @@ public class ReloadButton : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void ActivateToolTip()
+    {
+        StartCoroutine(WaitToActivateToolTip());
+    }
+
+    public void DeactivateToolTip()
+    {
+        StopAllCoroutines();
+        toolTipPanel.gameObject.SetActive(false);
+        toolTipPanel.toolTipText.text = default;
+    }
+
+    public IEnumerator WaitToActivateToolTip()
+    {
+        yield return new WaitForSeconds(2);
+        toolTipPanel.gameObject.SetActive(true);
+        toolTipPanel.toolTipText.text = buttonToolTip;
+        toolTipPanel.transform.position = Input.mousePosition + new Vector3(-160, 40, 0);
     }
 }

@@ -267,8 +267,8 @@ public class TurnManager_SO : ScriptableObject
 
                 enemyTeamList.Remove(enemy);
 
-                //inactivePlayerTeamList[0].GetComponent<CharacterInput>().uiManager.turnPanel.CallRoundSetup();
-                RoundSetup();
+                inactivePlayerTeamList[0].GetComponent<CharacterInput>().uiManager.turnPanel.CallRoundSetup();
+                //RoundSetup();
             }
         }
     }

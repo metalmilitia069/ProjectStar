@@ -150,7 +150,7 @@ public class EnemyPathAI : MonoBehaviour
             return temp;
 
 
-            //Debug.Log("teu cu");
+            
             //return t.basicTileVariables.parent;
         }
 

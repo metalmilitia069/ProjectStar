@@ -45,12 +45,7 @@ public class CharacterGlobalController : MonoBehaviour
         foreach (var character in TurnManager.playerTeamList)
         {
             if (character.GetComponent<CharacterTurn>().characterTurnVariables.isTurnActive)
-            {
-                //TurnManager.SwitchCharacter(character.GetComponent<CharacterTurn>(), null);
-
-                ////character.GetComponent<CharacterInput>().uiManager.weaponDisplayPanel.SetWeaponToDisplay();
-
-                //character.GetComponent<CharacterInput>().MainCameraControllerVariables.LockCamera(character.transform);
+            {                
                 character.GetComponent<CharacterCombat>().PrepareOverWatch();
                 break;
             }

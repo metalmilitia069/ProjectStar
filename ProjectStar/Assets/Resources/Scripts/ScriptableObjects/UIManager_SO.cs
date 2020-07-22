@@ -16,9 +16,12 @@ public class UIManager_SO : ScriptableObject
     public AttackModeButton attackModeButton;
     public ReloadButton reloadButton;
     public ChangeWeaponButton changeWeaponButton;
+    public OverWatchButton overWatchButton;
+    public SwitchCharacterButton switchCharacterButton;
 
     public EndTurnButton endTurnButton;
     public EndUnitsTurnButton endUnitsTurnButton;
+    public MouseToolTipButton mouseToolTipButton;
     
 
 
@@ -31,6 +34,10 @@ public class UIManager_SO : ScriptableObject
 
     public EndLevelBoard endLevelBoard;
 
+    public ToolTipPanel toolTipPanel;
+
+    public MouseToolTIpPanel mouseToolTIpPanel;
+
 
     [Header("UI SPRITES COLLECTION FOR BULLET COUNT :")]
     public Sprite[] magazine2;
@@ -42,21 +49,32 @@ public class UIManager_SO : ScriptableObject
     public void DisableButtons()
     {
         attackModeButton.gameObject.SetActive(false);
+        overWatchButton.gameObject.SetActive(false);
         reloadButton.gameObject.SetActive(false);
         changeWeaponButton.gameObject.SetActive(false);
         endTurnButton.gameObject.SetActive(false);
         endUnitsTurnButton.gameObject.SetActive(false);
-        
+        switchCharacterButton.gameObject.SetActive(false);
+
+        //if (toolTipPanel.gameObject.activeSelf)
+        //{
+        //    toolTipPanel.gameObject.SetActive(false);
+        //}
+
+        mouseToolTipButton.gameObject.SetActive(false);
     }
 
     public void EnableButtons()
     {
         attackModeButton.gameObject.SetActive(true);
+        overWatchButton.gameObject.SetActive(true);
         reloadButton.gameObject.SetActive(true);
         changeWeaponButton.gameObject.SetActive(true);
         endTurnButton.gameObject.SetActive(true);
         endUnitsTurnButton.gameObject.SetActive(true);
-        
+        switchCharacterButton.gameObject.SetActive(true);
+
+        mouseToolTipButton.gameObject.SetActive(true);
     }
 
     public void DisablePanels()
@@ -70,7 +88,9 @@ public class UIManager_SO : ScriptableObject
 
         playerIdentificationPanel.GetComponent<PlayerIdentificationPanelTween>().isTweendIn = true;
         playerIdentificationPanel.ToggleTween();//.gameObject.SetActive(false);
-}
+
+        mouseToolTIpPanel.TweenOut();
+    }
 
     public void EnablePanels()
     {
