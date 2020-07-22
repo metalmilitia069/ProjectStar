@@ -23,41 +23,40 @@ public class AdvancedTile : MonoBehaviour
 
     public void UpdateTileState()
     {
-        Debug.DrawRay(transform.position, Vector3.up);
+        //Debug.DrawRay(transform.position, Vector3.up);
 
-        if (basicTileVariables.isCurrent)
-        {
+        if (basicTileVariables.isCurrent && !basicTileVariables.isInOverwatch)
+        {            
             GetComponent<Renderer>().material.color = Color.red;
         }
-        else if (basicTileVariables.isTarget)
-        {
+        else if (basicTileVariables.isTarget && !basicTileVariables.isInOverwatch)
+        {            
             GetComponent<Renderer>().material.color = Color.cyan;
         }
-        else if (basicTileVariables.isSelectable)
-        {
+        else if (basicTileVariables.isSelectable && !basicTileVariables.isInOverwatch)
+        {            
             GetComponent<Renderer>().material.color = Color.blue;
 
-            if (basicTileVariables.isLatter)
-            {
+            if (basicTileVariables.isLatter && !basicTileVariables.isInOverwatch)
+            {                
                 GetComponent<Renderer>().material.color = Color.yellow;
             }
-            else if (basicTileVariables.isCover)
-            {
+            else if (basicTileVariables.isCover && !basicTileVariables.isInOverwatch)
+            {                
                 GetComponent<Renderer>().material.color = Color.green;
             }
-
-            //if (isAttacable)
-            //{
-            //    GetComponent<Renderer>().material.color = Color.cyan;
-            //}
         }
-        else if (basicTileVariables.isAttakable)
-        {
+        else if (basicTileVariables.isAttakable && !basicTileVariables.isInOverwatch)
+        {            
             GetComponent<Renderer>().material.color = Color.cyan;
+        }        
+        else if (basicTileVariables.isInOverwatch)
+        {            
+            GetComponent<Renderer>().material.color = Color.magenta;
         }
         else
         {
-            GetComponent<Renderer>().material.color = Color.white;
+            GetComponent<Renderer>().material.color = new Color(1,1,1,0);
         }
     }
 }

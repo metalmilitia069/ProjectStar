@@ -19,7 +19,7 @@ public class EnemyCombat : MonoBehaviour
     private Vector3 weaponLocation;
     private Quaternion weaponRotation;
 
-    bool canOverWatch = true;
+    //bool canOverWatch = true;
 
 
     // Start is called before the first frame update
@@ -113,14 +113,7 @@ public class EnemyCombat : MonoBehaviour
         enemyInput.CombatCalculatorManager.EnemyFinalAttackCalculation(character, enemyInput); //CombatCalculatorManager.instance.PlayerFinalAttackCalculation(enemy);
 
         this.GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints--;
-
-        //if (this.GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints <= 0)
-        //{
-        //    GetComponent<EnemyInput>().TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
-        //    return;
-        //    //TurnManager.instance.PlayerCharacterActionDepleted((CharacterStats)this);  //TODO: implement TURN MANAGER
-        //}
-
+        
     }
 
     public void PrepareAIOverWatch()
@@ -131,12 +124,14 @@ public class EnemyCombat : MonoBehaviour
             GetComponent<EnemyInput>().TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
         }
 
+        GetComponent<EnemyInput>().GridManager.CalculateOverWacthPathForTheAI(this.gameObject);
         EnemyCombatVariables.isOverWatching = true;
         OverWatch();
     }
     public void OverWatch()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, weapon.GetComponent<WeaponBasic>().weaponBasicVariables.weaponRange);
+
 
 
         if (EnemyCombatVariables.canOverwatch)
@@ -157,41 +152,15 @@ public class EnemyCombat : MonoBehaviour
                     }
                 }
             }
+
+            foreach (var col in hitColliders)
+            {
+                if (col.gameObject.GetComponent<AdvancedTile>())
+                {
+                    col.gameObject.GetComponent<AdvancedTile>().basicTileVariables.isInOverwatch = true;
+                }
+            }
         }
-
-
-        //bool canAdd = false;
-
-        //for (int i = 0; i < hitColliders.Length - 1; i++)
-        //{
-        //    if (hitColliders[i].gameObject.GetComponent<CharacterInput>())
-        //    {
-        //        if (hitColliders[i].gameObject.GetComponent<CharacterInput>().characterMoveVariables.isMoving)
-        //        {
-        //            foreach (var chara in EnemyCombatVariables.listOfWatchedCharacters)
-        //            {
-        //                if (chara.Equals(hitColliders[i].gameObject.GetComponent<CharacterInput>()))
-        //                {
-        //                    canAdd = false;
-        //                    break;
-        //                }
-        //                canAdd = true;
-        //            }
-        //            if (canAdd)
-        //            {
-        //                EnemyCombatVariables.listOfWatchedCharacters.Add(hitColliders[i].gameObject.GetComponent<CharacterInput>());
-        //            }
-        //        }
-        //    }
-        //}
-
-        //foreach (var chara in EnemyCombatVariables.listOfWatchedCharacters)
-        //{
-        //    Attack(chara);
-        //}
-
-
-        //GetComponent<CharacterInput>().characterTurnVariables.actionPoints = 0;
     }
 
 

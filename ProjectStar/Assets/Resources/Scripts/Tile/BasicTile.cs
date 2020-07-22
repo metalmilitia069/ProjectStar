@@ -48,6 +48,8 @@ public class BasicTile : MonoBehaviour
 
         basicTileVariables.isAttakable = false;
 
+        basicTileVariables.isInOverwatch = false;
+
 
         //AI STUFF
         GetComponent<AdvancedTile>().advancedTileVariables.f = GetComponent<AdvancedTile>().advancedTileVariables.g = GetComponent<AdvancedTile>().advancedTileVariables.h = 0;

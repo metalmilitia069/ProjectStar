@@ -63,8 +63,7 @@ public class EnemyMove : MonoBehaviour
             enemyMoveVariables.isTilesFound = false;
 
 
-            GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints--;
-            //PUT EVENT TO HIDE TILES
+            GetComponent<EnemyTurn>().EnemyTurnVariables.actionPoints--;            
         }
     }
 
@@ -84,7 +83,7 @@ public class EnemyMove : MonoBehaviour
         //gameObject.GetComponentInChildren<Animator>().SetBool("IsInCoverState", option);
         if (option)
         {
-            Debug.Log("TODO: PUT COVER ANIMATION!!!");
+            enemyMoveVariables._isCoverMode = true;
         }
     }
 

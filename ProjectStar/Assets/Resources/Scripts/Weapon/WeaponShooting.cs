@@ -121,22 +121,6 @@ public class WeaponShooting : MonoBehaviour
                 break;
         }
 
-        //vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
-
-        //yield return new WaitForSeconds(1 / weaponfireRate);
-
-        //vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
-
-        //yield return new WaitForSeconds(1 / weaponfireRate);//projectilePrefab.GetComponent<ProjectileMove>().fireRate);
-
-        //vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
-
-        //yield return new WaitForSeconds(1 / weaponfireRate); //projectilePrefab.GetComponent<ProjectileMove>().fireRate);
-
-        //vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);//rotation);
-
-        //yield return new WaitForSeconds(1 / weaponfireRate); //projectilePrefab.GetComponent<ProjectileMove>().fireRate);
-
         yield return new WaitForSeconds(1);
 
     }

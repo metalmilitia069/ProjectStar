@@ -15,6 +15,7 @@ public class BasicTile_SO : ScriptableObject
     public bool isLatter = false;
     public bool isSelectable = false;
     public bool isTarget = false;
+    public bool isInOverwatch = false;
 
     public List<AdvancedTile> listOfNearbyValidTiles = new List<AdvancedTile>();
     public AdvancedTile referenceTile;

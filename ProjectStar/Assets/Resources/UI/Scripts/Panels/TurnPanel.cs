@@ -70,6 +70,17 @@ public class TurnPanel : MonoBehaviour
         GetComponent<TurnPanelTween>().TweenOut();
     }
 
+    public void CallRoundSetup()
+    {
+        StartCoroutine(RoundSetupDelay());
+    }
+
+    public IEnumerator RoundSetupDelay()
+    {
+        yield return new WaitForSeconds(3);
+        TurnManager.RoundSetup();
+    }
+
 
 
 

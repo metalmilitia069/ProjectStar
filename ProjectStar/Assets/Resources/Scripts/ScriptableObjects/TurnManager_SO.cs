@@ -251,9 +251,10 @@ public class TurnManager_SO : ScriptableObject
         }
         else if (enemy != null)
         {
-            int index = enemyTeamList.IndexOf(enemy);
-
-            inactiveEnemyTeamList.Add(enemyTeamList[index]);
+            int indexuuuuu = enemyTeamList.IndexOf(enemy);
+            Debug.Log("list count" + enemyTeamList.Count);
+            Debug.Log("index " + indexuuuuu);
+            inactiveEnemyTeamList.Add(enemyTeamList[indexuuuuu]);
 
             if (enemyTeamList.Count > 1)
             {
@@ -266,10 +267,13 @@ public class TurnManager_SO : ScriptableObject
 
                 enemyTeamList.Remove(enemy);
 
+                //inactivePlayerTeamList[0].GetComponent<CharacterInput>().uiManager.turnPanel.CallRoundSetup();
                 RoundSetup();
             }
         }
     }
+
+    
 
     public void RemoveFromTeam(CharacterTurn character, EnemyTurn enemy)
     {

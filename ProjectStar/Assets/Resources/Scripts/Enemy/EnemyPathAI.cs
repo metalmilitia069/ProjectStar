@@ -105,11 +105,12 @@ public class EnemyPathAI : MonoBehaviour
 
                     openList.Add(tile);
                 }
-            }
+            }            
         }
 
         //todo: what do you if there is no path to the target tile???
         Debug.Log("Path not found");
+        GetComponent<EnemyCombat>().PrepareAIOverWatch(); //
 
     }
 

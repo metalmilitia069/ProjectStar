@@ -44,6 +44,13 @@ public class EnemyInput : MonoBehaviour
     {
         if (EnemyTurnVariables.isTurnActive)
         {
+            if (EnemyMoveVariables._isCoverMode)
+            {
+                Debug.Log("Is Cover Mode");
+                GetComponent<EnemyCombat>().PrepareAIOverWatch();
+                return;
+            }
+
             if (EnemyTurnVariables.actionPoints <= 0)
             {
                 TurnManager.RemoveFromTurn(null, this.GetComponent<EnemyTurn>());
@@ -104,6 +111,7 @@ public class EnemyInput : MonoBehaviour
                     EnemyMoveVariables._weaponRange = GetComponent<EnemyCombat>().weapon.GetComponent<WeaponInput>().weaponBasicVariables.weaponRange; //CHANGE ONCE THE WEAPON BELT SYSTEM IS DONE!!!!
                     GridManager.CalculateAttackPathForTheAI(this.gameObject);
                     GetComponent<EnemyCombat>().ScanRoutine();
+                    //StartCoroutine(WaitTheApplyDamage());
                     enemyPathAIVariables.isScanRoutineDone = true;
                     ChangeMode();
                     return;                    
@@ -116,7 +124,12 @@ public class EnemyInput : MonoBehaviour
             {
                 GetComponent<EnemyCombat>().OverWatch();
             }
+
         }
+    }
+    public IEnumerator WaitTheApplyDamage()
+    {
+        yield return new WaitForSeconds(2);
     }
 
     public void ShowProbability()

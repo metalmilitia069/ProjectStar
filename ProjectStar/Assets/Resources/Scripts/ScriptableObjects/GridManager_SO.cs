@@ -11,6 +11,7 @@ public class GridManager_SO : ScriptableObject
     [Header("Tile Data")]
     public List<AdvancedTile> listOfSelectableTiles = new List<AdvancedTile>();
     
+    
 
     private AdvancedTile tilePlaceholder;
 
@@ -326,5 +327,46 @@ public class GridManager_SO : ScriptableObject
         }
         inputCharacter.characterMoveVariables.currentTile = tilePlaceholder;
         inputCharacter.characterMoveVariables.isAttackRangeFound = true;
+    }
+
+    public void CalculateOverWacthPathForTheAI(GameObject enemy)
+    {
+        inputEnemy = enemy.GetComponent<EnemyInput>(); //REDUNDANT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        UpdateScanAllTiles(null); //EventScanTilesUpdate();
+        GetCurrentTile(enemy);
+
+        //BFS Algorithm
+        var queueProcess = new Queue<AdvancedTile>();
+
+        queueProcess.Enqueue(tilePlaceholder);
+        tilePlaceholder.basicTileVariables.isVisited = true;
+
+        while (queueProcess.Count > 0)
+        {
+            AdvancedTile t = queueProcess.Dequeue();
+
+            listOfSelectableTiles.Add(t);
+            
+            t.basicTileVariables.isInOverwatch = true;//
+
+
+            if (t.basicTileVariables.distance < inputEnemy.EnemyMoveVariables._weaponRange) //CHANGE THE CURRENT WEAPON RANGE ONCE THE WEAPON BELT SYSTEM IS IN PLACE!!!!!!!!!!!!!!!!!
+            {
+                foreach (var tile in t.basicTileVariables.listOfNearbyValidTiles)
+                {
+                    if (!tile.basicTileVariables.isVisited)
+                    {
+                        tile.basicTileVariables.parent = t;
+                        tile.basicTileVariables.isVisited = true;
+                        tile.basicTileVariables.distance = 1 + t.basicTileVariables.distance;
+                        queueProcess.Enqueue(tile);
+                    }
+                }
+            }
+        }
+        
+        //inputCharacter.characterMoveVariables.currentTile = tilePlaceholder;
+        //inputCharacter.characterMoveVariables.isAttackRangeFound = true;
     }
 }
