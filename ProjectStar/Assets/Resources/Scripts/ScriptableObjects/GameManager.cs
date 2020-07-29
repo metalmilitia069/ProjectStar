@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public EnemyList_SO ListOfAllEnemies_SO;
 
 
+    public TileList_SO TileList_SO;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //foreach (var item in TileList_SO.GetList())
+        //{
+        //    item.UpdateTileState();
+        //}
     }
 }

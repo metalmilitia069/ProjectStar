@@ -121,7 +121,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/Playground.unity:
+    Assets/Scenes/Stage01.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -143,6 +143,8 @@ ScriptsOnlyBuild:
     - Class: 49
       Script: {instanceID: 0}
     - Class: 54
+      Script: {instanceID: 0}
+    - Class: 64
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
@@ -390,6 +392,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 199
       Script: {instanceID: 0}
+    - Class: 205
+      Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
     - Class: 222
@@ -459,7 +463,7 @@ ScriptsOnlyBuild:
     className: UIManager_SO
   - hash:
       serializedVersion: 2
-      Hash: c43d7fbb31fed278703c85327bca8b38
+      Hash: 63f3df898143ca2a76939cadd9b88173
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -1653,5 +1657,5 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 19
   scenePathNames:
-  - Assets/Scenes/Playground.unity
-  playerPath: D:/upar/test_exe11/ProjectStar.exe
+  - Assets/Scenes/Stage01.unity
+  playerPath: D:/upar/test_exe14/ProjectStar.exe

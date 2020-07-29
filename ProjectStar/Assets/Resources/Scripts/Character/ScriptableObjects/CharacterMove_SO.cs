@@ -12,7 +12,7 @@ public class CharacterMove_SO : ScriptableObject
     public AdvancedTile currentTile;
 
     [SerializeField]
-    public int _movePoints = 5;
+    public int _movePoints = 10;
     public bool isMoving = false;
     public float halfHeight = 1;
     public bool isTilesFound = false;

@@ -26,15 +26,24 @@ public class AdvancedTile : MonoBehaviour
         //Debug.DrawRay(transform.position, Vector3.up);
 
         if (basicTileVariables.isCurrent && !basicTileVariables.isInOverwatch)
-        {            
+        {
+            //this.gameObject.SetActive(!this.gameObject.activeSelf);
+            GetComponent<MeshRenderer>().enabled = true;
+            //GetComponent<BoxCollider>().enabled = true;
             GetComponent<Renderer>().material.color = Color.red;
         }
         else if (basicTileVariables.isTarget && !basicTileVariables.isInOverwatch)
-        {            
+        {
+            //this.gameObject.SetActive(!this.gameObject.activeSelf);
+            GetComponent<MeshRenderer>().enabled = true;
+            //GetComponent<BoxCollider>().enabled = true;
             GetComponent<Renderer>().material.color = Color.cyan;
         }
         else if (basicTileVariables.isSelectable && !basicTileVariables.isInOverwatch)
-        {            
+        {
+            //this.gameObject.SetActive(!this.gameObject.activeSelf);
+            GetComponent<MeshRenderer>().enabled = true;
+            //GetComponent<BoxCollider>().enabled = true;
             GetComponent<Renderer>().material.color = Color.blue;
 
             if (basicTileVariables.isLatter && !basicTileVariables.isInOverwatch)
@@ -47,16 +56,25 @@ public class AdvancedTile : MonoBehaviour
             }
         }
         else if (basicTileVariables.isAttakable && !basicTileVariables.isInOverwatch)
-        {            
+        {
+            //this.gameObject.SetActive(!this.gameObject.activeSelf);
+            //GetComponent<BoxCollider>().enabled = true;
+            GetComponent<MeshRenderer>().enabled = true;
             GetComponent<Renderer>().material.color = Color.cyan;
         }        
         else if (basicTileVariables.isInOverwatch)
-        {            
+        {
+            //this.gameObject.SetActive(!this.gameObject.activeSelf);
+            //GetComponent<BoxCollider>().enabled = true;
+            GetComponent<MeshRenderer>().enabled = true;
             GetComponent<Renderer>().material.color = Color.magenta;
         }
         else
         {
+            GetComponent<MeshRenderer>().enabled = false;
+            //GetComponent<BoxCollider>().enabled = false;
             GetComponent<Renderer>().material.color = new Color(1,1,1,0);
+            //this.gameObject.SetActive(false);
         }
     }
 }

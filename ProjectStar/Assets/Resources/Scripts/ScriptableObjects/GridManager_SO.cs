@@ -42,10 +42,13 @@ public class GridManager_SO : ScriptableObject
     public void GetCurrentTile(GameObject characterStandingOnTile) 
     {
         RaycastHit hit;
-        Debug.DrawRay(characterStandingOnTile.transform.position, Vector3.down);
-
-        if (Physics.Raycast(characterStandingOnTile.transform.position, Vector3.down, out hit, 1))
+        
+        Debug.DrawRay(characterStandingOnTile.transform.position, Vector3.down + new Vector3(0,-0.2f, 0), Color.red);
+        Debug.Log("ADDDDDDDDDDDDDDDDD");
+        if (Physics.Raycast(characterStandingOnTile.transform.position, Vector3.down, out hit, 1.2f))
         {
+            Debug.Log("ADDDDDDDDDDDDDDDDD");
+
             tilePlaceholder = hit.collider.transform.GetComponent<AdvancedTile>();
 
             tilePlaceholder.basicTileVariables.isCurrent = true;
