@@ -25,6 +25,8 @@ public class CharacterMove : MonoBehaviour
         
     }
 
+
+
     public void Move()
     {
         if (GridManager.stackTilePath.Count > 0)

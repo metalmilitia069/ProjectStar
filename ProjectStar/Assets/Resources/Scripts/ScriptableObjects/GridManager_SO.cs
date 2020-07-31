@@ -44,10 +44,10 @@ public class GridManager_SO : ScriptableObject
         RaycastHit hit;
         
         Debug.DrawRay(characterStandingOnTile.transform.position, Vector3.down + new Vector3(0,-0.2f, 0), Color.red);
-        Debug.Log("ADDDDDDDDDDDDDDDDD");
+        
         if (Physics.Raycast(characterStandingOnTile.transform.position, Vector3.down, out hit, 1.2f))
         {
-            Debug.Log("ADDDDDDDDDDDDDDDDD");
+            /*characterMoveVariables.halfHeight + t.GetComponent<Collider>().bounds.extents.y;*/
 
             tilePlaceholder = hit.collider.transform.GetComponent<AdvancedTile>();
 
@@ -56,6 +56,11 @@ public class GridManager_SO : ScriptableObject
 
             if (characterStandingOnTile.GetComponent<CharacterInput>())
             {
+                //characterStandingOnTile.transform.position = tilePlaceholder.transform.position; //
+                Vector3 destinationCoordinates = tilePlaceholder.transform.position;
+                destinationCoordinates.y += characterStandingOnTile.GetComponent<CharacterInput>().characterMoveVariables.halfHeight + tilePlaceholder.GetComponent<Collider>().bounds.extents.y;
+                characterStandingOnTile.transform.position = destinationCoordinates;
+
                 tilePlaceholder.basicTileVariables.isMoveMode = inputCharacter.characterMoveVariables._isMoveMode; //To CHange Move or Attack Tile Neighbours
 
 
@@ -70,6 +75,11 @@ public class GridManager_SO : ScriptableObject
             }
             else if (characterStandingOnTile.GetComponent<EnemyInput>()) //CHANGE TO WHILE TESTING AI
             {
+                //characterStandingOnTile.transform.position = tilePlaceholder.transform.position; //
+                Vector3 destinationCoordinates = tilePlaceholder.transform.position;
+                destinationCoordinates.y += characterStandingOnTile.GetComponent<EnemyInput>().EnemyMoveVariables.halfHeight + tilePlaceholder.GetComponent<Collider>().bounds.extents.y;
+                characterStandingOnTile.transform.position = destinationCoordinates;
+
                 tilePlaceholder.basicTileVariables.isMoveMode = inputEnemy.EnemyMoveVariables._isMoveMode;
 
                 if (tilePlaceholder.basicTileVariables.isCover)
