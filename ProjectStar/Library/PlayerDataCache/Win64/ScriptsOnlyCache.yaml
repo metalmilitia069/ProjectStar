@@ -1660,4 +1660,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/Stage01.unity
-  playerPath: D:/upar/test_exe14/ProjectStar.exe
+  playerPath: D:/upar/test_exe15/ProjectStar.exe
