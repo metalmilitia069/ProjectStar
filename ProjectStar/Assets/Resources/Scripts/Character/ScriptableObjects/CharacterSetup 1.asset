@@ -17,9 +17,9 @@ MonoBehaviour:
   characterLevel: 2
   characterGender: 1
   characterClass: 4
-  characterGeometryMale: {fileID: 7810445314511055672, guid: b023dc28b7e2eb24eaf4be5d78cb7002,
+  characterGeometryMale: {fileID: 9213383644308989448, guid: af28754a801fd91488c8c1af02d0dd39,
     type: 3}
-  characterGeometryFemale: {fileID: 4957706368449789038, guid: 12927879ba0c71a42b203dfd5c22c2bb,
+  characterGeometryFemale: {fileID: 2540281445701491051, guid: 1805c36dfe5fd1341809a70f39012716,
     type: 3}
   assaultSigil: {fileID: 21300000, guid: 7ca3ddf0e493d2f4498079d6dac91a56, type: 3}
   sniperSigil: {fileID: 21300000, guid: 0581d57d41f819c4cb6804aed47f9fbf, type: 3}
