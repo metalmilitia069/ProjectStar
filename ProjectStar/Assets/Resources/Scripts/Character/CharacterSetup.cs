@@ -24,6 +24,7 @@ public class CharacterSetup : MonoBehaviour
 
     private void Awake()
     {
+        characterSetupVariables.ResetVariables();
         
         GetCharacterAffiliationSigil();
 

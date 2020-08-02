@@ -32,6 +32,8 @@ public class CharacterInput : MonoBehaviour
     public CharacterStats_SO characterStatsVariables;
     [Header("CHARACTER TURN VARIABLES - INSTANCE :")]
     public CharacterTurn_SO characterTurnVariables;
+    [Header("CHARACTER ANIMATION VARIABLES - INSTANCE :")]
+    public CharacterAnimation_SO characterAnimationVariables;
 
     // Start is called before the first frame update
     void Start()
@@ -377,6 +379,7 @@ public class CharacterInput : MonoBehaviour
             characterMoveVariables.isTilesFound = false;
             TurnOffCombatScanMode();
             UnMarkEnemy();
+            GetComponent<CharacterAnimation>().ShootingAnimation(false);
             foreach (var item in GridManager.tileList_SO.GetList())
             {
                 item.basicTileVariables.isMoveMode = true;

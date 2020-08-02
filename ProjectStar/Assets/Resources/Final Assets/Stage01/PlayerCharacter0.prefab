@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 2700444957028229436}
   - component: {fileID: 2700444957028229437}
   - component: {fileID: 2700444957028229408}
+  - component: {fileID: 6141159188159244529}
   - component: {fileID: 2700444957028229434}
   - component: {fileID: 2700444957028229412}
   - component: {fileID: 2700444957028229415}
@@ -607,7 +608,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2700444957028229433}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5, y: 1.075, z: -4.499999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -712,6 +713,8 @@ MonoBehaviour:
   GridManager: {fileID: 11400000, guid: d7ede193aeb3d344d94fb131de8988d2, type: 2}
   characterMoveVariables: {fileID: 11400000, guid: da0c41caeee90ce459bc90185aa05248,
     type: 2}
+  animator: {fileID: 128456173, guid: 2107c6e2a13cdc04d8e4a14e0efc098e, type: 3}
+  animation: {fileID: 0}
 --- !u!114 &2700444957028229410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,6 +779,20 @@ MonoBehaviour:
   characterTurnVariables: {fileID: 11400000, guid: 2b423a142b6c98443bb98ce1c6c2f738,
     type: 2}
   teamId: 1
+--- !u!114 &6141159188159244529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2700444957028229433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb4970ac33e4c44f9dafb7202a6a742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterAnimationVariables: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &2700444957028229434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +824,7 @@ MonoBehaviour:
     type: 2}
   characterTurnVariables: {fileID: 11400000, guid: 2b423a142b6c98443bb98ce1c6c2f738,
     type: 2}
+  characterAnimationVariables: {fileID: 0}
 --- !u!114 &2700444957028229412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -819,7 +837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc321a4d71b030f4fb502ed5ce6c8811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionDistance: 5
+  visionDistance: 10
 --- !u!54 &2700444957028229415
 Rigidbody:
   m_ObjectHideFlags: 0

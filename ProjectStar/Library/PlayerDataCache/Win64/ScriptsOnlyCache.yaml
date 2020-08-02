@@ -10,6 +10,7 @@ ScriptsOnlyBuild:
     - ButtonTween
     - CameraRenderSettings
     - ChangeWeaponButton
+    - CharacterAnimation
     - CharacterBasic
     - CharacterCombat
     - CharacterCombat_SO
@@ -98,8 +99,11 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationBlendTree.Node
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -155,6 +159,12 @@ ScriptsOnlyBuild:
     - Class: 81
       Script: {instanceID: 0}
     - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 96
       Script: {instanceID: 0}
@@ -374,6 +384,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13364}
     - Class: 114
       Script: {instanceID: 13404}
+    - Class: 114
+      Script: {instanceID: 549218}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -921,7 +933,7 @@ ScriptsOnlyBuild:
     className: TMP_Asset
   - hash:
       serializedVersion: 2
-      Hash: d68be65996d83c7474d2bb7f2ec973a0
+      Hash: 7736c276c8e2f60977575e454089938e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CharacterMove
@@ -1089,7 +1101,7 @@ ScriptsOnlyBuild:
     className: OccluderGroupProxy
   - hash:
       serializedVersion: 2
-      Hash: d32b043d1c3fba0e54e9e6e1b9bb356b
+      Hash: 6c29a30465d5af695ea80af13700d25e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WeaponBasic_SO
@@ -1167,7 +1179,7 @@ ScriptsOnlyBuild:
     className: ToolTipPanel
   - hash:
       serializedVersion: 2
-      Hash: 37c4f25281858d115b20c13cf7d25403
+      Hash: 82d17fe095e7097b1d4aed356c98e480
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CharacterInput
@@ -1657,7 +1669,19 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: e95f5e2f7684b999eb116e0361b8c34c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CharacterAnimation_SO
+  - hash:
+      serializedVersion: 2
+      Hash: 87425d2b5cbf6809207f496404cb9c1e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CharacterAnimation
   platform: 19
   scenePathNames:
   - Assets/Scenes/Stage01.unity
-  playerPath: D:/upar/test_exe15/ProjectStar.exe
+  playerPath: D:/upar/test_exe16/ProjectStar.exe

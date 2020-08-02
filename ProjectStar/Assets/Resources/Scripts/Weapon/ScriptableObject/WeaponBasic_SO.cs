@@ -48,6 +48,8 @@ public class WeaponBasic_SO : ScriptableObject
     public float fireRate;
     public int maxAmmunition;
     public int currentAmmunition;
+    [Range(0,2)]
+    public int weaponAnimationRange; // 0 = Gun Animation Stance ; 1 = Rifle, Minigun, Sniper Animation Stance
 
 
     public void WeaponBasicSetup()
@@ -64,6 +66,8 @@ public class WeaponBasic_SO : ScriptableObject
                 currentAmmunition = maxAmmunition = 0;
 
                 successShotProbability = 1.0f;
+
+                weaponAnimationRange = 0; //GUN STANCE! CHANGE LATER
                 break;
             case WeaponClass.Gun:
                 weaponRange = 5;
@@ -77,6 +81,8 @@ public class WeaponBasic_SO : ScriptableObject
                 fireRate = 2;
 
                 successShotProbability = 1.0f;
+
+                weaponAnimationRange = 0;
                 break;
             case WeaponClass.Rifle:
                 weaponRange = 7;
@@ -90,6 +96,8 @@ public class WeaponBasic_SO : ScriptableObject
                 fireRate = 6;
 
                 successShotProbability = 1.0f;
+
+                weaponAnimationRange = 1;
                 break;
             case WeaponClass.MiniGun:
                 weaponRange = 4;
@@ -103,6 +111,8 @@ public class WeaponBasic_SO : ScriptableObject
                 fireRate = 8;
 
                 successShotProbability = 1.0f;
+
+                weaponAnimationRange = 1;
                 break;
             case WeaponClass.Sniper:
                 weaponRange = 8;
@@ -116,6 +126,8 @@ public class WeaponBasic_SO : ScriptableObject
                 fireRate = 1;
 
                 successShotProbability = 1.0f;
+
+                weaponAnimationRange = 1;
                 break;
             default:
                 Debug.Log("No Weapon Selected");

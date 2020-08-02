@@ -13,6 +13,7 @@ public class AttackModeButton : MonoBehaviour
     public void ButtonAction()
     {
         SwitchToCombatMode();
+
     }
 
     public void SwitchToCombatMode()

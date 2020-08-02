@@ -176,8 +176,11 @@ public class CombatCalculatorManager_SO : ScriptableObject
             Debug.Log("FINAL DAMAGE ON ENEMY = " + _finalDamage);
 
             isShowProbabilities = true;
-
+            _cachedWeapon = characterInput.GetComponent<CharacterCombat>().GetCurrentWeapon();//.characterCombatVariables
+            
             _cachedWeapon.GetComponent<WeaponShooting>().Shoot(enemy, _finalDamage, characterInput);
+            Debug.Log(_cachedWeapon.name);
+            
             //StartCoroutine(ApplyDamage());//(ApplyDamage(_cachedWeapon.GetComponent<WeaponShooting>().Shooting(), enemy, _finalDamage, characterInput));
             return;
             //enemy.GetComponent<EnemyCombat>().ApplyDamage(_finalDamage, characterInput);
@@ -280,6 +283,7 @@ public class CombatCalculatorManager_SO : ScriptableObject
 
             //###########################character.GetComponent<CharacterCombat>().ApplyDamage(_finalDamage, enemyInput); //
             _cachedWeapon.GetComponent<WeaponShooting>().AIShoot(enemyInput, _finalDamage, character);
+            
             return;
     
         

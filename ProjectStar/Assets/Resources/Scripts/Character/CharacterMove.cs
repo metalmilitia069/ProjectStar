@@ -11,26 +11,35 @@ public class CharacterMove : MonoBehaviour
     [Header("CHARACTER MOVE VARIABLES - INSTANCE :")]
     public CharacterMove_SO characterMoveVariables;
 
-    
+
+    public Animator animator;
+    //public float velocity = 0.0f;
+    public Animation animation;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //animator = GetComponent<CharacterInput>().characterSetupVariables.characterGeometryReference.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("char velocity = " + characterMoveVariables._velocity);
     }
 
 
 
     public void Move()
     {
+        //animation.Play();
         if (GridManager.stackTilePath.Count > 0)
         {
+            //float velocity = GetComponent<CharacterInput>().characterAnimationVariables.velocity = 1.0f;
+            //GetComponent<CharacterInput>().characterAnimationVariables.animator.SetFloat("Velocity", velocity);
+            GetComponent<CharacterAnimation>().SetMovementAnimation(1.0f);
+
+
             AdvancedTile t = GridManager.stackTilePath.Peek();
             Vector3 destinationCoordinates = t.transform.position;
 
@@ -64,7 +73,13 @@ public class CharacterMove : MonoBehaviour
             characterMoveVariables.isMoving = false;
             characterMoveVariables.isTilesFound = false;
 
+            //velocity = 0.0f;
+            //animator.SetFloat("Velocity", velocity);
+            //Debug.Log("velocity = " + velocity);
+            //float velocity = GetComponent<CharacterInput>().characterAnimationVariables.velocity = 1.0f;
+            //GetComponent<CharacterInput>().characterAnimationVariables.animator.SetFloat("Velocity", velocity);
 
+            GetComponent<CharacterAnimation>().SetMovementAnimation(0.0f);
 
             GetComponent<CharacterTurn>().characterTurnVariables.actionPoints--;
 

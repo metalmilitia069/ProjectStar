@@ -28,17 +28,17 @@ public class WeaponShooting : MonoBehaviour
 
     public void Shoot(EnemyInput enemy, int _finaldamage, CharacterInput characterInput)
     {
-        StartCoroutine(GetComponent<WeaponBasic>().CombatCalculatorManager.ApplyDamage(StartCoroutine(Shooting()), enemy, _finaldamage, characterInput));
+        StartCoroutine(GetComponent<WeaponBasic>().CombatCalculatorManager.ApplyDamage(StartCoroutine(Shooting(characterInput)), enemy, _finaldamage, characterInput));
     }
 
     public void AIShoot(EnemyInput enemy, int _finaldamage, CharacterInput characterInput)
     {
-        StartCoroutine(GetComponent<WeaponBasic>().CombatCalculatorManager.AIApplyDamage(StartCoroutine(Shooting()), enemy, _finaldamage, characterInput));
+        StartCoroutine(GetComponent<WeaponBasic>().CombatCalculatorManager.AIApplyDamage(StartCoroutine(Shooting(null)), enemy, _finaldamage, characterInput));
     }
 
 
 
-    public IEnumerator Shooting()
+    public IEnumerator Shooting(CharacterInput characterInput)
     {
         GameObject vfx;
         timeToFire = Time.time + (1 / projectilePrefab.GetComponent<ProjectileMove>().fireRate);
@@ -52,34 +52,90 @@ public class WeaponShooting : MonoBehaviour
             case WeaponClass.Melee:
                 break;
             case WeaponClass.Gun:
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(true);
+                }
                 vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
 
-                yield return new WaitForSeconds(1 / weaponfireRate);
+                yield return new WaitForSeconds(1.167f);//(1 / weaponfireRate) ;
 
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(true);
+                }
                 vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
 
-                yield return new WaitForSeconds(1 / weaponfireRate);
-                
+                yield return new WaitForSeconds(1.167f);//(1 / weaponfireRate);
+
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(false);
+                }
+
                 break;
             case WeaponClass.Rifle:
+
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(true);
+                }
+                else
+                {
+                    vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+                }
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                if (characterInput != null)
+                {
+                    vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(true);
+                }
                 vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
 
                 yield return new WaitForSeconds(1 / weaponfireRate);
 
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(true);
+                }
                 vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
 
                 yield return new WaitForSeconds(1 / weaponfireRate);
 
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(true);
+                }
                 vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
 
                 yield return new WaitForSeconds(1 / weaponfireRate);
 
-                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(false);
+                }
 
-                yield return new WaitForSeconds(1 / weaponfireRate);
                 break;
             case WeaponClass.MiniGun:
-                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(true);
+                }
+                else
+                {
+                    vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+                }                
+
+                yield return new WaitForSeconds(1 / weaponfireRate);
+
+                if (characterInput != null)
+                {
+                    vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(true);
+                }
 
                 yield return new WaitForSeconds(1 / weaponfireRate);
 
@@ -107,13 +163,29 @@ public class WeaponShooting : MonoBehaviour
 
                 yield return new WaitForSeconds(1 / weaponfireRate);
 
-                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
-
-                yield return new WaitForSeconds(1 / weaponfireRate);
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(false);
+                }
 
                 break;
             case WeaponClass.Sniper:
-                vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(true);
+                    yield return new WaitForSeconds(.30f);
+                    vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+                }
+                else
+                {
+                    vfx = Instantiate(projectilePrefab, firePointer.transform.position, firePointer.transform.rotation);
+                }
+
+                if (characterInput != null)
+                {
+                    characterInput.GetComponent<CharacterAnimation>().ShootingAnimation(false);
+                }
+
 
                 yield return new WaitForSeconds(1 / weaponfireRate);
                 break;

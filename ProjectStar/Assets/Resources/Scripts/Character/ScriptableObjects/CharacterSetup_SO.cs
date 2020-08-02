@@ -49,8 +49,12 @@ public class CharacterSetup_SO : ScriptableObject
     {
         characterGender = Gender.underfined; 
         characterClass = CharacterClass.undefined;
-        characterName = default;
-        characterLevel = 1; 
+        characterName = string.Empty;
+        characterLevel = 1;
+
+        characterGeometryReference = default;
+        characterAfiliationSigilReference = default;
+        characterClassSigilReference = default;
     }
 
     public GameObject SetCharacterGeometry()

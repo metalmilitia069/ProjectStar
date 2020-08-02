@@ -54,7 +54,7 @@ public class WeaponBasic : MonoBehaviour
 
     public void GatherWeaponAttackStats(CharacterInput character, EnemyInput enemy)
     {
-        transform.LookAt(enemy.transform);
+        //transform.LookAt(enemy.transform);
         Ray ray = new Ray(weaponBasicVariables.firePoint.transform.position, transform.forward * 100);
         Debug.DrawRay(weaponBasicVariables.firePoint.transform.position, transform.forward * 100, Color.red, 2);
 

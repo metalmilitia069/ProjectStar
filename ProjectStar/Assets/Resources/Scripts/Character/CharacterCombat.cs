@@ -110,10 +110,12 @@ public class CharacterCombat : MonoBehaviour
                     nextWeapon = GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[i];
                 }
                 currentWeapon = GetComponent<CharacterInput>().characterEquipmentVariables.weaponBelt[index];
+                GetComponent<CharacterAnimation>().SetWeaponHoldingAnimation(currentWeapon.weaponBasicVariables.weaponAnimationRange);
                 return currentWeapon;
             }
         }
 
+        //GetComponent<CharacterAnimation>().SetWeaponHoldingAnimation(currentWeapon.weaponBasicVariables.weaponAnimationRange);
         return currentWeapon;//GetComponent<CharacterInput>().characterEquipmentVariables.dicWeaponBelt[0];
     }
 
@@ -166,6 +168,9 @@ public class CharacterCombat : MonoBehaviour
 
         currentWeapon = nextWeapon;
         currentWeapon.weaponBasicVariables.isCurrent = true;
+        GetComponent<CharacterAnimation>().SetWeaponHoldingAnimation(currentWeapon.weaponBasicVariables.weaponAnimationRange);
+
+
     }
 
     public void ScanForEnemies()
