@@ -546,7 +546,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 458356706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3dc1fb85919bbb4b8b3b25a901f82b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d2376765096bb44da51dfde0534438e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &458356709
@@ -641,8 +641,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 458356706}
-          m_MethodName: 
+        - m_Target: {fileID: 458356708}
+          m_MethodName: QuitGame
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -873,51 +873,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af28754a801fd91488c8c1af02d0dd39, type: 3}
---- !u!1 &922408855
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 922408856}
-  - component: {fileID: 922408857}
-  m_Layer: 0
-  m_Name: LoadingScreenScript
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &922408856
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922408855}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1824.0538, y: 174.26079, z: -31.5625}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &922408857
+--- !u!114 &922408857 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7532468566244655792, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+    type: 3}
+  m_PrefabInstance: {fileID: 7532468566469498153}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922408855}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60eb4a87d7bf5dc42af0948fb7da6bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBar: {fileID: 62289728}
-  loadingScreen: {fileID: 1753327832}
 --- !u!4 &982100049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4395940625060035246, guid: e24efdac9c91758489d25028e859a899,
@@ -2361,3 +2328,82 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5325b1ea28cfaa14697382c3ff13db0b, type: 3}
+--- !u!1001 &7532468566469498153
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7532468566244655792, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: progressBar
+      value: 
+      objectReference: {fileID: 62289728}
+    - target: {fileID: 7532468566244655792, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1753327832}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1824.0538
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 174.26079
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -31.5625
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655793, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532468566244655806, guid: 35c4bbe899414ac4ba4bfc4720e0e105,
+        type: 3}
+      propertyPath: m_Name
+      value: LoadingScreenScript
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35c4bbe899414ac4ba4bfc4720e0e105, type: 3}

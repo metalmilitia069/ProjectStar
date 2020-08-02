@@ -24,7 +24,20 @@ public class CharacterGlobalController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            uiManager.pauseMenu.ToggleTween();
+            CallPauseMenu();
+        }
+    }
+
+    public void CallPauseMenu()
+    {
+        uiManager.pauseMenu.ToggleTween();
+        if (!uiManager.pauseMenu.isTweendIn)
+        {
+            //Time.timeScale = 0;
+        }
+        else
+        {
+            //Time.timeScale = 1;
         }
     }
 
