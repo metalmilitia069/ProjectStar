@@ -5,7 +5,9 @@ using UnityEngine;
 public class CharacterGlobalController : MonoBehaviour
 {
     [Header("INSERT A TURN MANAGER SO :")]
-    public TurnManager_SO TurnManager;    
+    public TurnManager_SO TurnManager;
+    [Header("INSERT UI MANAGER SO :")]
+    public UIManager_SO uiManager;
 
     // Update is called once per frame
     void Update()
@@ -18,6 +20,11 @@ public class CharacterGlobalController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             CallOverWatch();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            uiManager.pauseMenu.ToggleTween();
         }
     }
 

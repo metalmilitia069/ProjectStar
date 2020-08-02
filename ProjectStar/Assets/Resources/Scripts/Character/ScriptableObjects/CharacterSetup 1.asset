@@ -15,11 +15,11 @@ MonoBehaviour:
   characterName: Aragorn Ellesar
   callSign: '''The Adventurer'''
   characterLevel: 2
-  characterGender: 1
+  characterGender: 0
   characterClass: 4
   characterGeometryMale: {fileID: 9213383644308989448, guid: af28754a801fd91488c8c1af02d0dd39,
     type: 3}
-  characterGeometryFemale: {fileID: 2540281445701491051, guid: 1805c36dfe5fd1341809a70f39012716,
+  characterGeometryFemale: {fileID: 5440757835932093550, guid: 451959d970654db42a99d107734e995a,
     type: 3}
   assaultSigil: {fileID: 21300000, guid: 7ca3ddf0e493d2f4498079d6dac91a56, type: 3}
   sniperSigil: {fileID: 21300000, guid: 0581d57d41f819c4cb6804aed47f9fbf, type: 3}

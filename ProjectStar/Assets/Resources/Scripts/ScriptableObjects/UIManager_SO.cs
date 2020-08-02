@@ -38,6 +38,8 @@ public class UIManager_SO : ScriptableObject
 
     public MouseToolTIpPanel mouseToolTIpPanel;
 
+    public PauseMenu pauseMenu;
+
 
     [Header("UI SPRITES COLLECTION FOR BULLET COUNT :")]
     public Sprite[] magazine2;
@@ -150,6 +152,8 @@ public class UIManager_SO : ScriptableObject
         turnPanel = default;
 
         playerIdentificationPanel = default;
+
+        pauseMenu = default;
     }
 
 
