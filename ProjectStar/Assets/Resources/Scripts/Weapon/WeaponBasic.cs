@@ -29,7 +29,7 @@ public class WeaponBasic : MonoBehaviour
     public string weaponName;
 
     // Start is called before the first frame update
-    void Awake()//Start()
+    void Start()//Start()
     {
         weaponBasicVariables.weaponClass = weaponClass;
 

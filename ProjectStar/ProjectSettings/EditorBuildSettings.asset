@@ -8,10 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Playground.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/Stage01.unity
+    guid: d941a17f9673c3e479c41213057aa214
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: f68b3ad29d298d2429542e8e93b20341
   - enabled: 1
-    path: Assets/Scenes/Stage01.unity
-    guid: d941a17f9673c3e479c41213057aa214
+    path: Assets/Scenes/Stage01 Cut.unity
+    guid: aaa5e6c88bb8eb5489c2fe0e2d33d3f8
+  - enabled: 1
+    path: Assets/Scenes/Stage02 Cut.unity
+    guid: 2a05e9502dfe38441b8a8fb5a4fbf042
   m_configObjects: {}
